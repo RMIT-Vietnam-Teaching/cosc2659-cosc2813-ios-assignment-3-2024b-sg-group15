@@ -13,8 +13,8 @@
 		393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC70B2C8F450600028F1D /* Preview Assets.xcassets */; };
 		393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7182C8F46A200028F1D /* DemoModel.swift */; };
 		393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC71A2C8F46B200028F1D /* DemoViewModel.swift */; };
-		55906CD92C94586F000B1E93 /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CD82C94586F000B1E93 /*  HocMonView.swift */; };
-		55906CDB2C946B7D000B1E93 /*  MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CDA2C946B7D000B1E93 /*  MapComponent.swift */; };
+		55906CE12C9493EA000B1E93 /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CE02C9493EA000B1E93 /* MapComponent.swift */; };
+		55906CE32C949420000B1E93 /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CE22C94941F000B1E93 /*  HocMonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +25,8 @@
 		393FC70B2C8F450600028F1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		393FC7182C8F46A200028F1D /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
 		393FC71A2C8F46B200028F1D /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
-		55906CD82C94586F000B1E93 /*  HocMonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
-		55906CDA2C946B7D000B1E93 /*  MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " MapComponent.swift"; sourceTree = "<group>"; };
+		55906CE02C9493EA000B1E93 /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
+		55906CE22C94941F000B1E93 /*  HocMonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,7 @@
 				393FC7172C8F468700028F1D /* ViewModel */,
 				393FC7142C8F466900028F1D /* View */,
 				393FC7042C8F450400028F1D /* SG_Group15App.swift */,
+				393FC7062C8F450400028F1D /* ContentView.swift */,
 				393FC7082C8F450600028F1D /* Assets.xcassets */,
 				393FC70A2C8F450600028F1D /* Preview Content */,
 			);
@@ -88,9 +89,7 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55906CD82C94586F000B1E93 /*  HocMonView.swift */,
-				55906CDA2C946B7D000B1E93 /*  MapComponent.swift */,
-				393FC7062C8F450400028F1D /* ContentView.swift */,
+				55906CDF2C94929F000B1E93 /* Map */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,6 +100,15 @@
 				393FC71A2C8F46B200028F1D /* DemoViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55906CDF2C94929F000B1E93 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				55906CE22C94941F000B1E93 /*  HocMonView.swift */,
+				55906CE02C9493EA000B1E93 /* MapComponent.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +183,9 @@
 			files = (
 				393FC7072C8F450400028F1D /* ContentView.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
-				55906CD92C94586F000B1E93 /*  HocMonView.swift in Sources */,
+				55906CE12C9493EA000B1E93 /* MapComponent.swift in Sources */,
+				55906CE32C949420000B1E93 /*  HocMonView.swift in Sources */,
 				393FC7052C8F450400028F1D /* SG_Group15App.swift in Sources */,
-				55906CDB2C946B7D000B1E93 /*  MapComponent.swift in Sources */,
 				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

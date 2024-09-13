@@ -18,7 +18,7 @@ struct MapComponent: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass // To check the device type
     @Environment(\.verticalSizeClass) var verticalSizeClass : UserInterfaceSizeClass? // For detecting landscape or portrait
     @State private var selectedButton: String? = nil
-    let isLandscape: Bool 
+    let isLandscape: Bool
     
     var body: some View {
         GeometryReader { geo in
