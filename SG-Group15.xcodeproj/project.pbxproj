@@ -19,6 +19,14 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
+		39FA15022C91FDA00054B99E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FA15012C91FDA00054B99E /* Main.storyboard */; };
+		39FA15052C91FF3B0054B99E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15042C91FF3B0054B99E /* SceneDelegate.swift */; };
+		39FA150D2C9201660054B99E /* PageCurlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA150C2C9201660054B99E /* PageCurlViewController.swift */; };
+		39FA15132C93DAF70054B99E /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15122C93DAF70054B99E /* LandingView.swift */; };
+		39FA15152C93DFDD0054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15142C93DFDD0054B99E /* SimpleView.swift */; };
+		39FA15172C9448A40054B99E /* BookDetailViewIphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15162C9448A40054B99E /* BookDetailViewIphone.swift */; };
+		39FA15192C945B6D0054B99E /* BookDetailViewIpad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15182C945B6D0054B99E /* BookDetailViewIpad.swift */; };
+		39FA151B2C9460650054B99E /* OpenBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA151A2C9460650054B99E /* OpenBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +44,14 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		39FA15012C91FDA00054B99E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		39FA15042C91FF3B0054B99E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		39FA150C2C9201660054B99E /* PageCurlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCurlViewController.swift; sourceTree = "<group>"; };
+		39FA15122C93DAF70054B99E /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		39FA15142C93DFDD0054B99E /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
+		39FA15162C9448A40054B99E /* BookDetailViewIphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewIphone.swift; sourceTree = "<group>"; };
+		39FA15182C945B6D0054B99E /* BookDetailViewIpad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewIpad.swift; sourceTree = "<group>"; };
+		39FA151A2C9460650054B99E /* OpenBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +87,14 @@
 				75AD4D552C947E2A00C8F37F /* Info.plist */,
 				75AD4D4C2C947D9A00C8F37F /* Fonts */,
 				75668E002C9183D70052F78C /* Helpers */,
+				39FA15032C91FF330054B99E /* Helper */,
 				393FC7132C8F465100028F1D /* Model */,
 				393FC7172C8F468700028F1D /* ViewModel */,
 				393FC7142C8F466900028F1D /* View */,
 				393FC7042C8F450400028F1D /* SG_Group15App.swift */,
 				393FC7082C8F450600028F1D /* Assets.xcassets */,
 				393FC70A2C8F450600028F1D /* Preview Content */,
+				39FA15012C91FDA00054B99E /* Main.storyboard */,
 			);
 			path = "SG-Group15";
 			sourceTree = "<group>";
@@ -101,6 +119,12 @@
 			isa = PBXGroup;
 			children = (
 				393FC7062C8F450400028F1D /* ContentView.swift */,
+				39FA150C2C9201660054B99E /* PageCurlViewController.swift */,
+				39FA15122C93DAF70054B99E /* LandingView.swift */,
+				39FA15142C93DFDD0054B99E /* SimpleView.swift */,
+				39FA15162C9448A40054B99E /* BookDetailViewIphone.swift */,
+				39FA15182C945B6D0054B99E /* BookDetailViewIpad.swift */,
+				39FA151A2C9460650054B99E /* OpenBookView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -113,6 +137,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+
 		75668E002C9183D70052F78C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +156,14 @@
 				75AD4D4D2C947DB300C8F37F /* Lato-Light.ttf */,
 			);
 			path = Fonts;
+
+		39FA15032C91FF330054B99E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				39FA15042C91FF3B0054B99E /* SceneDelegate.swift */,
+			);
+			path = Helper;
+
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +226,7 @@
 			files = (
 				75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */,
 				75AD4D4E2C947DB300C8F37F /* Lato-Light.ttf in Resources */,
+				39FA15022C91FDA00054B99E /* Main.storyboard in Resources */,
 				393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */,
 				75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */,
 				75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */,
@@ -208,11 +242,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39FA150D2C9201660054B99E /* PageCurlViewController.swift in Sources */,
 				393FC7072C8F450400028F1D /* ContentView.swift in Sources */,
+				39FA15152C93DFDD0054B99E /* SimpleView.swift in Sources */,
+				39FA151B2C9460650054B99E /* OpenBookView.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
+				39FA15172C9448A40054B99E /* BookDetailViewIphone.swift in Sources */,
 				393FC7052C8F450400028F1D /* SG_Group15App.swift in Sources */,
 				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
 				75668E022C9183F90052F78C /* Modifiers.swift in Sources */,
+				39FA15132C93DAF70054B99E /* LandingView.swift in Sources */,
+				39FA15192C945B6D0054B99E /* BookDetailViewIpad.swift in Sources */,
+				39FA15052C91FF3B0054B99E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
