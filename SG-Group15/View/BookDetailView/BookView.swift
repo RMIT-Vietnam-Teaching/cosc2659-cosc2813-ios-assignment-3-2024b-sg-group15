@@ -11,23 +11,39 @@ struct BookView: View {
     @State private var currentChapterIndex: Int? = nil  // Use nil for the initial landing page
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
-            [false, false, true], // Chapter 1: Page 2 cannot flip
-            [true, true, true],  // Chapter 2: All pages can flip
-            [true, false, true]  // Chapter 3: Page 2 cannot flip
+            [true, false, false], // Chapter 1: Page 2 cannot flip
+            [false, false, false],  // Chapter 2: All pages can flip
+            [false, false, false]  // Chapter 3: Page 2 cannot flip
         ]
+    
+    @State private var chapters: [Chapter] = [
+        Chapter(pages: [Page(content: "Landing Page", canFlip: true)]),
+           Chapter(pages: [
+               Page(content: "Chapter 1 - Page 1", canFlip: true),
+               Page(content: "Chapter 1 - Page 2", canFlip: false),
+               Page(content: "Chapter 1 - Page 3", canFlip: true)
+           ]),
+           Chapter(pages: [
+               Page(content: "Chapter 2 - Page 1", canFlip: true),
+               Page(content: "Chapter 2 - Page 2", canFlip: true),
+               Page(content: "Chapter 2 - Page 3", canFlip: true)
+           ]),
+           Chapter(pages: [
+               Page(content: "Chapter 3 - Page 1", canFlip: true),
+               Page(content: "Chapter 3 - Page 2", canFlip: false),
+               Page(content: "Chapter 3 - Page 3", canFlip: true)
+           ])
+       ]
+    
+    @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
+    
     var body: some View {
         VStack {
-//             Page Curl View Controller
             PageCurlViewController(
-                chapters: [
-                    [UIHostingController(rootView: OpenBookView())], // Use the updated LandingView
-                    createChapter1(flipStates: $flipStates[0]),
-                    createChapter2(flipStates: $flipStates[1]),
-                    createChapter3(flipStates: $flipStates[2])
-                ],
-                currentChapterIndex: $currentChapterIndex,
-                currentPageIndex: $currentPageIndex, flipStates: $flipStates
-            )
+                chapters: chapters, coverPage: $coverPage,
+                       currentChapterIndex: $currentChapterIndex,
+                       currentPageIndex: $currentPageIndex
+                   )
             .edgesIgnoringSafeArea(.all)
             
             
@@ -45,7 +61,7 @@ struct BookView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in
                     moveToNextPage()
-                }
+        }
     }
     
     private func moveToNextPage() {
@@ -65,31 +81,6 @@ struct BookView: View {
             }
         }
     }
-
-    // Chapter creation helper methods using SimpleView instead of SimpleViewController
-        func createChapter1(flipStates: Binding<[Bool]>) -> [UIViewController] {
-            return [
-                UIHostingController(rootView: SimpleView(text: "Chapter 1 - Page 1", backgroundColor: .red, flipState: flipStates[0])),
-                UIHostingController(rootView: SimpleView(text: "Chapter 1 - Page 2", backgroundColor: .orange, flipState: flipStates[1])),
-                UIHostingController(rootView: SimpleView(text: "Chapter 1 - Page 3", backgroundColor: .yellow, flipState: flipStates[2]))
-            ]
-        }
-
-        func createChapter2(flipStates: Binding<[Bool]>) -> [UIViewController] {
-            return [
-                UIHostingController(rootView: SimpleView(text: "Chapter 2 - Page 1", backgroundColor: .green, flipState: flipStates[0])),
-                UIHostingController(rootView: SimpleView(text: "Chapter 2 - Page 2", backgroundColor: .blue, flipState: flipStates[1])),
-                UIHostingController(rootView: SimpleView(text: "Chapter 2 - Page 3", backgroundColor: .purple, flipState: flipStates[2]))
-            ]
-        }
-
-        func createChapter3(flipStates: Binding<[Bool]>) -> [UIViewController] {
-            return [
-                UIHostingController(rootView: SimpleView(text: "Chapter 3 - Page 1", backgroundColor: .cyan, flipState: flipStates[0])),
-                UIHostingController(rootView: SimpleView(text: "Chapter 3 - Page 2", backgroundColor: .blue, flipState: flipStates[1])),
-                UIHostingController(rootView: SimpleView(text: "Chapter 3 - Page 3", backgroundColor: .brown, flipState: flipStates[2]))
-            ]
-        }
 }
 
 #Preview {

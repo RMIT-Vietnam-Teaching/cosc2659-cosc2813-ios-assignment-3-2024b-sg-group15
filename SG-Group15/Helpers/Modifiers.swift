@@ -72,7 +72,29 @@ struct BodyTextModifier: ViewModifier {
     }
 }
 
-
+struct ShadowModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(
+               // Adding shadow to the bottom edge
+               RoundedRectangle(cornerRadius: 15)
+                   .fill(Color.black.opacity(0.2)), // Shadow color
+//                   .frame(height: 10) // Shadow height
+//                   .blur(radius: 5) // Blur for soft shadow
+//                   .offset(y: 5), // Position the shadow
+               alignment: .bottom
+           )
+           .background(
+               // Adding shadow to the right edge
+               RoundedRectangle(cornerRadius: 15)
+                   .fill(Color.black.opacity(0.2))
+                   .frame(width: 10) // Shadow width
+                   .blur(radius: 5)
+                   .offset(x: 5), // Position the shadow
+               alignment: .trailing
+           )
+    }
+}
 
 
 

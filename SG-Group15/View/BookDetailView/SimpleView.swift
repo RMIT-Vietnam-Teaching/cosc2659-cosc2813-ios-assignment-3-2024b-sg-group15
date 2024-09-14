@@ -7,63 +7,54 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct SimpleView: View {
-    let text: String
-    let backgroundColor: Color
-    @Binding var flipState: Bool
+    @ObservedObject var page: Page  // Observes changes in the page object
 
     var body: some View {
         VStack {
-            // Label
-            Text(text)
+            // Display the content of the page
+            Text(page.content)
                 .font(.system(size: 36))
-                .multilineTextAlignment(.center)
-                .padding(.top, 100)
+                .padding()
 
-            Spacer()
-
+            // Button to toggle the flip state
             Button(action: {
-                
+                page.canFlip.toggle()
+//                print(page.canFlip)
             }) {
-                Text("Flip")
-                    .font(.title)
+                Text(page.canFlip ? "Flip Enabled" : "Flip Disabled")
                     .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
+                    .background(page.canFlip ? Color.green : Color.red)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-            .padding(.bottom, 50)
+            .padding(.bottom, 20)
 
-            // Back Button
-            Button(action: goBackToMainPage) {
-                Text("Back to Main Page")
-                    .font(.title)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            if page.canFlip {
+                // Next Page Button
+                Button(action: goToNextPage) {
+                    Text("Next Page")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom, 20)
             }
-            .padding(.bottom, 50)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(backgroundColor.edgesIgnoringSafeArea(.all)) // Set background color
-       
+        .background(Color.orange.edgesIgnoringSafeArea(.all))
     }
 
-    // Function to go back to the main page
-    func goBackToMainPage() {
-        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
-//        print(
-    }
-    
-    func goNextPage() {
+    // Function to trigger the "Next Page" action
+    func goToNextPage() {
         NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
-//        print(
     }
 }
 
 #Preview {
-    SimpleView(text: "test", backgroundColor: .green, flipState: .constant(true))
+//    SimpleView(text: "test", backgroundColor: .green, flipState: .constant(true))
+    BookView()
 }

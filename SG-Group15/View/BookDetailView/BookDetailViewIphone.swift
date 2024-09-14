@@ -11,6 +11,7 @@ struct BookDetailViewIphone: View {
     @State private var isScaled = false
     @State private var selectedChapter: Int? = nil
     @State private var check = false
+    @Binding var page: CoverPage
     
     var body: some View {
 //        ZStack {
@@ -140,7 +141,7 @@ struct BookDetailViewIphone: View {
                     .padding(20)
                 }
 //                .padding(.vertical, 20)
-                .scaleEffect(isScaled ? 1.0 : 0.8) // Initially small
+                .scaleEffect(isScaled ? 1.0 : 0.8)
                 .animation(.easeIn(duration: 0.5), value: isScaled) // Scale up animation
                 .onAppear {
                     withAnimation {
@@ -160,5 +161,5 @@ struct BookDetailViewIphone: View {
 
 
 #Preview {
-    BookDetailViewIphone()
+    BookDetailViewIphone(page: .constant(CoverPage(title: "11", content: "11")))
 }
