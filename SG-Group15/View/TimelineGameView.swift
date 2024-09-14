@@ -123,7 +123,7 @@ struct TimelineGameView: View {
 }
 
 struct EventView: View {
-    @Binding var event: Event
+    @Binding var event: TimelineEvent
     let width: CGFloat
     let height: CGFloat
 

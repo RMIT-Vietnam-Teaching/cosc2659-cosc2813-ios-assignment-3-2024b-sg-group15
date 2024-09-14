@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Event: Identifiable, Equatable {
+struct TimelineEvent: Identifiable, Equatable {
     let id: Int
     let name: String
     var position: CGPoint
@@ -21,3 +21,13 @@ struct TimePeriod: Identifiable {
     let period: String
     var position: CGPoint
 }
+
+struct MatchingEvent: Identifiable {
+    let id: Int
+    let text: String
+    let correctMatchId: Int
+    var isMatched = false
+    var isIncorrectMatch = false
+}
+
+

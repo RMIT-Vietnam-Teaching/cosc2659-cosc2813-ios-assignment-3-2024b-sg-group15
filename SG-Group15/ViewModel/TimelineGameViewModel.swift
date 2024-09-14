@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TimelineGameViewModel: ObservableObject {
-    @Published var events: [Event]
+    @Published var events: [TimelineEvent]
     @Published var timePeriods: [TimePeriod]
     @Published var isGameComplete = false
     @Published var showResult = false
@@ -21,7 +21,7 @@ class TimelineGameViewModel: ObservableObject {
     
     init(eventData: [String], periodData: [String]) {
         self.events = eventData.enumerated().map { i, name in
-            Event(id: i, name: name, position: .zero, originalPosition: .zero)
+            TimelineEvent(id: i, name: name, position: .zero, originalPosition: .zero)
         }
         
         self.timePeriods = periodData.enumerated().map { i, period in
