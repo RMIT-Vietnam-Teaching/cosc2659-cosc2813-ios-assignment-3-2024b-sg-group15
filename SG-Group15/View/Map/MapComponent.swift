@@ -22,10 +22,11 @@ struct MapComponent: View {
     
     var body: some View {
         GeometryReader { geo in
-            Text("horizontalSizeClass: \(horizontalSizeClass == .compact ? "Compact" : "Regular"), verticalSizeClass: \(verticalSizeClass == .compact ? "Compact" : "Regular")")
+            //Check Compact or Regular
+//            Text("horizontalSizeClass: \(horizontalSizeClass == .compact ? "Compact" : "Regular"), verticalSizeClass: \(verticalSizeClass == .compact ? "Compact" : "Regular")")
                    
             // The image of the map
-            Image(mapImage) // Replace with your map image asset
+            Image(mapImage)
                 .resizable()
                 .scaledToFit()
                 .overlay(
@@ -42,9 +43,7 @@ struct MapComponent: View {
                                     
                                     .foregroundColor(selectedButton == point.name ? .brown : .black)
                                     .cornerRadius(10)
-                                    .font(.system(size: dynamicTextSize(), weight: selectedButton == point.name ? .heavy : .semibold, design: .rounded) // Adjust text size based on device
-                                     // Shrinks the text if too long
-//                                    .multilineTextAlignment(.center)
+                                    .font(.system(size: dynamicTextSize(), weight: selectedButton == point.name ? .heavy : .semibold, design: .rounded)
                                           )
                             }
                             // Position the button at the correct spot
@@ -72,8 +71,9 @@ struct MapComponent: View {
                 )
                 .frame(width: geo.size.width, height: geo.size.height)
                 .aspectRatio(contentMode: .fit)
-                .padding()
+                .padding(.trailing, 10)
         }
+       
         .edgesIgnoringSafeArea(.all) // To fill the screen if needed
     }
     
@@ -82,10 +82,10 @@ struct MapComponent: View {
         let baseWidth: CGFloat
         if verticalSizeClass == .compact {
             // Landscape mode
-            baseWidth = horizontalSizeClass == .compact ? size.width * 0.25 * landscapeMultiplierCompact : size.width * 0.35 * landscapeMultiplierRegular
+            baseWidth = horizontalSizeClass == .compact ? size.width * 0.25 * landscapeMultiplierCompact : size.width * 0.2 * landscapeMultiplierRegular
         } else {
             // Portrait mode
-            baseWidth = horizontalSizeClass == .compact ? size.width * 0.2 : size.width * 0.3
+            baseWidth = horizontalSizeClass == .compact ? size.width * 0.2 : size.width * 0.18
         }
         return baseWidth * multiplier
     }
@@ -95,10 +95,10 @@ struct MapComponent: View {
         let baseHeight: CGFloat
         if verticalSizeClass == .compact {
             // Landscape mode
-            baseHeight = horizontalSizeClass == .compact ? size.height * 0.02 * landscapeMultiplierCompact : size.height * 0.06 * landscapeMultiplierRegular
+            baseHeight = horizontalSizeClass == .compact ? size.height * 0.02 * landscapeMultiplierCompact : size.height * 0.2 * landscapeMultiplierRegular
         } else {
             // Portrait mode
-            baseHeight = horizontalSizeClass == .compact ? size.height * 0.02 : size.height * 0.06
+            baseHeight = horizontalSizeClass == .compact ? size.height * 0.025 : size.height * 0.06
         }
         return baseHeight * multiplier
     }
@@ -107,10 +107,10 @@ struct MapComponent: View {
     func dynamicTextSize() -> CGFloat {
           if verticalSizeClass == .compact {
               // Landscape mode
-              return horizontalSizeClass == .compact ? 18 : 40 // Smaller text size for iPhone, larger for iPad in landscape
+              return horizontalSizeClass == .compact ? 24 : 4 // Smaller text size for iPhone, larger for iPad in landscape
           } else {
               // Portrait mode
-              return horizontalSizeClass == .compact ? 15 : 38 // Slightly larger text size for iPhone, even larger for iPad in portrait
+              return horizontalSizeClass == .compact ? 18 : 50 // Slightly larger text size for iPhone, even larger for iPad in portrait
           }
       }
     
