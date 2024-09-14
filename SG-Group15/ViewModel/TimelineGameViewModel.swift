@@ -1,10 +1,3 @@
-//
-//  TimelineGameViewModel.swift
-//  SG-Group15
-//
-//  Created by Tuan Anh Bui on 9/14/24.
-//
-
 import SwiftUI
 
 class TimelineGameViewModel: ObservableObject {
@@ -24,9 +17,12 @@ class TimelineGameViewModel: ObservableObject {
             TimelineEvent(id: i, name: name, position: .zero, originalPosition: .zero)
         }
         
-        self.timePeriods = periodData.enumerated().map { i, period in
-            TimePeriod(id: i, period: period, position: .zero)
+        let shuffledIndices = Array(0..<periodData.count).shuffled()
+        self.timePeriods = periodData.enumerated().map { originalIndex, period in
+            let shuffledIndex = shuffledIndices[originalIndex]
+            return TimePeriod(id: originalIndex, period: period, position: .zero, displayOrder: shuffledIndex)
         }
+        self.timePeriods.sort { $0.displayOrder < $1.displayOrder }
     }
     
     func nearestTimePeriod(to point: CGPoint) -> TimePeriod? {
@@ -46,3 +42,4 @@ class TimelineGameViewModel: ObservableObject {
         showResult = true
     }
 }
+

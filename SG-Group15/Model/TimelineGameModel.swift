@@ -20,6 +20,7 @@ struct TimePeriod: Identifiable {
     let id: Int
     let period: String
     var position: CGPoint
+    let displayOrder: Int
 }
 
 struct MatchingEvent: Identifiable {

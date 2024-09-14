@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct TimelineGameView: View {
-    // ViewModel to handle game logic
     @StateObject private var viewModel: TimelineGameViewModel
     let eventData: [String]
     let periodData: [String]
     @State private var showResultPopup = false
 
-    // Initialize view with event and period data
     init(eventData: [String], periodData: [String]) {
         self.eventData = eventData
         self.periodData = periodData
@@ -16,7 +14,6 @@ struct TimelineGameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            // Calculate dimensions based on screen size
             let width = geometry.size.width
             let height = geometry.size.height
             let eventWidth = min(width * 0.4, 320)
@@ -25,16 +22,13 @@ struct TimelineGameView: View {
             let periodHeight = eventHeight
             
             ZStack {
-                // Background color
                 Color.beigeBackground
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
-                    // Title
                     Text("Kéo các sự kiện sau đây ứng với mốc thời gian")
                         .modifier(TitleTextModifier())
                         .padding(.horizontal)
                     
-                    // Events Grid
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: width * 0.05) {
                         ForEach(viewModel.events.indices, id: \.self) { index in
                             Color.clear
@@ -42,7 +36,6 @@ struct TimelineGameView: View {
                                 .background(
                                     GeometryReader { geo in
                                         Color.clear.onAppear {
-                                            // Set initial positions for events
                                             let frame = geo.frame(in: .named("gameArea"))
                                             viewModel.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
                                             if !viewModel.events[index].isPlaced {
@@ -55,9 +48,7 @@ struct TimelineGameView: View {
                     }
                     .padding()
                     
-                    // Time Periods
                     ZStack {
-                        // Vertical timeline
                         Rectangle()
                             .fill(Color.darkRed)
                             .frame(width: 8, height: height * 0.5)
@@ -70,14 +61,12 @@ struct TimelineGameView: View {
                     }
                 }
                 
-                // Draggable Event Views
                 ForEach($viewModel.events) { $event in
                     EventView(event: $event, width: eventWidth, height: eventHeight)
                         .position(event.position)
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-                                    // Update position while dragging
                                     event.position = value.location
                                 }
                                 .onEnded { value in
@@ -85,12 +74,20 @@ struct TimelineGameView: View {
                                     if let nearestPeriod = viewModel.nearestTimePeriod(to: value.location) {
                                         let distance = viewModel.distance(from: value.location, to: nearestPeriod.position)
                                         if distance <= maxDistance {
-                                            // Place event if close enough to a time period
-                                            event.currentPeriod = nearestPeriod.id
-                                            event.isPlaced = true
-                                            event.position = nearestPeriod.position
+                                            // Check if the period is already occupied
+                                            if !viewModel.events.contains(where: { $0.id != event.id && $0.currentPeriod == nearestPeriod.id }) {
+                                                event.currentPeriod = nearestPeriod.id
+                                                event.isPlaced = true
+                                                event.position = nearestPeriod.position
+                                            } else {
+                                                // Period is occupied, return event to original position
+                                                event.currentPeriod = nil
+                                                event.isPlaced = false
+                                                withAnimation {
+                                                    event.position = event.originalPosition
+                                                }
+                                            }
                                         } else {
-                                            // Return event to original position if not close enough
                                             event.currentPeriod = nil
                                             event.isPlaced = false
                                             withAnimation {
@@ -98,7 +95,6 @@ struct TimelineGameView: View {
                                             }
                                         }
                                     } else {
-                                        // Return event to original position if not over a time period
                                         event.currentPeriod = nil
                                         event.isPlaced = false
                                         withAnimation {
@@ -110,33 +106,25 @@ struct TimelineGameView: View {
                         )
                 }
                 
-                // Submit button (only shown when all events are placed)
                 if viewModel.isGameComplete {
                    Button("Submit") {
                        viewModel.checkAnswer()
                        showResultPopup = true
                    }
-//                   .frame(width: width * 0.4, height: height * 0.06)
-//                   .background(Color.darkRed)
-//                   .foregroundColor(.white)
-//                   .cornerRadius(8)
                    .modifier(LargeButtonModifier(background: .darkRed))
                    .position(x: width / 2, y: height - 30)
                }
                
-               // Result popup
                if showResultPopup {
                    ResultPopupView(isCorrect: viewModel.correctPlacements == eventData.count, action: {
                        showResultPopup = false
                    })
                }
-           }
-           .coordinateSpace(name: "gameArea")
+            }
+            .coordinateSpace(name: "gameArea")
         }
-        
     }
 }
-
 struct EventView: View {
     @Binding var event: TimelineEvent
     let width: CGFloat
@@ -168,7 +156,7 @@ struct TimePeriodView: View {
     let height: CGFloat
     let isEven: Bool
     let screenWidth: CGFloat
-    
+    let isIpad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
         HStack {
             // Alternate layout for even/odd periods
@@ -192,7 +180,8 @@ struct TimePeriodView: View {
                 .fill(Color.black)
                 .frame(height: 3)
                 .frame(width: screenWidth * 0.5)
-        }
+                
+        }.offset(y: isIpad ? -25 : -10)
     }
     
     var destinationBox: some View {
@@ -243,8 +232,8 @@ struct ResultPopupView: View {
 struct TimelineGameView_Previews: PreviewProvider {
     static var previews: some View {
         TimelineGameView(
-            eventData: ["Khởi nghĩa Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Quốc Khánh Việt Nam", "Chiến dịch Điện Biên Phủ"],
-            periodData: ["1/1111", "2/2222", "3/3333", "4/4444"]
+            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
+            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
         )
     }
 }
