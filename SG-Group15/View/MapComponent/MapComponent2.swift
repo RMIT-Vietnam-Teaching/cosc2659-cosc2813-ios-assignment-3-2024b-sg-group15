@@ -1,4 +1,12 @@
 //
+//  MapComponent2.swift
+//  SG-Group15
+//
+//  Created by Nguyen Ha Kieu Anh on 14/9/24.
+//
+
+import Foundation
+//
 //  MapTextResizer.swift
 //  SG-Group15
 //
@@ -8,7 +16,7 @@
 import Foundation
 import SwiftUI
 
-struct MapComponent: View {
+struct MapComponent2: View {
     // Updated map points with place names, proportional coordinates, and custom size multipliers
     let mapImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat, landscapeMultiplierCompact: CGFloat, landscapeMultiplierRegular:CGFloat)]
@@ -40,7 +48,6 @@ struct MapComponent: View {
                                         width: customButtonWidth(for: geo.size, multiplier: point.sizeMultiplier, landscapeMultiplierCompact: point.landscapeMultiplierCompact, landscapeMultiplierRegular: point.landscapeMultiplierRegular),
                                               height: customButtonHeight(for: geo.size, multiplier: point.sizeMultiplier, landscapeMultiplierCompact: point.landscapeMultiplierCompact, landscapeMultiplierRegular: point.landscapeMultiplierRegular)
                                     )
-                                    
                                     .foregroundColor(selectedButton == point.name ? .brown : .black)
                                     .cornerRadius(10)
                                     .font(.system(size: dynamicTextSize(), weight: selectedButton == point.name ? .heavy : .semibold, design: .rounded)
@@ -48,9 +55,6 @@ struct MapComponent: View {
                             }
                             // Position the button at the correct spot
                             .position(
-                                
-                              
-                          
                                     x: calculateXPosition(
                                         for: geo.size.width,
                                         point: (point.name, point.compactX, point.compactY, point.regularX, point.regularY, point.landscapeCompactX, point.landscapeCompactY, point.landscapeRegularX, point.landscapeRegularY, point.sizeMultiplier)
@@ -60,11 +64,7 @@ struct MapComponent: View {
                                         for: geo.size.height,
                                         point: (point.name, point.compactX, point.compactY, point.regularX, point.regularY, point.landscapeCompactX, point.landscapeCompactY, point.landscapeRegularX, point.landscapeRegularY, point.sizeMultiplier)
                                         ,isLandscape: isLandscape // Pass isLandscape here
-                                    
                                 )
-
-                                
-
                             )
                         }
                     }
@@ -110,99 +110,10 @@ struct MapComponent: View {
               return horizontalSizeClass == .compact ? 24 : 4 // Smaller text size for iPhone, larger for iPad in landscape
           } else {
               // Portrait mode
-              return horizontalSizeClass == .compact ? 18 : 50 // Slightly larger text size for iPhone, even larger for iPad in portrait
+              return horizontalSizeClass == .compact ? 17 : 50 // Slightly larger text size for iPhone, even larger for iPad in portrait
           }
       }
     
-//    func calculateXPosition(for width: CGFloat, point: (name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat)) -> CGFloat {
-//        if UIDevice.current.userInterfaceIdiom == .pad && verticalSizeClass == .compact {
-//            // Handle landscape mode for iPad explicitly
-//            return width * point.landscapeRegularX
-//        } else if verticalSizeClass == .compact {
-//            // Landscape mode for iPhone
-//            return width * point.landscapeCompactX
-//        } else {
-//            // Portrait mode for both devices
-//            return horizontalSizeClass == .compact ? width * point.compactX : width * point.regularX
-//        }
-//    }
-//
-//    func calculateYPosition(for height: CGFloat, point: (name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat)) -> CGFloat {
-//        if UIDevice.current.userInterfaceIdiom == .pad && verticalSizeClass == .compact {
-//            // Handle landscape mode for iPad explicitly
-//            return height * point.landscapeRegularY
-//        } else if verticalSizeClass == .compact {
-//            // Landscape mode for iPhone
-//            return height * point.landscapeCompactY
-//        } else {
-//            // Portrait mode for both devices
-//            return horizontalSizeClass == .compact ? height * point.compactY : height * point.regularY
-//        }
-//    }
-
-    func calculateXPosition(
-        for width: CGFloat,
-        point: (name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat),
-        isLandscape: Bool
-    ) -> CGFloat {
-        if isLandscape {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                // iPad in landscape
-                return width * point.landscapeRegularX
-            } else {
-                // iPhone in landscape
-                return width * point.landscapeCompactX
-            }
-        } else {
-            // Portrait mode
-            return horizontalSizeClass == .compact ? width * point.compactX : width * point.regularX
-        }
-    }
-
-    func calculateYPosition(
-        for height: CGFloat,
-        point: (name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat),
-        isLandscape: Bool
-    ) -> CGFloat {
-        if isLandscape {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                // iPad in landscape
-                return height * point.landscapeRegularY
-            } else {
-                // iPhone in landscape
-                return height * point.landscapeCompactY
-            }
-        } else {
-            // Portrait mode
-            return horizontalSizeClass == .compact ? height * point.compactY : height * point.regularY
-        }
-    }
-
-    
-
     
 }
-
-//    // Function to calculate the x position based on the device type (compact or regular)
-//    func calculateXPosition(for width: CGFloat, compactX: CGFloat, regularX: CGFloat) -> CGFloat {
-//        return horizontalSizeClass == .compact ? width * compactX : width * regularX
-//    }
-//
-//    // Function to calculate the y position based on the device type (compact or regular)
-//    func calculateYPosition(for height: CGFloat, compactY: CGFloat, regularY: CGFloat) -> CGFloat {
-//        return horizontalSizeClass == .compact ? height * compactY : height * regularY
-//    }
-    
-
-//    // Custom button width based on device size and custom multiplier
-//    func customButtonWidth(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-//        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.2 : size.width * 0.3
-//        return baseWidth * multiplier // Apply custom multiplier for each button
-//    }
-//
-//    // Custom button height based on device size and custom multiplier
-//    func customButtonHeight(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-//        let baseHeight = horizontalSizeClass == .compact ? size.height * 0.02 : size.height * 0.06
-//        return baseHeight * multiplier // Apply custom multiplier for each button
-//    }
 

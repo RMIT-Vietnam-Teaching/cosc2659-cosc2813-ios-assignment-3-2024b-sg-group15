@@ -1,23 +1,27 @@
+//
+//  VoNhaiView.swift
+//  SG-Group15
+//
+//  Created by Nguyen Ha Kieu Anh on 14/9/24.
+//
+
 import SwiftUI
 
 
-struct HocMonView: View {
+struct VoNhaiView: View {
     @State private var isLandscape: Bool = UIDevice.current.orientation.isLandscape // Track if the device is in landscape
 
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat, landscapeMultiplierCompact: CGFloat, landscapeMultiplierRegular: CGFloat)] = [
-        ("Xuân Thới Thượng", 0.35, 0.212, 0.3, 0.34, 0.2, 0.61, 0.3, 0.6, 2.0, 2.4, 2.4),
-        ("Bà Điểm", 0.7, 0.28, 0.7, 0.45, 0.44, 0.78, 0.7, 0.8, 2.0, 2.0, 2.3),
-        ("Tân Xuân", 0.7, 0.14, 0.72, 0.24, 0.44, 0.42, 0.72, 0.44, 2.0, 2.0, 2.3),
-        ("Xuân Thới Sơn", 0.25, 0.112,  0.25, 0.18, 0.16, 0.31, 0.23, 0.3, 2.0, 2.4, 2.3)
+        ("Quỳnh Sơn", 0.72, 0.05, 0.3, 0.34, 0.2, 0.61, 0.3, 0.6, 2.0, 2.4, 2.4),
+        ("Tân Hương", 0.35, 0.212, 0.3, 0.34, 0.2, 0.61, 0.3, 0.6, 2.0, 2.4, 2.4),
+        ("Bắc Sơn", 0.7, 0.113, 0.72, 0.24, 0.44, 0.42, 0.72, 0.44, 2.0, 2.0, 2.3),
+        ("Tân lập", 0.25, 0.112,  0.25, 0.18, 0.16, 0.31, 0.23, 0.3, 2.0, 2.4, 2.3),
+        ("Hưng Vũ", 0.7, 0.28, 0.7, 0.45, 0.44, 0.78, 0.7, 0.8, 2.0, 2.0, 2.3),
+        ("Vũ Lăng", 0.7, 0.28, 0.7, 0.45, 0.44, 0.78, 0.7, 0.8, 2.0, 2.0, 2.3)
     ]
 
     var body: some View {
-//        VStack {
-//            Text("Orientation: \(isLandscape ? "Landscape" : "Portrait")") // Display current orientation
-//                .font(.headline)
-//                .padding()
-//            
-            MapComponent1(mapImage: "HocMon", mapPoints: mapPoints
+            MapComponent2(mapImage: "VoNhai", mapPoints: mapPoints
                          , isLandscape: isLandscape
             )
                 .onAppear {
@@ -34,9 +38,9 @@ struct HocMonView: View {
 //}
 
 
-struct HocMonView_Previews: PreviewProvider {
+struct VoNhaiView_Previews: PreviewProvider {
     static var previews: some View {
-        HocMonView()
+        VoNhaiView()
           
     }
 }
