@@ -67,10 +67,12 @@ struct EventButton: View {
     let size: CGSize
     
     var body: some View {
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
+        let scaleBoxValue = isIpad ? 1 : 1.6
         Button(action: action) {
             Text(event.text)
                 .padding(size.width * 0.05)
-                .frame(width: size.width, height: size.height * 1.2)
+                .frame(width: size.width, height: size.height * scaleBoxValue)
                 .background(backgroundForState())
                 .foregroundColor(foregroundForState())
                 .cornerRadius(8)
