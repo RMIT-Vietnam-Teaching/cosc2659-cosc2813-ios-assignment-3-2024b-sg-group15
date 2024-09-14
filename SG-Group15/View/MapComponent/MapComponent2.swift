@@ -6,17 +6,11 @@
 //
 
 import Foundation
-//
-//  MapTextResizer.swift
-//  SG-Group15
-//
-//  Created by Nguyen Ha Kieu Anh on 13/9/24.
-//
 
-import Foundation
 import SwiftUI
 
 struct MapComponent2: View {
+    let isLandscape: Bool
     // Updated map points with place names, proportional coordinates, and custom size multipliers
     let mapImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat, landscapeMultiplierCompact: CGFloat, landscapeMultiplierRegular:CGFloat)]
@@ -26,7 +20,7 @@ struct MapComponent2: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass // To check the device type
     @Environment(\.verticalSizeClass) var verticalSizeClass : UserInterfaceSizeClass? // For detecting landscape or portrait
     @State private var selectedButton: String? = nil
-    let isLandscape: Bool
+    
     
     var body: some View {
         GeometryReader { geo in
@@ -48,7 +42,7 @@ struct MapComponent2: View {
                                         width: customButtonWidth(for: geo.size, multiplier: point.sizeMultiplier, landscapeMultiplierCompact: point.landscapeMultiplierCompact, landscapeMultiplierRegular: point.landscapeMultiplierRegular),
                                               height: customButtonHeight(for: geo.size, multiplier: point.sizeMultiplier, landscapeMultiplierCompact: point.landscapeMultiplierCompact, landscapeMultiplierRegular: point.landscapeMultiplierRegular)
                                     )
-                                    .foregroundColor(selectedButton == point.name ? .brown : .black)
+                                    .foregroundColor(selectedButton == point.name ? .pink : .black)
                                     .cornerRadius(10)
                                     .font(.system(size: dynamicTextSize(), weight: selectedButton == point.name ? .heavy : .semibold, design: .rounded)
                                           )
@@ -58,12 +52,12 @@ struct MapComponent2: View {
                                     x: calculateXPosition(
                                         for: geo.size.width,
                                         point: (point.name, point.compactX, point.compactY, point.regularX, point.regularY, point.landscapeCompactX, point.landscapeCompactY, point.landscapeRegularX, point.landscapeRegularY, point.sizeMultiplier)
-                                        ,isLandscape: isLandscape // Pass isLandscape here
+                                        ,isLandscape: isLandscape, horizontalSizeClass: horizontalSizeClass// Pass isLandscape here
                                     ),
                                     y: calculateYPosition(
                                         for: geo.size.height,
                                         point: (point.name, point.compactX, point.compactY, point.regularX, point.regularY, point.landscapeCompactX, point.landscapeCompactY, point.landscapeRegularX, point.landscapeRegularY, point.sizeMultiplier)
-                                        ,isLandscape: isLandscape // Pass isLandscape here
+                                        ,isLandscape: isLandscape, horizontalSizeClass: horizontalSizeClass // Pass isLandscape here
                                 )
                             )
                         }
@@ -85,7 +79,7 @@ struct MapComponent2: View {
             baseWidth = horizontalSizeClass == .compact ? size.width * 0.25 * landscapeMultiplierCompact : size.width * 0.2 * landscapeMultiplierRegular
         } else {
             // Portrait mode
-            baseWidth = horizontalSizeClass == .compact ? size.width * 0.2 : size.width * 0.18
+            baseWidth = horizontalSizeClass == .compact ? size.width * 0.08 : size.width * 0.08
         }
         return baseWidth * multiplier
     }
@@ -98,7 +92,7 @@ struct MapComponent2: View {
             baseHeight = horizontalSizeClass == .compact ? size.height * 0.02 * landscapeMultiplierCompact : size.height * 0.2 * landscapeMultiplierRegular
         } else {
             // Portrait mode
-            baseHeight = horizontalSizeClass == .compact ? size.height * 0.025 : size.height * 0.06
+            baseHeight = horizontalSizeClass == .compact ? size.height * 0.04 : size.height * 0.04
         }
         return baseHeight * multiplier
     }
@@ -110,10 +104,9 @@ struct MapComponent2: View {
               return horizontalSizeClass == .compact ? 24 : 4 // Smaller text size for iPhone, larger for iPad in landscape
           } else {
               // Portrait mode
-              return horizontalSizeClass == .compact ? 17 : 50 // Slightly larger text size for iPhone, even larger for iPad in portrait
+              return horizontalSizeClass == .compact ? 18 : 40 // Slightly larger text size for iPhone, even larger for iPad in portrait
           }
       }
-    
-    
 }
+
 

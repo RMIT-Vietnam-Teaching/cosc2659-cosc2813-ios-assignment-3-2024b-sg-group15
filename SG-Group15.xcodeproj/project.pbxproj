@@ -14,8 +14,8 @@
 		393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7182C8F46A200028F1D /* DemoModel.swift */; };
 		393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC71A2C8F46B200028F1D /* DemoViewModel.swift */; };
 		554504492C958BFB00DE1984 /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554504482C958BFB00DE1984 /* VoNhaiView.swift */; };
-		5545044C2C958EB900DE1984 /* MapComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545044B2C958EB900DE1984 /* MapComponent2.swift */; };
 		5545044E2C958F7900DE1984 /* PositionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545044D2C958F7900DE1984 /* PositionCalculation.swift */; };
+		554504502C95944E00DE1984 /* MapComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545044F2C95944E00DE1984 /* MapComponent2.swift */; };
 		55906CE12C9493EA000B1E93 /* MapComponent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CE02C9493EA000B1E93 /* MapComponent1.swift */; };
 		55906CE32C949420000B1E93 /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CE22C94941F000B1E93 /*  HocMonView.swift */; };
 /* End PBXBuildFile section */
@@ -29,8 +29,8 @@
 		393FC7182C8F46A200028F1D /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
 		393FC71A2C8F46B200028F1D /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
 		554504482C958BFB00DE1984 /* VoNhaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoNhaiView.swift; sourceTree = "<group>"; };
-		5545044B2C958EB900DE1984 /* MapComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent2.swift; sourceTree = "<group>"; };
 		5545044D2C958F7900DE1984 /* PositionCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCalculation.swift; sourceTree = "<group>"; };
+		5545044F2C95944E00DE1984 /* MapComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent2.swift; sourceTree = "<group>"; };
 		55906CE02C9493EA000B1E93 /* MapComponent1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent1.swift; sourceTree = "<group>"; };
 		55906CE22C94941F000B1E93 /*  HocMonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				55906CE02C9493EA000B1E93 /* MapComponent1.swift */,
-				5545044B2C958EB900DE1984 /* MapComponent2.swift */,
+				5545044F2C95944E00DE1984 /* MapComponent2.swift */,
 				5545044D2C958F7900DE1984 /* PositionCalculation.swift */,
 			);
 			path = MapComponent;
@@ -199,7 +199,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				554504492C958BFB00DE1984 /* VoNhaiView.swift in Sources */,
-				5545044C2C958EB900DE1984 /* MapComponent2.swift in Sources */,
 				5545044E2C958F7900DE1984 /* PositionCalculation.swift in Sources */,
 				393FC7072C8F450400028F1D /* ContentView.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
@@ -207,6 +206,7 @@
 				55906CE32C949420000B1E93 /*  HocMonView.swift in Sources */,
 				393FC7052C8F450400028F1D /* SG_Group15App.swift in Sources */,
 				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
+				554504502C95944E00DE1984 /* MapComponent2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

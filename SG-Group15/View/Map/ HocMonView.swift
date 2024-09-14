@@ -17,8 +17,8 @@ struct HocMonView: View {
 //                .font(.headline)
 //                .padding()
 //            
-            MapComponent1(mapImage: "HocMon", mapPoints: mapPoints
-                         , isLandscape: isLandscape
+            MapComponent1(isLandscape: isLandscape,mapImage: "HocMon", mapPoints: mapPoints
+                         
             )
                 .onAppear {
                     NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: .main) { _ in

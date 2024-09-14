@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MapComponent1: View {
+    let isLandscape: Bool
     // Updated map points with place names, proportional coordinates, and custom size multipliers
     let mapImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat, landscapeMultiplierCompact: CGFloat, landscapeMultiplierRegular:CGFloat)]
@@ -18,7 +19,7 @@ struct MapComponent1: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass // To check the device type
     @Environment(\.verticalSizeClass) var verticalSizeClass : UserInterfaceSizeClass? // For detecting landscape or portrait
     @State private var selectedButton: String? = nil
-    let isLandscape: Bool
+    
     
     var body: some View {
         GeometryReader { geo in
@@ -50,12 +51,12 @@ struct MapComponent1: View {
                                     x: calculateXPosition(
                                         for: geo.size.width,
                                         point: (point.name, point.compactX, point.compactY, point.regularX, point.regularY, point.landscapeCompactX, point.landscapeCompactY, point.landscapeRegularX, point.landscapeRegularY, point.sizeMultiplier)
-                                        ,isLandscape: isLandscape // Pass isLandscape here
+                                        ,isLandscape: isLandscape, horizontalSizeClass: horizontalSizeClass// Pass isLandscape here
                                     ),
                                     y: calculateYPosition(
                                         for: geo.size.height,
                                         point: (point.name, point.compactX, point.compactY, point.regularX, point.regularY, point.landscapeCompactX, point.landscapeCompactY, point.landscapeRegularX, point.landscapeRegularY, point.sizeMultiplier)
-                                        ,isLandscape: isLandscape // Pass isLandscape here
+                                        ,isLandscape: isLandscape, horizontalSizeClass: horizontalSizeClass // Pass isLandscape here
                                 )
                             )
                         }
