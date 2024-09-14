@@ -11,12 +11,12 @@ struct MatchingGameView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
-            let isLandscape = width > height
             let smallerDimension = min(width, height)
             
-            VStack {
+            VStack() {
                 Text("Nối sự kiện dưới đây")
-                    .font(.system(size: smallerDimension * 0.04))
+//                    .font(.system(size: smallerDimension * 0.04))
+                    .modifier(TitleTextModifier())
                     .padding()
                 
                 HStack(spacing: smallerDimension * 0.03) {
@@ -47,11 +47,11 @@ struct MatchingGameView: View {
                         // Handle game completion
                     }
                     .padding()
-                    .frame(width: smallerDimension * 0.3, height: smallerDimension * 0.08)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                    .font(.system(size: smallerDimension * 0.03))
+//                    .frame(width: smallerDimension * 0.3, height: smallerDimension * 0.08)
+//                    .background(Color.green)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(8)
+                    .modifier(LargeButtonModifier(background:.darkRed))
                 }
             }
             .frame(width: width, height: height)
@@ -70,7 +70,7 @@ struct EventButton: View {
         Button(action: action) {
             Text(event.text)
                 .padding(size.width * 0.05)
-                .frame(width: size.width, height: size.height)
+                .frame(width: size.width, height: size.height * 1.2)
                 .background(backgroundForState())
                 .foregroundColor(foregroundForState())
                 .cornerRadius(8)
@@ -78,7 +78,8 @@ struct EventButton: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.darkRed, lineWidth: 2)
                 )
-                .font(.system(size: size.height * 0.25))
+//                .font(.system(size: size.height * 0.25))
+                .modifier(BodyTextModifier())
                 .minimumScaleFactor(0.5)
                 .lineLimit(3)
         }
@@ -109,7 +110,7 @@ struct EventButton: View {
 struct MatchingGameView_Previews: PreviewProvider {
     static var previews: some View {
         MatchingGameView(eventPairs: [
-            ("CTTGT2 kết thúc", "CTTGT2 kết thúc"),
+            ("Chiến dịch Điện Biên Phủ", "CTTGT2 kết thúc"),
             ("Event 2 Left", "Event 2 Right"),
             ("Event 3 Left", "Event 3 Right"),
             ("Event 4 Left", "Event 4 Right"),

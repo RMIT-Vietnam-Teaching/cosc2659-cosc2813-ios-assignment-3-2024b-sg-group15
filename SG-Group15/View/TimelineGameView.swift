@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct TimelineGameView: View {
+    // ViewModel to handle game logic
     @StateObject private var viewModel: TimelineGameViewModel
     let eventData: [String]
     let periodData: [String]
     @State private var showResultPopup = false
 
+    // Initialize view with event and period data
     init(eventData: [String], periodData: [String]) {
         self.eventData = eventData
         self.periodData = periodData
@@ -14,6 +16,7 @@ struct TimelineGameView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            // Calculate dimensions based on screen size
             let width = geometry.size.width
             let height = geometry.size.height
             let eventWidth = min(width * 0.4, 320)
@@ -22,9 +25,11 @@ struct TimelineGameView: View {
             let periodHeight = eventHeight
             
             ZStack {
+                // Background color
                 Color.beigeBackground
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
+                    // Title
                     Text("Kéo các sự kiện sau đây ứng với mốc thời gian")
                         .modifier(TitleTextModifier())
                         .padding(.horizontal)
@@ -37,6 +42,7 @@ struct TimelineGameView: View {
                                 .background(
                                     GeometryReader { geo in
                                         Color.clear.onAppear {
+                                            // Set initial positions for events
                                             let frame = geo.frame(in: .named("gameArea"))
                                             viewModel.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
                                             if !viewModel.events[index].isPlaced {
@@ -51,6 +57,7 @@ struct TimelineGameView: View {
                     
                     // Time Periods
                     ZStack {
+                        // Vertical timeline
                         Rectangle()
                             .fill(Color.darkRed)
                             .frame(width: 8, height: height * 0.5)
@@ -63,12 +70,14 @@ struct TimelineGameView: View {
                     }
                 }
                 
+                // Draggable Event Views
                 ForEach($viewModel.events) { $event in
                     EventView(event: $event, width: eventWidth, height: eventHeight)
                         .position(event.position)
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
+                                    // Update position while dragging
                                     event.position = value.location
                                 }
                                 .onEnded { value in
@@ -76,10 +85,12 @@ struct TimelineGameView: View {
                                     if let nearestPeriod = viewModel.nearestTimePeriod(to: value.location) {
                                         let distance = viewModel.distance(from: value.location, to: nearestPeriod.position)
                                         if distance <= maxDistance {
+                                            // Place event if close enough to a time period
                                             event.currentPeriod = nearestPeriod.id
                                             event.isPlaced = true
                                             event.position = nearestPeriod.position
                                         } else {
+                                            // Return event to original position if not close enough
                                             event.currentPeriod = nil
                                             event.isPlaced = false
                                             withAnimation {
@@ -87,6 +98,7 @@ struct TimelineGameView: View {
                                             }
                                         }
                                     } else {
+                                        // Return event to original position if not over a time period
                                         event.currentPeriod = nil
                                         event.isPlaced = false
                                         withAnimation {
@@ -98,19 +110,21 @@ struct TimelineGameView: View {
                         )
                 }
                 
+                // Submit button (only shown when all events are placed)
                 if viewModel.isGameComplete {
                    Button("Submit") {
                        viewModel.checkAnswer()
                        showResultPopup = true
                    }
-                   .frame(width: width * 0.4, height: height * 0.06)
-                   .background(Color.darkRed)
-                   .foregroundColor(.white)
-                   .cornerRadius(8)
-                   .position(x: width / 2, y: height)
-                   .padding(.bottom,10)
+//                   .frame(width: width * 0.4, height: height * 0.06)
+//                   .background(Color.darkRed)
+//                   .foregroundColor(.white)
+//                   .cornerRadius(8)
+                   .modifier(LargeButtonModifier(background: .darkRed))
+                   .position(x: width / 2, y: height - 30)
                }
                
+               // Result popup
                if showResultPopup {
                    ResultPopupView(isCorrect: viewModel.correctPlacements == eventData.count, action: {
                        showResultPopup = false
@@ -119,6 +133,7 @@ struct TimelineGameView: View {
            }
            .coordinateSpace(name: "gameArea")
         }
+        
     }
 }
 
@@ -129,15 +144,21 @@ struct EventView: View {
 
     var body: some View {
         ZStack {
+            // Event border
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.darkRed,lineWidth: 3)
+                .stroke(Color.darkRed, lineWidth: 3)
                 .frame(width: width, height: height)
+            
+            // Event text
             Text(event.name)
                 .modifier(BodyTextModifier())
                 .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-            
+                .multilineTextAlignment(.center) // Center align for better readability
+                .minimumScaleFactor(0.5) // Allow text to shrink to 50% of its original size
+                .lineLimit(3) // Limit to 3 lines
+                .padding(8)
         }
+        .frame(width: width, height: height) // Ensure the ZStack takes up the full size
     }
 }
 
@@ -150,6 +171,7 @@ struct TimePeriodView: View {
     
     var body: some View {
         HStack {
+            // Alternate layout for even/odd periods
             if isEven {
                 periodContent
                 destinationBox
@@ -162,8 +184,10 @@ struct TimePeriodView: View {
     
     var periodContent: some View {
         VStack(alignment: isEven ? .leading : .trailing, spacing: 0) {
+            // Period text
             Text(period.period)
                 .modifier(BodyTextModifier())
+            // Horizontal line
             Rectangle()
                 .fill(Color.black)
                 .frame(height: 3)
@@ -172,12 +196,14 @@ struct TimePeriodView: View {
     }
     
     var destinationBox: some View {
+        // Dashed box for event placement
         RoundedRectangle(cornerRadius: 8)
             .stroke(Color.darkRed, style: StrokeStyle(lineWidth: 3, dash: [5]))
             .frame(width: width, height: height)
             .background(
                 GeometryReader { geo in
                     Color.clear.onAppear {
+                        // Set position for the period
                         let frame = geo.frame(in: .named("gameArea"))
                         period.position = CGPoint(x: frame.midX, y: frame.midY)
                     }
@@ -192,11 +218,13 @@ struct ResultPopupView: View {
     
     var body: some View {
         VStack {
+            // Result message
             Text(isCorrect ? "Bingo!" : "Liuliu sai gòi")
                 .font(.title)
                 .foregroundColor(.white)
                 .padding()
             
+            // Continue button
             Button("Tiếp tục") {
                 action()
             }
@@ -211,11 +239,11 @@ struct ResultPopupView: View {
     }
 }
 
-
+// Preview provider for SwiftUI canvas
 struct TimelineGameView_Previews: PreviewProvider {
     static var previews: some View {
         TimelineGameView(
-            eventData: ["CTTGT2 kết thúc", "Event2", "Event3", "Event4"],
+            eventData: ["Khởi nghĩa Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Quốc Khánh Việt Nam", "Chiến dịch Điện Biên Phủ"],
             periodData: ["1/1111", "2/2222", "3/3333", "4/4444"]
         )
     }
