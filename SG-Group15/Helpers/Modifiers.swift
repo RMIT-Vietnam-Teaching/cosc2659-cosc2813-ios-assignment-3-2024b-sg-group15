@@ -18,7 +18,7 @@ struct SignUpButtonModifier: ViewModifier {
             .frame(minWidth: UIScreen.main.bounds.width * 0.7, maxWidth: UIScreen.main.bounds.width * 0.9)
             .font(.custom("Lato-Black", size: UIScreen.main.bounds.width * 0.06))
             .foregroundStyle(.white)
-            .padding(.vertical, 10)
+            .padding(.vertical, 15)
             .background(background)
             .cornerRadius(15)
         // Ajust shadow to be responsive
