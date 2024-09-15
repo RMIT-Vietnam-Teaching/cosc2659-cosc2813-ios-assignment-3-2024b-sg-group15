@@ -7,7 +7,7 @@ struct HocMonView: View {
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, landscapeCompactX: CGFloat, landscapeCompactY: CGFloat, landscapeRegularX: CGFloat, landscapeRegularY: CGFloat, sizeMultiplier: CGFloat, landscapeMultiplierCompact: CGFloat, landscapeMultiplierRegular: CGFloat)] = [
         ("Xuân Thới Thượng", 0.35, 0.212, 0.3, 0.34, 0.2, 0.61, 0.3, 0.6, 2.0, 2.4, 2.4),
         ("Bà Điểm", 0.7, 0.28, 0.7, 0.45, 0.44, 0.78, 0.7, 0.8, 2.0, 2.0, 2.3),
-        ("Tân Xuân", 0.7, 0.14, 0.72, 0.24, 0.44, 0.42, 0.72, 0.44, 2.0, 2.0, 2.3),
+        ("Tân Xuân", 0.7, 0.14, 0.72, 0.24, 0.44, 0.42, 0.72, 0.42, 2.0, 2.0, 2.3),
         ("Xuân Thới Sơn", 0.25, 0.112,  0.25, 0.18, 0.16, 0.31, 0.23, 0.3, 2.0, 2.4, 2.3)
     ]
 
