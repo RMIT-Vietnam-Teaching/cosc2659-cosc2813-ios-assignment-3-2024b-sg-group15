@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import GoogleSignIn
+import Firebase
 
 class UserViewModel: ObservableObject {
     // Manage user changes
-    @Published var user: User?
+    @Published var currentUser: User?
     @Published var errorMessage: String?
     @Published var success: Bool = false
     
@@ -38,7 +40,7 @@ class UserViewModel: ObservableObject {
             }
             else {
                 print("User saved successfully!")
-                self.user = newUser
+                self.currentUser = newUser
             }
             
         }
@@ -52,7 +54,7 @@ class UserViewModel: ObservableObject {
                 // Get error code for validation
                 if let errorCode = AuthErrorCode(rawValue: error._code) {
                     switch errorCode {
-                    // Invalid email
+                        // Invalid email
                     case .invalidEmail:
                         self.errorMessage = "Email không hợp lệ!"
                     default:
@@ -120,7 +122,7 @@ class UserViewModel: ObservableObject {
         db.collection("users").document(uid).getDocument { (document, error) in
             // Get user data from database
             if let document = document, let data = document.data() {
-                self.user = User(id: uid, data: data)
+                self.currentUser = User(id: uid, data: data)
                 
             }
             else {
@@ -139,10 +141,10 @@ class UserViewModel: ObservableObject {
                 // Get error code for validation
                 if let errorCode = AuthErrorCode(rawValue: error._code) {
                     switch errorCode {
-                    // Incorrect password error
+                        // Incorrect password error
                     case .wrongPassword:
                         self.errorMessage = "Mật khẩu không chính xác!"
-                    // Invalid email
+                        // Invalid email
                     case .invalidEmail:
                         self.errorMessage = "Email không hợp lệ!"
                     default:
@@ -157,8 +159,65 @@ class UserViewModel: ObservableObject {
                 print("Login successfully!")
                 // Fetch user data"
                 self.fetchUser()
-                if let user = self.user {
+                if let user = self.currentUser {
                     print("Current user: \(user.username)")
+                }
+            }
+        }
+    }
+    
+    
+    // Authenticate user using Google
+    func signinWithGoogle() {
+        // Configure the Google signin
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        // Find the root view controller to present the sign-in UI
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let rootViewController = windowScene.windows.first?.rootViewController else {
+            return
+        }
+        
+        // Start the Google Sign-In flow
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { userAuth, error in
+            if let error = error {
+                print("Error during Google Sign-In: \(error.localizedDescription)")
+                return
+            }
+            
+            // Extract credential from the Google user
+            guard let user = userAuth?.user else { return }
+            guard let idToken = userAuth?.user.idToken else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString,
+                                                           accessToken: user.accessToken.tokenString)
+            // Sign in with Firebase using the Google credential
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    print("Firebase authentication failed: \(error.localizedDescription)")
+                } else {
+                    // Successfully signed in
+                    print("User signed in with Google and Firebase")
+                    if let authResult = authResult {
+                        let uid = authResult.user.uid
+                        let email = authResult.user.email ?? ""
+                        // Take google's display name as username
+                        let username = authResult.user.displayName ?? "Unknown"
+                        
+                        // Check if the email already exists
+                        self.userExists(email: email) { emailExists in
+                            if emailExists {
+                                // Retrieve the user from the database
+                                DispatchQueue.main.async {
+                                    self.fetchUser()
+                                }
+                            }
+                            else {
+                                // New user creation
+                                self.saveUser(uid: uid, email: email, username: username)
+                            }
+                        }
+                    }
                 }
             }
         }
