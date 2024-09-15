@@ -79,7 +79,7 @@ struct MapComponent3: View {
             baseWidth = horizontalSizeClass == .compact ? size.width * 0.08 * landscapeMultiplierCompact : size.width * 0.5 * landscapeMultiplierRegular
         } else {
             // Portrait mode
-            baseWidth = horizontalSizeClass == .compact ? size.width * 0.1 : size.width * 0.8
+            baseWidth = horizontalSizeClass == .compact ? size.width * 0.15 : size.width * 0.15
         }
         return baseWidth * multiplier
     }
@@ -92,7 +92,7 @@ struct MapComponent3: View {
             baseHeight = horizontalSizeClass == .compact ? size.height * 0.04 * landscapeMultiplierCompact : size.height * 0.1 * landscapeMultiplierRegular
         } else {
             // Portrait mode
-            baseHeight = horizontalSizeClass == .compact ? size.height * 0.05 : size.height * 0.06
+            baseHeight = horizontalSizeClass == .compact ? size.height * 0.05 : size.height * 0.07
         }
         return baseHeight * multiplier
     }
@@ -101,10 +101,10 @@ struct MapComponent3: View {
     func dynamicTextSize() -> CGFloat {
           if verticalSizeClass == .compact {
               // Landscape mode
-              return horizontalSizeClass == .compact ? 17 : 4 // Smaller text size for iPhone, larger for iPad in landscape
+              return horizontalSizeClass == .compact ? 17 : 44
           } else {
               // Portrait mode
-              return horizontalSizeClass == .compact ? 22 : 56 // Slightly larger text size for iPhone, even larger for iPad in portrait
+              return horizontalSizeClass == .compact ? 17 : 44
           }
       }
 }
