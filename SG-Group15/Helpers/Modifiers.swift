@@ -63,7 +63,7 @@ struct HeadlineTextModifier: ViewModifier {
     }
 }
 
-// Body text style: Apply for conten in answers
+// Body text style: Apply for content in answers
 struct BodyTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -72,7 +72,42 @@ struct BodyTextModifier: ViewModifier {
     }
 }
 
+struct ShadowTopBottom: ViewModifier {
+    var alignment: Alignment
+    var x: CGFloat = 0
+    var y: CGFloat = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .background(
+               // Adding shadow to the bottom edge
+               RoundedRectangle(cornerRadius: 15)
+                   .fill(Color.black.opacity(0.2)) // Shadow color
+                   .frame(height: 10) // Shadow height
+                   .blur(radius: 5) // Blur for soft shadow
+                   .offset(x: x, y: y), // Position the shadow
+               alignment: alignment
+           )
+    }
+}
 
-
+struct ShadowLeftRight: ViewModifier {
+    var alignment: Alignment
+    var x: CGFloat = 0
+    var y: CGFloat = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .background(
+               // Adding shadow to the bottom edge
+               RoundedRectangle(cornerRadius: 15)
+                   .fill(Color.black.opacity(0.2)) // Shadow color
+                   .frame(width: 10) // Shadow height
+                   .blur(radius: 5) // Blur for soft shadow
+                   .offset(x: x, y: y), // Position the shadow
+               alignment: alignment
+           )
+    }
+}
 
 
