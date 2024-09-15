@@ -20,6 +20,12 @@
 		39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15592C948E1A0054B99E /* PageCurlViewController.swift */; };
 		39FA155E2C95708F0054B99E /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA155D2C95708F0054B99E /* PageModel.swift */; };
 		39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA155F2C957CB10054B99E /* CoverPageView.swift */; };
+		39FA15632C96057E0054B99E /* MultipleChoiceViewIphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15622C96057E0054B99E /* MultipleChoiceViewIphone.swift */; };
+		39FA15652C9606350054B99E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15642C9606350054B99E /* ProgressBar.swift */; };
+		39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15662C960D710054B99E /* ChoiceButton.swift */; };
+		39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */; };
+		39FA156B2C96BC180054B99E /* MultipleChoiceViewIpad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA156A2C96BC180054B99E /* MultipleChoiceViewIpad.swift */; };
+		39FA156D2C96C7440054B99E /* BookDetailViewIpad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA156C2C96C7440054B99E /* BookDetailViewIpad.swift */; };
 		75668E022C9183F90052F78C /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75668E012C9183F90052F78C /* Modifiers.swift */; };
 		75AD4D4E2C947DB300C8F37F /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D4D2C947DB300C8F37F /* Lato-Light.ttf */; };
 		75AD4D502C947DBD00C8F37F /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D4F2C947DBD00C8F37F /* Lato-Bold.ttf */; };
@@ -43,6 +49,12 @@
 		39FA15592C948E1A0054B99E /* PageCurlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCurlViewController.swift; sourceTree = "<group>"; };
 		39FA155D2C95708F0054B99E /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
 		39FA155F2C957CB10054B99E /* CoverPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverPageView.swift; sourceTree = "<group>"; };
+		39FA15622C96057E0054B99E /* MultipleChoiceViewIphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewIphone.swift; sourceTree = "<group>"; };
+		39FA15642C9606350054B99E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		39FA15662C960D710054B99E /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
+		39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceQuestion.swift; sourceTree = "<group>"; };
+		39FA156A2C96BC180054B99E /* MultipleChoiceViewIpad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewIpad.swift; sourceTree = "<group>"; };
+		39FA156C2C96C7440054B99E /* BookDetailViewIpad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewIpad.swift; sourceTree = "<group>"; };
 		75668E012C9183F90052F78C /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		75AD4D4D2C947DB300C8F37F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		75AD4D4F2C947DBD00C8F37F /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -108,6 +120,7 @@
 			children = (
 				393FC7182C8F46A200028F1D /* DemoModel.swift */,
 				39FA155D2C95708F0054B99E /* PageModel.swift */,
+				39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,8 +128,10 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				39FA15612C96056C0054B99E /* MultipleChoiceView */,
 				39FA15502C948D3C0054B99E /* BookDetailView */,
 				393FC7062C8F450400028F1D /* ContentView.swift */,
+				39FA15642C9606350054B99E /* ProgressBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,8 +152,19 @@
 				39FA15552C948DBE0054B99E /* BookView.swift */,
 				39FA15572C948DF00054B99E /* OpenBookView.swift */,
 				39FA155F2C957CB10054B99E /* CoverPageView.swift */,
+				39FA156C2C96C7440054B99E /* BookDetailViewIpad.swift */,
 			);
 			path = BookDetailView;
+			sourceTree = "<group>";
+		};
+		39FA15612C96056C0054B99E /* MultipleChoiceView */ = {
+			isa = PBXGroup;
+			children = (
+				39FA15622C96057E0054B99E /* MultipleChoiceViewIphone.swift */,
+				39FA15662C960D710054B99E /* ChoiceButton.swift */,
+				39FA156A2C96BC180054B99E /* MultipleChoiceViewIpad.swift */,
+			);
+			path = MultipleChoiceView;
 			sourceTree = "<group>";
 		};
 		75668E002C9183D70052F78C /* Helpers */ = {
@@ -237,13 +263,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39FA156B2C96BC180054B99E /* MultipleChoiceViewIpad.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
+				39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */,
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
+				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
+				39FA15632C96057E0054B99E /* MultipleChoiceViewIphone.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				393FC7072C8F450400028F1D /* ContentView.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
+				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
 				39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */,
+				39FA156D2C96C7440054B99E /* BookDetailViewIpad.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailViewIphone.swift in Sources */,
 				393FC7052C8F450400028F1D /* SG_Group15App.swift in Sources */,
 				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
