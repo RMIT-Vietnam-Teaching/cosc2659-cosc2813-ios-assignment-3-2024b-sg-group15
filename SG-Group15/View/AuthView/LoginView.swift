@@ -29,7 +29,10 @@ struct LoginView: View {
                         .modifier(HeadlineTextModifier())
                     Spacer()
                         .frame(height: UIScreen.main.bounds.height * 0.05)
-                    
+                    if userViewModel.success {
+                        Text("Login Sucessfully!")
+                            .foregroundStyle(Color.green)
+                    }
                     // Placeholder for error message
                     if let message = userViewModel.errorMessage {
                         HStack {

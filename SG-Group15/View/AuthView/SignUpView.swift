@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 
-// TODO: Add validation for password
+
 struct SignUpView: View {
     @State private var username: String = ""
     @State private var password: String = ""
@@ -33,7 +33,10 @@ struct SignUpView: View {
                         .modifier(HeadlineTextModifier())
                     Spacer()
                         .frame(height: UIScreen.main.bounds.height * 0.05)
-                    
+                    if userViewModel.success {
+                        Text("Login Sucessfully!")
+                            .foregroundStyle(Color.green)
+                    }
                     // Placeholder for error message
                     if let message = userViewModel.errorMessage {
                         HStack {
