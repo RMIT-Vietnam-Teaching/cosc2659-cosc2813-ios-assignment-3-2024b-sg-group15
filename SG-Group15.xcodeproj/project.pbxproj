@@ -13,17 +13,6 @@
 		393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC70B2C8F450600028F1D /* Preview Assets.xcassets */; };
 		393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7182C8F46A200028F1D /* DemoModel.swift */; };
 		393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC71A2C8F46B200028F1D /* DemoViewModel.swift */; };
-		554504492C958BFB00DE1984 /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554504482C958BFB00DE1984 /* VoNhaiView.swift */; };
-		5545044E2C958F7900DE1984 /* PositionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545044D2C958F7900DE1984 /* PositionCalculation.swift */; };
-		554504502C95944E00DE1984 /* MapComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545044F2C95944E00DE1984 /* MapComponent2.swift */; };
-		554504522C961BFA00DE1984 /* TanTraoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554504512C961BFA00DE1984 /* TanTraoView.swift */; };
-		554504542C961C2B00DE1984 /* MapComponent3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554504532C961C2B00DE1984 /* MapComponent3.swift */; };
-		558945082C97060000B16328 /*  BacGiangView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558945072C97060000B16328 /*  BacGiangView.swift */; };
-		5589450A2C97064D00B16328 /* MapComponent5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558945092C97064D00B16328 /* MapComponent5.swift */; };
-		55906CE12C9493EA000B1E93 /* MapComponent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CE02C9493EA000B1E93 /* MapComponent1.swift */; };
-		55906CE32C949420000B1E93 /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55906CE22C94941F000B1E93 /*  HocMonView.swift */; };
-		55F1258E2C9700E30080D6E1 /* DongNaiThuongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1258D2C9700E30080D6E1 /* DongNaiThuongView.swift */; };
-		55F125902C9701180080D6E1 /* MapComponent4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1258F2C9701180080D6E1 /* MapComponent4.swift */; };
 		39FA15522C948D540054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15512C948D540054B99E /* SimpleView.swift */; };
 		39FA15542C948D7D0054B99E /* BookDetailViewIphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15532C948D7D0054B99E /* BookDetailViewIphone.swift */; };
 		39FA15562C948DBE0054B99E /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15552C948DBE0054B99E /* BookView.swift */; };
@@ -56,11 +45,6 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
-		E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29655382C94BD580099D136 /* TimelineGameModel.swift */; };
-		E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296553C2C94BDBE0099D136 /* TimelineGameView.swift */; };
-		E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */; };
-		E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */; };
-		E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,17 +55,6 @@
 		393FC70B2C8F450600028F1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		393FC7182C8F46A200028F1D /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
 		393FC71A2C8F46B200028F1D /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
-		554504482C958BFB00DE1984 /* VoNhaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoNhaiView.swift; sourceTree = "<group>"; };
-		5545044D2C958F7900DE1984 /* PositionCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCalculation.swift; sourceTree = "<group>"; };
-		5545044F2C95944E00DE1984 /* MapComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent2.swift; sourceTree = "<group>"; };
-		554504512C961BFA00DE1984 /* TanTraoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanTraoView.swift; sourceTree = "<group>"; };
-		554504532C961C2B00DE1984 /* MapComponent3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent3.swift; sourceTree = "<group>"; };
-		558945072C97060000B16328 /*  BacGiangView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BacGiangView.swift"; sourceTree = "<group>"; };
-		558945092C97064D00B16328 /* MapComponent5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent5.swift; sourceTree = "<group>"; };
-		55906CE02C9493EA000B1E93 /* MapComponent1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent1.swift; sourceTree = "<group>"; };
-		55906CE22C94941F000B1E93 /*  HocMonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
-		55F1258D2C9700E30080D6E1 /* DongNaiThuongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongNaiThuongView.swift; sourceTree = "<group>"; };
-		55F1258F2C9701180080D6E1 /* MapComponent4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent4.swift; sourceTree = "<group>"; };
 		39FA15512C948D540054B99E /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		39FA15532C948D7D0054B99E /* BookDetailViewIphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewIphone.swift; sourceTree = "<group>"; };
 		39FA15552C948DBE0054B99E /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
@@ -109,11 +82,6 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
-		E29655382C94BD580099D136 /* TimelineGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineGameModel.swift; sourceTree = "<group>"; };
-		E296553C2C94BDBE0099D136 /* TimelineGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineGameView.swift; sourceTree = "<group>"; };
-		E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineGameViewModel.swift; sourceTree = "<group>"; };
-		E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameView.swift; sourceTree = "<group>"; };
-		E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +128,6 @@
 				393FC7172C8F468700028F1D /* ViewModel */,
 				393FC7142C8F466900028F1D /* View */,
 				393FC7042C8F450400028F1D /* SG_Group15App.swift */,
-				393FC7062C8F450400028F1D /* ContentView.swift */,
 				393FC7082C8F450600028F1D /* Assets.xcassets */,
 				393FC70A2C8F450600028F1D /* Preview Content */,
 			);
@@ -179,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				393FC7182C8F46A200028F1D /* DemoModel.swift */,
-				E29655382C94BD580099D136 /* TimelineGameModel.swift */,
 				7594A6F72C969065000084FA /* User.swift */,
 				39FA155D2C95708F0054B99E /* PageModel.swift */,
 				39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */,
@@ -190,10 +156,6 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E296553C2C94BDBE0099D136 /* TimelineGameView.swift */,
-				E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */,
-				5545044A2C958E9A00DE1984 /* MapComponent */,
-				55906CDF2C94929F000B1E93 /* Map */,
 				7594A7052C96C552000084FA /* AuthView */,
 				39FA15612C96056C0054B99E /* MultipleChoiceView */,
 				39FA15502C948D3C0054B99E /* BookDetailView */,
@@ -207,36 +169,11 @@
 			isa = PBXGroup;
 			children = (
 				393FC71A2C8F46B200028F1D /* DemoViewModel.swift */,
-				E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */,
-				E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */,
 				7594A6F92C969163000084FA /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		5545044A2C958E9A00DE1984 /* MapComponent */ = {
-			isa = PBXGroup;
-			children = (
-				55906CE02C9493EA000B1E93 /* MapComponent1.swift */,
-				5545044F2C95944E00DE1984 /* MapComponent2.swift */,
-				5545044D2C958F7900DE1984 /* PositionCalculation.swift */,
-				554504532C961C2B00DE1984 /* MapComponent3.swift */,
-				55F1258F2C9701180080D6E1 /* MapComponent4.swift */,
-				558945092C97064D00B16328 /* MapComponent5.swift */,
-			);
-			path = MapComponent;
-			sourceTree = "<group>";
-		};
-		55906CDF2C94929F000B1E93 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				55906CE22C94941F000B1E93 /*  HocMonView.swift */,
-				554504482C958BFB00DE1984 /* VoNhaiView.swift */,
-				554504512C961BFA00DE1984 /* TanTraoView.swift */,
-				55F1258D2C9700E30080D6E1 /* DongNaiThuongView.swift */,
-				558945072C97060000B16328 /*  BacGiangView.swift */,
-			);
-			path = Map;
 		39FA15502C948D3C0054B99E /* BookDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,13 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
-				393FC7072C8F450400028F1D /* ContentView.swift in Sources */,
-				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
-				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
-				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
-				554504492C958BFB00DE1984 /* VoNhaiView.swift in Sources */,
-				5545044E2C958F7900DE1984 /* PositionCalculation.swift in Sources */,
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
 				39FA156B2C96BC180054B99E /* MultipleChoiceViewIpad.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
@@ -397,18 +327,7 @@
 				39FA15632C96057E0054B99E /* MultipleChoiceViewIphone.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				393FC7072C8F450400028F1D /* ContentView.swift in Sources */,
-				558945082C97060000B16328 /*  BacGiangView.swift in Sources */,
-				554504542C961C2B00DE1984 /* MapComponent3.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
-				55906CE12C9493EA000B1E93 /* MapComponent1.swift in Sources */,
-				55F1258E2C9700E30080D6E1 /* DongNaiThuongView.swift in Sources */,
-				5589450A2C97064D00B16328 /* MapComponent5.swift in Sources */,
-				55906CE32C949420000B1E93 /*  HocMonView.swift in Sources */,
-				55F125902C9701180080D6E1 /* MapComponent4.swift in Sources */,
-				393FC7052C8F450400028F1D /* SG_Group15App.swift in Sources */,
-				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
-				554504522C961BFA00DE1984 /* TanTraoView.swift in Sources */,
-				554504502C95944E00DE1984 /* MapComponent2.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
 				39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */,
@@ -420,7 +339,6 @@
 				7594A70B2C96D169000084FA /* SignUpView.swift in Sources */,
 				39FA15522C948D540054B99E /* SimpleView.swift in Sources */,
 				75668E022C9183F90052F78C /* Modifiers.swift in Sources */,
-				E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */,
 				7594A7092C96D0CF000084FA /* LoginView.swift in Sources */,
 				7594A6F82C969065000084FA /* User.swift in Sources */,
 			);
