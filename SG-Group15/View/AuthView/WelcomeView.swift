@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct WelcomeView: View {
+    @StateObject private var userViewModel = UserViewModel()
     var body: some View {
         NavigationView {
             ZStack {
@@ -33,19 +34,19 @@ struct WelcomeView: View {
                             .font(.custom("OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.1))
                             .foregroundStyle(Color.darkGreen)
                         Text("Biến lịch sử thành cuộc phiêu lưu")
-                            .font(.custom("Lato-Regular", size:
+                            .font(.custom("Roboto-ThinItalic", size:
                                             UIScreen.main.bounds.width * 0.06))
                             .foregroundStyle(Color.darkGreen)
                         Spacer()
                             .frame(minHeight: UIScreen.main.bounds.height * 0.02, maxHeight: UIScreen.main.bounds.height * 0.04)
                         
                         // Login and Signup button
-                        NavigationLink(destination: SignUpView())
+                        NavigationLink(destination: SignUpView(userViewModel: userViewModel))
                         {
                             Text("Đăng Ký")
                                 .modifier(SignUpButtonModifier(background: Color.primaryRed))
                         }
-                        NavigationLink(destination: LoginView())
+                        NavigationLink(destination: LoginView(userViewModel: userViewModel))
                         {
                             Text("Đăng nhập")
                                 .modifier(SignUpButtonModifier(background: Color.darkGreen))
