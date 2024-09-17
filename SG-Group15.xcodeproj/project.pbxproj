@@ -32,6 +32,7 @@
 		7533EF932C9499B000762FC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7533EF922C9499B000762FC2 /* FirebaseStorage */; };
 		7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */; };
 		7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC32C99827100F38696 /* Roboto-Thin.ttf */; };
+		7534ECC82C99944700F38696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC72C99944700F38696 /* GoogleService-Info.plist */; };
 		75668E022C9183F90052F78C /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75668E012C9183F90052F78C /* Modifiers.swift */; };
 		759101D52C96EFC300930574 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759101D42C96EFC300930574 /* WelcomeView.swift */; };
 		7594A6F82C969065000084FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7594A6F72C969065000084FA /* User.swift */; };
@@ -69,6 +70,7 @@
 		39FA156C2C96C7440054B99E /* BookDetailViewIpad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewIpad.swift; sourceTree = "<group>"; };
 		7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7534ECC32C99827100F38696 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		7534ECC72C99944700F38696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75668E012C9183F90052F78C /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		759101D42C96EFC300930574 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		7594A6F72C969065000084FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				75AD4D552C947E2A00C8F37F /* Info.plist */,
+				7534ECC72C99944700F38696 /* GoogleService-Info.plist */,
 				75AD4D4C2C947D9A00C8F37F /* Fonts */,
 				75668E002C9183D70052F78C /* Helpers */,
 				393FC7132C8F465100028F1D /* Model */,
@@ -298,6 +301,7 @@
 			files = (
 				75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */,
 				393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */,
+				7534ECC82C99944700F38696 /* GoogleService-Info.plist in Resources */,
 				75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */,
 				75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */,
 				7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */,
