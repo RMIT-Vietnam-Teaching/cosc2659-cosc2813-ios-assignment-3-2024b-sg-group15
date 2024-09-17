@@ -17,7 +17,7 @@ struct SignUpView: View {
     @Environment(\.dismiss) var dismiss
     
     // Manage user
-    @StateObject private var userViewModel = UserViewModel()
+    @ObservedObject var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -109,6 +109,3 @@ struct SignUpView: View {
     }
 }
 
-#Preview {
-    SignUpView()
-}

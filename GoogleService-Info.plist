@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAQVwrgJzyo3ut8pvHDklyhuZa31Ag4jYs</string>
+	<string>AIzaSyDeQF8KhJR8kUzphQKMrfgWuCqyBB1046A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>749553377306</string>
+	<string>1090204925108</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>vn.edu.rmit.nana.SG-Group15</string>
+	<string>vn.edu.rmit.van.CoffeeAppFirebase</string>
 	<key>PROJECT_ID</key>
-	<string>ios-group-asm-617f3</string>
+	<string>coffee-app-project-16693</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ios-group-asm-617f3.appspot.com</string>
+	<string>coffee-app-project-16693.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:749553377306:ios:556ef59a84390ff4f7f1a3</string>
+	<string>1:1090204925108:ios:328e1d314fcc2adea96be1</string>
 </dict>
 </plist>

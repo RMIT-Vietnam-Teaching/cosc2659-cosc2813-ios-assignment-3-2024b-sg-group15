@@ -13,7 +13,7 @@ struct LoginView: View {
     @State private var password: String = ""
     @Environment (\.dismiss) private var dismiss
     // Manage user
-    @StateObject var userViewModel = UserViewModel()
+    @ObservedObject var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -99,6 +99,3 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView()
-}
