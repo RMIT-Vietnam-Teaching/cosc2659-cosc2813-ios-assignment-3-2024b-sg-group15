@@ -70,14 +70,15 @@ struct BookDetailView: View {
                 VStack(spacing: 40) {
                     Spacer()
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-                        .font(.title)
-                        .fontWeight(.bold)
+//                        .font(.title)
+//                        .fontWeight(.bold)
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                         .multilineTextAlignment(.center)
                     
                     Spacer()
                     
                     Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
-                        .font(.system(size: 30))
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                         .lineSpacing(10.0)
                     
                     Spacer()
@@ -91,9 +92,10 @@ struct BookDetailView: View {
                                 .foregroundColor(Color(.bookmarkColor1))
                                 .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
                             Text("Học")
-                                .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                              
                                 
                         }
                         

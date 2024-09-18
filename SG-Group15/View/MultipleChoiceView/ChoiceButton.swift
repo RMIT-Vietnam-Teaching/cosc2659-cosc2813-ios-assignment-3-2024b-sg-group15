@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChoiceButton: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     @State private var check: Bool = false
     @Binding var correct: Bool?
     @Binding var question: MultipleChoiceQuestion
@@ -26,7 +28,7 @@ struct ChoiceButton: View {
             }, label: {
                 HStack {
                     Text("\(index + 1). \(question.choices[index])")
-                        .modifier(BodyTextModifier())
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                         .foregroundColor(.black)
                         .padding(.vertical, 5) // Smaller vertical padding for compactness
                         .lineLimit(1) // Allows text to wrap if needed
@@ -35,12 +37,16 @@ struct ChoiceButton: View {
                     
                     if check && correct != nil {
                         Image(systemName: correct! ? "checkmark.circle.fill" : "x.circle.fill")
+                            .resizable()
+                            .frame(width: horizontalSizeClass == .compact ? 10 : 20, height: horizontalSizeClass == .compact ? 10 : 20)
                             .foregroundColor(correct! ? .green : .red)
                             .opacity(check ? 1 : 0) // Opacity animation
                             .animation(.easeInOut(duration: 0.5), value: check)
                     } else if selected != "" && question.choices[index] == question.correct {
                         Image(systemName: "checkmark.circle.fill")
+                            .resizable()
                             .foregroundColor(.green)
+                            .frame(width: horizontalSizeClass == .compact ? 10 : 20, height: horizontalSizeClass == .compact ? 10 : 20)
                     }
                 }
                 .padding(.horizontal, 10)

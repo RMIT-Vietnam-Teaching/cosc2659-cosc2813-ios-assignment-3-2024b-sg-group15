@@ -33,14 +33,14 @@ struct LargeButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
         // Responsive frame
-            .frame(minWidth: UIScreen.main.bounds.width * 0.45, maxWidth: UIScreen.main.bounds.width * 0.5)
+            .frame(minWidth: 100, maxWidth: 250)
             .font(.custom("Lato-Black", size: UIScreen.main.bounds.width * 0.06))
             .foregroundStyle(.white)
             .padding(.vertical, 10)
             .background(background)
-            .cornerRadius(15)
+            .cornerRadius(20)
         // Ajust shadow to be responsive
-            .shadow(radius: 2, x: 1, y: UIScreen.main.bounds.width * 0.015)
+            .shadow(radius: 4, x: 1, y: UIScreen.main.bounds.width * 0.015)
     }
 }
 
@@ -52,6 +52,24 @@ struct MediumButtonModifier: ViewModifier {
         content
         // Responsive frame
             .frame(minWidth: UIScreen.main.bounds.width * 0.3, maxWidth: UIScreen.main.bounds.width * 0.4)
+            .font(.custom("Lato-Black", size: UIScreen.main.bounds.width * 0.5))
+            .foregroundStyle(.white)
+            .padding(.vertical)
+            .background(background)
+            .cornerRadius(15)
+        // Ajust shadow to be responsive
+            .shadow(radius: 2, x: 1, y: UIScreen.main.bounds.width * 0.015)
+    }
+}
+
+// Medium button style: Add to the label
+struct MediumButtonModifierIpad: ViewModifier {
+    // Add background color as parameter
+    var background: Color
+    func body(content: Content) -> some View {
+        content
+        // Responsive frame
+            .frame(minWidth: 200, maxWidth: 250)
             .font(.custom("Lato-Black", size: UIScreen.main.bounds.width * 0.5))
             .foregroundStyle(.white)
             .padding(.vertical)
@@ -74,7 +92,28 @@ struct TitleTextModifier: ViewModifier {
 struct TitleTextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 60)
+            .scaledFont(name: "OldStandardTT-Bold", size: 45, maxSize: 50)
+
+//            .scaledFont(name: "OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06, maxSize: 20))
+            .foregroundStyle(.textDark)
+    }
+}
+
+struct QuestionTextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06))
+
+//            .scaledFont(name: "OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06, maxSize: 20))
+            .foregroundStyle(.textDark)
+    }
+}
+
+
+struct QuestionTextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 36, maxSize: 42)
 
 //            .scaledFont(name: "OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06, maxSize: 20))
             .foregroundStyle(.textDark)
@@ -107,8 +146,7 @@ struct BodyTextModifierIpad: ViewModifier {
     var color: Color?
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "Lato-Regular", size: 40, maxSize: 60)
-//            .font(.custom("Lato-Regular", size: UIScreen.main.bounds.width * 0.045))
+            .scaledFont(name: "Lato-Regular", size: 30, maxSize: 34)
             .foregroundStyle(color ?? .textDark)
     }
 }
@@ -216,9 +254,7 @@ struct AnyViewModifier: ViewModifier {
 // Preview provider for SwiftUI canvas
 struct TimelineGame_Previews: PreviewProvider {
     static var previews: some View {
-        TimelineGameView(
-            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
-            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
-        )
+        PopUpView()
+
     }
 }

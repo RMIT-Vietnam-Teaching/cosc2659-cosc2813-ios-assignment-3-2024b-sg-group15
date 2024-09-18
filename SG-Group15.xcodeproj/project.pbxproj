@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */; };
+		391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391848DD2C9B35E4004B4367 /* PopUpView.swift */; };
 		393FC7092C8F450600028F1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC7082C8F450600028F1D /* Assets.xcassets */; };
 		393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC70B2C8F450600028F1D /* Preview Assets.xcassets */; };
 		393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7182C8F46A200028F1D /* DemoModel.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonDismissableSheet.swift; sourceTree = "<group>"; };
+		391848DD2C9B35E4004B4367 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		393FC7012C8F450400028F1D /* SG-Group15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SG-Group15.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		393FC7042C8F450400028F1D /* SG_Group15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SG_Group15App.swift; sourceTree = "<group>"; };
 		393FC7082C8F450600028F1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		391848DA2C9B3587004B4367 /* PopUpView */ = {
+			isa = PBXGroup;
+			children = (
+				391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */,
+				391848DD2C9B35E4004B4367 /* PopUpView.swift */,
+			);
+			path = PopUpView;
+			sourceTree = "<group>";
+		};
 		393FC6F82C8F450400028F1D = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +203,7 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				391848DA2C9B3587004B4367 /* PopUpView */,
 				E29B16B12C9B143000673121 /* FillInBlankGameView */,
 				398F19902C99AECA0023515B /* Note */,
 				E296553C2C94BDBE0099D136 /* TimelineGameView.swift */,
@@ -402,12 +416,14 @@
 				398F19982C99AF940023515B /* Note.swift in Sources */,
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
 				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
+				391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */,
 				E29B16A52C9B140000673121 /* FillInBlankModel.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
+				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
@@ -561,7 +577,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SG-Group15/Preview Content\"";
-				DEVELOPMENT_TEAM = 87AJUFVFXW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SG-Group15/Info.plist";
@@ -575,7 +591,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.nana.group15;
+				PRODUCT_BUNDLE_IDENTIFIER = "vn.edu.rmit.nana.SG-Group15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -591,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SG-Group15/Preview Content\"";
-				DEVELOPMENT_TEAM = 87AJUFVFXW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SG-Group15/Info.plist";
@@ -605,7 +621,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.nana.group15;
+				PRODUCT_BUNDLE_IDENTIFIER = "vn.edu.rmit.nana.SG-Group15";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

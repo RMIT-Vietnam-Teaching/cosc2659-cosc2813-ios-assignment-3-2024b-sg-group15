@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MatchingGameView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     @StateObject private var viewModel: MatchingGameViewModel
     
     init(eventPairs: [(String, String)]) {
@@ -13,76 +15,84 @@ struct MatchingGameView: View {
             let height = geometry.size.height
             let smallerDimension = min(width, height)
             
-            VStack() {
-                Text("Nối sự kiện dưới đây")
-//                    .font(.system(size: smallerDimension * 0.04))
-                    .modifier(TitleTextModifier())
-                    .padding()
+            ZStack(alignment: .top) {
+                Image("background")
+                    .resizable()
+                    .ignoresSafeArea()
                 
-                HStack(spacing: smallerDimension * 0.03) {
-                    // Left column
-                    VStack(spacing: smallerDimension * 0.08) {
-                        ForEach(viewModel.leftEvents) { event in
-                            EventButton(event: event,
-                                        isSelected: viewModel.selectedLeftEventId == event.id,
-                                        action: { viewModel.selectLeftEvent(event) },
-                                        size: CGSize(width: smallerDimension * 0.4, height: smallerDimension * 0.12))
-                        }
+                VStack(spacing: 20) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
+                        ProgressBar()
                     }
+                    .padding(.horizontal, 20)
                     
-                    // Right column
-                    VStack(spacing: smallerDimension * 0.08) {
-                        ForEach(viewModel.rightEvents) { event in
-                            EventButton(event: event,
-                                        isSelected: viewModel.selectedRightEventId == event.id,
-                                        action: { viewModel.selectRightEvent(event) },
-                                        size: CGSize(width: smallerDimension * 0.4, height: smallerDimension * 0.12))
+                    Text("Nối sự kiện dưới đây")
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
+                        .padding()
+                    
+                    HStack(spacing: smallerDimension * 0.08) {
+                        // Left column
+                        VStack(spacing: smallerDimension * 0.05) {
+                            ForEach(viewModel.leftEvents) { event in
+                                EventButton(event: event,
+                                            isSelected: viewModel.selectedLeftEventId == event.id,
+                                            action: { viewModel.selectLeftEvent(event) },
+                                            size: CGSize(width: smallerDimension * 0.4, height: smallerDimension * 0.12))
+                            }
+                        }
+                        
+                        // Right column
+                        VStack(spacing: smallerDimension * 0.05) {
+                            ForEach(viewModel.rightEvents) { event in
+                                EventButton(event: event,
+                                            isSelected: viewModel.selectedRightEventId == event.id,
+                                            action: { viewModel.selectRightEvent(event) },
+                                            size: CGSize(width: smallerDimension * 0.4, height: smallerDimension * 0.12))
+                            }
                         }
                     }
-                }
-                .padding()
-                
-                if viewModel.isGameComplete {
+                    .padding()
+                    
                     Button("Tiếp tục") {
                         // Handle game completion
                     }
                     .padding()
-//                    .frame(width: smallerDimension * 0.3, height: smallerDimension * 0.08)
-//                    .background(Color.green)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(8)
                     .modifier(LargeButtonModifier(background:.darkRed))
+                    .scaleEffect(viewModel.isGameComplete ? 1 : 0.5) // Adjust the scale effect for animation
+                    .opacity(viewModel.isGameComplete ? 1 : 0)
+                    
                 }
+                .padding(.top, 20)
             }
             .frame(width: width, height: height)
-            .background(Color.beigeBackground.edgesIgnoringSafeArea(.all))
+
         }
     }
 }
 
 struct EventButton: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     let event: MatchingEvent
     let isSelected: Bool
     let action: () -> Void
     let size: CGSize
     
     var body: some View {
-        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
-        let scaleBoxValue = isIpad ? 1 : 1.6
         Button(action: action) {
             Text(event.text)
-                .padding(size.width * 0.05)
-                .frame(width: size.width, height: size.height * scaleBoxValue)
+                .frame(width: horizontalSizeClass == .compact ? 150 : 250, height: horizontalSizeClass == .compact ? 80 : 130)
                 .background(backgroundForState())
                 .foregroundColor(foregroundForState())
-                .cornerRadius(8)
+                .cornerRadius(20)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.darkRed, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(strokeForState(), lineWidth: horizontalSizeClass == .compact ? 2 : 3)
                 )
-//                .font(.system(size: size.height * 0.25))
-                .modifier(BodyTextModifier())
-                .minimumScaleFactor(0.5)
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))                .minimumScaleFactor(0.5)
                 .lineLimit(3)
         }
         .disabled(event.isMatched)
@@ -90,20 +100,35 @@ struct EventButton: View {
     
     private func backgroundForState() -> Color {
         if event.isMatched {
-            return .green
+            return .correctBackground
         } else if event.isIncorrectMatch {
-            return .red
+            return .lightRed
         } else if isSelected {
-            return .darkRed.opacity(0.3)
+            return .butteryWhite
         } else {
-            return .white
+            return .clear
+        }
+    }
+    
+    private func strokeForState() -> Color {
+        if event.isMatched {
+            return .correctText
+        } else if event.isIncorrectMatch {
+            return .darkRed
+        } else if isSelected {
+            return .black
+        } else {
+            return .black
         }
     }
     
     private func foregroundForState() -> Color {
-        if event.isMatched || event.isIncorrectMatch {
-            return .white
-        } else {
+        if event.isMatched {
+            return .correctText
+        } else if event.isIncorrectMatch {
+            return .darkRed
+        }
+        else {
             return .black
         }
     }
