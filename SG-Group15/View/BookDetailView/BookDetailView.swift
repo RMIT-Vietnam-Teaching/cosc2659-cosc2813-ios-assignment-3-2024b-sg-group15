@@ -1,38 +1,39 @@
 //
-//  BookDetailViewIpad.swift
+//  BookDetailViewIphone.swift
 //  SG-Group15
 //
-//  Created by Nana on 15/9/24.
+//  Created by Nana on 13/9/24.
 //
 
 import SwiftUI
 
-struct BookDetailViewIpad: View {
+struct BookDetailView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @State private var isScaled = false
     @State private var selectedChapter: Int? = nil
     @State private var check = false
+    @Binding var page: CoverPage
     
     var body: some View {
         ZStack {
-            Color("bg-color")
-                .ignoresSafeArea()
             Group {
                 ZStack(alignment: .top) {
                     Image("background")
-                         .resizable()
-                         .ignoresSafeArea()
-                         .zIndex(1.0)
-                         .clipShape(RoundedRectangle(cornerRadius: 15))
-                         .modifier(ShadowLeftRight(alignment: .trailing, x: 5))
-                         .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
-      
+                        .resizable()
+                        .ignoresSafeArea()
+                        .zIndex(1.0)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .modifier(ShadowLeftRight(alignment: .trailing, x: 5))
+                        .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
+                    
                     VStack(spacing: 20) {
                         Button(action: {
-                            startAnimationAndGoToChapter(1)
+                            goToChapter(chapter: 1)
                         }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15.0)
-                                    .foregroundColor(Color(.bookmarkColor1))
+                                    .foregroundColor(.bookmarkColor1)
                                     .frame(width: 70, height: 130)
                                    
                                 
@@ -42,14 +43,15 @@ struct BookDetailViewIpad: View {
                                     .foregroundColor(.black)
                                    
                             }
+                            .zIndex(3)
                         })
                         
                         Button(action: {
-                            startAnimationAndGoToChapter(2)
+                            goToChapter(chapter: 2)
                         }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15.0)
-                                    .foregroundColor(Color(.bookmarkColor2))
+                                    .foregroundColor(.bookmarkColor2)
                                     .frame(width: 70, height: 130)
                                    
                                 
@@ -62,12 +64,9 @@ struct BookDetailViewIpad: View {
                         })
                     }
                     .padding(.top, 30)
-                    .offset(x: 440)
+                    .offset(x: horizontalSizeClass == .compact ? 210 : 440)
                 }
-                .padding(0)
-                .padding(.leading, -10)
                      
-                
                 VStack(spacing: 40) {
                     Spacer()
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
@@ -84,20 +83,23 @@ struct BookDetailViewIpad: View {
                     Spacer()
                     
                     Button(action: {
-                        startAnimationAndGoToChapter(1)
-                        isScaled.toggle()
+                        goToCurrentChapter()
                     }, label: {
-                        Text("Học")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .background {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .frame(width: 260, height: 70)
-                                    .foregroundColor(Color(.bookmarkColor1))
-                                    .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
-                            }
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 260, height: 70)
+                                .foregroundColor(Color(.bookmarkColor1))
+                                .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
+                            Text("Học")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                
+                        }
+                        
                     })
+                    .accessibilityLabel("Học")
+                    .accessibilityHint("Bắt đầu học")
                     .onChange(of: isScaled, initial: false) { _, newValue in
                         if newValue, let chapter = selectedChapter {
                             // Once scaled up, trigger a slight delay before flipping
@@ -111,8 +113,7 @@ struct BookDetailViewIpad: View {
                 }
                 .padding(20)
             }
-//                .padding(.vertical, 20)
-            .scaleEffect(isScaled ? 1.1 : 0.8) // Initially small
+            .scaleEffect(isScaled ? 1.05 : 0.8)
             .animation(.easeIn(duration: 0.5), value: isScaled) // Scale up animation
             .onAppear {
                 withAnimation {
@@ -122,15 +123,16 @@ struct BookDetailViewIpad: View {
         }
     }
     
-    func startAnimationAndGoToChapter(_ chapterIndex: Int) {
-        selectedChapter = chapterIndex
-        isScaled = true // Trigger the scaling animation
+    func goToChapter(chapter: Int) {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToChapter"), object: chapter)
+    }
+    
+    func goToCurrentChapter() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToCurrentChapter"), object: nil)
     }
 }
 
+
 #Preview {
-    BookDetailViewIpad()
+    BookDetailView(page: .constant(CoverPage(title: "11", content: "11")))
 }
-
-
-

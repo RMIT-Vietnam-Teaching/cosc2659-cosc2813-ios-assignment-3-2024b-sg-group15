@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        WelcomeView()
+//        WelcomeView()
+        TabViewNote()
+//        BookDetailView(page: .constant(CoverPage(title: "11", content: "11")))
     }
 }
 

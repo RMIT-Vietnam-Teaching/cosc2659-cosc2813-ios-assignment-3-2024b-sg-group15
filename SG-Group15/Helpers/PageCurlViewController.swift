@@ -51,6 +51,8 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         // Observe the "GoToNextPage" notification for programmatic page flip
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.goToNextPage), name: NSNotification.Name("GoToNextPage"), object: nil)
 
+        NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.goToMainPage), name: NSNotification.Name("GoToMainPage"), object: nil)
+
         return pageViewController
     }
 
@@ -108,6 +110,22 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                     parent.currentPageIndex = 0
                 }
                 pageViewController.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            }
+        }
+        
+        // Method to navigate back to the main page with a reverse animation
+        @objc func goToMainPage() {
+            parent.currentChapterIndex = 0
+            parent.currentPageIndex = 0
+
+            if let pageViewController = pageViewController {
+                let landingPageVC = createHostingController(for: 0, in: 0)
+                pageViewController.setViewControllers(
+                    [landingPageVC],
+                    direction: .reverse, // Set direction to reverse for backward animation
+                    animated: true,
+                    completion: nil
+                )
             }
         }
 
