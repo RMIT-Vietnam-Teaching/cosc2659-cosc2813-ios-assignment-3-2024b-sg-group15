@@ -1,8 +1,10 @@
 import SwiftUI
+import FirebaseFirestore
 
 class TimelineGameViewModel: ObservableObject {
-    @Published var events: [TimelineEvent]
-    @Published var timePeriods: [TimePeriod]
+    @Published var question: MatchingQuestion?
+    @Published var timePeriods: [TimePeriod] = []
+    @Published var events: [TimelineEvent] = []
     @Published var isGameComplete = false
     @Published var showResult = false
     @Published var correctPlacements = 0
@@ -12,18 +14,50 @@ class TimelineGameViewModel: ObservableObject {
     let periodWidth: CGFloat = 170
     let periodHeight: CGFloat = 80
     
-    init(eventData: [String], periodData: [String]) {
-        self.events = eventData.enumerated().map { i, name in
+    private var db = Firestore.firestore()
+    
+    // Fetch question from database
+    func fetchQuestion(from documentID: String) {
+        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
+            // Handle error
+            if let error = error {
+                print("Error fetching document: \(error)")
+            }
+            
+            // Fetch document
+            if let document = document, document.exists {
+                if let data = document.data() {
+                    let question = MatchingQuestion(documentID: document.documentID, data: data)
+                    // Set the question
+                    DispatchQueue.main.async {
+                        self?.question = question
+                        self?.initQuestion()
+                    }
+                }
+            }
+            else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    // Initialize events and periods data
+    private func initQuestion() {
+        guard let question = question else { return
+            
+        }
+        // Add events
+        self.events = question.events.enumerated().map { i, name in
             TimelineEvent(id: i, name: name, position: .zero, originalPosition: .zero)
         }
-        
-        let shuffledIndices = Array(0..<periodData.count).shuffled()
-        self.timePeriods = periodData.enumerated().map { originalIndex, period in
+        let shuffledIndices = Array(0..<question.periods.count).shuffled()
+        self.timePeriods = question.periods.enumerated().map { originalIndex, period in
             let shuffledIndex = shuffledIndices[originalIndex]
             return TimePeriod(id: originalIndex, period: period, position: .zero, displayOrder: shuffledIndex)
         }
         self.timePeriods.sort { $0.displayOrder < $1.displayOrder }
     }
+    
     
     func nearestTimePeriod(to point: CGPoint) -> TimePeriod? {
         timePeriods.min(by: { distance(from: point, to: $0.position) < distance(from: point, to: $1.position) })
@@ -42,4 +76,5 @@ class TimelineGameViewModel: ObservableObject {
         showResult = true
     }
 }
+
 

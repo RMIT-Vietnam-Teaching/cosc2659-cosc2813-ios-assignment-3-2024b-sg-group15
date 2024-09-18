@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct MultipleChoiceViewIpad: View {
-    @State private var question = MultipleChoiceQuestion(question: "Điền thêm từ còn thiếu trong nhận định của Đảng ta tại Hội nghị Trung Ương 5/1941: \"Cuộc cách mạng Đông Dương trong giai đoạn hiện tại là một cuộc cách mạng ...\"", choices: [
-        "tư sản dân quyền", "dân chủ tư sản", "xã hội chủ nghĩa", "dân tộc giải phóng"
-    ], correct: "dân tộc giải phóng")
+    @StateObject private var questionViewModel = MutipleChoiceViewModel()
     @State private var selected: String = ""
     @State private var correct: Bool?
     
@@ -23,7 +21,6 @@ struct MultipleChoiceViewIpad: View {
             
             GeometryReader { geo in
                 VStack(spacing: 60) {
-    //                Spacer()
                     HStack(spacing: 20) {
                         Image(systemName: "xmark")
                             .resizable()
@@ -31,15 +28,16 @@ struct MultipleChoiceViewIpad: View {
                         
                         ProgressBar()
                     }
-                    
-                    Text(question.question)
-                        .font(.largeTitle)
-//                        .modifier(BodyTextModifier())
-                        .lineSpacing(10.0)
-                    
-                    VStack(spacing: 30) {
-                        ForEach(Array(zip(question.choices.indices, question.choices)), id: \.0) { index, choice in
-                            ChoiceButton(correct: $correct, question: $question, selected: $selected, index: index)
+                    if let question = questionViewModel.question {
+                        Text(question.question)
+                            .font(.largeTitle)
+                        //                        .modifier(BodyTextModifier())
+                            .lineSpacing(10.0)
+                        
+                        VStack(spacing: 30) {
+                            ForEach(Array(zip(question.choices.indices, question.choices)), id: \.0) { index, choice in
+                                ChoiceButton(correct: $correct, question: question, selected: $selected, index: index)
+                            }
                         }
                     }
                 }
@@ -48,6 +46,9 @@ struct MultipleChoiceViewIpad: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 50)
             .frame(height: UIScreen.main.bounds.height)
+        }
+        .onAppear {
+            questionViewModel.fetchQuestion(from: "fzvfhxi9oDPnsocS16r8")
         }
     }
 }

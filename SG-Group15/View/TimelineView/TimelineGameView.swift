@@ -1,16 +1,16 @@
+//
+//  TimelineGameView.swift
+//  SG-Group15
+//
+//  Created by Do Le Long An on 18/9/24.
+//
+
+import Foundation
 import SwiftUI
 
 struct TimelineGameView: View {
-    @StateObject private var viewModel: TimelineGameViewModel
-    let eventData: [String]
-    let periodData: [String]
+    @StateObject private var viewModel = TimelineGameViewModel()
     @State private var showResultPopup = false
-
-    init(eventData: [String], periodData: [String]) {
-        self.eventData = eventData
-        self.periodData = periodData
-        _viewModel = StateObject(wrappedValue: TimelineGameViewModel(eventData: eventData, periodData: periodData))
-    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -107,133 +107,27 @@ struct TimelineGameView: View {
                 }
                 
                 if viewModel.isGameComplete {
-                   Button("Submit") {
-                       viewModel.checkAnswer()
-                       showResultPopup = true
-                   }
-                   .modifier(LargeButtonModifier(background: .darkRed))
-                   .position(x: width / 2, y: height - 30)
-               }
-               
-               if showResultPopup {
-                   ResultPopupView(isCorrect: viewModel.correctPlacements == eventData.count, action: {
-                       showResultPopup = false
-                   })
-               }
+                    Button("Submit") {
+                        viewModel.checkAnswer()
+                        showResultPopup = true
+                    }
+                    .modifier(LargeButtonModifier(background: .darkRed))
+                    .position(x: width / 2, y: height - 30)
+                }
             }
             .coordinateSpace(name: "gameArea")
-        }
-    }
-}
-struct EventView: View {
-    @Binding var event: TimelineEvent
-    let width: CGFloat
-    let height: CGFloat
-
-    var body: some View {
-        ZStack {
-            // Event border
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.darkRed, lineWidth: 3)
-                .frame(width: width, height: height)
-            
-            // Event text
-            Text(event.name)
-                .modifier(BodyTextModifier())
-                .foregroundColor(.black)
-                .multilineTextAlignment(.center) // Center align for better readability
-                .minimumScaleFactor(0.5) // Allow text to shrink to 50% of its original size
-                .lineLimit(3) // Limit to 3 lines
-                .padding(8)
-        }
-        .frame(width: width, height: height) // Ensure the ZStack takes up the full size
-    }
-}
-
-struct TimePeriodView: View {
-    @Binding var period: TimePeriod
-    let width: CGFloat
-    let height: CGFloat
-    let isEven: Bool
-    let screenWidth: CGFloat
-    let isIpad = UIDevice.current.userInterfaceIdiom == .pad
-    var body: some View {
-        HStack {
-            // Alternate layout for even/odd periods
-            if isEven {
-                periodContent
-                destinationBox
-            } else {
-                destinationBox
-                periodContent
+            .onAppear {
+                viewModel.fetchQuestion(from: "CuOIjLZ0nQRmAWs53mcJ")
             }
         }
-    }
-    
-    var periodContent: some View {
-        VStack(alignment: isEven ? .leading : .trailing, spacing: 0) {
-            // Period text
-            Text(period.period)
-                .modifier(BodyTextModifier())
-            // Horizontal line
-            Rectangle()
-                .fill(Color.black)
-                .frame(height: 3)
-                .frame(width: screenWidth * 0.5)
-                
-        }.offset(y: isIpad ? -25 : -10)
-    }
-    
-    var destinationBox: some View {
-        // Dashed box for event placement
-        RoundedRectangle(cornerRadius: 8)
-            .stroke(Color.darkRed, style: StrokeStyle(lineWidth: 3, dash: [5]))
-            .frame(width: width, height: height)
-            .background(
-                GeometryReader { geo in
-                    Color.clear.onAppear {
-                        // Set position for the period
-                        let frame = geo.frame(in: .named("gameArea"))
-                        period.position = CGPoint(x: frame.midX, y: frame.midY)
-                    }
-                }
-            )
+       
     }
 }
 
-struct ResultPopupView: View {
-    let isCorrect: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        VStack {
-            // Result message
-            Text(isCorrect ? "Bingo!" : "Liuliu sai gòi")
-                .font(.title)
-                .foregroundColor(.white)
-                .padding()
-            
-            // Continue button
-            Button("Tiếp tục") {
-                action()
-            }
-            .padding()
-            .background(isCorrect ? Color.green : Color.red)
-            .foregroundColor(.white)
-            .cornerRadius(8)
-        }
-        .frame(width: 300, height: 200)
-        .background(isCorrect ? Color.green.opacity(0.8) : Color.red.opacity(0.8))
-        .cornerRadius(12)
-    }
-}
 
 // Preview provider for SwiftUI canvas
 struct TimelineGameView_Previews: PreviewProvider {
     static var previews: some View {
-        TimelineGameView(
-            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
-            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
-        )
+        TimelineGameView()
     }
 }
