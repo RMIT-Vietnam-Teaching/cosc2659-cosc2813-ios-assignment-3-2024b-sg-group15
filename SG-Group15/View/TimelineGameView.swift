@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct TimelineGameView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     @StateObject private var viewModel: TimelineGameViewModel
     let eventData: [String]
     let periodData: [String]
@@ -16,26 +18,41 @@ struct TimelineGameView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
-            let eventWidth = min(width * 0.4, 320)
-            let eventHeight = height * 0.08
+            let eventWidth = min(width * 0.33, 250)
+            let eventHeight = height * 0.1
             let periodWidth = eventWidth
             let periodHeight = eventHeight
-            
-            ZStack {
-                Color.beigeBackground
+
+            ZStack(alignment: .top) {
+                Image("background")
+                    .resizable()
                     .ignoresSafeArea()
-                VStack(spacing: 20) {
-                    Text("Kéo các sự kiện sau đây ứng với mốc thời gian")
-                        .modifier(TitleTextModifier())
-                        .padding(.horizontal)
+
+                VStack(spacing: horizontalSizeClass == .compact ? 20 : 30) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .frame(width: horizontalSizeClass == .compact ? 15 : 30, height: horizontalSizeClass == .compact ? 15 : 30)
+                        ProgressBar()
+                    }
+                    .padding(.horizontal, 20)
                     
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: width * 0.05) {
+                    Text("Kéo các sự kiện sau đây ứng với mốc thời gian")
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                        .padding(.horizontal, 5)
+                    
+                    LazyVGrid(columns: [
+                        GridItem(.flexible(), spacing: width * 0.02),
+                        GridItem(.flexible(), spacing: width * 0.02)
+                    ],
+                    spacing: width * 0.05 ) {
                         ForEach(viewModel.events.indices, id: \.self) { index in
                             Color.clear
                                 .frame(width: eventWidth, height: eventHeight)
                                 .background(
                                     GeometryReader { geo in
-                                        Color.clear.onAppear {
+                                        Color.clear
+                                            .onAppear {
                                             let frame = geo.frame(in: .named("gameArea"))
                                             viewModel.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
                                             if !viewModel.events[index].isPlaced {
@@ -46,12 +63,11 @@ struct TimelineGameView: View {
                                 )
                         }
                     }
-                    .padding()
-                    
+                    .padding(.horizontal, width * 0.1) // Adjust this value to reduce or increase the space between columns
                     ZStack {
                         Rectangle()
                             .fill(Color.darkRed)
-                            .frame(width: 8, height: height * 0.5)
+                            .frame(width: 5, height: height * 0.5)
                         VStack(spacing: height * 0.03) {
                             ForEach(viewModel.timePeriods.indices, id: \.self) { index in
                                 TimePeriodView(period: $viewModel.timePeriods[index], width: periodWidth, height: periodHeight, isEven: index % 2 == 0, screenWidth: width)
@@ -61,8 +77,10 @@ struct TimelineGameView: View {
                     }
                 }
                 
+                let isIpad = horizontalSizeClass != .compact
+
                 ForEach($viewModel.events) { $event in
-                    EventView(event: $event, width: eventWidth, height: eventHeight)
+                    EventView(event: $event, width: eventWidth, height: eventHeight, check: true)
                         .position(event.position)
                         .gesture(
                             DragGesture()
@@ -106,13 +124,14 @@ struct TimelineGameView: View {
                         )
                 }
                 
-                if viewModel.isGameComplete {
+                
+                if viewModel.isGameComplete == false {
                    Button("Submit") {
                        viewModel.checkAnswer()
                        showResultPopup = true
                    }
                    .modifier(LargeButtonModifier(background: .darkRed))
-                   .position(x: width / 2, y: height - 30)
+                   .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 30 : height - 40)
                }
                
                if showResultPopup {
@@ -123,29 +142,37 @@ struct TimelineGameView: View {
             }
             .coordinateSpace(name: "gameArea")
         }
+        
     }
 }
+
 struct EventView: View {
     @Binding var event: TimelineEvent
     let width: CGFloat
     let height: CGFloat
-
+//    let isIpad = UIDevice.current.userInterfaceIdiom == .pad
+    let check: Bool
+    
     var body: some View {
         ZStack {
+//            let isIpad = UIDevice.current.userInterfaceIdiom == .pad
+            
             // Event border
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 15)
                 .stroke(Color.darkRed, lineWidth: 3)
                 .frame(width: width, height: height)
             
             // Event text
             Text(event.name)
-                .modifier(BodyTextModifier())
-                .foregroundColor(.black)
-                .multilineTextAlignment(.center) // Center align for better readability
-                .minimumScaleFactor(0.5) // Allow text to shrink to 50% of its original size
-                .lineLimit(3) // Limit to 3 lines
-                .padding(8)
+//                .modifier(BodyTextModifier())
+//                .modifier(check ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifier()))
+//                .foregroundColor(.black)
+//                .multilineTextAlignment(.center) // Center align for better readability
+//                .minimumScaleFactor(0.5) // Allow text to shrink to 50% of its original size
+//                .lineLimit(3) // Limit to 3 lines
+//                .padding(8)
         }
+       
         .frame(width: width, height: height) // Ensure the ZStack takes up the full size
     }
 }
@@ -186,12 +213,13 @@ struct TimePeriodView: View {
     
     var destinationBox: some View {
         // Dashed box for event placement
-        RoundedRectangle(cornerRadius: 8)
+        RoundedRectangle(cornerRadius: 15)
             .stroke(Color.darkRed, style: StrokeStyle(lineWidth: 3, dash: [5]))
             .frame(width: width, height: height)
             .background(
                 GeometryReader { geo in
-                    Color.clear.onAppear {
+                    Color.clear
+                        .onAppear {
                         // Set position for the period
                         let frame = geo.frame(in: .named("gameArea"))
                         period.position = CGPoint(x: frame.midX, y: frame.midY)

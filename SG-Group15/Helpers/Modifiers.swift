@@ -71,6 +71,16 @@ struct TitleTextModifier: ViewModifier {
     }
 }
 
+struct TitleTextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 60)
+
+//            .scaledFont(name: "OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06, maxSize: 20))
+            .foregroundStyle(.textDark)
+    }
+}
+
 // Chapter text style: Apply for book details' overview in the front page
 struct HeadlineTextModifier: ViewModifier {
     var color: Color?
@@ -88,6 +98,17 @@ struct BodyTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Lato-Regular", size: UIScreen.main.bounds.width * 0.045))
+            .foregroundStyle(color ?? .textDark)
+    }
+}
+
+// Body text style: Apply for content in answers
+struct BodyTextModifierIpad: ViewModifier {
+    var color: Color?
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "Lato-Regular", size: 40, maxSize: 60)
+//            .font(.custom("Lato-Regular", size: UIScreen.main.bounds.width * 0.045))
             .foregroundStyle(color ?? .textDark)
     }
 }
@@ -172,5 +193,32 @@ struct ScaledFont: ViewModifier {
 extension View {
     func scaledFont(name: String, size: Double, maxSize: Double) -> some View {
         self.modifier(ScaledFont(name: name, size: size, maxSize: maxSize))
+    }
+}
+
+// A generic view modifier that can apply any given `ViewModifier` at runtime.
+struct AnyViewModifier: ViewModifier {
+    
+    // Stores the modifier to be applied, as a closure that returns `AnyView`.
+    private let modifier: (Content) -> AnyView
+
+    // Initializer that takes any `ViewModifier` and stores it as a type-erased closure.
+    init<M: ViewModifier>(_ modifier: M) {
+        self.modifier = { content in AnyView(content.modifier(modifier)) }
+    }
+
+    // This method applies the stored modifier to the content.
+    func body(content: Content) -> some View {
+        modifier(content)
+    }
+}
+
+// Preview provider for SwiftUI canvas
+struct TimelineGame_Previews: PreviewProvider {
+    static var previews: some View {
+        TimelineGameView(
+            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
+            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
+        )
     }
 }
