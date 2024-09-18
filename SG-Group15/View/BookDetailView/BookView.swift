@@ -1,5 +1,5 @@
 //
-//  Book.swift
+//  BookView.swift
 //  SG-Group15
 //
 //  Created by Nana on 13/9/24.
@@ -10,11 +10,7 @@ import SwiftUI
 struct BookView: View {
     @State private var currentChapterIndex: Int? = nil  // Use nil for the initial landing page
     @State private var currentPageIndex = 0
-    @State private var flipStates: [[Bool]] = [
-            [true, false, false], // Chapter 1: Page 2 cannot flip
-            [false, false, false],  // Chapter 2: All pages can flip
-            [false, false, false]  // Chapter 3: Page 2 cannot flip
-        ]
+    @State private var currentChapter: Int = 2
     
     @State private var chapters: [Chapter] = [
         Chapter(pages: [Page(content: "Landing Page", canFlip: true)]),
@@ -45,8 +41,6 @@ struct BookView: View {
                        currentPageIndex: $currentPageIndex
                    )
             .edgesIgnoringSafeArea(.all)
-            
-            
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in
             if let chapter = notification.object as? Int {
@@ -54,33 +48,48 @@ struct BookView: View {
                 currentPageIndex = 0
             }
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToMainPage"))) { _ in
-            // Navigate back to the landing page when "Back" is pressed
-            currentChapterIndex = nil
-            currentPageIndex = 0
-        }
+//        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToMainPage"))) { _ in
+//            // This will trigger the goToMainPage method in the coordinator
+//        }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in
                     moveToNextPage()
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToCurrentChapter"))) { _ in
+            moveToCurrentChapter()
+        }
+    }
+    
+    private func moveToCurrentChapter() {
+        currentChapterIndex = currentChapter
     }
     
     private func moveToNextPage() {
         if let chapterIndex = currentChapterIndex {
-//            print(chapterIndex)
-            let currentChapterPages = flipStates[chapterIndex - 1]
-            
-            // Check if there is another page in the current chapter
-            if currentPageIndex < currentChapterPages.count - 1 {
-                currentPageIndex += 1
-            } else if chapterIndex - 1 < flipStates.count - 1 {
-                // If no more pages in the current chapter, move to the next chapter
-                currentChapterIndex = chapterIndex + 1
-                currentPageIndex = 0
+            let currentChapter = chapters[chapterIndex]
+            let currentPage = currentChapter.pages[currentPageIndex]
+
+            // Check if the current page can be flipped
+            if currentPage.canFlip {
+                // Check if there's another page in the current chapter
+                if currentPageIndex < currentChapter.pages.count - 1 {
+                    // Move to the next page in the current chapter
+                    currentPageIndex += 1
+                } else if chapterIndex < chapters.count - 1 {
+                    // If no more pages in the current chapter, move to the next chapter
+                    currentChapterIndex = chapterIndex + 1
+                    currentPageIndex = 0
+                } else {
+                    print("No more chapters available.")
+                }
             } else {
-                print("No more chapters available.")
+                print("Cannot flip this page.")
             }
+        } else {
+            // Handle the case when currentChapterIndex is nil (e.g., the landing page)
+            currentChapterIndex = 0 // Move to the first chapter
+            currentPageIndex = 0
         }
-    }
+     }
 }
 
 #Preview {

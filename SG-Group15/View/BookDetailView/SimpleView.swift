@@ -43,6 +43,15 @@ struct SimpleView: View {
                 }
                 .padding(.bottom, 20)
             }
+            
+            Button(action: goToMainPage) {
+                Text("Main Menu")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            .padding(.bottom, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.orange.edgesIgnoringSafeArea(.all))
@@ -51,6 +60,10 @@ struct SimpleView: View {
     // Function to trigger the "Next Page" action
     func goToNextPage() {
         NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
+    }
+    
+    func goToMainPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
 }
 

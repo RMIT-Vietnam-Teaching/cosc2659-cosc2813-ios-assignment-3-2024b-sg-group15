@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CoverPageView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     @Binding var isScaled: Bool
     @Binding var isOpen: Bool
     @Binding var showCover: Bool
@@ -20,20 +22,21 @@ struct CoverPageView: View {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundColor(Color("primaryRed"))
     //                .scaledToFill()
-                    .padding(.horizontal, 30)
-                    .padding(.vertical, isScaled ? 80 : 150)
+                    .padding(.horizontal, horizontalSizeClass == .compact ? 30 : 50)
+                    .padding(.vertical, isScaled ? 0 : 150)
+//                    .padding(.horizontal, 30)
+//                    .padding(.vertical, isScaled ? 80 : 150)
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 5, y: 5) // Adding shadow
                 
                 VStack(spacing: 60) {
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-//                        .font(.title)
-                        .fontWeight(.bold)
+                        .modifier(TitleTextModifier())
+                        .padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
                         .multilineTextAlignment(.center)
                     
                     Image("cover")
                         .resizable()
-                        .frame(width: isScaled ? 170 : 170, height: isScaled ? 170 : 170)
-//                        .resizable()
+                        .frame(width: horizontalSizeClass == .compact ? 150 : 400, height: horizontalSizeClass == .compact ? 150 : 400)
                         
                 }
             }
@@ -43,7 +46,7 @@ struct CoverPageView: View {
                 anchor: .leading
             )
             .scaleEffect(isScaled ? 1.0 : 0.6)
-            .animation(.easeIn(duration: 1.0), value: isScaled)
+            .animation(.easeIn(duration: 1.5), value: isScaled)
             .onTapGesture {
                 withAnimation {
                     isScaled.toggle() // Scale up the book
@@ -59,10 +62,6 @@ struct CoverPageView: View {
                     }
                 }
             }
-
-
-//            BookDetailViewIphone(page: $coverPage)
-
         }
     }
 }

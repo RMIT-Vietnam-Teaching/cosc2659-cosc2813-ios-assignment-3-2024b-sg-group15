@@ -147,4 +147,30 @@ struct ShadowLeftRight: ViewModifier {
     }
 }
 
+@available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
+struct ScaledFont: ViewModifier {
+    @Environment(\.sizeCategory) var sizeCategory
+    var name: String
+    var size: Double
+    var maxSize: Double // New property to set the maximum size
 
+    func body(content: Content) -> some View {
+        // Calculate the scaled size
+        let scaledSize = UIFontMetrics.default.scaledValue(for: size)
+        // Ensure the scaled size does not exceed the specified max size
+        let finalSize = min(scaledSize, maxSize)
+        
+        return content
+            .font(.custom(name, size: finalSize))
+            .lineLimit(nil) // Allow text to wrap into multiple lines
+            .minimumScaleFactor(0.5) // Scale down if needed
+            .fixedSize(horizontal: false, vertical: true) // Allow text to expand vertically
+    }
+}
+
+@available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
+extension View {
+    func scaledFont(name: String, size: Double, maxSize: Double) -> some View {
+        self.modifier(ScaledFont(name: name, size: size, maxSize: maxSize))
+    }
+}
