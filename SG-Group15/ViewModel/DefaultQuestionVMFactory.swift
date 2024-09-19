@@ -8,6 +8,9 @@
 import Foundation
 
 class DefaultQuestionViewModelFactory: QuestionViewModelFactory {
+    init() {
+        
+    }
     func createViewModel(for question: QuestionProtocol, canFlip: Bool) -> QuestionViewModel {
         switch question.questionType {
         case .multipleChoice:

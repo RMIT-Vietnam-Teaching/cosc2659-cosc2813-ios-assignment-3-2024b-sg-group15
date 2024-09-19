@@ -71,11 +71,7 @@ struct ChoiceButton: View {
     
 }
 
-#Preview {
-    //    MultipleChoiceViewIphone()
-    MultipleChoiceViewIpad()
-    //    ChoiceButton()
-}
+
 
 
 @available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)

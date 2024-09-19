@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookView: View {
+    @StateObject private var bookVM = BookViewModel()
     @State private var currentChapterIndex: Int? = nil  // Use nil for the initial landing page
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
@@ -16,37 +17,23 @@ struct BookView: View {
             [false, false, false]  // Chapter 3: Page 2 cannot flip
         ]
     
-    @State private var chapters: [Chapter] = [
-        Chapter(pages: [Page(content: "Landing Page", canFlip: true)]),
-           Chapter(pages: [
-               Page(content: "Chapter 1 - Page 1", canFlip: true),
-               Page(content: "Chapter 1 - Page 2", canFlip: false),
-               Page(content: "Chapter 1 - Page 3", canFlip: true)
-           ]),
-           Chapter(pages: [
-               Page(content: "Chapter 2 - Page 1", canFlip: true),
-               Page(content: "Chapter 2 - Page 2", canFlip: true),
-               Page(content: "Chapter 2 - Page 3", canFlip: true)
-           ]),
-           Chapter(pages: [
-               Page(content: "Chapter 3 - Page 1", canFlip: true),
-               Page(content: "Chapter 3 - Page 2", canFlip: false),
-               Page(content: "Chapter 3 - Page 3", canFlip: true)
-           ])
-       ]
+  
     
     @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
     
     var body: some View {
         VStack {
             PageCurlViewController(
-                chapters: chapters, coverPage: $coverPage,
+                chapters: bookVM.chapters, coverPage: $coverPage,
                        currentChapterIndex: $currentChapterIndex,
                        currentPageIndex: $currentPageIndex
                    )
             .edgesIgnoringSafeArea(.all)
             
             
+        }
+        .onAppear {
+            bookVM.fetchBook(bookID: "dRvOZnmodGfBq9wrPd8g")
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in
             if let chapter = notification.object as? Int {

@@ -9,7 +9,7 @@ class MatchingGameViewModel: QuestionViewModel {
     @Published var isGameComplete = false
     
     override init(question: QuestionProtocol, canFlip: Bool) {
-        super.init(question: question, canFlip: false)
+        super.init(question: question, canFlip: true)
         if let question = question as? MatchingQuestion {
             initQuestion(question: question)
         }

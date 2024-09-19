@@ -13,7 +13,7 @@ class MutipleChoiceViewModel: QuestionViewModel {
     @Published var choices: [String] = []
     
     override init(question: QuestionProtocol, canFlip: Bool) {
-        super.init(question: question, canFlip: false)
+        super.init(question: question, canFlip: true)
         
         if let question = question as? MultipleChoiceQuestion {
             self.choices = question.choices

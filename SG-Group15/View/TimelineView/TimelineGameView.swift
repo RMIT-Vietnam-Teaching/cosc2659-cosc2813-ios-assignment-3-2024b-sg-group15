@@ -2,14 +2,14 @@
 //  TimelineGameView.swift
 //  SG-Group15
 //
-//  Created by Do Le Long An on 18/9/24.
+//  Created by Xian on 18/9/24.
 //
 
 import Foundation
 import SwiftUI
 
 struct TimelineGameView: View {
-    @StateObject private var viewModel = TimelineGameViewModel()
+    @ObservedObject var questionVM: TimelineGameViewModel
     @State private var showResultPopup = false
     
     var body: some View {
@@ -30,16 +30,16 @@ struct TimelineGameView: View {
                         .padding(.horizontal)
                     
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: width * 0.05) {
-                        ForEach(viewModel.events.indices, id: \.self) { index in
+                        ForEach(questionVM.events.indices, id: \.self) { index in
                             Color.clear
                                 .frame(width: eventWidth, height: eventHeight)
                                 .background(
                                     GeometryReader { geo in
                                         Color.clear.onAppear {
                                             let frame = geo.frame(in: .named("gameArea"))
-                                            viewModel.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
-                                            if !viewModel.events[index].isPlaced {
-                                                viewModel.events[index].position = viewModel.events[index].originalPosition
+                                            questionVM.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
+                                            if !questionVM.events[index].isPlaced {
+                                                questionVM.events[index].position = questionVM.events[index].originalPosition
                                             }
                                         }
                                     }
@@ -53,15 +53,15 @@ struct TimelineGameView: View {
                             .fill(Color.darkRed)
                             .frame(width: 8, height: height * 0.5)
                         VStack(spacing: height * 0.03) {
-                            ForEach(viewModel.timePeriods.indices, id: \.self) { index in
-                                TimePeriodView(period: $viewModel.timePeriods[index], width: periodWidth, height: periodHeight, isEven: index % 2 == 0, screenWidth: width)
+                            ForEach(questionVM.timePeriods.indices, id: \.self) { index in
+                                TimePeriodView(period: $questionVM.timePeriods[index], width: periodWidth, height: periodHeight, isEven: index % 2 == 0, screenWidth: width)
                             }
                         }
                         .padding()
                     }
                 }
                 
-                ForEach($viewModel.events) { $event in
+                ForEach($questionVM.events) { $event in
                     EventView(event: $event, width: eventWidth, height: eventHeight)
                         .position(event.position)
                         .gesture(
@@ -71,11 +71,11 @@ struct TimelineGameView: View {
                                 }
                                 .onEnded { value in
                                     let maxDistance = eventWidth * 0.7
-                                    if let nearestPeriod = viewModel.nearestTimePeriod(to: value.location) {
-                                        let distance = viewModel.distance(from: value.location, to: nearestPeriod.position)
+                                    if let nearestPeriod = questionVM.nearestTimePeriod(to: value.location) {
+                                        let distance = questionVM.distance(from: value.location, to: nearestPeriod.position)
                                         if distance <= maxDistance {
                                             // Check if the period is already occupied
-                                            if !viewModel.events.contains(where: { $0.id != event.id && $0.currentPeriod == nearestPeriod.id }) {
+                                            if !questionVM.events.contains(where: { $0.id != event.id && $0.currentPeriod == nearestPeriod.id }) {
                                                 event.currentPeriod = nearestPeriod.id
                                                 event.isPlaced = true
                                                 event.position = nearestPeriod.position
@@ -101,14 +101,14 @@ struct TimelineGameView: View {
                                             event.position = event.originalPosition
                                         }
                                     }
-                                    viewModel.checkGameCompletion()
+                                    questionVM.checkGameCompletion()
                                 }
                         )
                 }
                 
-                if viewModel.isGameComplete {
+                if questionVM.isGameComplete {
                     Button("Submit") {
-                        viewModel.checkAnswer()
+                        questionVM.checkAnswer()
                         showResultPopup = true
                     }
                     .modifier(LargeButtonModifier(background: .darkRed))
@@ -116,18 +116,15 @@ struct TimelineGameView: View {
                 }
             }
             .coordinateSpace(name: "gameArea")
-            .onAppear {
-                viewModel.fetchQuestion(from: "CuOIjLZ0nQRmAWs53mcJ")
-            }
         }
-       
+        
     }
 }
 
 
 // Preview provider for SwiftUI canvas
-struct TimelineGameView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimelineGameView()
-    }
-}
+//struct TimelineGameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimelineGameView()
+//    }
+//}
