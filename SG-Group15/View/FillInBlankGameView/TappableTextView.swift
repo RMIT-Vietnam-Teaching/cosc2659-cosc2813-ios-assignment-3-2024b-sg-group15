@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+
+/// A custom text view that allows tapping on certain segments
+import SwiftUI
+
 /// A custom text view that allows tapping on certain segments
 struct TappableTextView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     let segments: [TappableTextSegment]
     let onTap: (Int) -> Void
     
@@ -15,6 +20,7 @@ struct TappableTextView: View {
         Text(getAttributedString())
             .fixedSize(horizontal: false, vertical: true)
             .multilineTextAlignment(.leading)
+            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LongQuestionTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
             .environment(\.openURL, OpenURLAction { url in
                 if url.scheme == "tappable", let index = Int(url.host ?? "") {
                     onTap(index)
@@ -30,16 +36,29 @@ struct TappableTextView: View {
         for segment in segments {
             var segmentString = AttributedString(segment.text)
             if segment.isTappable {
-                segmentString.backgroundColor = .blue.opacity(0.2)
-                segmentString.foregroundColor = .black
+                segmentString.foregroundColor = .darkRed
                 segmentString.link = URL(string: "tappable://\(segment.index ?? -1)")
             } else if segment.text == "_________" {
                 segmentString.foregroundColor = .gray
-                segmentString.backgroundColor = .yellow.opacity(0.2)
             }
             fullString += segmentString
         }
         
         return fullString
+    }
+}
+
+// For preview and testing
+struct TappableTextView_Previews: PreviewProvider {
+    static var previews: some View {
+        TappableTextView(segments: [
+            TappableTextSegment(text: "This is ", isTappable: false),
+            TappableTextSegment(text: "tappable", isTappable: true, index: 0),
+            TappableTextSegment(text: " and this is ", isTappable: false),
+            TappableTextSegment(text: "_________", isTappable: false),
+            TappableTextSegment(text: ".", isTappable: false)
+        ]) { index in
+            print("Tapped index: \(index)")
+        }
     }
 }

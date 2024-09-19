@@ -9,38 +9,69 @@ struct FillInBlankGameView: View {
     @StateObject private var viewModel: FillInBlankViewModel
     @State private var showResultPopup = false
     @State private var result: (correct: Int, total: Int) = (0, 0)
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     init(words: [String], sentence: String, correctWords: [String]) {
         _viewModel = StateObject(wrappedValue: FillInBlankViewModel(words: words, sentence: sentence, correctWords: correctWords))
     }
     
     var body: some View {
-        VStack(spacing: 20) {
-            TitleView()
+        GeometryReader { geometry in
+            let width = geometry.size.width
+            let height = geometry.size.height
+            let wordWidth = min(width * 0.33, 230)
+            let wordHeight = min(height * 0.1, 200)
             
-            SentenceView(viewModel: viewModel)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-                .padding(.horizontal)
-            
-            WordsView(viewModel: viewModel)
-            
-            CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
-                result = viewModel.checkAnswer()
-                showResultPopup = true
+            ZStack {
+                Image("background")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    // Progress bar at the top
+                    HStack(spacing: 10) {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
+                        ProgressBar()
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, geometry.safeAreaInsets.top)
+                    .padding(.bottom, 10)
+                    
+                    // Centering other elements
+                    
+                    VStack(spacing: 20) {
+                        Text("Fill in the blanks with the correct words")
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                            .padding()
+                        Spacer()
+
+                        SentenceView(viewModel: viewModel)
+                            .padding(.horizontal)
+                        WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight)
+                        Spacer()
+                        CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
+                            result = viewModel.checkAnswer()
+                            showResultPopup = true
+                            
+
+                        }
+                    }
+                    
+                    Spacer()
+                }
+                .overlay(
+                    showResultPopup ? ResultPopup(result: result, action: { showResultPopup = false }) : nil
+                )
             }
         }
-        .overlay(
-            showResultPopup ? ResultPopup(result: result, action: { showResultPopup = false }) : nil
-        )
     }
 }
 
 #Preview {
     FillInBlankGameView(
-        words: ["Nhật-Pháp", "Trung Quốc", "Đài Loan", "Nhật", "chúng ta"],
+        words: ["Nhật-Pháp", "Trung Quốc", "Nhật", "chúng ta"],
         sentence: "Chỉ thị ......bắn nhau, và hành động của ......, ngày 12/3/1945 của Đảng đưa ra khẩu hiệu Đánh đuổi Phát xít ...... .",
         correctWords: ["Nhật-Pháp","chúng ta","Nhật"]
     )
