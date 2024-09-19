@@ -32,7 +32,7 @@ struct MultipleChoiceView: View {
                 .padding(.horizontal, 10)
                 
                 Text(question.question)
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LongQuestionTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
                     .lineSpacing(10.0)
                 
                 VStack(spacing: 20) {
@@ -41,8 +41,16 @@ struct MultipleChoiceView: View {
                     }
                 }
                 
+                Button("Tiếp tục") {
+                    // Handle game completion
+                }
+//                    .padding()
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                .scaleEffect(selected != "" ? 1 : 0.5) // Adjust the scale effect for animation
+                .opacity(selected != "" ? 1 : 0)
+                
             }
-            .padding(10)
+            .padding(horizontalSizeClass == .compact ? 10 : 30)
             
         }
     }

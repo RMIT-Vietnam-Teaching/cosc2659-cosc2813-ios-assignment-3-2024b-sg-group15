@@ -59,8 +59,8 @@ struct MatchingGameView: View {
                     Button("Tiếp tục") {
                         // Handle game completion
                     }
-                    .padding()
-                    .modifier(LargeButtonModifier(background:.darkRed))
+//                    .padding()
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
                     .scaleEffect(viewModel.isGameComplete ? 1 : 0.5) // Adjust the scale effect for animation
                     .opacity(viewModel.isGameComplete ? 1 : 0)
                     

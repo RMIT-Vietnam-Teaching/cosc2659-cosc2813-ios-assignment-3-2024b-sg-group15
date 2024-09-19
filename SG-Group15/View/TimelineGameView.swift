@@ -128,7 +128,7 @@ struct TimelineGameView: View {
                 }
                 
                 
-                if viewModel.isGameComplete == false {
+                if viewModel.isGameComplete {
                    Button("Submit") {
                        withAnimation {
                            viewModel.checkAnswer()
@@ -136,7 +136,7 @@ struct TimelineGameView: View {
                            showPopUp = true
                        }
                    }
-                   .modifier(LargeButtonModifier(background: .darkRed))
+                   .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
                }
                 
