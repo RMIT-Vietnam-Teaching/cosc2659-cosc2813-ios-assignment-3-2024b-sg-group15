@@ -54,7 +54,9 @@ class MatchingGameViewModel: ObservableObject {
         
         // Check if all events are matched
         if leftEvents.allSatisfy({ $0.isMatched }) && rightEvents.allSatisfy({ $0.isMatched }) {
-            isGameComplete = true
+            withAnimation {
+                isGameComplete = true
+            }
         }
         
         // Reset selections

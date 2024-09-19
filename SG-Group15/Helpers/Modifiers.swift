@@ -33,14 +33,32 @@ struct LargeButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
         // Responsive frame
-            .frame(minWidth: UIScreen.main.bounds.width * 0.45, maxWidth: UIScreen.main.bounds.width * 0.5)
-            .font(.custom("Lato-Black", size: UIScreen.main.bounds.width * 0.06))
+            .frame(width: 200)
+            .scaledFont(name: "Lato-Black", size: 24, maxSize: 30)
             .foregroundStyle(.white)
             .padding(.vertical, 10)
             .background(background)
-            .cornerRadius(15)
+            .cornerRadius(20)
         // Ajust shadow to be responsive
-            .shadow(radius: 2, x: 1, y: UIScreen.main.bounds.width * 0.015)
+            .shadow(radius: 4, x: 1, y: UIScreen.main.bounds.width * 0.015)
+    }
+}
+
+// Large button style: Add to the label
+struct LargeButtonModifierIpad: ViewModifier {
+    // Add background color as parameter
+    var background: Color
+    func body(content: Content) -> some View {
+        content
+        // Responsive frame
+            .frame(minWidth: 350)
+            .scaledFont(name: "Lato-Black", size: 36, maxSize: 40)
+            .foregroundStyle(.white)
+            .padding(.vertical, 20)
+            .background(background)
+            .cornerRadius(30)
+        // Ajust shadow to be responsive
+            .shadow(radius: 4, x: 1, y: UIScreen.main.bounds.width * 0.015)
     }
 }
 
@@ -62,11 +80,54 @@ struct MediumButtonModifier: ViewModifier {
     }
 }
 
+// Medium button style: Add to the label
+struct MediumButtonModifierIpad: ViewModifier {
+    // Add background color as parameter
+    var background: Color
+    func body(content: Content) -> some View {
+        content
+        // Responsive frame
+            .frame(minWidth: 200, maxWidth: 250)
+            .font(.custom("Lato-Black", size: UIScreen.main.bounds.width * 0.5))
+            .foregroundStyle(.white)
+            .padding(.vertical)
+            .background(background)
+            .cornerRadius(15)
+        // Ajust shadow to be responsive
+            .shadow(radius: 2, x: 1, y: UIScreen.main.bounds.width * 0.015)
+    }
+}
+
 // Title text style: Apply for book title, event title and chapter title
 struct TitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06))
+            .foregroundStyle(.textDark)
+    }
+}
+
+struct TitleTextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 45, maxSize: 50)
+            .foregroundStyle(.textDark)
+    }
+}
+
+struct QuestionTextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 26, maxSize: 36)
+            .foregroundStyle(.textDark)
+    }
+}
+
+
+struct QuestionTextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 36, maxSize: 42)
             .foregroundStyle(.textDark)
     }
 }
@@ -82,12 +143,42 @@ struct HeadlineTextModifier: ViewModifier {
     }
 }
 
+struct LongQuestionTextModifier: ViewModifier {
+    var color: Color?
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 20, maxSize: 30)
+        // Can customize color
+            .foregroundStyle(color ?? .textDark)
+    }
+}
+
+struct LongQuestionTextModifierIpad: ViewModifier {
+    var color: Color?
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 32, maxSize: 40)
+        // Can customize color
+            .foregroundStyle(color ?? .textDark)
+    }
+}
+
 // Body text style: Apply for content in answers
 struct BodyTextModifier: ViewModifier {
     var color: Color?
     func body(content: Content) -> some View {
         content
-            .font(.custom("Lato-Regular", size: UIScreen.main.bounds.width * 0.045))
+            .scaledFont(name: "Lato-Regular", size: 16, maxSize: 18)
+            .foregroundStyle(color ?? .textDark)
+    }
+}
+
+// Body text style: Apply for content in answers
+struct BodyTextModifierIpad: ViewModifier {
+    var color: Color?
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "Lato-Regular", size: 30, maxSize: 34)
             .foregroundStyle(color ?? .textDark)
     }
 }
@@ -172,5 +263,44 @@ struct ScaledFont: ViewModifier {
 extension View {
     func scaledFont(name: String, size: Double, maxSize: Double) -> some View {
         self.modifier(ScaledFont(name: name, size: size, maxSize: maxSize))
+    }
+}
+
+// A generic view modifier that can apply any given `ViewModifier` at runtime.
+struct AnyViewModifier: ViewModifier {
+    
+    // Stores the modifier to be applied, as a closure that returns `AnyView`.
+    private let modifier: (Content) -> AnyView
+
+    // Initializer that takes any `ViewModifier` and stores it as a type-erased closure.
+    init<M: ViewModifier>(_ modifier: M) {
+        self.modifier = { content in AnyView(content.modifier(modifier)) }
+    }
+
+    // This method applies the stored modifier to the content.
+    func body(content: Content) -> some View {
+        modifier(content)
+    }
+}
+
+// Preview provider for SwiftUI canvas
+struct TimelineGame_Previews: PreviewProvider {
+    static var previews: some View {
+        TimelineGameView(
+            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
+            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
+        )
+//        
+        MatchingGameView(eventPairs: [
+            ("Chiến dịch Điện Biên Phủ", "CTTGT2 kết thúc"),
+            ("Event 2 Left", "Event 2 Right"),
+            ("Event 3 Left", "Event 3 Right"),
+            ("Event 4 Left", "Event 4 Right"),
+            ("Event 5 Left", "Event 5 Right")
+        ])
+        
+//        MultipleChoiceView()
+
+
     }
 }

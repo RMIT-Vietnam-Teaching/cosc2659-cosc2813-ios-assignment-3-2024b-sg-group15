@@ -30,8 +30,7 @@ struct CoverPageView: View {
                 
                 VStack(spacing: 60) {
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-                        .modifier(TitleTextModifier())
-                        .padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad())).padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
                         .multilineTextAlignment(.center)
                     
                     Image("cover")
