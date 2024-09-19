@@ -1,49 +1,51 @@
 import SwiftUI
 import FirebaseFirestore
 
-class MatchingGameViewModel: ObservableObject {
-    @Published var question: MatchingQuestion?
+class MatchingGameViewModel: QuestionViewModel {
     @Published var leftEvents: [MatchingEvent] = []
     @Published var rightEvents: [MatchingEvent] = []
     @Published var selectedLeftEventId: Int?
     @Published var selectedRightEventId: Int?
     @Published var isGameComplete = false
     
-    private var db = Firestore.firestore()
-    
-    // Fetch question from database
-    func fetchQuestion(from documentID: String) {
-        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
-            // Handle error
-            if let error = error {
-                print("Error fetching document: \(error)")
-            }
-            
-            // Fetch document
-            if let document = document, document.exists {
-                if let data = document.data() {
-                    let question = MatchingQuestion(documentID: document.documentID, data: data)
-                    // Set the question
-                    DispatchQueue.main.async {
-                        self?.question = question
-                        self?.initQuestion()
-                    }
-                }
-            }
-            else {
-                print("Document does not exist")
-            }
+    override init(question: QuestionProtocol, canFlip: Bool) {
+        super.init(question: question, canFlip: false)
+        if let question = question as? MatchingQuestion {
+            initQuestion(question: question)
         }
     }
     
+    // Fetch question from database
+//    func fetchQuestion(from documentID: String) {
+//        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
+//            // Handle error
+//            if let error = error {
+//                print("Error fetching document: \(error)")
+//            }
+//            
+//            // Fetch document
+//            if let document = document, document.exists {
+//                if let data = document.data() {
+//                    let question = MatchingQuestion(documentID: document.documentID, data: data)
+//                    // Set the question
+//                    DispatchQueue.main.async {
+//                        self?.question = question
+//                        self?.initQuestion()
+//                    }
+//                }
+//            }
+//            else {
+//                print("Document does not exist")
+//            }
+//        }
+//    }
+    
     // Initialize left and right events data
-    private func initQuestion() {
-        guard let question = question else { return }
-        
-        self.leftEvents = question.periods.enumerated().map { i, period  in
+    private func initQuestion(question: MatchingQuestion) {
+        self.leftEvents = question.left.enumerated().map { i, period  in
             MatchingEvent(id: i, text: period, correctMatchId: i)
         }
-        self.rightEvents = question.events.enumerated().map { i, period  in
+        self.rightEvents = question.right.enumerated().map { i, period  in
             MatchingEvent(id: i, text: period, correctMatchId: i)
         }
         self.leftEvents.shuffle()

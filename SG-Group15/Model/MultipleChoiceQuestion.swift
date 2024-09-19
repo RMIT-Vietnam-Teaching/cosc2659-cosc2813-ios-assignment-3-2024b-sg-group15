@@ -13,6 +13,7 @@ struct MultipleChoiceQuestion: Identifiable, QuestionProtocol {
     var question: String
     var choices: [String]
     var correct: String
+    var questionType: QuestionType = .multipleChoice
     func checkAnswer(_ answer: String) -> Bool {
         return correct == answer
     }

@@ -1,8 +1,7 @@
 import SwiftUI
 import FirebaseFirestore
 
-class TimelineGameViewModel: ObservableObject {
-    @Published var question: MatchingQuestion?
+class TimelineGameViewModel: QuestionViewModel {
     @Published var timePeriods: [TimePeriod] = []
     @Published var events: [TimelineEvent] = []
     @Published var isGameComplete = false
@@ -14,38 +13,40 @@ class TimelineGameViewModel: ObservableObject {
     let periodWidth: CGFloat = 170
     let periodHeight: CGFloat = 80
     
-    private var db = Firestore.firestore()
-    
-    // Fetch question from database
-    func fetchQuestion(from documentID: String) {
-        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
-            // Handle error
-            if let error = error {
-                print("Error fetching document: \(error)")
-            }
-            
-            // Fetch document
-            if let document = document, document.exists {
-                if let data = document.data() {
-                    let question = MatchingQuestion(documentID: document.documentID, data: data)
-                    // Set the question
-                    DispatchQueue.main.async {
-                        self?.question = question
-                        self?.initQuestion()
-                    }
-                }
-            }
-            else {
-                print("Document does not exist")
-            }
+    override init(question: QuestionProtocol, canFlip: Bool) {
+        super.init(question: question, canFlip: false)
+        if let question = question as? TimelineQuestion {
+            initQuestion(question: question)
         }
     }
     
+    // Fetch question from database
+//    func fetchQuestion(from documentID: String) {
+//        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
+//            // Handle error
+//            if let error = error {
+//                print("Error fetching document: \(error)")
+//            }
+//            
+//            // Fetch document
+//            if let document = document, document.exists {
+//                if let data = document.data() {
+//                    let question = MatchingQuestion(documentID: document.documentID, data: data)
+//                    // Set the question
+//                    DispatchQueue.main.async {
+//                        self?.question = question
+//                        self?.initQuestion()
+//                    }
+//                }
+//            }
+//            else {
+//                print("Document does not exist")
+//            }
+//        }
+//    }
+    
     // Initialize events and periods data
-    private func initQuestion() {
-        guard let question = question else { return
-            
-        }
+    private func initQuestion(question: TimelineQuestion) {
         // Add events
         self.events = question.events.enumerated().map { i, name in
             TimelineEvent(id: i, name: name, position: .zero, originalPosition: .zero)

@@ -80,7 +80,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             if chapterIndex == 0 {
                 return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
             } else {
-                let page = self.parent.chapters[chapterIndex].pages[pageIndex]
+                let page = self.parent.chapters[chapterIndex].questions[pageIndex]
                 return UIHostingController(rootView: SimpleView(page: page))
             }
         }
