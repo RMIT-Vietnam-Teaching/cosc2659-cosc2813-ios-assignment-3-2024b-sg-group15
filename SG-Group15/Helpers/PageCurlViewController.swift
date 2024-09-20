@@ -38,14 +38,18 @@ struct PageCurlViewController: UIViewControllerRepresentable {
     }
     
     // Convert the struct Chapter into obervable objects
-    func convertToVMs(chapters: [Chapter]) -> [ChapterWithQuestionVM] {
+    mutating func convertToVMs(chapters: [Chapter]) -> [ChapterWithQuestionVM] {
         let factory = DefaultQuestionViewModelFactory()
-        return chapters.map { chapter in
-            let questionVMs = chapter.questions.map { question in
-                factory.createViewModel(for: question, canFlip: true)
+        // Add an empty question VM for cover page
+        chaptersWithQuestionVMs.append(ChapterWithQuestionVM(id: "", questionVMs: []))
+        // Map each chapter to its ChapterWithQuestionVM
+            chaptersWithQuestionVMs += chapters.map { chapter in
+                let questionVMs = chapter.questions.map { question in
+                    factory.createViewModel(for: question, canFlip: true)
+                }
+                return ChapterWithQuestionVM(id: chapter.id, questionVMs: questionVMs)
             }
-            return ChapterWithQuestionVM(id: chapter.id, questionVMs: questionVMs)
-        }
+        return chaptersWithQuestionVMs
     }
     
     func makeUIViewController(context: Context) -> UIPageViewController {

@@ -24,13 +24,31 @@ class BookViewModel: ObservableObject {
                     let data = document.data()
                     if let chapter = Chapter(documentID: document.documentID, data: data) {
                         fetchedChapters.append(chapter)
-                        print("Chapter fetched")
+                        print(chapter.id)
                     }
                 }
                 
-                self?.chapters = fetchedChapters
-                // Fetch questions for each chapter
-                self?.fetchQuestionsForChapters()
+//                self?.chapters = fetchedChapters
+//                if let chapters = self?.chapters {
+//                    print(chapters.count)
+//                }
+//                // Fetch questions for each chapter
+//                self?.fetchQuestionsForChapters()
+//                if let chapters = self?.chapters {
+//                    print(chapters[0].questions.count)
+//                }
+                // Update the chapters once all are fetched
+               
+                           DispatchQueue.main.async {
+                               self?.chapters = fetchedChapters
+                               if let chapters = self?.chapters {
+                                   print("Fetched \(chapters.count) chapters")
+                               }
+                               
+                               // Fetch questions for each chapter
+                               self?.fetchQuestionsForChapters()
+                           }
+                           
             }
     }
     

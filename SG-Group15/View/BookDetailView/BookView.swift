@@ -33,7 +33,8 @@ struct BookView: View {
             
         }
         .onAppear {
-            bookVM.fetchBook(bookID: "dRvOZnmodGfBq9wrPd8g")
+            bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
+            print(bookVM.chapters.count)
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in
             if let chapter = notification.object as? Int {

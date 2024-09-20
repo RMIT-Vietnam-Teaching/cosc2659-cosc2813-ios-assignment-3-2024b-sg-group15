@@ -18,6 +18,13 @@ struct MultipleChoiceQuestion: Identifiable, QuestionProtocol {
         return correct == answer
     }
     
+    init(id: String, question: String, choices: [String], correct: String) {
+        self.id = id
+        self.question = question
+        self.choices = choices
+        self.correct = correct
+    }
+    
     
     // Initialize from database
     init?(documentID: String, data: [String: Any]) {
