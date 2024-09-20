@@ -32,7 +32,7 @@ struct MultipleChoiceView: View {
                 .padding(.horizontal, 10)
                 
                 Text(question.question)
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LongQuestionTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
                     .lineSpacing(10.0)
                 
                 VStack(spacing: 20) {

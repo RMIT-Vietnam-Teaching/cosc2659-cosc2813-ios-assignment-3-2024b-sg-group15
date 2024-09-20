@@ -15,9 +15,9 @@ struct OpenBookView: View {
     
     var body: some View {
         ZStack {
-            Color("beigeBackground")
-                .ignoresSafeArea()
-            
+//            Color("beigeBackground")
+//                .ignoresSafeArea()
+//            
             // Page (visible after the book opens)
             if isOpen {
                 BookDetailView(page: $coverPage)
@@ -31,6 +31,7 @@ struct OpenBookView: View {
                 
             }
         }
+        
     }
 }
 

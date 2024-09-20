@@ -99,3 +99,7 @@ struct LoginView: View {
     }
 }
 
+#Preview {
+    LoginView(userViewModel: UserViewModel())
+}
+

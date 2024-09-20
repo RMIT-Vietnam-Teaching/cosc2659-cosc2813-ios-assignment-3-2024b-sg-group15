@@ -60,7 +60,9 @@ struct MatchingGameView: View {
                         // Handle game completion
                     }
 //                    .padding()
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                    .foregroundColor(.white)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(ButtonModifier(background: .redBrown)))
                     .scaleEffect(viewModel.isGameComplete ? 1 : 0.5) // Adjust the scale effect for animation
                     .opacity(viewModel.isGameComplete ? 1 : 0)
                     

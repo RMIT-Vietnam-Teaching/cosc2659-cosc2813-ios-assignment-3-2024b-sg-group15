@@ -86,22 +86,12 @@ struct BookDetailView: View {
                     Button(action: {
                         goToCurrentChapter()
                     }, label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .frame(width: 260, height: 70)
-                                .foregroundColor(Color(.bookmarkColor1))
-                                .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
                             Text("Học")
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
-                              
-                                
-                        }
+//                            .foregroundColor(.white)
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(ButtonModifier(background: .bookmarkColor1)) : AnyViewModifier(ButtonModifier(background: .bookmarkColor1)))
                         
                     })
-                    .accessibilityLabel("Học")
-                    .accessibilityHint("Bắt đầu học")
                     .onChange(of: isScaled, initial: false) { _, newValue in
                         if newValue, let chapter = selectedChapter {
                             // Once scaled up, trigger a slight delay before flipping
