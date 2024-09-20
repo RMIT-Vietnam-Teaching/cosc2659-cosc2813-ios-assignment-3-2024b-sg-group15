@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-/// A custom text view that allows tapping on certain segments
-import SwiftUI
 
 /// A custom text view that allows tapping on certain segments
 struct TappableTextView: View {
@@ -20,7 +18,7 @@ struct TappableTextView: View {
         Text(getAttributedString())
             .fixedSize(horizontal: false, vertical: true)
             .multilineTextAlignment(.leading)
-            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LongQuestionTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
+            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
             .environment(\.openURL, OpenURLAction { url in
                 if url.scheme == "tappable", let index = Int(url.host ?? "") {
                     onTap(index)

@@ -65,7 +65,7 @@ struct WordView: View {
     var body: some View {
         ZStack {
             // Word background
-            RoundedRectangle(cornerRadius: 15)
+            RoundedRectangle(cornerRadius: 5)
                 .stroke(Color.darkRed, lineWidth: horizontalSizeClass == .compact ? 3 : 4)
                 .frame(width: width, height: height)
             
@@ -84,14 +84,20 @@ struct WordView: View {
     }
 }
 
-// WordsView: Displays the available words for filling in the blanks
 struct WordsView: View {
     @ObservedObject var viewModel: FillInBlankViewModel
     let wordWidth: CGFloat
     let wordHeight: CGFloat
+    let width: CGFloat
+    let height: CGFloat
+    
+    private var columns: [GridItem] {
+        let columnCount = min(3, max(2, (viewModel.words.count + 1) / 2))
+        return Array(repeating: GridItem(.flexible(), spacing: width * 0.02), count: columnCount)
+    }
     
     var body: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: wordWidth), spacing: 10)], spacing: 10) {
+        LazyVGrid(columns: columns, spacing: width * 0.05) {
             ForEach(viewModel.words) { word in
                 WordView(word: word, width: wordWidth, height: wordHeight)
                     .onTapGesture { viewModel.toggleWordPlacement(word) }

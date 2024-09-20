@@ -52,6 +52,9 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
+		E207861D2C9DAB7D008903CB /* QuestionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207861C2C9DAB7D008903CB /* QuestionProtocol.swift */; };
+		E207861F2C9DB4AD008903CB /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207861E2C9DB4AD008903CB /* EventView.swift */; };
+		E20786212C9DB4C9008903CB /* TimePeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20786202C9DB4C9008903CB /* TimePeriodView.swift */; };
 		E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29655382C94BD580099D136 /* TimelineGameModel.swift */; };
 		E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296553C2C94BDBE0099D136 /* TimelineGameView.swift */; };
 		E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */; };
@@ -106,6 +109,9 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		E207861C2C9DAB7D008903CB /* QuestionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProtocol.swift; sourceTree = "<group>"; };
+		E207861E2C9DB4AD008903CB /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		E20786202C9DB4C9008903CB /* TimePeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodView.swift; sourceTree = "<group>"; };
 		E29655382C94BD580099D136 /* TimelineGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineGameModel.swift; sourceTree = "<group>"; };
 		E296553C2C94BDBE0099D136 /* TimelineGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineGameView.swift; sourceTree = "<group>"; };
 		E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineGameViewModel.swift; sourceTree = "<group>"; };
@@ -191,6 +197,7 @@
 			children = (
 				393FC7182C8F46A200028F1D /* DemoModel.swift */,
 				E29655382C94BD580099D136 /* TimelineGameModel.swift */,
+				E207861C2C9DAB7D008903CB /* QuestionProtocol.swift */,
 				7594A6F72C969065000084FA /* User.swift */,
 				39FA155D2C95708F0054B99E /* PageModel.swift */,
 				39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */,
@@ -206,7 +213,7 @@
 				391848DA2C9B3587004B4367 /* PopUpView */,
 				E29B16B12C9B143000673121 /* FillInBlankGameView */,
 				398F19902C99AECA0023515B /* Note */,
-				E296553C2C94BDBE0099D136 /* TimelineGameView.swift */,
+				E20786222C9DB4FB008903CB /* TimelineView */,
 				E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */,
 				7594A7052C96C552000084FA /* AuthView */,
 				39FA15612C96056C0054B99E /* MultipleChoiceView */,
@@ -292,6 +299,16 @@
 				75AD4D4F2C947DBD00C8F37F /* Lato-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E20786222C9DB4FB008903CB /* TimelineView */ = {
+			isa = PBXGroup;
+			children = (
+				E296553C2C94BDBE0099D136 /* TimelineGameView.swift */,
+				E20786202C9DB4C9008903CB /* TimePeriodView.swift */,
+				E207861E2C9DB4AD008903CB /* EventView.swift */,
+			);
+			path = TimelineView;
 			sourceTree = "<group>";
 		};
 		E29B16A82C9B140D00673121 /* FillInBlank */ = {
@@ -411,6 +428,7 @@
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
 				398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */,
+				E207861D2C9DAB7D008903CB /* QuestionProtocol.swift in Sources */,
 				E29B16AF2C9B142B00673121 /* TappableTextView.swift in Sources */,
 				39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */,
 				398F19982C99AF940023515B /* Note.swift in Sources */,
@@ -421,6 +439,7 @@
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
+				E20786212C9DB4C9008903CB /* TimePeriodView.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
@@ -436,6 +455,7 @@
 				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
 				E29B16B02C9B142B00673121 /* FillInBlankSubView.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
+				E207861F2C9DB4AD008903CB /* EventView.swift in Sources */,
 				759101D52C96EFC300930574 /* WelcomeView.swift in Sources */,
 				7594A70B2C96D169000084FA /* SignUpView.swift in Sources */,
 				39FA15522C948D540054B99E /* SimpleView.swift in Sources */,

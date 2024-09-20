@@ -6,7 +6,10 @@ class TimelineGameViewModel: ObservableObject {
     @Published var isGameComplete = false
     @Published var showResult = false
     @Published var correctPlacements = 0
-    
+    @Published var correctEvents: Set<Int> = []
+    @Published var isSubmitted = false
+
+
     let eventWidth: CGFloat = 170
     let eventHeight: CGFloat = 80
     let periodWidth: CGFloat = 170
@@ -24,6 +27,15 @@ class TimelineGameViewModel: ObservableObject {
         }
         self.timePeriods.sort { $0.displayOrder < $1.displayOrder }
     }
+    func checkAnswer() {
+           correctEvents = Set(events.filter { $0.currentPeriod == $0.id }.map { $0.id })
+           isSubmitted = true
+       }
+   
+       
+       func isEventCorrect(_ event: TimelineEvent) -> Bool {
+           isSubmitted && correctEvents.contains(event.id)
+       }
     
     func nearestTimePeriod(to point: CGPoint) -> TimePeriod? {
         timePeriods.min(by: { distance(from: point, to: $0.position) < distance(from: point, to: $1.position) })
@@ -37,9 +49,9 @@ class TimelineGameViewModel: ObservableObject {
         isGameComplete = events.allSatisfy { $0.currentPeriod != nil }
     }
     
-    func checkAnswer() {
-        correctPlacements = events.filter { $0.currentPeriod == $0.id }.count
-        showResult = true
-    }
+//    func checkAnswer() {
+//        correctPlacements = events.filter { $0.currentPeriod == $0.id }.count
+//        showResult = true
+//    }
 }
 

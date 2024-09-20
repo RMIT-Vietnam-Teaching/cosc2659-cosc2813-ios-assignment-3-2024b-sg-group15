@@ -19,8 +19,8 @@ struct FillInBlankGameView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
-            let wordWidth = min(width * 0.33, 230)
-            let wordHeight = min(height * 0.1, 200)
+            let wordWidth = min(width * 0.25, 250)
+            let wordHeight = min(height * 0.05, 200)
             
             ZStack {
                 Image("background")
@@ -36,20 +36,20 @@ struct FillInBlankGameView: View {
                         ProgressBar()
                     }
                     .padding(.horizontal, 20)
-                    .padding(.top, geometry.safeAreaInsets.top)
+//                    .padding(.top, geometry.safeAreaInsets.top)
                     .padding(.bottom, 10)
                     
                     // Centering other elements
                     
-                    VStack(spacing: 20) {
+                    VStack(spacing: 60) {
                         Text("Fill in the blanks with the correct words")
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
-                            .padding()
-                        Spacer()
+                            .padding(.vertical,50)
 
+                        
                         SentenceView(viewModel: viewModel)
                             .padding(.horizontal)
-                        WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight)
+                        WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight,width: width,height: height)
                         Spacer()
                         CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
                             result = viewModel.checkAnswer()
@@ -71,7 +71,7 @@ struct FillInBlankGameView: View {
 
 #Preview {
     FillInBlankGameView(
-        words: ["Nhật-Pháp", "Trung Quốc", "Nhật", "chúng ta"],
+        words: ["Nhật-Pháp", "Trung Quốc", "Nhật", "chúng ta","Đức"],
         sentence: "Chỉ thị ......bắn nhau, và hành động của ......, ngày 12/3/1945 của Đảng đưa ra khẩu hiệu Đánh đuổi Phát xít ...... .",
         correctWords: ["Nhật-Pháp","chúng ta","Nhật"]
     )
