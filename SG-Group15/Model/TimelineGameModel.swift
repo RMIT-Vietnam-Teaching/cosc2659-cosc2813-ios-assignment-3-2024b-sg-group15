@@ -31,27 +31,4 @@ struct MatchingEvent: Identifiable {
     var isIncorrectMatch = false
 }
 
-struct TimelineQuestion: Identifiable, QuestionProtocol {
-    var id: String
-    var question: String
-    var periods: [String]
-    var events: [String]
-    var questionType: QuestionType = .timeline
-    
-    // Initialize from Firestore document ID and data
-    init?(documentID: String, data: [String: Any]) {
-        guard let question = data["question"] as? String,
-              let periods = data["periods"] as? [String],
-              let events = data["events"] as? [String] else {
-            return nil
-        }
-        
-        self.id = documentID
-        self.question = question
-        self.periods = periods
-        self.events = events
-    }
-}
-
-
 

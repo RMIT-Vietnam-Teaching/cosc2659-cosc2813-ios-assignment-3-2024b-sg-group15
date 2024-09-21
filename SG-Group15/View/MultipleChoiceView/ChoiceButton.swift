@@ -12,17 +12,18 @@ struct ChoiceButton: View {
 
     @State private var check: Bool = false
     @Binding var correct: Bool?
-    var question: MultipleChoiceQuestion
+    @Binding var question: MultipleChoiceQuestion
     @Binding var selected: String
     var index: Int
     
     var body: some View {
-        Button(action: {
-            if selected == "" {
-                withAnimation {
-                    selected = question.choices[index]
-                    check.toggle()
-                    correct = question.checkAnswer(selected)
+            Button(action: {
+                if selected == "" {
+                    withAnimation {
+                        selected = question.choices[index]
+                        check.toggle()
+                        checkCorrect()
+                    }
                 }
             }, label: {
                 HStack {
@@ -47,38 +48,42 @@ struct ChoiceButton: View {
                             .foregroundColor(.green)
                             .frame(width: horizontalSizeClass == .compact ? 10 : 20, height: horizontalSizeClass == .compact ? 10 : 20)
                     }
-
                 }
-            }
-            .padding(.horizontal, 10)
-            .padding(.vertical, 5)
-            .frame(width: UIScreen.main.bounds.width - 60) // Fixed width, but flexible height
-            .background {
-                if check && correct != nil {
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(correct! ? .correctBackground : .lightRed)
-                        .background {
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(correct! ? .correctButton : .wrongBackground)
-                        }
-                } else if selected != "" && question.choices[index] == question.correct {
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(.correctBackground)
-                        .background {
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(.correctButton)
-                        }
-                } else {
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(.primaryRed)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .frame(width: UIScreen.main.bounds.width - 60) // Fixed width, but flexible height
+                .background {
+                    if check && correct != nil {
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(correct! ? .correctBackground : .lightRed)
+                            .background {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(correct! ? .correctButton : .wrongBackground)
+                            }
+                    } else if selected != "" && question.choices[index] == question.correct {
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(.correctBackground)
+                            .background {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(.correctButton)
+                            }
+                    } else {
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.primaryRed)
+                    }
                 }
-            }
-        })
+            })
     }
     
+    func checkCorrect() {
+        if selected == question.correct {
+            correct = true
+        } else {
+            correct = false
+        }
+    }
 }
 
-<<<<<<< HEAD
 #Preview {
 //    MultipleChoiceViewIphone()
 //    MultipleChoiceViewIpad()
