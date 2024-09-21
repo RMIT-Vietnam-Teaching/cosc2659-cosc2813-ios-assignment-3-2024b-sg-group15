@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import GoogleSignIn
 import Firebase
+import FirebaseCore
 
 class UserViewModel: ObservableObject {
     // Manage user changes

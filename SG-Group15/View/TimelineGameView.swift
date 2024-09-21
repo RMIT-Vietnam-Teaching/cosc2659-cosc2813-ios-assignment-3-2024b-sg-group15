@@ -128,16 +128,21 @@ struct TimelineGameView: View {
                 }
                 
                 
-                if viewModel.isGameComplete {
-                   Button("Submit") {
+                if viewModel.isGameComplete == false {
+                   Button(action: {
                        withAnimation {
                            viewModel.checkAnswer()
                            showResultPopup = true
                            showPopUp = true
                        }
-                   }
-                   .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
-                   .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
+                   }, label: {
+                       Text("Submit")
+                           .foregroundColor(.white)
+                           .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
+                           .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(ButtonModifier(background: .redBrown)))
+                           .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
+                   })
+                   
                }
                 
                 if showPopUp {
@@ -174,6 +179,7 @@ struct EventView: View {
             // Event text
             Text(event.name)
                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center) // Center align for better readability
                 .minimumScaleFactor(0.5) // Allow text to shrink to 50% of its original size

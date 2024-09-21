@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */; };
 		391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391848DD2C9B35E4004B4367 /* PopUpView.swift */; };
+		391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391FD2392C9C8A99007A6AD9 /* BookMenuView.swift */; };
 		393FC7092C8F450600028F1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC7082C8F450600028F1D /* Assets.xcassets */; };
 		393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC70B2C8F450600028F1D /* Preview Assets.xcassets */; };
 		393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7182C8F46A200028F1D /* DemoModel.swift */; };
-		393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC71A2C8F46B200028F1D /* DemoViewModel.swift */; };
 		398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F19912C99AEE50023515B /* PencilCanvasView.swift */; };
 		398F19962C99AF5B0023515B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F19952C99AF5B0023515B /* DrawingView.swift */; };
 		398F19982C99AF940023515B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F19972C99AF940023515B /* Note.swift */; };
@@ -35,7 +35,6 @@
 		7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC92C99991700F38696 /* GoogleService-Info.plist */; };
 		75668E022C9183F90052F78C /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75668E012C9183F90052F78C /* Modifiers.swift */; };
 		75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75690EF32C99E06D00E4B2C3 /* ContentView.swift */; };
-		75690F032C99E33300E4B2C3 /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC71A2C8F46B200028F1D /* DemoViewModel.swift */; };
 		75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7042C8F450400028F1D /* SG_Group15App.swift */; };
 		75690F1F2C99E9A700E4B2C3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 75690F1E2C99E9A700E4B2C3 /* GoogleSignIn */; };
 		75690F212C99E9A700E4B2C3 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75690F202C99E9A700E4B2C3 /* GoogleSignInSwift */; };
@@ -68,12 +67,12 @@
 /* Begin PBXFileReference section */
 		391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonDismissableSheet.swift; sourceTree = "<group>"; };
 		391848DD2C9B35E4004B4367 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		391FD2392C9C8A99007A6AD9 /* BookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMenuView.swift; sourceTree = "<group>"; };
 		393FC7012C8F450400028F1D /* SG-Group15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SG-Group15.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		393FC7042C8F450400028F1D /* SG_Group15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SG_Group15App.swift; sourceTree = "<group>"; };
 		393FC7082C8F450600028F1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		393FC70B2C8F450600028F1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		393FC7182C8F46A200028F1D /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
-		393FC71A2C8F46B200028F1D /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
 		398F19912C99AEE50023515B /* PencilCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilCanvasView.swift; sourceTree = "<group>"; };
 		398F19952C99AF5B0023515B /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		398F19972C99AF940023515B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -221,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				E29B16A92C9B142100673121 /* FillInBlankViewModel.swift */,
-				393FC71A2C8F46B200028F1D /* DemoViewModel.swift */,
 				E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */,
 				E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */,
 				7594A6F92C969163000084FA /* UserViewModel.swift */,
@@ -248,6 +246,7 @@
 				39FA15552C948DBE0054B99E /* BookView.swift */,
 				39FA15572C948DF00054B99E /* OpenBookView.swift */,
 				39FA155F2C957CB10054B99E /* CoverPageView.swift */,
+				391FD2392C9C8A99007A6AD9 /* BookMenuView.swift */,
 			);
 			path = BookDetailView;
 			sourceTree = "<group>";
@@ -403,8 +402,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
-				75690F032C99E33300E4B2C3 /* DemoViewModel.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
+				391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */,
 				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
 				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
@@ -433,7 +432,6 @@
 				39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */,
 				398F199E2C99B2480023515B /* NoteManager.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
-				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
 				E29B16B02C9B142B00673121 /* FillInBlankSubView.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				759101D52C96EFC300930574 /* WelcomeView.swift in Sources */,
