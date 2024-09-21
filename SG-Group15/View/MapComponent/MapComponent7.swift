@@ -1,8 +1,8 @@
 //
-//  MapComponent6.swift
+//  MapComponent7.swift
 //  SG-Group15
 //
-//  Created by Anh Nguyen Ha Kieu on 21/9/24.
+//  Created by Nguyen Ha Kieu Anh on 21/9/24.
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import Foundation
 
 import SwiftUI
 
-struct MapComponent6: View {
+struct MapComponent7: View {
     let mapImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)]
     // Map points with custom x, y values for each device type
@@ -65,10 +65,10 @@ struct MapComponent6: View {
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
                                 ZStack{
-                                    GifImageView("swords", duration: 8, isVisible: $isFighting)
+                                    GifImageView("adventure", duration: 8, isVisible: $isFighting)
                                         .frame(width: 70, height: 70)
                                         .offset(animationOffset) // Slide animation offset
-                                        .position(x: 240, y: geo.size.height * getCorrectYPosition())
+                                        .position(x: 210, y: geo.size.height * getCorrectYPosition())
                                         .onAppear {
                                             withAnimation(.easeInOut(duration: 1.5)) {
                                                 animationOffset = .zero

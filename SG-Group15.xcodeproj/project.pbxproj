@@ -30,6 +30,8 @@
 		39FA15652C9606350054B99E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15642C9606350054B99E /* ProgressBar.swift */; };
 		39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15662C960D710054B99E /* ChoiceButton.swift */; };
 		39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */; };
+		55D1EE4C2C9F2D04000C9C26 /* MapComponent7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D1EE4B2C9F2D04000C9C26 /* MapComponent7.swift */; };
+		55D1EE4E2C9F304E000C9C26 /* adventure.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55D1EE4D2C9F304E000C9C26 /* adventure.gif */; };
 		7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */; };
 		7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC32C99827100F38696 /* Roboto-Thin.ttf */; };
 		7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC92C99991700F38696 /* GoogleService-Info.plist */; };
@@ -113,6 +115,8 @@
 		39FA15642C9606350054B99E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		39FA15662C960D710054B99E /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceQuestion.swift; sourceTree = "<group>"; };
+		55D1EE4B2C9F2D04000C9C26 /* MapComponent7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent7.swift; sourceTree = "<group>"; };
+		55D1EE4D2C9F304E000C9C26 /* adventure.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adventure.gif; sourceTree = "<group>"; };
 		7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7534ECC32C99827100F38696 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7534ECC92C99991700F38696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */,
 				CBCE14852C9EAA8600EBA21B /* GifSequence.swift */,
 				CBD8AFC22C9EA8C50018AF4D /* MapComponent1.swift */,
+				55D1EE4B2C9F2D04000C9C26 /* MapComponent7.swift */,
 				CBD8AFC32C9EA8C50018AF4D /* MapComponent2.swift */,
 				CBD8AFC42C9EA8C50018AF4D /* MapComponent3.swift */,
 				CBD8AFC52C9EA8C50018AF4D /* MapComponent4.swift */,
@@ -369,6 +374,7 @@
 				CB94B3612C9EE553005B77A7 /* bomb.gif */,
 				CB94B3632C9EEBD0005B77A7 /* swords.gif */,
 				CB94B3742C9F04FF005B77A7 /* fight.gif */,
+				55D1EE4D2C9F304E000C9C26 /* adventure.gif */,
 				CB94B35F2C9EDD3A005B77A7 /* explosion.gif */,
 				CB94B36E2C9EFAED005B77A7 /* shield.gif */,
 				CB94B36A2C9EF359005B77A7 /* tank.gif */,
@@ -480,6 +486,7 @@
 				CB94B3642C9EEBD0005B77A7 /* swords.gif in Resources */,
 				CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */,
 				CB94B3752C9F04FF005B77A7 /* fight.gif in Resources */,
+				55D1EE4E2C9F304E000C9C26 /* adventure.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +505,7 @@
 				CB94B36D2C9EF749005B77A7 /* DoiA1.swift in Sources */,
 				CBD8AFCB2C9EA8C50018AF4D /* MapComponent4.swift in Sources */,
 				CBD8AFCC2C9EA8C50018AF4D /* MapComponent1.swift in Sources */,
+				55D1EE4C2C9F2D04000C9C26 /* MapComponent7.swift in Sources */,
 				CBD8AFCD2C9EA8C50018AF4D /* MapComponent5.swift in Sources */,
 				CBD8AFCE2C9EA8C50018AF4D /* MapComponent3.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,

@@ -36,11 +36,11 @@ struct MapComponent3: View {
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
                             
-                            if !(point.name == correctAnswer && showAnimationImage) {
+                          
                                 
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
-                                                    positionY: calculateYPosition(for: geo.size.height, point: point), geoSize: geo.size)
+                                                    positionY: calculateYPosition(for: geo.size.height, point: point))
                                 }) {
                                     Text(point.name)
                                         .frame(
@@ -61,23 +61,15 @@ struct MapComponent3: View {
                                     y: calculateYPosition(for: geo.size.height, point: point)
                                 )
                                 .disabled(isSelectionMade())
-                            }
+                            
                             if showAnimationImage {
                                 ZStack{
-                                    GifImageView("explosion", duration: 8, isVisible: $isFighting)
-                                    
+                                    GifImageView("explosion", duration: 7, isVisible: $isFighting)
                                         .frame(width: 100, height: 100)
-                                        .offset(animationOffset) // Slide animation offset
-                                        .position(x: 130, y: geo.size.height * getCorrectYPosition())                                    .onAppear {
-                                            withAnimation(.easeInOut(duration: 1.5)) {
-                                                animationOffset = .zero
-                                                animationOpacity = 1.0
-                                                animationScale = 1.0
-                                            }
-                                        }}}
+                                        .offset(animationOffset) 
+                                                                        }}
                         }}
                           
-                    
                 )
                 .frame(width: geo.size.width, height: geo.size.height)
                 .aspectRatio(contentMode: .fit)
@@ -92,7 +84,7 @@ struct MapComponent3: View {
               selectedButton = name
               showResults = true
               showAnimationImage = true
-              animationOffset = CGSize(width: -40, height: 0)
+              animationOffset = CGSize(width: -17, height: -38)
                         animationOpacity = 0.0
                         animationScale = 0.5
           }
