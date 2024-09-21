@@ -21,6 +21,7 @@
 		398F199E2C99B2480023515B /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199D2C99B2470023515B /* NoteManager.swift */; };
 		398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199F2C99F5710023515B /* MultipleChoiceView.swift */; };
 		39FA15522C948D540054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15512C948D540054B99E /* SimpleView.swift */; };
+		39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15532C948D7D0054B99E /* BookDetailView.swift */; };
 		39FA15562C948DBE0054B99E /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15552C948DBE0054B99E /* BookView.swift */; };
 		39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15572C948DF00054B99E /* OpenBookView.swift */; };
 		39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15592C948E1A0054B99E /* PageCurlViewController.swift */; };
@@ -96,6 +97,7 @@
 		398F199D2C99B2470023515B /* NoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
 		398F199F2C99F5710023515B /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
 		39FA15512C948D540054B99E /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
+		39FA15532C948D7D0054B99E /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		39FA15552C948DBE0054B99E /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		39FA15572C948DF00054B99E /* OpenBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBookView.swift; sourceTree = "<group>"; };
 		39FA15592C948E1A0054B99E /* PageCurlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCurlViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				39FA15512C948D540054B99E /* SimpleView.swift */,
+				39FA15532C948D7D0054B99E /* BookDetailView.swift */,
 				39FA15572C948DF00054B99E /* OpenBookView.swift */,
 				39FA155F2C957CB10054B99E /* CoverPageView.swift */,
 				391FD2392C9C8A99007A6AD9 /* BookMenuView.swift */,
@@ -482,6 +485,7 @@
 				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
 				391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */,
 				E29B16A52C9B140000673121 /* FillInBlankModel.swift in Sources */,
+				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
@@ -497,6 +501,7 @@
 				398F199E2C99B2480023515B /* NoteManager.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				E29B16B02C9B142B00673121 /* FillInBlankSubView.swift in Sources */,
+				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				758EDC8C2C9C55E90041B9F1 /* MultipleChoiceView.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
@@ -504,6 +509,8 @@
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
 				75B1ADEE2C9C42EC00188EDF /* DefaultQuestionVMFactory.swift in Sources */,
 				75A17E152C9ACAAA00A09F22 /* TimelineGameView.swift in Sources */,
+				75B1ADE62C9C2F9B00188EDF /* BookDetailView.swift in Sources */,
+				39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */,
 				75B1ADE22C9C28C700188EDF /* Chapter.swift in Sources */,
 				758EDC8E2C9C81A90041B9F1 /* Book.swift in Sources */,
 				75B1ADEA2C9C369300188EDF /* QuestionViewModel.swift in Sources */,
