@@ -74,11 +74,11 @@ struct WordView: View {
             
             // Word text
             Text(word.text)
+                .minimumScaleFactor(0.3)
+                .lineLimit(2)
                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.5)
-                .lineLimit(3)
                 .padding(8)
         }
         .frame(width: width, height: height)
