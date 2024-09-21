@@ -1,5 +1,5 @@
 //
-//  BookDetailViewIphone.swift
+//  BookDetailView.swift
 //  SG-Group15
 //
 //  Created by Nana on 13/9/24.
@@ -16,6 +16,8 @@ struct BookDetailView: View {
     
     var body: some View {
         ZStack {
+            Color.beigeBackground
+                .ignoresSafeArea(.all)
             Group {
                 ZStack(alignment: .top) {
                     Image("background")
@@ -68,15 +70,13 @@ struct BookDetailView: View {
                 VStack(spacing: 40) {
                     Spacer()
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-//                        .font(.title)
-//                        .fontWeight(.bold)
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeTitleTextModifier()) : AnyViewModifier(LargeTitleTextModifierIpad()))
                         .multilineTextAlignment(.center)
                     
                     Spacer()
                     
                     Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
-                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                        .font(.system(size: 30))
                         .lineSpacing(10.0)
                     
                     Spacer()
@@ -123,9 +123,4 @@ struct BookDetailView: View {
     func goToCurrentChapter() {
         NotificationCenter.default.post(name: NSNotification.Name("GoToCurrentChapter"), object: nil)
     }
-}
-
-
-#Preview {
-    BookDetailView(page: .constant(CoverPage(title: "11", content: "11")))
 }

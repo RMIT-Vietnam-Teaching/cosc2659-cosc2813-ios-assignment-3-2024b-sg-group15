@@ -10,9 +10,8 @@ import SwiftUI
 struct MultipleChoiceView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
-    @State private var question = MultipleChoiceQuestion(question: "Điền thêm từ còn thiếu trong nhận định của Đảng ta tại Hội nghị Trung Ương 5/1941: \"Cuộc cách mạng Đông Dương trong giai đoạn hiện tại là một cuộc cách mạng ...\"", choices: [
-        "tư sản dân quyền", "dân chủ tư sản", "xã hội chủ nghĩa", "dân tộc giải phóng"
-    ], correct: "dân tộc giải phóng")
+    @ObservedObject var questionVM:  MutipleChoiceViewModel
+    
     @State private var selected: String = ""
     @State private var correct: Bool?
     
@@ -30,14 +29,13 @@ struct MultipleChoiceView: View {
                     ProgressBar()
                 }
                 .padding(.horizontal, 10)
+                Text(questionVM.question.question)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
+                    .lineSpacing(10.0)
                 
-                Text(question.question)
-                    .lineSpacing(horizontalSizeClass == .compact ? 20.0 : 30.0)
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(HeadlineTextModifier()) : AnyViewModifier(HeadlineTextModifierIpad()))
-                
-                VStack(spacing: 40) {
-                    ForEach(Array(zip(question.choices.indices, question.choices)), id: \.0) { index, choice in
-                        ChoiceButton(correct: $correct, question: $question, selected: $selected, index: index)
+                VStack(spacing: 20) {
+                    ForEach(Array(zip(questionVM.question.choices.indices, questionVM.question.choices)), id: \.0) { index, choice in
+                        ChoiceButton(correct: $correct, question: questionVM.question as! MultipleChoiceQuestion, selected: $selected, index: index)
                     }
                 }
                 

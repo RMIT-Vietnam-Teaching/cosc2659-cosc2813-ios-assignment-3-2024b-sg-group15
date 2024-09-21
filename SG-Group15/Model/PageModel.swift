@@ -19,11 +19,6 @@ class Page: ObservableObject, Identifiable {
     }
 }
 
-// Chapter model containing an array of pages
-struct Chapter: Identifiable {
-    let id: UUID = UUID()
-    var pages: [Page]
-}
 
 struct CoverPage: Identifiable, Codable {
     var id: UUID = UUID()

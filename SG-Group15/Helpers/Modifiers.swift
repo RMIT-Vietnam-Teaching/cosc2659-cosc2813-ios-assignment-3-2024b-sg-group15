@@ -139,6 +139,17 @@ struct LargeTitleTextModifierIpad: ViewModifier {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 75, maxSize: 100)
             .foregroundStyle(.textDark)
+struct ButtonModifier: ViewModifier {
+    var background: Color
+
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 260, height: 70)
+            .background(background)
+            .foregroundStyle(.white)
+            .cornerRadius(15)
+            .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
+
     }
 }
 
@@ -230,7 +241,7 @@ struct HeadlineTextModifierIpad: ViewModifier {
     }
 }
 
-struct LongQuestionTextModifier: ViewModifier {
+struct SubTitleTextModifier: ViewModifier {
     var color: Color?
     func body(content: Content) -> some View {
         content
@@ -370,25 +381,3 @@ struct AnyViewModifier: ViewModifier {
     }
 }
 
-// Preview provider for SwiftUI canvas
-//struct TimelineGame_Previews: PreviewProvider {
-//    static var previews: some View {
-////        TimelineGameView(
-////            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
-////            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
-////        )
-//////        
-////        MatchingGameView(eventPairs: [
-////            ("Chiến dịch Điện Biên Phủ", "CTTGT2 kết thúc"),
-////            ("Event 2 Left", "Event 2 Right"),
-////            ("Event 3 Left", "Event 3 Right"),
-////            ("Event 4 Left", "Event 4 Right"),
-////            ("Event 5 Left", "Event 5 Right")
-////        ])
-//        
-////        LoginView(userViewModel: UserViewModel())
-////        MultipleChoiceView()
-//
-//
-//    }
-//}
