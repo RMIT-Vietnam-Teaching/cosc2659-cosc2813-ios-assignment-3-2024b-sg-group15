@@ -30,6 +30,18 @@
 		39FA15652C9606350054B99E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15642C9606350054B99E /* ProgressBar.swift */; };
 		39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15662C960D710054B99E /* ChoiceButton.swift */; };
 		39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */; };
+		5523D76D2C9DEA5D00AD325D /*  BacGiangView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7672C9DEA5D00AD325D /*  BacGiangView.swift */; };
+		5523D76E2C9DEA5D00AD325D /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7682C9DEA5D00AD325D /*  HocMonView.swift */; };
+		5523D76F2C9DEA5D00AD325D /* DongNaiThuongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7692C9DEA5D00AD325D /* DongNaiThuongView.swift */; };
+		5523D7702C9DEA5D00AD325D /* TanTraoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D76A2C9DEA5D00AD325D /* TanTraoView.swift */; };
+		5523D7712C9DEA5D00AD325D /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D76B2C9DEA5D00AD325D /* VoNhaiView.swift */; };
+		5523D7792C9DEA6300AD325D /* MapComponent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7722C9DEA6300AD325D /* MapComponent1.swift */; };
+		5523D77A2C9DEA6300AD325D /* MapComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7732C9DEA6300AD325D /* MapComponent2.swift */; };
+		5523D77B2C9DEA6300AD325D /* MapComponent3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7742C9DEA6300AD325D /* MapComponent3.swift */; };
+		5523D77C2C9DEA6300AD325D /* MapComponent4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7752C9DEA6300AD325D /* MapComponent4.swift */; };
+		5523D77D2C9DEA6300AD325D /* MapComponent5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7762C9DEA6300AD325D /* MapComponent5.swift */; };
+		5523D77E2C9DEA6300AD325D /* PositionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7772C9DEA6300AD325D /* PositionCalculation.swift */; };
+		5523D7822C9DEED500AD325D /* WarAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523D7812C9DEED500AD325D /* WarAnimationView.swift */; };
 		7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */; };
 		7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC32C99827100F38696 /* Roboto-Thin.ttf */; };
 		7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC92C99991700F38696 /* GoogleService-Info.plist */; };
@@ -91,6 +103,18 @@
 		39FA15642C9606350054B99E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		39FA15662C960D710054B99E /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceQuestion.swift; sourceTree = "<group>"; };
+		5523D7672C9DEA5D00AD325D /*  BacGiangView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " BacGiangView.swift"; sourceTree = "<group>"; };
+		5523D7682C9DEA5D00AD325D /*  HocMonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
+		5523D7692C9DEA5D00AD325D /* DongNaiThuongView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DongNaiThuongView.swift; sourceTree = "<group>"; };
+		5523D76A2C9DEA5D00AD325D /* TanTraoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TanTraoView.swift; sourceTree = "<group>"; };
+		5523D76B2C9DEA5D00AD325D /* VoNhaiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoNhaiView.swift; sourceTree = "<group>"; };
+		5523D7722C9DEA6300AD325D /* MapComponent1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent1.swift; sourceTree = "<group>"; };
+		5523D7732C9DEA6300AD325D /* MapComponent2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent2.swift; sourceTree = "<group>"; };
+		5523D7742C9DEA6300AD325D /* MapComponent3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent3.swift; sourceTree = "<group>"; };
+		5523D7752C9DEA6300AD325D /* MapComponent4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent4.swift; sourceTree = "<group>"; };
+		5523D7762C9DEA6300AD325D /* MapComponent5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent5.swift; sourceTree = "<group>"; };
+		5523D7772C9DEA6300AD325D /* PositionCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCalculation.swift; sourceTree = "<group>"; };
+		5523D7812C9DEED500AD325D /* WarAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarAnimationView.swift; sourceTree = "<group>"; };
 		7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7534ECC32C99827100F38696 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7534ECC92C99991700F38696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -203,6 +227,8 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5523D7782C9DEA6300AD325D /* MapComponent */,
+				5523D76C2C9DEA5D00AD325D /* Map */,
 				391848DA2C9B3587004B4367 /* PopUpView */,
 				E29B16B12C9B143000673121 /* FillInBlankGameView */,
 				398F19902C99AECA0023515B /* Note */,
@@ -259,6 +285,34 @@
 				398F199F2C99F5710023515B /* MultipleChoiceView.swift */,
 			);
 			path = MultipleChoiceView;
+			sourceTree = "<group>";
+		};
+		5523D76C2C9DEA5D00AD325D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				5523D7672C9DEA5D00AD325D /*  BacGiangView.swift */,
+				5523D7682C9DEA5D00AD325D /*  HocMonView.swift */,
+				5523D7692C9DEA5D00AD325D /* DongNaiThuongView.swift */,
+				5523D76A2C9DEA5D00AD325D /* TanTraoView.swift */,
+				5523D76B2C9DEA5D00AD325D /* VoNhaiView.swift */,
+				5523D7812C9DEED500AD325D /* WarAnimationView.swift */,
+			);
+			name = Map;
+			path = "../../../../Downloads/cosc2659-cosc2813-ios-assignment-3-2024b-sg-group15-MapGame/SG-Group15/View/Map";
+			sourceTree = "<group>";
+		};
+		5523D7782C9DEA6300AD325D /* MapComponent */ = {
+			isa = PBXGroup;
+			children = (
+				5523D7722C9DEA6300AD325D /* MapComponent1.swift */,
+				5523D7732C9DEA6300AD325D /* MapComponent2.swift */,
+				5523D7742C9DEA6300AD325D /* MapComponent3.swift */,
+				5523D7752C9DEA6300AD325D /* MapComponent4.swift */,
+				5523D7762C9DEA6300AD325D /* MapComponent5.swift */,
+				5523D7772C9DEA6300AD325D /* PositionCalculation.swift */,
+			);
+			name = MapComponent;
+			path = "../../../../Downloads/cosc2659-cosc2813-ios-assignment-3-2024b-sg-group15-MapGame/SG-Group15/View/MapComponent";
 			sourceTree = "<group>";
 		};
 		75668E002C9183D70052F78C /* Helpers */ = {
@@ -404,6 +458,7 @@
 			files = (
 				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
 				75690F032C99E33300E4B2C3 /* DemoViewModel.swift in Sources */,
+				5523D77A2C9DEA6300AD325D /* MapComponent2.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
 				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
@@ -411,8 +466,10 @@
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
 				398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */,
+				5523D77C2C9DEA6300AD325D /* MapComponent4.swift in Sources */,
 				E29B16AF2C9B142B00673121 /* TappableTextView.swift in Sources */,
 				39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */,
+				5523D77B2C9DEA6300AD325D /* MapComponent3.swift in Sources */,
 				398F19982C99AF940023515B /* Note.swift in Sources */,
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
 				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
@@ -425,22 +482,31 @@
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
+				5523D77E2C9DEA6300AD325D /* PositionCalculation.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
 				398F19962C99AF5B0023515B /* DrawingView.swift in Sources */,
+				5523D76D2C9DEA5D00AD325D /*  BacGiangView.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
 				E29B16A72C9B140900673121 /* FillInBlankQuestion.swift in Sources */,
 				39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */,
+				5523D76F2C9DEA5D00AD325D /* DongNaiThuongView.swift in Sources */,
 				398F199E2C99B2480023515B /* NoteManager.swift in Sources */,
+				5523D7792C9DEA6300AD325D /* MapComponent1.swift in Sources */,
+				5523D7702C9DEA5D00AD325D /* TanTraoView.swift in Sources */,
+				5523D76E2C9DEA5D00AD325D /*  HocMonView.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				393FC71B2C8F46B200028F1D /* DemoViewModel.swift in Sources */,
 				E29B16B02C9B142B00673121 /* FillInBlankSubView.swift in Sources */,
 				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				759101D52C96EFC300930574 /* WelcomeView.swift in Sources */,
+				5523D7822C9DEED500AD325D /* WarAnimationView.swift in Sources */,
 				7594A70B2C96D169000084FA /* SignUpView.swift in Sources */,
 				39FA15522C948D540054B99E /* SimpleView.swift in Sources */,
 				75668E022C9183F90052F78C /* Modifiers.swift in Sources */,
 				75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */,
+				5523D7712C9DEA5D00AD325D /* VoNhaiView.swift in Sources */,
+				5523D77D2C9DEA6300AD325D /* MapComponent5.swift in Sources */,
 				E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */,
 				7594A7092C96D0CF000084FA /* LoginView.swift in Sources */,
 				7594A6F82C969065000084FA /* User.swift in Sources */,
