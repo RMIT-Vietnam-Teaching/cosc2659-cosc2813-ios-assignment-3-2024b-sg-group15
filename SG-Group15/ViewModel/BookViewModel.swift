@@ -4,9 +4,11 @@ import FirebaseFirestore
 class BookViewModel: ObservableObject {
     @Published var chapters: [Chapter] = []
     private var db = Firestore.firestore()
-    
+    @Published var isLoading: Bool = true
+
     // Fetch the list of chapters for a given book
     func fetchBook(bookID: String) {
+//        print("running")
         db.collection("chapters")
             .whereField("bookID", isEqualTo: bookID)
             .getDocuments { [weak self] snapshot, error in
@@ -20,47 +22,44 @@ class BookViewModel: ObservableObject {
                 }
                 
                 var fetchedChapters: [Chapter] = []
+                let group = DispatchGroup() // To handle async fetching for all chapters
+                
                 for document in documents {
                     let data = document.data()
                     if let chapter = Chapter(documentID: document.documentID, data: data) {
                         fetchedChapters.append(chapter)
                         print(chapter.id)
+                        
+                        // Fetch questions for each chapter
+                        group.enter() // Enter dispatch group
+                        self?.fetchQuestions(for: chapter) { fetchedQuestions in
+                            if let index = fetchedChapters.firstIndex(where: { $0.id == chapter.id }) {
+                                fetchedChapters[index].questions = fetchedQuestions
+                            }
+                            group.leave() // Leave dispatch group after questions are fetched
+                        }
                     }
                 }
                 
-//                self?.chapters = fetchedChapters
-//                if let chapters = self?.chapters {
-//                    print(chapters.count)
-//                }
-//                // Fetch questions for each chapter
-//                self?.fetchQuestionsForChapters()
-//                if let chapters = self?.chapters {
-//                    print(chapters[0].questions.count)
-//                }
-                // Update the chapters once all are fetched
-               
-                           DispatchQueue.main.async {
-                               self?.chapters = fetchedChapters
-                               if let chapters = self?.chapters {
-                                   print("Fetched \(chapters.count) chapters")
-                               }
-                               
-                               // Fetch questions for each chapter
-                               self?.fetchQuestionsForChapters()
-                           }
-                           
+                // Wait for all fetches to complete
+                group.notify(queue: .main) {
+                    // Update the chapters with all the data and set loading to false
+                    self?.chapters = fetchedChapters
+                    self?.isLoading = false // Data is fully loaded
+                    print("Fetched \(fetchedChapters.count) chapters with questions")
+                }
             }
     }
     
-    private func fetchQuestionsForChapters() {
-        for chapter in chapters {
-            fetchQuestions(for: chapter)
-            print("Questions fetched")
-        }
-    }
+//    private func fetchQuestionsForChapters() {
+//        for chapter in chapters {
+//            fetchQuestions(for: chapter)
+//            print("Questions fetched")
+//        }
+//    }
     
     // Fetch the list of questions of a chapter
-    private func fetchQuestions(for chapter: Chapter) {
+    private func fetchQuestions(for chapter: Chapter, completion: @escaping ([QuestionProtocol]) -> Void) {
         // Query the questions
         db.collection("questions")
             .whereField("chapterID", isEqualTo: chapter.id)
@@ -68,37 +67,41 @@ class BookViewModel: ObservableObject {
                 // Handle error
                 if let error = error {
                     print("Error fetching questions: \(error)")
+                    completion([]) // Return an empty array if there's an error
                     return
                 }
-                // Check if a chapter has any question
+                
+                // Check if a chapter has any questions
                 guard let documents = snapshot?.documents else {
                     print("No question found")
+                    completion([]) // Return an empty array if no questions found
                     return
                 }
                 
                 var questions: [QuestionProtocol] = []
-                // Decode question document to appropriate question type
+                // Decode each document into the appropriate question type
                 for docu in documents {
                     let data = docu.data()
-                    // Create multiple choice question
+                    
+                    // Create a MultipleChoiceQuestion
                     if let multipleChoice = MultipleChoiceQuestion(documentID: docu.documentID, data: data) {
                         questions.append(multipleChoice)
-                        print("Question fetched")
+                        print("MultipleChoiceQuestion fetched")
                     }
+                    // Create a MatchingQuestion
                     else if let matching = MatchingQuestion(documentID: docu.documentID, data: data) {
                         questions.append(matching)
-                        print("Question fetched")
+                        print("MatchingQuestion fetched")
                     }
+                    // Create a TimelineQuestion
                     else if let timeline = TimelineQuestion(documentID: docu.documentID, data: data) {
                         questions.append(timeline)
-                        print("Question fetched")
+                        print("TimelineQuestion fetched")
                     }
                 }
-                // Update the chapter's questions
-                if let index = self.chapters.firstIndex(where: { $0.id == chapter.id }) {
-                    self.chapters[index].questions = questions
-                }
                 
+                // Pass the fetched questions to the completion handler
+                completion(questions)
             }
     }
 }

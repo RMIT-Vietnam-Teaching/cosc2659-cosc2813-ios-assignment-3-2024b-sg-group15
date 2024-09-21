@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var bookVM = BookViewModel()
+
     var body: some View {
-        WelcomeView()
+        Text("123")
+            .onAppear {
+                bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
+                print(bookVM.chapters.count)
+            }
+            
     }
 }
 

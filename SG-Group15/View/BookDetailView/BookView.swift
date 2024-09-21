@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookView: View {
     @StateObject private var bookVM = BookViewModel()
-    @State private var currentChapterIndex: Int? = nil  // Use nil for the initial landing page
+    @State private var currentChapterIndex: Int? = 0 // Use nil for the initial landing page
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
             [true, false, false], // Chapter 1: Page 2 cannot flip
@@ -23,18 +23,33 @@ struct BookView: View {
     
     var body: some View {
         VStack {
-            PageCurlViewController(
-                chapters: bookVM.chapters, coverPage: $coverPage,
-                       currentChapterIndex: $currentChapterIndex,
-                       currentPageIndex: $currentPageIndex
-                   )
-            .edgesIgnoringSafeArea(.all)
-            
-            
+            if bookVM.isLoading {
+                            // Show a loading view while the data is being fetched
+                            ProgressView("Loading book data...")
+                                .font(.largeTitle)
+                                .padding()
+            } else {
+                // Only show PageCurlViewController when data is ready
+                PageCurlViewController(
+                    chapters: $bookVM.chapters,
+                    coverPage: $coverPage,
+                    currentChapterIndex: $currentChapterIndex,
+                    currentPageIndex: $currentPageIndex
+                )
+                .edgesIgnoringSafeArea(.all)
+            }
+//            PageCurlViewController(
+//                chapters: bookVM.chapters, coverPage: $coverPage,
+//                       currentChapterIndex: $currentChapterIndex,
+//                       currentPageIndex: $currentPageIndex
+//                   )
+//            .edgesIgnoringSafeArea(.all)
+//            
+//            
         }
         .onAppear {
             bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
-            print(bookVM.chapters.count)
+//            print(bookVM.chapters.count)
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in
             if let chapter = notification.object as? Int {
