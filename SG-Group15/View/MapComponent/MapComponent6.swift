@@ -66,9 +66,9 @@ struct MapComponent6: View {
                             if showAnimationImage {
                                 ZStack{
                                     GifImageView("swords", duration: 8, isVisible: $isFighting)
-                                        .frame(width: 70, height: 70)
+                                        .frame(width: horizontalSizeClass == .compact ? 70 : 120, height: horizontalSizeClass == .compact ? 70 : 120)
                                         .offset(animationOffset) // Slide animation offset
-                                        .position(x: 240, y: geo.size.height * getCorrectYPosition())
+                                        .position(x: horizontalSizeClass == .compact ? 240 : 510, y: geo.size.height * getCorrectYPosition())
                                         .onAppear {
                                             withAnimation(.easeInOut(duration: 1.5)) {
                                                 animationOffset = .zero
@@ -92,7 +92,7 @@ struct MapComponent6: View {
             selectedButton = name
             showResults = true
             showAnimationImage = true
-            animationOffset = CGSize(width: -340, height: 0)
+            animationOffset = CGSize(width: -400, height: 0)
             animationOpacity = 0.0
             animationScale = 0.5
         }
@@ -140,20 +140,20 @@ struct MapComponent6: View {
     
     // Function to calculate button width based on device type and orientation
     func customButtonWidth(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.10 : size.width * 0.13
+        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.10 : size.width * 0.09
         return baseWidth * multiplier
     }
 
     // Function to calculate button height based on device type and orientation
     func customButtonHeight(for size: CGSize, multiplier: CGFloat ) -> CGFloat {
-        let baseHeight = horizontalSizeClass == .compact ? size.height * 0.03 : size.height * 0.06
+        let baseHeight = horizontalSizeClass == .compact ? size.height * 0.03 : size.height * 0.04
         
         return baseHeight * multiplier
     }
     
     // Dynamic text size based on whether it's an iPad or iPhone
     func dynamicTextSize() -> CGFloat {
-          return horizontalSizeClass == .compact ? 16 : 50
+          return horizontalSizeClass == .compact ? 16 : 34
           
       }
     
