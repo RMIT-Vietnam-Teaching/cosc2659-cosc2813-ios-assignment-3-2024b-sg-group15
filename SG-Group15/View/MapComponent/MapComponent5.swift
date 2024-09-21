@@ -11,7 +11,6 @@ import SwiftUI
 
 struct MapComponent5: View {
     let mapImage: String
-    let animationImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)]
     // Map points with custom x, y values for each device type
     
@@ -25,7 +24,7 @@ struct MapComponent5: View {
     // Offset for slide animation
     @State private var animationOpacity = 0.0 // For fading in
     @State private var animationScale: CGFloat = 0.5 // For scaling the image
-    
+    @State private var isFighting = true
     var body: some View {
         GeometryReader { geo in
             // The image of the map
@@ -64,11 +63,10 @@ struct MapComponent5: View {
                             }
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
-                                Image(animationImage)
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
+                                GifImageView("shield", duration: 8, isVisible: $isFighting)
+                                    .frame(width: 70, height: 70)
                                     .offset(animationOffset) // Slide animation offset
-                                    .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())
+                                    .position(x: 75, y: geo.size.height * getCorrectYPosition())
                                     .onAppear {
                                         withAnimation(.easeInOut(duration: 1.5)) {
                                             animationOffset = .zero

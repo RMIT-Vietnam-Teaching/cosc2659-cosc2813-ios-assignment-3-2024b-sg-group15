@@ -17,7 +17,7 @@ struct DongNaiThuongView: View {
     ]
 
     var body: some View {
-        MapComponent4(mapImage: "DongNaiThuong", animationImage: "cover", mapPoints: mapPoints, correctAnswer: "Đồng Nai Thượng")
+        MapComponent4(mapImage: "DongNaiThuong",  mapPoints: mapPoints, correctAnswer: "Đồng Nai Thượng")
                
                 
         }

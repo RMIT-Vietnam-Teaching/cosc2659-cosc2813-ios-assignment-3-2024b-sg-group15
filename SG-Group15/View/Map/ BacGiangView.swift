@@ -18,7 +18,7 @@ struct BacGiangView: View {
     ]
     
     var body: some View {
-        MapComponent5(mapImage: "BacGiang", animationImage: "cover", mapPoints: mapPoints, correctAnswer: "Bắc Giang")
+        MapComponent5(mapImage: "BacGiang", mapPoints: mapPoints, correctAnswer: "Bắc Giang")
            
             
     }

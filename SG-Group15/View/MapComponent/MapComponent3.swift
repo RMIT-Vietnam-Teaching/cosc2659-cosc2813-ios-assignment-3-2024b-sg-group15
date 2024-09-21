@@ -42,7 +42,7 @@ struct MapComponent3: View {
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
                             
-
+                            if !(point.name == correctAnswer && showBomb) {
                                 
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
@@ -84,7 +84,7 @@ struct MapComponent3: View {
                                     GifSequence("explosion", duration: 1, isVisible: $isExplosion)
                                         .frame(width: 150, height: 150) // Adjust explosion size
                                         .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition()) // Correct positioning
-                                }                        }}
+                                }                        }}}
                     
                 )
                 .frame(width: geo.size.width, height: geo.size.height)

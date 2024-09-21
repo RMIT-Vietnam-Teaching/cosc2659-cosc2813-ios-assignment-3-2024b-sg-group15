@@ -10,7 +10,6 @@ import SwiftUI
 
 struct MapComponent4: View {
     let mapImage: String
-    let animationImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)]
     // Map points with custom x, y values for each device type
     
@@ -24,7 +23,7 @@ struct MapComponent4: View {
     // Offset for slide animation
     @State private var animationOpacity = 0.0 // For fading in
     @State private var animationScale: CGFloat = 0.5 // For scaling the image
-    
+    @State private var isFighting = true
     var body: some View {
         GeometryReader { geo in
             // The image of the map
@@ -35,7 +34,7 @@ struct MapComponent4: View {
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
                             
-                            if !(point.name == correctAnswer && showAnimationImage) {
+                          
                                 
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
@@ -60,21 +59,22 @@ struct MapComponent4: View {
                                     y: calculateYPosition(for: geo.size.height, point: point)
                                 )
                                 .disabled(isSelectionMade())
-                            }
+                            
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
-                                Image(animationImage)
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .offset(animationOffset) // Slide animation offset
-                                    .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())
-                                    .onAppear {
-                                        withAnimation(.easeInOut(duration: 1.5)) {
-                                            animationOffset = .zero
-                                            animationOpacity = 1.0
-                                            animationScale = 1.0
-                                        }
-                                    }}
+                                ZStack{
+                                    GifImageView("tank", duration: 8, isVisible: $isFighting)
+                                    
+                                        .frame(width: 80, height: 80)
+                                        .offset(animationOffset) // Slide animation offset
+                                        .position(x: 165, y: geo.size.height * getCorrectYPosition())
+                                        .onAppear {
+                                            withAnimation(.easeInOut(duration: 1.5)) {
+                                                animationOffset = .zero
+                                                animationOpacity = 1.0
+                                                animationScale = 1.0
+                                            }
+                                        }}}
                         }}
                 )
                 .frame(width: geo.size.width, height: geo.size.height)
@@ -84,13 +84,14 @@ struct MapComponent4: View {
         .edgesIgnoringSafeArea(.all)
     }
     
+
     // Handle the button click logic and slide-in animation
     func handleSelection(for name: String, positionX: CGFloat, positionY: CGFloat) {
         if selectedButton == nil {
             selectedButton = name
             showResults = true
             showAnimationImage = true
-            animationOffset = CGSize(width: -40, height: 0)
+            animationOffset = CGSize(width: -60, height: 0)
             animationOpacity = 0.0
             animationScale = 0.5
         }
