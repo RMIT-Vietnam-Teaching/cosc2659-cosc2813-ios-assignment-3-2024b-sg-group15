@@ -129,16 +129,20 @@ struct MediumButtonModifierIpad: ViewModifier {
 struct LargeTitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "OldStandardTT-Bold", size: 50, maxSize: 55)
-            .foregroundStyle(.textDark)
+            .font(.custom("OldStandardTT-Bold", size: 50))
+            .foregroundColor(Color("textDark")) // Assuming textDark is defined in your asset catalog
     }
 }
+
 
 struct LargeTitleTextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 75, maxSize: 100)
             .foregroundStyle(.textDark)
+    }
+}
+
 struct ButtonModifier: ViewModifier {
     var background: Color
 
