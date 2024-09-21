@@ -11,7 +11,6 @@ import SwiftUI
 struct MapComponent1: View {
     // Updated map points with place names, proportional coordinates, and custom size multipliers
     let mapImage: String
-    let animationImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)]
     // Map points with custom x, y values for each device type
     
@@ -25,6 +24,7 @@ struct MapComponent1: View {
   // Offset for slide animation
     @State private var animationOpacity = 0.0 // For fading in
     @State private var animationScale: CGFloat = 0.5 // For scaling the image
+    @State private var isFighting = true
 
     var body: some View {
         GeometryReader { geo in
@@ -64,18 +64,18 @@ struct MapComponent1: View {
                             }
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
-                                Image(animationImage)
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .offset(animationOffset) // Slide animation offset
-                                    .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())
-                                    .onAppear {
-                                        withAnimation(.easeInOut(duration: 1.5)) {
-                                            animationOffset = .zero
-                                            animationOpacity = 1.0
-                                            animationScale = 1.0
-                                        }
-                                    }}
+                                ZStack{
+                                    GifImageView("fight", duration: 8, isVisible: $isFighting)
+                                    
+                                        .frame(width: 100, height: 100)
+                                        .offset(animationOffset) // Slide animation offset
+                                        .position(x: 130, y: geo.size.height * getCorrectYPosition())                                    .onAppear {
+                                            withAnimation(.easeInOut(duration: 1.5)) {
+                                                animationOffset = .zero
+                                                animationOpacity = 1.0
+                                                animationScale = 1.0
+                                            }
+                                        }}}
                         }}
                 )
                 .frame(width: geo.size.width, height: geo.size.height)

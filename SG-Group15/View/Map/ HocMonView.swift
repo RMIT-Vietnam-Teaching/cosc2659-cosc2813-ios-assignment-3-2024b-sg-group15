@@ -9,7 +9,7 @@ struct HocMonView: View {
     ]
     
     var body: some View {
-        MapComponent1(mapImage: "HocMon", animationImage: "cover", mapPoints: mapPoints, correctAnswer: "Xuân Thới Thượng")
+        MapComponent1(mapImage: "HocMon", mapPoints: mapPoints, correctAnswer: "Xuân Thới Thượng")
     }
 }
 

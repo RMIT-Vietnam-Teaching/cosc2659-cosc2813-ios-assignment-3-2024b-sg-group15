@@ -34,6 +34,7 @@ struct MapComponent2: View {
                 .overlay(
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
+                            if !(point.name == correctAnswer && showAnimationImage) {
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
                                                     positionY: calculateYPosition(for: geo.size.height, point: point))
@@ -57,7 +58,7 @@ struct MapComponent2: View {
                                     y: calculateYPosition(for: geo.size.height, point: point)
                                 )
                                 .disabled(isSelectionMade())
-                            
+                            }
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
                                 GifImageView("swords", duration: 10, isVisible: $isFighting)

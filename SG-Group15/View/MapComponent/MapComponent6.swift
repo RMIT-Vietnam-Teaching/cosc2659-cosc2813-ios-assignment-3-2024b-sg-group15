@@ -1,14 +1,16 @@
-//  MapComponent4.swift
+//
+//  MapComponent6.swift
 //  SG-Group15
 //
-//  Created by Nguyen Ha Kieu Anh on 15/9/24.
+//  Created by Anh Nguyen Ha Kieu on 21/9/24.
 //
 
 import Foundation
 
+
 import SwiftUI
 
-struct MapComponent4: View {
+struct MapComponent6: View {
     let mapImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)]
     // Map points with custom x, y values for each device type
@@ -33,8 +35,8 @@ struct MapComponent4: View {
                 .overlay(
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
-                          
-                          
+                            
+                            if !(point.name == correctAnswer && showAnimationImage) {
                                 
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
@@ -59,15 +61,14 @@ struct MapComponent4: View {
                                     y: calculateYPosition(for: geo.size.height, point: point)
                                 )
                                 .disabled(isSelectionMade())
-                            
+                            }
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
                                 ZStack{
-                                    GifImageView("tank", duration: 8, isVisible: $isFighting)
-                                    
-                                        .frame(width: 80, height: 80)
+                                    GifImageView("swords", duration: 8, isVisible: $isFighting)
+                                        .frame(width: 70, height: 70)
                                         .offset(animationOffset) // Slide animation offset
-                                        .position(x: 165, y: geo.size.height * getCorrectYPosition())
+                                        .position(x: 220, y: geo.size.height * getCorrectYPosition())
                                         .onAppear {
                                             withAnimation(.easeInOut(duration: 1.5)) {
                                                 animationOffset = .zero
@@ -91,7 +92,7 @@ struct MapComponent4: View {
             selectedButton = name
             showResults = true
             showAnimationImage = true
-            animationOffset = CGSize(width: -165, height: 0)
+            animationOffset = CGSize(width: -340, height: 0)
             animationOpacity = 0.0
             animationScale = 0.5
         }
@@ -139,7 +140,7 @@ struct MapComponent4: View {
     
     // Function to calculate button width based on device type and orientation
     func customButtonWidth(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.12 : size.width * 0.15
+        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.10 : size.width * 0.13
         return baseWidth * multiplier
     }
 
@@ -152,7 +153,7 @@ struct MapComponent4: View {
     
     // Dynamic text size based on whether it's an iPad or iPhone
     func dynamicTextSize() -> CGFloat {
-          return horizontalSizeClass == .compact ? 17 : 50
+          return horizontalSizeClass == .compact ? 16 : 50
           
       }
     
