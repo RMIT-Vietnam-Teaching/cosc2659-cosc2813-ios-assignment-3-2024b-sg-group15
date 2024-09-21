@@ -65,7 +65,6 @@ struct MapComponent3: View {
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
                                 GifImageView(animationImage)
-                                    
                                     .frame(width: 100, height: 100)
                                     .offset(animationOffset) // Slide animation offset
                                     .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())

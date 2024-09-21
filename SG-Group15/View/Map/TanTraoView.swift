@@ -20,7 +20,7 @@ struct TanTraoView: View {
     ]
     
     var body: some View {
-        MapComponent3( mapImage: "TanTrao", animationImage: "cover", mapPoints: mapPoints, correctAnswer: "Tân Trào")
+        MapComponent3( mapImage: "TanTrao", animationImage: "rifle", mapPoints: mapPoints, correctAnswer: "Tân Trào")
     }
 }
 
