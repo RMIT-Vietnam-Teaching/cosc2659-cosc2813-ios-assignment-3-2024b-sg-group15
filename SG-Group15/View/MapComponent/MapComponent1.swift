@@ -97,12 +97,6 @@ struct MapComponent1: View {
           }
       }
     
-    // Get the X position of the correct answer
-     func getCorrectXPosition() -> CGFloat {
-         let correctPoint = mapPoints.first { $0.name == correctAnswer }
-         return horizontalSizeClass == .compact ? correctPoint!.compactX : correctPoint!.regularX
-     }
-
      // Get the Y position of the correct answer
      func getCorrectYPosition() -> CGFloat {
          let correctPoint = mapPoints.first { $0.name == correctAnswer }

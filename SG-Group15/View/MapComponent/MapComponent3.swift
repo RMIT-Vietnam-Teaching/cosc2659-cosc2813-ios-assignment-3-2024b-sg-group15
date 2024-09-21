@@ -25,13 +25,7 @@ struct MapComponent3: View {
     // Offset for slide animation
     @State private var animationOpacity = 0.0 // For fading in
     @State private var animationScale: CGFloat = 0.5 // For scaling the image
-    
-    @State private var showBomb = false // Controls the visibility of the bomb
-    @State private var showExplosion = false // Controls the visibility of the explosion
-    @State private var bombPosition: CGSize = .zero // Bomb's offset
-    @State private var explosionPosition: CGSize = .zero // Explosion's offset
-    @State private var isBombVisible = true // Control bomb visibility
-    @State private var isExplosion = true // Control bomb visibility
+    @State private var isFighting = true
     var body: some View {
         GeometryReader { geo in
             // The image of the map
@@ -42,7 +36,7 @@ struct MapComponent3: View {
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
                             
-                            if !(point.name == correctAnswer && showBomb) {
+                            if !(point.name == correctAnswer && showAnimationImage) {
                                 
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
@@ -68,23 +62,21 @@ struct MapComponent3: View {
                                 )
                                 .disabled(isSelectionMade())
                             }
-                            
-                            // Display the bomb GIF with falling animation
-                            if showBomb {
-                                ZStack {
-                                    GifSequence("bomb", duration: 2, isVisible: $isBombVisible)
-                                        .frame(width: 30, height: 30) // Adjust bomb size
-                                        /*.offset(animationOffset)*/ // Keep the correct offset for sliding
-                                        .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition() - 35) // Correct positioning
-                                }}
-                            
-                            // Display the explosion GIF after the bomb reaches the ground
-                            if showExplosion {
-                                ZStack {
-                                    GifSequence("explosion", duration: 1, isVisible: $isExplosion)
-                                        .frame(width: 150, height: 150) // Adjust explosion size
-                                        .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition()) // Correct positioning
-                                }                        }}}
+                            if showAnimationImage {
+                                ZStack{
+                                    GifImageView("explosion", duration: 8, isVisible: $isFighting)
+                                    
+                                        .frame(width: 100, height: 100)
+                                        .offset(animationOffset) // Slide animation offset
+                                        .position(x: 130, y: geo.size.height * getCorrectYPosition())                                    .onAppear {
+                                            withAnimation(.easeInOut(duration: 1.5)) {
+                                                animationOffset = .zero
+                                                animationOpacity = 1.0
+                                                animationScale = 1.0
+                                            }
+                                        }}}
+                        }}
+                          
                     
                 )
                 .frame(width: geo.size.width, height: geo.size.height)
@@ -94,22 +86,17 @@ struct MapComponent3: View {
         .edgesIgnoringSafeArea(.all)
     }
     
-    func handleSelection(for name: String, positionX: CGFloat, positionY: CGFloat, geoSize: CGSize) {
-        if selectedButton == nil {
-                selectedButton = name
-                showResults = true
-                showBomb = true // Only show the bomb after selection
-            bombPosition = CGSize(width: 0, height: positionY)
-
-            // After the bomb falls, switch to explosion
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                showBomb = false // Hide bomb after it falls
-                showExplosion = true // Show explosion
-             
-            }
-        }
-    }
-   
+    // Handle the button click logic and slide-in animation
+      func handleSelection(for name: String, positionX: CGFloat, positionY: CGFloat) {
+          if selectedButton == nil {
+              selectedButton = name
+              showResults = true
+              showAnimationImage = true
+              animationOffset = CGSize(width: -40, height: 0)
+                        animationOpacity = 0.0
+                        animationScale = 0.5
+          }
+      }
     
     // Get the X position of the correct answer
     func getCorrectXPosition() -> CGFloat {

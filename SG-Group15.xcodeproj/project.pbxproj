@@ -52,7 +52,6 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
-		CB94B35C2C9ED4A5005B77A7 /* download.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35B2C9ED4A5005B77A7 /* download.gif */; };
 		CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35F2C9EDD3A005B77A7 /* explosion.gif */; };
 		CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3612C9EE553005B77A7 /* bomb.gif */; };
 		CB94B3642C9EEBD0005B77A7 /* swords.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3632C9EEBD0005B77A7 /* swords.gif */; };
@@ -129,7 +128,6 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
-		CB94B35B2C9ED4A5005B77A7 /* download.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = download.gif; sourceTree = "<group>"; };
 		CB94B35F2C9EDD3A005B77A7 /* explosion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explosion.gif; sourceTree = "<group>"; };
 		CB94B3612C9EE553005B77A7 /* bomb.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bomb.gif; sourceTree = "<group>"; };
 		CB94B3632C9EEBD0005B77A7 /* swords.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swords.gif; sourceTree = "<group>"; };
@@ -369,7 +367,6 @@
 				CBD8AFC72C9EA8C50018AF4D /* PositionCalculation.swift */,
 				CB94B3702C9EFEE4005B77A7 /* MapComponent6.swift */,
 				CB94B3612C9EE553005B77A7 /* bomb.gif */,
-				CB94B35B2C9ED4A5005B77A7 /* download.gif */,
 				CB94B3632C9EEBD0005B77A7 /* swords.gif */,
 				CB94B3742C9F04FF005B77A7 /* fight.gif */,
 				CB94B35F2C9EDD3A005B77A7 /* explosion.gif */,
@@ -470,7 +467,6 @@
 			files = (
 				75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */,
 				393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */,
-				CB94B35C2C9ED4A5005B77A7 /* download.gif in Resources */,
 				7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */,
 				CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */,
 				CB94B36F2C9EFAED005B77A7 /* shield.gif in Resources */,
