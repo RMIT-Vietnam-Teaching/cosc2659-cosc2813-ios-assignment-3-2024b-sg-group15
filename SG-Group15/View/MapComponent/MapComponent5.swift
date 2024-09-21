@@ -41,7 +41,7 @@ struct MapComponent5: View {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
                                                     positionY: calculateYPosition(for: geo.size.height, point: point))
                                 }) {
-                                    Text(point.name) 
+                                    Text(point.name)
                                         .frame(
                                             width: customButtonWidth(for: geo.size, multiplier: point.sizeMultiplier),
                                             height: customButtonHeight(for: geo.size, multiplier: point.sizeMultiplier)
@@ -63,18 +63,19 @@ struct MapComponent5: View {
                             }
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
-                                GifImageView("shield", duration: 8, isVisible: $isFighting)
-                                    .frame(width: 70, height: 70)
-                                    .offset(animationOffset) // Slide animation offset
-                                    .position(x: 75, y: geo.size.height * getCorrectYPosition())
-                                    .onAppear {
-                                        withAnimation(.easeInOut(duration: 1.5)) {
-                                            animationOffset = .zero
-                                            animationOpacity = 1.0
-                                            animationScale = 1.0
-                                        }
-                                    }}
-                        }}
+                                ZStack {
+                                    GifImageView("shield", duration: 8, isVisible: $isFighting)
+                                        .frame(width: horizontalSizeClass == .compact ? 80 : 400, height: horizontalSizeClass == .compact ? 80 : 400)
+                                        .offset(animationOffset) // Slide animation offset
+                                        .position(x:horizontalSizeClass == .compact ? 60 : 200, y: horizontalSizeClass == .compact ? 135: 500)
+                                                                        .onAppear {
+                                                                            withAnimation(.easeInOut(duration: 1.5)) {
+                                                                                animationOffset = .zero
+                                                                                
+                                                                            }
+                                                                        }
+                                }
+                        }}}
                 )
                 .frame(width: geo.size.width, height: geo.size.height)
                 .aspectRatio(contentMode: .fit)
@@ -89,9 +90,8 @@ struct MapComponent5: View {
             selectedButton = name
             showResults = true
             showAnimationImage = true
-            animationOffset = CGSize(width: -40, height: 0)
-            animationOpacity = 0.0
-            animationScale = 0.5
+            animationOffset = CGSize(width: horizontalSizeClass == .compact ? -10: -30, height: 0)
+        
         }
     }
     
