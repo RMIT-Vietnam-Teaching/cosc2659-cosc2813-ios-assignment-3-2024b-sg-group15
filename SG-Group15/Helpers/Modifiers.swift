@@ -380,4 +380,3 @@ struct AnyViewModifier: ViewModifier {
         modifier(content)
     }
 }
-

@@ -22,7 +22,6 @@
 		39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7CC622C9E7D8A0083E41F /* Login.swift */; };
 		39EC9A492C9ED2E400689BAD /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EC9A482C9ED2E300689BAD /* SignUp.swift */; };
 		39FA15522C948D540054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15512C948D540054B99E /* SimpleView.swift */; };
-		39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15532C948D7D0054B99E /* BookDetailView.swift */; };
 		39FA15562C948DBE0054B99E /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15552C948DBE0054B99E /* BookView.swift */; };
 		39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15572C948DF00054B99E /* OpenBookView.swift */; };
 		39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15592C948E1A0054B99E /* PageCurlViewController.swift */; };
@@ -43,6 +42,7 @@
 		754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964562C9EDC0300C3022E /* MultipleChoiceViewModel.swift */; };
 		754964592C9EDC2400C3022E /* QuestionVMFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964582C9EDC2400C3022E /* QuestionVMFactory.swift */; };
 		7549645B2C9EDC3800C3022E /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549645A2C9EDC3800C3022E /* QuestionViewModel.swift */; };
+		7549645C2C9EE66C00C3022E /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15532C948D7D0054B99E /* BookDetailView.swift */; };
 		75668E022C9183F90052F78C /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75668E012C9183F90052F78C /* Modifiers.swift */; };
 		75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75690EF32C99E06D00E4B2C3 /* ContentView.swift */; };
 		75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7042C8F450400028F1D /* SG_Group15App.swift */; };
@@ -431,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7549645C2C9EE66C00C3022E /* BookDetailView.swift in Sources */,
 				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
 				7549644B2C9ED7EC00C3022E /* Book.swift in Sources */,
@@ -471,9 +472,7 @@
 				754964512C9ED88700C3022E /* QuestionProtocol.swift in Sources */,
 				39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */,
 				398F199E2C99B2480023515B /* NoteManager.swift in Sources */,
-				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				E29B16B02C9B142B00673121 /* FillInBlankSubView.swift in Sources */,
-				39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */,
 				759101D52C96EFC300930574 /* WelcomeView.swift in Sources */,
 				7594A70B2C96D169000084FA /* SignUpView.swift in Sources */,
 				39FA15522C948D540054B99E /* SimpleView.swift in Sources */,

@@ -3,7 +3,7 @@ import SwiftUI
 struct MatchingGameView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @ObservedObject private var viewModel: MatchingGameViewModel
+    @ObservedObject var viewModel: MatchingGameViewModel
     
     var body: some View {
         GeometryReader { geometry in

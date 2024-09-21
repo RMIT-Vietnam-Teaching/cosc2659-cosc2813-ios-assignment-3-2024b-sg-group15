@@ -12,7 +12,7 @@ struct ChoiceButton: View {
 
     @State private var check: Bool = false
     @Binding var correct: Bool?
-    @Binding var question: MultipleChoiceQuestion
+    var question: MultipleChoiceQuestion
     @Binding var selected: String
     var index: Int
     
@@ -84,9 +84,6 @@ struct ChoiceButton: View {
     }
 }
 
-#Preview {
-    MultipleChoiceView()
-}
 
 
 
