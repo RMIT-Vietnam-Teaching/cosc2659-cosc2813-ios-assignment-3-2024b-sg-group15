@@ -67,7 +67,7 @@ struct MapComponent4: View {
                                     
                                         .frame(width: 80, height: 80)
                                         .offset(animationOffset) // Slide animation offset
-                                        .position(x: 165, y: geo.size.height * getCorrectYPosition())
+                                        .position(x: horizontalSizeClass == .compact ? 165 : 310, y: geo.size.height * getCorrectYPosition())
                                         .onAppear {
                                             withAnimation(.easeInOut(duration: 1.5)) {
                                                 animationOffset = .zero
@@ -152,7 +152,7 @@ struct MapComponent4: View {
     
     // Dynamic text size based on whether it's an iPad or iPhone
     func dynamicTextSize() -> CGFloat {
-          return horizontalSizeClass == .compact ? 17 : 50
+          return horizontalSizeClass == .compact ? 17 : 48
           
       }
     

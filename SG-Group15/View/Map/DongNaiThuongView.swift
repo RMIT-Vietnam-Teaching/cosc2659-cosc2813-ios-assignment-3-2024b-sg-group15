@@ -10,10 +10,10 @@ import SwiftUI
 
 struct DongNaiThuongView: View {
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)] = [
-        ("Tiên Hoàng", 0.45, 0.31, 0.45, 0.5, 2.0),
-        ("Đồng Nai Thượng", 0.6, 0.185, 0.55, 0.3, 2.0),
-        ("Gia Viễn", 0.18, 0.41, 0.18, 0.67, 2.0),
-        ("Nam Ninh", 0.43, 0.405, 0.43, 0.65, 2.0)
+        ("Tiên Hoàng", 0.45, 0.31, 0.45, 0.45, 2.0),
+        ("Đồng Nai Thượng", 0.6, 0.185, 0.55, 0.275, 2.0),
+        ("Gia Viễn", 0.18, 0.41, 0.18, 0.6, 2.0),
+        ("Nam Ninh", 0.43, 0.405, 0.43, 0.6, 2.0)
     ]
 
     var body: some View {

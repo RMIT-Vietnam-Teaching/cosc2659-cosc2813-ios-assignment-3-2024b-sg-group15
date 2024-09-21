@@ -62,14 +62,13 @@ struct MapComponent2: View {
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
                                 GifImageView("swords", duration: 10, isVisible: $isFighting)
-                                    .frame(width: 70, height: 70)
+                                    .frame(width: horizontalSizeClass == .compact ? 70 : 100, height: horizontalSizeClass == .compact ? 70 : 100)
                                     .offset(animationOffset) // Slide animation offset
                                     .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())
                                     .onAppear {
                                         withAnimation(.easeInOut(duration: 3)) {
                                             animationOffset = .zero
-                                            animationOpacity = 1.0
-                                            animationScale = 1.0
+
                                         }
                                         
                                     }}
@@ -90,8 +89,7 @@ struct MapComponent2: View {
             showResults = true
             showAnimationImage = true
             animationOffset = CGSize(width: -40, height: 0)
-            animationOpacity = 0.0
-            animationScale = 0.5
+     
         }
     }
     

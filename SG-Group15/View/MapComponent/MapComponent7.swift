@@ -68,12 +68,11 @@ struct MapComponent7: View {
                                     GifImageView("adventure", duration: 8, isVisible: $isFighting)
                                         .frame(width: 70, height: 70)
                                         .offset(animationOffset) // Slide animation offset
-                                        .position(x: 210, y: geo.size.height * getCorrectYPosition())
+                                        .position(x: horizontalSizeClass == .compact ? 210 : 420, y: geo.size.height * getCorrectYPosition())
                                         .onAppear {
                                             withAnimation(.easeInOut(duration: 1.5)) {
                                                 animationOffset = .zero
-                                                animationOpacity = 1.0
-                                                animationScale = 1.0
+                                            
                                             }
                                         }}}
                         }}
@@ -93,8 +92,7 @@ struct MapComponent7: View {
             showResults = true
             showAnimationImage = true
             animationOffset = CGSize(width: -340, height: 0)
-            animationOpacity = 0.0
-            animationScale = 0.5
+         
         }
     }
     
@@ -140,7 +138,7 @@ struct MapComponent7: View {
     
     // Function to calculate button width based on device type and orientation
     func customButtonWidth(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.10 : size.width * 0.13
+        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.10 : size.width * 0.12
         return baseWidth * multiplier
     }
 
@@ -153,7 +151,7 @@ struct MapComponent7: View {
     
     // Dynamic text size based on whether it's an iPad or iPhone
     func dynamicTextSize() -> CGFloat {
-          return horizontalSizeClass == .compact ? 16 : 50
+          return horizontalSizeClass == .compact ? 16 : 40
           
       }
     

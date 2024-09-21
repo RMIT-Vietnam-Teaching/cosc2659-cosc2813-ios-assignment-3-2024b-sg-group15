@@ -64,9 +64,10 @@ struct MapComponent3: View {
                             
                             if showAnimationImage {
                                 ZStack{
-                                    GifImageView("explosion", duration: 7, isVisible: $isFighting)
+                                    GifImageView("explosion", duration: 8, isVisible: $isFighting)
                                         .frame(width: 100, height: 100)
-                                        .offset(animationOffset) 
+//                                        .offset(animationOffset) 
+                                        .position(x: horizontalSizeClass == .compact ? 210 : 490, y: geo.size.height * getCorrectYPosition())
                                                                         }}
                         }}
                           
@@ -84,9 +85,8 @@ struct MapComponent3: View {
               selectedButton = name
               showResults = true
               showAnimationImage = true
-              animationOffset = CGSize(width: -17, height: -38)
-                        animationOpacity = 0.0
-                        animationScale = 0.5
+            
+                      
           }
       }
     

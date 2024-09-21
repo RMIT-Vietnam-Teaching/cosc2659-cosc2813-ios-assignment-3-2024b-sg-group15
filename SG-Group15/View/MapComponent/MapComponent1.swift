@@ -67,7 +67,7 @@ struct MapComponent1: View {
                                 ZStack{
                                     GifImageView("fight", duration: 8, isVisible: $isFighting)
                                     
-                                        .frame(width: 100, height: 100)
+                                        .frame(width: horizontalSizeClass == .compact ? 100 : 300, height: geo.size.width * (horizontalSizeClass == .compact ? 0.2 : 0.4))
                                         .offset(animationOffset) // Slide animation offset
                                         .position(x: 130, y: geo.size.height * getCorrectYPosition())                                    .onAppear {
                                             withAnimation(.easeInOut(duration: 1.5)) {
@@ -122,19 +122,19 @@ struct MapComponent1: View {
     
     // Function to calculate button width based on device type
     func customButtonWidth(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.2 : size.width * 0.18
+        let baseWidth = horizontalSizeClass == .compact ? size.width * 0.2 : size.width * 0.22
         return baseWidth * multiplier
     }
     
     // Function to calculate button height based on device type
     func customButtonHeight(for size: CGSize, multiplier: CGFloat) -> CGFloat {
-        let baseHeight = horizontalSizeClass == .compact ? size.height * 0.025 : size.height * 0.06
+        let baseHeight = horizontalSizeClass == .compact ? size.height * 0.025 : size.height * 0.03
         return baseHeight * multiplier
     }
     
     // Dynamic text size based on whether it's an iPad or iPhone
     func dynamicTextSize() -> CGFloat {
-        return horizontalSizeClass == .compact ? 18 : 50 // Slightly larger text size for iPhone, even larger for iPad in portrait
+        return horizontalSizeClass == .compact ? 18 : 40 // Slightly larger text size for iPhone, even larger for iPad in portrait
     }
     
     // Function to calculate the X position of the button
