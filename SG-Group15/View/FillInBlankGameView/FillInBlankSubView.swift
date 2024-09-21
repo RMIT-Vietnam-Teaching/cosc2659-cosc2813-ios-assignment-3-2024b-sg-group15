@@ -7,40 +7,44 @@ import SwiftUI
 
 // MARK: - Subviews
 
-// TitleView: Displays the title of the "Fill in the Blank" game
-struct TitleView: View {
-    var body: some View {
-        Text("Fill in the blanks with the correct words")
-            .font(.headline)
-            .padding(.horizontal)
-    }
-}
+
 
 // SentenceView: Displays the sentence with blanks and filled words
 struct SentenceView: View {
+    // Observed object to react to changes in the view model
     @ObservedObject var viewModel: FillInBlankViewModel
-    
+    // Environment variable to determine the current size class
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     var body: some View {
-        // Use a custom TappableTextView to handle tapping on filled words
         TappableTextView(segments: createTappableSegments()) { index in
-            viewModel.removeWordFromBlank(at: index)
-        }
+                    viewModel.removeWordFromBlank(at: index)
+                } isWordCorrect: { index in
+                    viewModel.isWordCorrect(at: index)
+                }
+            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
+            .lineSpacing(10.0)
+            .padding()
+            .cornerRadius(10)
+            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
+        
+        // Apply different text modifiers based on device size
     }
     
     // Helper function to create tappable segments for the sentence
     private func createTappableSegments() -> [TappableTextSegment] {
         var segments: [TappableTextSegment] = []
         
-        // Iterate through sentence parts and blanks to create segments
         for (index, part) in viewModel.sentenceParts.enumerated() {
-            // Add non-tappable text segment for the sentence part
+            // Add non-tappable text segment
             segments.append(TappableTextSegment(text: part, isTappable: false))
             
-            // Add tappable segment for filled word or blank space
             if index < viewModel.blanks.count {
                 if let filledWord = viewModel.blanks[index].filledWord {
+                    // Add tappable filled word segment
                     segments.append(TappableTextSegment(text: filledWord.text, isTappable: true, index: index))
                 } else {
+                    // Add non-tappable blank segment
                     segments.append(TappableTextSegment(text: "_________", isTappable: false))
                 }
             }
@@ -54,36 +58,55 @@ struct SentenceView: View {
         return segments
     }
 }
-
 // WordsView: Displays the available words for filling in the blanks
-struct WordsView: View {
-    @ObservedObject var viewModel: FillInBlankViewModel
-    
+struct WordView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    let word: Word
+    let width: CGFloat
+    let height: CGFloat
+
     var body: some View {
-        // Use LazyVGrid for adaptive layout of word buttons
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
-            ForEach(viewModel.words) { word in
-                WordView(word: word)
-                    .onTapGesture { viewModel.toggleWordPlacement(word) }
-                    .opacity(word.isPlaced ? 0.5 : 1) // Reduce opacity for placed words
-            }
+        ZStack {
+            // Word background
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(Color.darkRed, lineWidth: horizontalSizeClass == .compact ? 3 : 4)
+                .frame(width: width, height: height)
+            
+            // Word text
+            Text(word.text)
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .lineLimit(3)
+                .padding(8)
         }
-        .padding()
+        .frame(width: width, height: height)
+        // Reduce opacity if the word is already placed
+        .opacity(word.isPlaced ? 0.5 : 1)
     }
 }
 
-// WordView: Displays individual word buttons
-struct WordView: View {
-    let word: Word
+struct WordsView: View {
+    @ObservedObject var viewModel: FillInBlankViewModel
+    let wordWidth: CGFloat
+    let wordHeight: CGFloat
+    let width: CGFloat
+    let height: CGFloat
+    
+    private var columns: [GridItem] {
+        let columnCount = min(3, max(2, (viewModel.words.count + 1) / 2))
+        return Array(repeating: GridItem(.flexible(), spacing: width * 0.02), count: columnCount)
+    }
     
     var body: some View {
-        Text(word.text)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 2))
-            .multilineTextAlignment(.center)
-            .minimumScaleFactor(0.6) // Allow text to shrink if needed
-            .lineLimit(3) // Limit to 3 lines maximum
+        LazyVGrid(columns: columns, spacing: width * 0.05) {
+            ForEach(viewModel.words) { word in
+                WordView(word: word, width: wordWidth, height: wordHeight)
+                    .onTapGesture { viewModel.toggleWordPlacement(word) }
+            }
+        }
+        .padding()
     }
 }
 
@@ -91,39 +114,12 @@ struct WordView: View {
 struct CheckAnswerButton: View {
     let isGameComplete: Bool
     let action: () -> Void
-    
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     var body: some View {
         if isGameComplete {
-            Button("Check Answer", action: action)
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(8)
+            Button("Submit", action: action)
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
         }
-    }
-}
-
-// ResultPopup: Displays the game result and a continue button
-struct ResultPopup: View {
-    let result: (correct: Int, total: Int)
-    let action: () -> Void
-    
-    var body: some View {
-        VStack {
-            Text("Result")
-                .font(.title)
-            Text("\(result.correct) out of \(result.total) correct")
-                .font(.headline)
-            Button("Continue", action: action)
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-        }
-        .padding()
-        .frame(width: 300, height: 200)
-        .background(Color.green.opacity(0.8))
-        .cornerRadius(12)
-        .foregroundColor(.white)
     }
 }

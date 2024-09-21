@@ -19,6 +19,8 @@ class DefaultQuestionViewModelFactory: QuestionViewModelFactory {
             return MatchingGameViewModel(question: question, canFlip: canFlip)
         case .timeline:
             return TimelineGameViewModel(question: question, canFlip: canFlip)
+        case .fill:
+            return FillInBlankViewModel(question: question, canFlip: canFlip)
         default:
             print("Invalid question type")
             return MutipleChoiceViewModel(question: question, canFlip: canFlip)
