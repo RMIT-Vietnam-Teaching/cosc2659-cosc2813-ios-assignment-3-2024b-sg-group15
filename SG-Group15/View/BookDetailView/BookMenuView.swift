@@ -18,8 +18,8 @@ struct BookMenuView: View {
 //                ForEach(Array(zip(books.indices, books)), id: \.0) { index, book in
 //                    Book().tag(index)
 //                }
-                OpenBookView(coverPage: .constant(CoverPage(title: "123", content: "123"))).tag(0)
-                OpenBookView(coverPage: .constant(CoverPage(title: "123", content: "123"))).tag(1)
+                BookView(coverPage: CoverPage(title: "123", content: "123")).tag(0)
+                BookView(coverPage: CoverPage(title: "123", content: "123")).tag(1)
             })
             .tabViewStyle(.page(indexDisplayMode: .never))
         }

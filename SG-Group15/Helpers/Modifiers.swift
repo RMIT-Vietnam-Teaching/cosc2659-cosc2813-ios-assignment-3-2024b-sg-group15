@@ -296,27 +296,4 @@ struct AnyViewModifier: ViewModifier {
     }
 }
 
-// Preview provider for SwiftUI canvas
-struct TimelineGame_Previews: PreviewProvider {
-    static var previews: some View {
-//        BookDetailView(page: .constant(CoverPage(title: "11", content: "11")))
 
-        
-        TimelineGameView(
-            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
-            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
-        )
-        
-        MatchingGameView(eventPairs: [
-            ("Chiến dịch Điện Biên Phủ", "CTTGT2 kết thúc"),
-            ("Event 2 Left", "Event 2 Right"),
-            ("Event 3 Left", "Event 3 Right"),
-            ("Event 4 Left", "Event 4 Right"),
-            ("Event 5 Left", "Event 5 Right")
-        ])
-        
-//        MultipleChoiceView()
-
-
-    }
-}

@@ -35,8 +35,8 @@ struct MultipleChoiceView: View {
                     .lineSpacing(10.0)
                 
                 VStack(spacing: 20) {
-                    ForEach(Array(zip(questionVM.question.choices.indices, questionVM.question.choices)), id: \.0) { index, choice in
-                        ChoiceButton(correct: $correct, question: questionVM.question as! MultipleChoiceQuestion, selected: $selected, index: index)
+                    ForEach(Array(zip(questionVM.choices.indices, questionVM.choices)), id: \.0) { index, choice in
+                        ChoiceButton(correct: $correct,  question: questionVM.question as! MultipleChoiceQuestion, selected: $selected, index: index)
                     }
                 }
                 
@@ -55,6 +55,6 @@ struct MultipleChoiceView: View {
     }
 }
 
-#Preview {
-    MultipleChoiceView()
-}
+//#Preview {
+//    MultipleChoiceView()
+//}
