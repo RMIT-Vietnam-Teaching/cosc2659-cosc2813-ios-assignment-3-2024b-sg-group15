@@ -28,28 +28,47 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         self._coverPage = coverPage
         self._currentChapterIndex = currentChapterIndex
         self._currentPageIndex = currentPageIndex
-//        self.chaptersWithQuestionVMs = convertToVMs(chapters: chapters)
+        self.chaptersWithQuestionVMs = convertToVMs(chapters: chapters)
     }
     
     func makeCoordinator() -> Coordinator {
         let coordinator = Coordinator(self)
-//        coordinator.chaptersWithQuestionVMs = self.chaptersWithQuestionVMs
+        coordinator.chaptersWithQuestionVMs = self.chaptersWithQuestionVMs
         return coordinator
     }
     
     // Convert the struct Chapter into obervable objects
-    mutating func convertToVMs(chapters: Binding<[Chapter]>) -> [ChapterWithQuestionVM] {
+    func convertToVMs(chapters: Binding<[Chapter]>) -> [ChapterWithQuestionVM] {
+        var convertedChapters: [ChapterWithQuestionVM] = []
         let factory = DefaultQuestionViewModelFactory()
         // Add an empty question VM for cover page
-        chaptersWithQuestionVMs.append(ChapterWithQuestionVM(id: "", questionVMs: []))
-        // Map each chapter to its ChapterWithQuestionVM
-            chaptersWithQuestionVMs += chapters.map { chapter in
-                let questionVMs = chapter.questions.map { question in
-                    factory.createViewModel(for: question as! QuestionProtocol, canFlip: true)
+//        convertedChapters.append(ChapterWithQuestionVM(id: "", questionVMs: []))
+        // Iterate over each chapter
+        for chapter in chapters.wrappedValue {
+                var questionVMs: [QuestionViewModel] = []
+
+                // Iterate over each question in the chapter
+                for question in chapter.questions {
+                    // Unwrap the Binding to get the underlying QuestionProtocol object
+//                    let question = questionBinding.wrappedValue
+
+                    // Now check if the question conforms to QuestionProtocol
+//                    if let questionProtocol = question {
+                        let questionVM = factory.createViewModel(for: question, canFlip: true)
+                    print("Question VM: \(questionVM.question.id)")
+                        questionVMs.append(questionVM)
+//                    } else {
+//                        // Log a warning if the question is not of type QuestionProtocol
+//                        print("Warning: Question is not of type QuestionProtocol")
+//                    }
                 }
-                return ChapterWithQuestionVM(id: chapter.id, questionVMs: questionVMs)
+
+                // Add the ChapterWithQuestionVM to the result array
+                let chapterVM = ChapterWithQuestionVM(id: chapter.id, questionVMs: questionVMs)
+                convertedChapters.append(chapterVM)
             }
-        return chaptersWithQuestionVMs
+        print("Converted: \(convertedChapters)")
+        return convertedChapters
     }
     
     func makeUIViewController(context: Context) -> UIPageViewController {
@@ -60,7 +79,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         )
 //        print(currentChapterIndex!)
 
-//        print("number of chapter: \(chapters.count)")
+        print("number of chapter: \(chapters.count)")
 
 //        print(chapters)
         
@@ -90,12 +109,18 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         // Observe the "GoToNextPage" notification for programmatic page flip
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.goToNextPage), name: NSNotification.Name("GoToNextPage"), object: nil)
         
+        NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.goToMainPage), name: NSNotification.Name("GoToMainPage"), object: nil)
+        
         return pageViewController
     }
     
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-        guard let chapterIndex = currentChapterIndex else { return }
+        guard let chapterIndex = currentChapterIndex else {
+            return
+        }
+        
         let currentViewController = context.coordinator.createHostingController(for: currentPageIndex, in: chapterIndex)
+        
         
         // Ensure the correct page is shown
         pageViewController.setViewControllers(
@@ -117,45 +142,46 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             self.parent = pageCurlViewController
         }
         
-        func createHostingController(for pageIndex: Int, in chapterIndex: Int) -> UIViewController {
-                    // Check if it's the landing page
-            print("chapterIndex: \(chapterIndex)")
-                    if chapterIndex == 0 {
-                        return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
-                    } else {
-//                        let page = self.parent.chapters[chapterIndex].pages[pageIndex]
-                        return UIHostingController(rootView: SimpleView())
-                    }
-                }
-        
 //        func createHostingController(for pageIndex: Int, in chapterIndex: Int) -> UIViewController {
-//            // Check if it's the landing page
-//            if chapterIndex == 0 {
-//                return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
-//            } else {
-//                let question = self.chaptersWithQuestionVMs[chapterIndex].questionVMs[pageIndex]
-//                
-//                // Decide which view to render based on the question type
-//                
-//                if let mcVM = question as? MutipleChoiceViewModel {
-//                    return UIHostingController(rootView: MultipleChoiceView(questionVM: mcVM))
+//                    // Check if it's the landing page
+//            print("chapterIndex: \(chapterIndex)")
+//                    if chapterIndex == 0 {
+//                        return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
+//                    } else {
+////                        let page = self.parent.chapters[chapterIndex].pages[pageIndex]
+//                        return UIHostingController(rootView: SimpleView())
+//                    }
 //                }
-//                
-//                else if let matchingVM = question as? MatchingGameViewModel {
-//                    return UIHostingController(rootView: MatchingGameView(questionVM: matchingVM))
-//                }
-//                
-//                
-//                else if let timelineVM = question as? TimelineGameViewModel {
-//                    return UIHostingController(rootView: TimelineGameView(questionVM: timelineVM))
-//                }
-//                
-//                
-//                // Fallback to a default view if no match is found (optional)
-//                return UIHostingController(rootView: Text("Unknown question type"))
-//            }
-//            
-//        }
+        
+        func createHostingController(for pageIndex: Int, in chapterIndex: Int) -> UIViewController {
+            // Check if it's the landing page
+//            print("Chapter index: \(chapterIndex) - Page index: \(pageIndex)")
+            if chapterIndex == 0 {
+                return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
+            } else {
+                let question = self.chaptersWithQuestionVMs[chapterIndex].questionVMs[pageIndex]
+                
+                // Decide which view to render based on the question type
+                
+                if let mcVM = question as? MutipleChoiceViewModel {
+                    return UIHostingController(rootView: MultipleChoiceView(questionVM: mcVM))
+                }
+                
+                else if let matchingVM = question as? MatchingGameViewModel {
+                    return UIHostingController(rootView: MatchingGameView(questionVM: matchingVM))
+                }
+                
+                
+                else if let timelineVM = question as? TimelineGameViewModel {
+                    return UIHostingController(rootView: TimelineGameView(questionVM: timelineVM))
+                }
+                
+                
+                // Fallback to a default view if no match is found (optional)
+                return UIHostingController(rootView: Text("Unknown question type"))
+            }
+            
+        }
         
         
         // Handle the "Next Page" button press notification
@@ -181,6 +207,21 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                     parent.currentPageIndex = 0
                 }
                 pageViewController.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            }
+        }
+        
+        @objc func goToMainPage() {
+            parent.currentChapterIndex = 0
+            parent.currentPageIndex = 0
+            
+            if let pageViewController = pageViewController {
+                let landing = createHostingController(for: 0, in: 0)
+                pageViewController.setViewControllers(
+                    [landing],
+                    direction: .reverse,
+                    animated: true,
+                    completion: nil
+                )
             }
         }
         

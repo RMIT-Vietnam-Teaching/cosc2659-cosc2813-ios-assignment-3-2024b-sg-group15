@@ -25,6 +25,10 @@ struct MultipleChoiceView: View {
                 HStack(spacing: 20) {
                     Image(systemName: "xmark")
                         .resizable()
+                        .onTapGesture {
+                            goToMain()
+                            print("click back")
+                        }
                         .frame(width: horizontalSizeClass == .compact ? 15 : 30, height: horizontalSizeClass == .compact ? 15 : 30)
                     ProgressBar()
                 }
@@ -44,6 +48,10 @@ struct MultipleChoiceView: View {
             .padding(10)
             
         }
+    }
+    
+    func goToMain() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
 }
 

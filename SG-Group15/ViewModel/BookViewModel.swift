@@ -8,7 +8,6 @@ class BookViewModel: ObservableObject {
 
     // Fetch the list of chapters for a given book
     func fetchBook(bookID: String) {
-//        print("running")
         db.collection("chapters")
             .whereField("bookID", isEqualTo: bookID)
             .getDocuments { [weak self] snapshot, error in
@@ -22,6 +21,8 @@ class BookViewModel: ObservableObject {
                 }
                 
                 var fetchedChapters: [Chapter] = []
+                // Append an empty chapter to handle cover page
+                fetchedChapters.append(Chapter(id: "", title: "", description: "", questions: []))
                 let group = DispatchGroup() // To handle async fetching for all chapters
                 
                 for document in documents {
@@ -50,14 +51,7 @@ class BookViewModel: ObservableObject {
                 }
             }
     }
-    
-//    private func fetchQuestionsForChapters() {
-//        for chapter in chapters {
-//            fetchQuestions(for: chapter)
-//            print("Questions fetched")
-//        }
-//    }
-    
+        
     // Fetch the list of questions of a chapter
     private func fetchQuestions(for chapter: Chapter, completion: @escaping ([QuestionProtocol]) -> Void) {
         // Query the questions
@@ -67,7 +61,8 @@ class BookViewModel: ObservableObject {
                 // Handle error
                 if let error = error {
                     print("Error fetching questions: \(error)")
-                    completion([]) // Return an empty array if there's an error
+                    // Return an empty array if there's an error
+                    completion([])
                     return
                 }
                 

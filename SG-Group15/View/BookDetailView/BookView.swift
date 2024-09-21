@@ -38,29 +38,19 @@ struct BookView: View {
                 )
                 .edgesIgnoringSafeArea(.all)
             }
-//            PageCurlViewController(
-//                chapters: bookVM.chapters, coverPage: $coverPage,
-//                       currentChapterIndex: $currentChapterIndex,
-//                       currentPageIndex: $currentPageIndex
-//                   )
-//            .edgesIgnoringSafeArea(.all)
-//            
-//            
         }
         .onAppear {
             bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
-//            print(bookVM.chapters.count)
+            currentChapterIndex = nil
+            currentPageIndex = 0
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in
             if let chapter = notification.object as? Int {
-                currentChapterIndex = chapter  // Offset because the landing page is the first element
-                currentPageIndex = 0
+                DispatchQueue.main.async {
+                    currentChapterIndex = chapter
+                    currentPageIndex = 0
+                }
             }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToMainPage"))) { _ in
-            // Navigate back to the landing page when "Back" is pressed
-            currentChapterIndex = nil
-            currentPageIndex = 0
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in
                     moveToNextPage()
@@ -69,7 +59,6 @@ struct BookView: View {
     
     private func moveToNextPage() {
         if let chapterIndex = currentChapterIndex {
-//            print(chapterIndex)
             let currentChapterPages = flipStates[chapterIndex - 1]
             
             // Check if there is another page in the current chapter

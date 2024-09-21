@@ -21,7 +21,6 @@ struct OpenBookView: View {
             // Page (visible after the book opens)
             if isOpen {
                 BookDetailView(page: $coverPage)
-//                    .scaledToFit()
                     .padding(0)
             }
 

@@ -14,6 +14,13 @@ struct Chapter: Identifiable {
     var description: String
     var questions: [QuestionProtocol]
     
+    init(id: String, title: String, description: String, questions: [QuestionProtocol]) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.questions = questions
+    }
+    
     // Initialize with data from database
     init?(documentID: String, data: [String: Any]) {
         guard let title = data["title"] as? String else { return nil }
