@@ -1,5 +1,5 @@
 //
-//  BookDetailViewIphone.swift
+//  BookDetailView.swift
 //  SG-Group15
 //
 //  Created by Nana on 13/9/24.
@@ -16,6 +16,8 @@ struct BookDetailView: View {
     
     var body: some View {
         ZStack {
+            Color.beigeBackground
+                .ignoresSafeArea(.all)
             Group {
                 ZStack(alignment: .top) {
                     Image("background")
@@ -70,15 +72,14 @@ struct BookDetailView: View {
                 VStack(spacing: 40) {
                     Spacer()
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-//                        .font(.title)
-//                        .fontWeight(.bold)
-                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                        .font(.title)
+                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                     
                     Spacer()
                     
                     Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
-                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                        .font(.system(size: 30))
                         .lineSpacing(10.0)
                     
                     Spacer()
@@ -86,12 +87,21 @@ struct BookDetailView: View {
                     Button(action: {
                         goToCurrentChapter()
                     }, label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 260, height: 70)
+                                .foregroundColor(Color(.bookmarkColor1))
+                                .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
                             Text("Học")
-//                            .foregroundColor(.white)
-                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
-                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(ButtonModifier(background: .bookmarkColor1)) : AnyViewModifier(ButtonModifier(background: .bookmarkColor1)))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                
+                        }
                         
                     })
+                    .accessibilityLabel("Học")
+                    .accessibilityHint("Bắt đầu học")
                     .onChange(of: isScaled, initial: false) { _, newValue in
                         if newValue, let chapter = selectedChapter {
                             // Once scaled up, trigger a slight delay before flipping
@@ -122,9 +132,4 @@ struct BookDetailView: View {
     func goToCurrentChapter() {
         NotificationCenter.default.post(name: NSNotification.Name("GoToCurrentChapter"), object: nil)
     }
-}
-
-
-#Preview {
-    BookDetailView(page: .constant(CoverPage(title: "11", content: "11")))
 }

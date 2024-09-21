@@ -74,6 +74,5 @@ struct CoverPageView: View {
 }
 
 #Preview {
-//    CoverPageView(isScaled: .constant(true), isOpen: .constant(false), showCover: .constant(true))
     BookView()
 }

@@ -36,6 +36,11 @@
 		7549644D2C9ED80B00C3022E /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549644C2C9ED80B00C3022E /* Chapter.swift */; };
 		7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549644E2C9ED83500C3022E /* MatchingQuestion.swift */; };
 		754964512C9ED88700C3022E /* QuestionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964502C9ED88700C3022E /* QuestionProtocol.swift */; };
+		754964532C9EDBA600C3022E /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964522C9EDBA600C3022E /* BookViewModel.swift */; };
+		754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964542C9EDBC200C3022E /* DefaultQuestionVMFactory.swift */; };
+		754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964562C9EDC0300C3022E /* MultipleChoiceViewModel.swift */; };
+		754964592C9EDC2400C3022E /* QuestionVMFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754964582C9EDC2400C3022E /* QuestionVMFactory.swift */; };
+		7549645B2C9EDC3800C3022E /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549645A2C9EDC3800C3022E /* QuestionViewModel.swift */; };
 		75668E022C9183F90052F78C /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75668E012C9183F90052F78C /* Modifiers.swift */; };
 		75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75690EF32C99E06D00E4B2C3 /* ContentView.swift */; };
 		75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393FC7042C8F450400028F1D /* SG_Group15App.swift */; };
@@ -99,6 +104,11 @@
 		7549644C2C9ED80B00C3022E /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		7549644E2C9ED83500C3022E /* MatchingQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingQuestion.swift; sourceTree = "<group>"; };
 		754964502C9ED88700C3022E /* QuestionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProtocol.swift; sourceTree = "<group>"; };
+		754964522C9EDBA600C3022E /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		754964542C9EDBC200C3022E /* DefaultQuestionVMFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultQuestionVMFactory.swift; sourceTree = "<group>"; };
+		754964562C9EDC0300C3022E /* MultipleChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModel.swift; sourceTree = "<group>"; };
+		754964582C9EDC2400C3022E /* QuestionVMFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVMFactory.swift; sourceTree = "<group>"; };
+		7549645A2C9EDC3800C3022E /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 		75668E012C9183F90052F78C /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		75690EF32C99E06D00E4B2C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		759101D42C96EFC300930574 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -232,6 +242,11 @@
 				E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */,
 				E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */,
 				7594A6F92C969163000084FA /* UserViewModel.swift */,
+				754964522C9EDBA600C3022E /* BookViewModel.swift */,
+				754964542C9EDBC200C3022E /* DefaultQuestionVMFactory.swift */,
+				754964562C9EDC0300C3022E /* MultipleChoiceViewModel.swift */,
+				754964582C9EDC2400C3022E /* QuestionVMFactory.swift */,
+				7549645A2C9EDC3800C3022E /* QuestionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -415,13 +430,17 @@
 				7549644B2C9ED7EC00C3022E /* Book.swift in Sources */,
 				391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */,
 				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
+				754964592C9EDC2400C3022E /* QuestionVMFactory.swift in Sources */,
+				754964532C9EDBA600C3022E /* BookViewModel.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
 				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
+				754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */,
 				7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
 				398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */,
 				E29B16AF2C9B142B00673121 /* TappableTextView.swift in Sources */,
+				7549645B2C9EDC3800C3022E /* QuestionViewModel.swift in Sources */,
 				39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */,
 				398F19982C99AF940023515B /* Note.swift in Sources */,
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
@@ -434,6 +453,7 @@
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
+				754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
