@@ -17,7 +17,6 @@ struct CoverPageView: View {
     @State private var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "CÁCH MẠNG THÁNG 8 - 1945")
     
     var body: some View {
-<<<<<<< HEAD
         GeometryReader {
             let rect = $0.frame(in: .global)
             let minX = (rect.minX - 50) < 0 ? (rect.minX - 50) : -(rect.minX - 50)
@@ -44,7 +43,7 @@ struct CoverPageView: View {
                         Image("cover")
                             .resizable()
                             .frame(width: horizontalSizeClass == .compact ? 150 : 400, height: horizontalSizeClass == .compact ? 150 : 400)
->>>>>>> data-model
+                            
                     }
                 }
                 .rotation3DEffect(
@@ -75,6 +74,5 @@ struct CoverPageView: View {
 }
 
 #Preview {
-//    CoverPageView(isScaled: .constant(true), isOpen: .constant(false), showCover: .constant(true))
     BookView()
 }

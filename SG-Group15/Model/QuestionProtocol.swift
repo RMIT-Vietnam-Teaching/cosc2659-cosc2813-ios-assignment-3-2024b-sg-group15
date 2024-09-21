@@ -21,5 +21,3 @@ protocol QuestionProtocol {
     var questionType: QuestionType { get }
     var question: String { get }
 }
-
-

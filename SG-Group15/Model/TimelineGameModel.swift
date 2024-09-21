@@ -52,6 +52,3 @@ struct TimelineQuestion: Identifiable, QuestionProtocol {
         self.events = events
     }
 }
-
-
-

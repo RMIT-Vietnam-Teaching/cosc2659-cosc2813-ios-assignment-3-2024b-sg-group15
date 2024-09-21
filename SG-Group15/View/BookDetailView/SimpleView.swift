@@ -1,35 +1,32 @@
-////
-////  SimpleView.swift
-////  SG-Group15
-////
-////  Created by Nana on 13/9/24.
-////
 //
-//import SwiftUI
+//  SimpleView.swift
+//  SG-Group15
 //
-import SwiftUI
+//  Created by Nana on 13/9/24.
 //
 
+import SwiftUI
+
+import SwiftUI
 
 struct SimpleView: View {
-//    @ObservedObject var page: Page  // Observes changes in the page object
+    @ObservedObject var page: Page  // Observes changes in the page object
 
     var body: some View {
         VStack {
             // Display the content of the page
-            Text("content")
+            Text(page.content)
                 .font(.system(size: 36))
                 .padding()
 
             // Button to toggle the flip state
             Button(action: {
-//                page.canFlip.toggle()
+                page.canFlip.toggle()
 //                print(page.canFlip)
             }) {
-//                Text(page.canFlip ? "Flip Enabled" : "Flip Disabled")
-                Text("111")
+                Text(page.canFlip ? "Flip Enabled" : "Flip Disabled")
                     .padding()
-//                    .background(page.canFlip ? Color.green : Color.red)
+                    .background(page.canFlip ? Color.green : Color.red)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
@@ -71,7 +68,6 @@ struct SimpleView: View {
 }
 
 #Preview {
-    SimpleView()
 //    SimpleView(text: "test", backgroundColor: .green, flipState: .constant(true))
-//    BookView()
+    BookView()
 }

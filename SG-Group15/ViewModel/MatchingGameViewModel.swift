@@ -15,31 +15,6 @@ class MatchingGameViewModel: QuestionViewModel {
         }
     }
     
-    // Fetch question from database
-//    func fetchQuestion(from documentID: String) {
-//        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
-//            // Handle error
-//            if let error = error {
-//                print("Error fetching document: \(error)")
-//            }
-//            
-//            // Fetch document
-//            if let document = document, document.exists {
-//                if let data = document.data() {
-//                    let question = MatchingQuestion(documentID: document.documentID, data: data)
-//                    // Set the question
-//                    DispatchQueue.main.async {
-//                        self?.question = question
-//                        self?.initQuestion()
-//                    }
-//                }
-//            }
-//            else {
-//                print("Document does not exist")
-//            }
-//        }
-//    }
-    
     // Initialize left and right events data
     private func initQuestion(question: MatchingQuestion) {
         self.leftEvents = question.left.enumerated().map { i, period  in
@@ -94,9 +69,7 @@ class MatchingGameViewModel: QuestionViewModel {
         
         // Check if all events are matched
         if leftEvents.allSatisfy({ $0.isMatched }) && rightEvents.allSatisfy({ $0.isMatched }) {
-            withAnimation {
-                isGameComplete = true
-            }
+            isGameComplete = true
         }
         
         // Reset selections
@@ -104,4 +77,3 @@ class MatchingGameViewModel: QuestionViewModel {
         selectedRightEventId = nil
     }
 }
-

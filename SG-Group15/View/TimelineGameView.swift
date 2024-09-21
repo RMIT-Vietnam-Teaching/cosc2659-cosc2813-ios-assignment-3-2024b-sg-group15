@@ -3,17 +3,9 @@ import SwiftUI
 struct TimelineGameView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @StateObject private var viewModel: TimelineGameViewModel
-    let eventData: [String]
-    let periodData: [String]
+    @ObservedObject private var viewModel: TimelineGameViewModel
     @State private var showResultPopup = false
     @State private var showPopUp = false
-
-    init(eventData: [String], periodData: [String]) {
-        self.eventData = eventData
-        self.periodData = periodData
-        _viewModel = StateObject(wrappedValue: TimelineGameViewModel(eventData: eventData, periodData: periodData))
-    }
     
     var body: some View {
         GeometryReader { geometry in

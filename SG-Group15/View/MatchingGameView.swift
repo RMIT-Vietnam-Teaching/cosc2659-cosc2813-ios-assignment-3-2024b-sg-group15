@@ -3,11 +3,7 @@ import SwiftUI
 struct MatchingGameView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @StateObject private var viewModel: MatchingGameViewModel
-    
-    init(eventPairs: [(String, String)]) {
-        _viewModel = StateObject(wrappedValue: MatchingGameViewModel(eventPairs: eventPairs))
-    }
+    @ObservedObject private var viewModel: MatchingGameViewModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -136,15 +132,3 @@ struct EventButton: View {
     }
 }
 
-struct MatchingGameView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchingGameView(eventPairs: [
-            ("Chiến dịch Điện Biên Phủ", "CTTGT2 kết thúc"),
-            ("Event 2 Left", "Event 2 Right"),
-            ("Event 3 Left", "Event 3 Right"),
-            ("Event 4 Left", "Event 4 Right"),
-            ("Event 5 Left", "Event 5 Right")
-        ])
-        
-    }
-}

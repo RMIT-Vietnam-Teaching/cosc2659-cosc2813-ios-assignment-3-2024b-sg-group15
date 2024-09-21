@@ -10,4 +10,3 @@ import Foundation
 protocol QuestionViewModelFactory {
     func createViewModel(for question: QuestionProtocol, canFlip: Bool) -> QuestionViewModel
 }
-

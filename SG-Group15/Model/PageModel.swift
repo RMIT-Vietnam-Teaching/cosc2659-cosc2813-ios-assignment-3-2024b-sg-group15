@@ -8,17 +8,16 @@
 import Foundation
 
 // Page model with an ID, content, and a property to determine if it can flip
-//class Page: ObservableObject, Identifiable {
-//    let id: UUID = UUID()
-//    var content: String
-//    @Published var canFlip: Bool
-//    
-//    init(content: String, canFlip: Bool) {
-//        self.content = content
-//        self.canFlip = canFlip
-//    }
-//}
-
+class Page: ObservableObject, Identifiable {
+    let id: UUID = UUID()
+    var content: String
+    @Published var canFlip: Bool
+    
+    init(content: String, canFlip: Bool) {
+        self.content = content
+        self.canFlip = canFlip
+    }
+}
 
 
 struct CoverPage: Identifiable, Codable {

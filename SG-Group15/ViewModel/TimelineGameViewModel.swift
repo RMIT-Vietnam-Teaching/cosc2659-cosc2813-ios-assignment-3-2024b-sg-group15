@@ -20,31 +20,6 @@ class TimelineGameViewModel: QuestionViewModel {
         }
     }
     
-    // Fetch question from database
-//    func fetchQuestion(from documentID: String) {
-//        db.collection("questions").document(documentID).getDocument { [weak self] document, error in
-//            // Handle error
-//            if let error = error {
-//                print("Error fetching document: \(error)")
-//            }
-//            
-//            // Fetch document
-//            if let document = document, document.exists {
-//                if let data = document.data() {
-//                    let question = MatchingQuestion(documentID: document.documentID, data: data)
-//                    // Set the question
-//                    DispatchQueue.main.async {
-//                        self?.question = question
-//                        self?.initQuestion()
-//                    }
-//                }
-//            }
-//            else {
-//                print("Document does not exist")
-//            }
-//        }
-//    }
-    
     // Initialize events and periods data
     private func initQuestion(question: TimelineQuestion) {
         // Add events
@@ -77,5 +52,3 @@ class TimelineGameViewModel: QuestionViewModel {
         showResult = true
     }
 }
-
-

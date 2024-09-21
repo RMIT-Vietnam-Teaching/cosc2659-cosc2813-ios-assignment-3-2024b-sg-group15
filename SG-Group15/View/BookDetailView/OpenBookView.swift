@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct OpenBookView: View {
-//    @State private var isOpen = false
     @Binding var isOpen: Bool
     @State private var isScaled = false
     @State private var showCover = true
@@ -16,13 +15,9 @@ struct OpenBookView: View {
     
     var body: some View {
         ZStack {
-//            Color("beigeBackground")
-//                .ignoresSafeArea()
-//            
             // Page (visible after the book opens)
             if isOpen {
                 BookDetailView(page: $coverPage)
-
                     .padding(0)
             }
 
@@ -32,17 +27,17 @@ struct OpenBookView: View {
                 
             }
         }
-
         .onAppear {
-            if isOpen {
-                showCover = false
-            }
-        }
-        .onChange(of: isOpen) {old ,new in
-            if new {
-                showCover = false
-            }
-        }
-
+                  if isOpen {
+                      showCover = false
+                  }
+              }
+              .onChange(of: isOpen) {old ,new in
+                  if new {
+                      showCover = false
+                  }
+              }
+        
     }
 }
+
