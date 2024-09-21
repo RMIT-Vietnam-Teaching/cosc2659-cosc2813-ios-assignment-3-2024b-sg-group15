@@ -59,22 +59,25 @@ class FillInBlankViewModel: ObservableObject {
     @Published var sentenceParts: [String]
     @Published var isGameComplete = false
     @Published var isAnswerChecked = false
+    @Published var correctSentence: String
 
-    // MARK: - Initialization
-    
-    /// Initializes the view model with the game data
-    /// - Parameters:
-    ///   - words: Array of words to be used in the game
-    ///   - sentence: The sentence with blanks (represented by "......")
-    ///   - correctWords: Array of correct words for each blank
-    init(words: [String], sentence: String, correctWords: [String]) {
-        self.words = words.map { Word(text: $0, isPlaced: false) }
-        let parts = sentence.components(separatedBy: "......")
-        self.sentenceParts = parts
-        self.blanks = zip(parts.indices, correctWords).compactMap { index, correctWord in
-            index < parts.count - 1 ? Blank(index: index, correctWord: correctWord) : nil
+        // MARK: - Initialization
+        
+        /// Initializes the view model with the game data
+        /// - Parameters:
+        ///   - words: Array of words to be used in the game
+        ///   - sentence: The sentence with blanks (represented by "......")
+        ///   - correctWords: Array of correct words for each blank
+        ///   - correctSentence: The fully correct sentence
+        init(words: [String], sentence: String, correctWords: [String], correctSentence: String) {
+            self.words = words.map { Word(text: $0, isPlaced: false) }
+            let parts = sentence.components(separatedBy: "......")
+            self.sentenceParts = parts
+            self.blanks = zip(parts.indices, correctWords).compactMap { index, correctWord in
+                index < parts.count - 1 ? Blank(index: index, correctWord: correctWord) : nil
+            }
+            self.correctSentence = correctSentence
         }
-    }
     
     // MARK: - Game Logic
     

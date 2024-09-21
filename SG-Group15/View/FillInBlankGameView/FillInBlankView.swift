@@ -11,12 +11,10 @@ struct FillInBlankGameView: View {
     @State private var result: (correct: Int, total: Int) = (0, 0)
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @State private var isSubmitted = false
-    let correctSentence: String
         
     init(words: [String], sentence: String, correctWords: [String], correctSentence: String) {
-        _viewModel = StateObject(wrappedValue: FillInBlankViewModel(words: words, sentence: sentence, correctWords: correctWords))
-        self.correctSentence = correctSentence
-    }
+            _viewModel = StateObject(wrappedValue: FillInBlankViewModel(words: words, sentence: sentence, correctWords: correctWords, correctSentence: correctSentence))
+        }
     
     
     var body: some View {
@@ -53,7 +51,7 @@ struct FillInBlankGameView: View {
                         SentenceView(viewModel: viewModel)
                             .padding(.horizontal)
                         if isSubmitted {
-                                Text(correctSentence)
+                            Text(viewModel.correctSentence)
                                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                                     .padding()
                                     .cornerRadius(10)
