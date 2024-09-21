@@ -8,6 +8,7 @@ struct TimelineGameView: View {
     let periodData: [String]
     @State private var showResultPopup = false
     @State private var showPopUp = false
+    @State private var isSubmit = false
 
     init(eventData: [String], periodData: [String]) {
         self.eventData = eventData
@@ -42,29 +43,37 @@ struct TimelineGameView: View {
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
                         .padding(5)
                     
-                    LazyVGrid(columns: [
-                        GridItem(.flexible(), spacing: width * 0.02),
-                        GridItem(.flexible(), spacing: width * 0.02)
-                    ],
-                    spacing: width * 0.05 ) {
-                        ForEach(viewModel.events.indices, id: \.self) { index in
-                            Color.clear
-                                .frame(width: eventWidth, height: eventHeight)
-                                .background(
-                                    GeometryReader { geo in
-                                        Color.clear
-                                            .onAppear {
-                                            let frame = geo.frame(in: .named("gameArea"))
-                                            viewModel.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
-                                            if !viewModel.events[index].isPlaced {
-                                                viewModel.events[index].position = viewModel.events[index].originalPosition
+                    ZStack {
+                        if !isSubmit {
+                            LazyVGrid(columns: [
+                                GridItem(.flexible(), spacing: width * 0.02),
+                                GridItem(.flexible(), spacing: width * 0.02)
+                            ],
+                            spacing: width * 0.05 ) {
+                                ForEach(viewModel.events.indices, id: \.self) { index in
+                                    Color.clear
+                                        .frame(width: eventWidth, height: eventHeight)
+                                        .background(
+                                            GeometryReader { geo in
+                                                Color.clear
+                                                    .onAppear {
+                                                    let frame = geo.frame(in: .named("gameArea"))
+                                                    viewModel.events[index].originalPosition = CGPoint(x: frame.midX, y: frame.midY)
+                                                    if !viewModel.events[index].isPlaced {
+                                                        viewModel.events[index].position = viewModel.events[index].originalPosition
+                                                    }
+                                                }
                                             }
-                                        }
-                                    }
-                                )
+                                        )
+                                }
+                            }
+                            .padding(.horizontal, horizontalSizeClass == .compact ? width * 0.1 : width * 0.16)
+                        } else {
+                            ResultView(viewModel: viewModel)
                         }
                     }
-                    .padding(.horizontal, horizontalSizeClass == .compact ? width * 0.1 : width * 0.16) // Adjust this value to reduce or increase the space between columns
+                    .frame(height: 2 * eventHeight + 1.6 * (width * 0.05)) // Height for 4 rows of events + 3 spacings
+                    
                     ZStack {
                         Rectangle()
                             .fill(Color.darkRed)
@@ -78,8 +87,6 @@ struct TimelineGameView: View {
                     }
                 }
                 .padding(.horizontal, horizontalSizeClass == .compact ? 0 : 20)
-//                .background(.pink)
-//                .frame(width: width - 24)
                 .padding(.top, horizontalSizeClass == .compact ? 0 : 20)
 
                 ForEach($viewModel.events) { $event in
@@ -132,40 +139,79 @@ struct TimelineGameView: View {
                         )
                 }
                 
-                
                 if viewModel.isGameComplete && !viewModel.isSubmitted {
-                    Button("Tiếp tục") {
+                    Button("Kiểm tra") {
                         withAnimation {
+                            isSubmit = true
                             viewModel.checkAnswer()
                         }
                     }
                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
                     .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
                 }
-               
-//               if showResultPopup {
-//                   ResultPopupView(isCorrect: viewModel.correctPlacements == eventData.count, action: {
-//                       showResultPopup = false
-//                   })
-//               }
+                if isSubmit {
+                    Button("Tiếp tục") {
+                        print("Next question")
+                    }
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
+                }
             }
             .coordinateSpace(name: "gameArea")
         }
-        
     }
 }
 
+struct ResultView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    @ObservedObject var viewModel: TimelineGameViewModel
 
-
-
-
-
+    var body: some View {
+        VStack(spacing: 20) {
+            if incorrectPlacements.isEmpty {
+                Text("")
+                    .font(.headline)
+                    .foregroundColor(.green)
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        ForEach(incorrectPlacements, id: \.period.id) { placement in
+                            VStack(alignment: .leading, spacing: 5) {
+                                HStack {
+                                        Text("\(placement.period.period) - \(getEventLetter(placement.correctEvent.name))")
+                                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                                    }
+                            }
+                            .padding(.vertical, 5)
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+    }
+    
+    private var incorrectPlacements: [(period: TimePeriod, incorrectEvent: TimelineEvent, correctEvent: TimelineEvent)] {
+        viewModel.timePeriods.compactMap { period in
+            if let placedEvent = viewModel.events.first(where: { $0.currentPeriod == period.id }),
+               let correctEvent = viewModel.events.first(where: { $0.id == period.id }),
+               placedEvent.id != correctEvent.id {
+                return (period: period, incorrectEvent: placedEvent, correctEvent: correctEvent)
+            }
+            return nil
+        }
+    }
+    private func getEventLetter(_ eventName: String) -> String {
+           // Extract the letter from the event name (assuming it's always at the beginning)
+           return String(eventName.prefix(1))
+       }
+}
 
 // Preview provider for SwiftUI canvas
 struct TimelineGameView_Previews: PreviewProvider {
     static var previews: some View {
         TimelineGameView(
-            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
+            eventData: ["A. Thời cơ Cách mạng tháng 8", "B. Tuyên Ngôn Độc Lập", "C. Vua Bảo Đại thoái vị", "D. Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
             periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
         )
     }

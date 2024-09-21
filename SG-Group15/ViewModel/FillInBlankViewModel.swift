@@ -58,7 +58,8 @@ class FillInBlankViewModel: ObservableObject {
     @Published var blanks: [Blank]
     @Published var sentenceParts: [String]
     @Published var isGameComplete = false
-    
+    @Published var isAnswerChecked = false
+
     // MARK: - Initialization
     
     /// Initializes the view model with the game data
@@ -124,8 +125,25 @@ class FillInBlankViewModel: ObservableObject {
     
     /// Checks the correctness of the filled words
     /// - Returns: A tuple containing the number of correct answers and total blanks
-    func checkAnswer() -> (correct: Int, total: Int) {
-        let correctAnswers = blanks.filter { $0.filledWord?.text == $0.correctWord }.count
-        return (correct: correctAnswers, total: blanks.count)
-    }
+    func checkAnswer() {
+            isAnswerChecked = true
+            objectWillChange.send()
+        }
+
+        func isWordCorrect(at index: Int) -> Bool? {
+            guard isAnswerChecked, index < blanks.count else { return nil }
+            return blanks[index].filledWord?.text == blanks[index].correctWord
+        }
+    func resetGame() {
+            // Reset blanks
+            for index in blanks.indices {
+                if let word = blanks[index].filledWord {
+                    if let wordIndex = words.firstIndex(where: { $0.text == word.text }) {
+                        words[wordIndex].isPlaced = false
+                    }
+                    blanks[index].filledWord = nil
+                }
+            }
+            isGameComplete = false
+        }
 }

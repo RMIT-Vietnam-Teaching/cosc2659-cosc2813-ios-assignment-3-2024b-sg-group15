@@ -18,13 +18,16 @@ struct SentenceView: View {
 
     var body: some View {
         TappableTextView(segments: createTappableSegments()) { index in
-            // Remove word from blank when tapped
-            viewModel.removeWordFromBlank(at: index)
-        }
-        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
-        .lineSpacing(10.0)
-        .padding()
-        .cornerRadius(10)
+                    viewModel.removeWordFromBlank(at: index)
+                } isWordCorrect: { index in
+                    viewModel.isWordCorrect(at: index)
+                }
+            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
+            .lineSpacing(10.0)
+            .padding()
+            .cornerRadius(10)
+            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
+        
         // Apply different text modifiers based on device size
     }
     
@@ -121,27 +124,4 @@ struct CheckAnswerButton: View {
     }
 }
 
-// ResultPopup: Displays the game result and a continue button
-struct ResultPopup: View {
-    let result: (correct: Int, total: Int)
-    let action: () -> Void
-    
-    var body: some View {
-        VStack {
-            Text("Result")
-                .font(.title)
-            Text("\(result.correct) out of \(result.total) correct")
-                .font(.headline)
-            Button("Continue", action: action)
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-        }
-        .padding()
-        .frame(width: 300, height: 200)
-        .background(Color.green.opacity(0.8))
-        .cornerRadius(12)
-        .foregroundColor(.white)
-    }
-}
+

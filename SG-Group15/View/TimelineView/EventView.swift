@@ -28,12 +28,13 @@ struct EventView: View {
             
             // Event text
             Text(event.name)
-                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
-                .foregroundColor(textColor)
-                .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.5)
                 .lineLimit(3)
                 .padding(8)
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                .foregroundColor(textColor)
+                .multilineTextAlignment(.center)
+                
         }
         .frame(width: width, height: height)
     }

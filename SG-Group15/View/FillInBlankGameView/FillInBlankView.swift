@@ -10,10 +10,14 @@ struct FillInBlankGameView: View {
     @State private var showResultPopup = false
     @State private var result: (correct: Int, total: Int) = (0, 0)
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    
-    init(words: [String], sentence: String, correctWords: [String]) {
+    @State private var isSubmitted = false
+    let correctSentence: String
+        
+    init(words: [String], sentence: String, correctWords: [String], correctSentence: String) {
         _viewModel = StateObject(wrappedValue: FillInBlankViewModel(words: words, sentence: sentence, correctWords: correctWords))
+        self.correctSentence = correctSentence
     }
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,7 +40,6 @@ struct FillInBlankGameView: View {
                         ProgressBar()
                     }
                     .padding(.horizontal, 20)
-//                    .padding(.top, geometry.safeAreaInsets.top)
                     .padding(.bottom, 10)
                     
                     // Centering other elements
@@ -49,30 +52,39 @@ struct FillInBlankGameView: View {
                         
                         SentenceView(viewModel: viewModel)
                             .padding(.horizontal)
+                        if isSubmitted {
+                                Text(correctSentence)
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                                    .padding()
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                        }
                         WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight,width: width,height: height)
                         Spacer()
                         CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
-                            result = viewModel.checkAnswer()
-                            showResultPopup = true
-                            
-
+                            viewModel.checkAnswer()
+                            isSubmitted = true
                         }
                     }
                     
                     Spacer()
                 }
-                .overlay(
-                    showResultPopup ? ResultPopup(result: result, action: { showResultPopup = false }) : nil
-                )
+               
             }
         }
     }
 }
 
+
+
+
+
+
 #Preview {
     FillInBlankGameView(
         words: ["Nhật-Pháp", "Trung Quốc", "Nhật", "chúng ta","Đức"],
         sentence: "Chỉ thị ......bắn nhau, và hành động của ......, ngày 12/3/1945 của Đảng đưa ra khẩu hiệu Đánh đuổi Phát xít ...... .",
-        correctWords: ["Nhật-Pháp","chúng ta","Nhật"]
+        correctWords: ["Nhật-Pháp","chúng ta","Nhật"],
+        correctSentence: "Chỉ thị Nhật-Pháp bắn nhau, và hành động của chúng ta, ngày 12/3/1945 của Đảng đưa ra khẩu hiệu Đánh đuổi Phát xít Nhật."
     )
 }
