@@ -18,6 +18,7 @@
 		398F199A2C99B0F60023515B /* TypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F19992C99B0F60023515B /* TypingView.swift */; };
 		398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199B2C99B1AB0023515B /* TabViewNote.swift */; };
 		398F199E2C99B2480023515B /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199D2C99B2470023515B /* NoteManager.swift */; };
+		398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199F2C99F5710023515B /* MultipleChoiceView.swift */; };
 		39FA15522C948D540054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15512C948D540054B99E /* SimpleView.swift */; };
 		39FA15562C948DBE0054B99E /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15552C948DBE0054B99E /* BookView.swift */; };
 		39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15572C948DF00054B99E /* OpenBookView.swift */; };
@@ -88,6 +89,7 @@
 		398F19992C99B0F60023515B /* TypingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingView.swift; sourceTree = "<group>"; };
 		398F199B2C99B1AB0023515B /* TabViewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewNote.swift; sourceTree = "<group>"; };
 		398F199D2C99B2470023515B /* NoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
+		398F199F2C99F5710023515B /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
 		39FA15512C948D540054B99E /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		39FA15552C948DBE0054B99E /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		39FA15572C948DF00054B99E /* OpenBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBookView.swift; sourceTree = "<group>"; };
@@ -229,7 +231,7 @@
 				398F19902C99AECA0023515B /* Note */,
 				E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */,
 				7594A7052C96C552000084FA /* AuthView */,
-				39FA15612C96056C0054B99E /* MultipleChoiceView.swift */,
+				39FA15612C96056C0054B99E /* MultipleChoiceView */,
 				39FA15502C948D3C0054B99E /* BookDetailView */,
 				39FA15642C9606350054B99E /* ProgressBar.swift */,
 				75690EF32C99E06D00E4B2C3 /* ContentView.swift */,
@@ -287,7 +289,7 @@
 				39FA15662C960D710054B99E /* ChoiceButton.swift */,
 				758EDC8B2C9C55E90041B9F1 /* MultipleChoiceView.swift */,
 			);
-			path = ;
+			path = MultipleChoiceView;
 			sourceTree = "<group>";
 		};
 		75668E002C9183D70052F78C /* Helpers */ = {
@@ -436,6 +438,7 @@
 				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
 				391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */,
+				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
 				75A17E0E2C9A8D7900A09F22 /* MutipleChoiceViewModel.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
 				75B1ADEC2C9C42BF00188EDF /* QuestionVMFactory.swift in Sources */,
@@ -453,6 +456,7 @@
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
+				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
@@ -467,6 +471,7 @@
 				758EDC8C2C9C55E90041B9F1 /* MultipleChoiceView.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
+				75A17E132C9ACA5B00A09F22 /* EventView.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
 				75B1ADEE2C9C42EC00188EDF /* DefaultQuestionVMFactory.swift in Sources */,
 				75B1ADE22C9C28C700188EDF /* Chapter.swift in Sources */,
