@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookView: View {
     @StateObject private var bookVM = BookViewModel()
+    @State private var isOpen = false
     @State private var currentChapterIndex: Int? = 0 // Use nil for the initial landing page
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
@@ -17,28 +18,31 @@ struct BookView: View {
             [false, false, false]  // Chapter 3: Page 2 cannot flip
         ]
     
-  
     
     @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
     
     var body: some View {
         VStack {
             if bookVM.isLoading {
-                            // Show a loading view while the data is being fetched
-                            ProgressView("Loading book data...")
-                                .font(.largeTitle)
-                                .padding()
+                // Show a loading view while the data is being fetched
+                ProgressView("Loading book data...")
+                    .font(.largeTitle)
+                    .padding()
             } else {
-                // Only show PageCurlViewController when data is ready
-                PageCurlViewController(
-                    chapters: $bookVM.chapters,
-                    coverPage: $coverPage,
-                    currentChapterIndex: $currentChapterIndex,
-                    currentPageIndex: $currentPageIndex
-                )
-                .edgesIgnoringSafeArea(.all)
-            }
-        }
+                if isOpen {
+                    // Only show PageCurlViewController when data is ready
+                    PageCurlViewController(
+                        chapters: $bookVM.chapters,
+                        coverPage: $coverPage,
+                        currentChapterIndex: $currentChapterIndex,
+                        currentPageIndex: $currentPageIndex
+                    )
+                    .edgesIgnoringSafeArea(.all)
+                }
+                else {
+                    OpenBookView(isOpen: $isOpen, coverPage: $coverPage)
+                }
+            }}
         .onAppear {
             bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
             currentChapterIndex = nil
@@ -54,6 +58,13 @@ struct BookView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in
                     moveToNextPage()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ExitBook"))) { _ in
+            DispatchQueue.main.async {
+                // Skip the cover and go back to the book detail view
+                currentChapterIndex = 0
+                currentPageIndex = 0 // Reset to the first page in the chapter
+            }
         }
     }
     

@@ -41,33 +41,20 @@ struct PageCurlViewController: UIViewControllerRepresentable {
     func convertToVMs(chapters: Binding<[Chapter]>) -> [ChapterWithQuestionVM] {
         var convertedChapters: [ChapterWithQuestionVM] = []
         let factory = DefaultQuestionViewModelFactory()
-        // Add an empty question VM for cover page
-//        convertedChapters.append(ChapterWithQuestionVM(id: "", questionVMs: []))
+        
         // Iterate over each chapter
         for chapter in chapters.wrappedValue {
                 var questionVMs: [QuestionViewModel] = []
-
                 // Iterate over each question in the chapter
                 for question in chapter.questions {
-                    // Unwrap the Binding to get the underlying QuestionProtocol object
-//                    let question = questionBinding.wrappedValue
-
-                    // Now check if the question conforms to QuestionProtocol
-//                    if let questionProtocol = question {
                         let questionVM = factory.createViewModel(for: question, canFlip: true)
-                    print("Question VM: \(questionVM.question.id)")
                         questionVMs.append(questionVM)
-//                    } else {
-//                        // Log a warning if the question is not of type QuestionProtocol
-//                        print("Warning: Question is not of type QuestionProtocol")
-//                    }
                 }
 
                 // Add the ChapterWithQuestionVM to the result array
                 let chapterVM = ChapterWithQuestionVM(id: chapter.id, questionVMs: questionVMs)
                 convertedChapters.append(chapterVM)
             }
-        print("Converted: \(convertedChapters)")
         return convertedChapters
     }
     
@@ -77,11 +64,6 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             navigationOrientation: .horizontal,
             options: nil
         )
-//        print(currentChapterIndex!)
-
-        print("number of chapter: \(chapters.count)")
-
-//        print(chapters)
         
         // Set the initial page
         if let chapterIndex = currentChapterIndex {
@@ -142,22 +124,13 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             self.parent = pageCurlViewController
         }
         
-//        func createHostingController(for pageIndex: Int, in chapterIndex: Int) -> UIViewController {
-//                    // Check if it's the landing page
-//            print("chapterIndex: \(chapterIndex)")
-//                    if chapterIndex == 0 {
-//                        return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
-//                    } else {
-////                        let page = self.parent.chapters[chapterIndex].pages[pageIndex]
-//                        return UIHostingController(rootView: SimpleView())
-//                    }
-//                }
-        
         func createHostingController(for pageIndex: Int, in chapterIndex: Int) -> UIViewController {
             // Check if it's the landing page
-//            print("Chapter index: \(chapterIndex) - Page index: \(pageIndex)")
+            print("Chapter index: \(chapterIndex) - Page index: \(pageIndex)")
             if chapterIndex == 0 {
-                return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
+//                return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
+                return UIHostingController(rootView: BookDetailView(page: parent.$coverPage))
+
             } else {
                 let question = self.chaptersWithQuestionVMs[chapterIndex].questionVMs[pageIndex]
                 

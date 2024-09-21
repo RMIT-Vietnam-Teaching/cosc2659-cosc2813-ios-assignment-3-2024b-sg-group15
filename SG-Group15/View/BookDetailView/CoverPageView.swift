@@ -19,22 +19,18 @@ struct CoverPageView: View {
             Group {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundColor(Color("primaryRed"))
-    //                .scaledToFill()
                     .padding(.horizontal, 30)
                     .padding(.vertical, isScaled ? 80 : 150)
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 5, y: 5) // Adding shadow
                 
                 VStack(spacing: 60) {
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-//                        .font(.title)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                     
                     Image("cover")
                         .resizable()
                         .frame(width: isScaled ? 170 : 170, height: isScaled ? 170 : 170)
-//                        .resizable()
-                        
                 }
             }
             .rotation3DEffect(
@@ -59,10 +55,6 @@ struct CoverPageView: View {
                     }
                 }
             }
-
-
-//            BookDetailViewIphone(page: $coverPage)
-
         }
     }
 }

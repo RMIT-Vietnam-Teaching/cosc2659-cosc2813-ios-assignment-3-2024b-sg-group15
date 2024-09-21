@@ -16,6 +16,8 @@ struct BookDetailView: View {
     
     var body: some View {
         ZStack {
+            Color.beigeBackground
+                .ignoresSafeArea(.all)
             Group {
                 ZStack(alignment: .top) {
                     Image("background")
