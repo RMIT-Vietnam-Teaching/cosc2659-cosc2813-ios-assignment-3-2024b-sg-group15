@@ -52,8 +52,10 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
+		CB94B35C2C9ED4A5005B77A7 /* download.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35B2C9ED4A5005B77A7 /* download.gif */; };
+		CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35F2C9EDD3A005B77A7 /* explosion.gif */; };
+		CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3612C9EE553005B77A7 /* bomb.gif */; };
 		CBCE14862C9EAA8C00EBA21B /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE14852C9EAA8600EBA21B /* GifImageView.swift */; };
-		CBCE14882C9EB53400EBA21B /* rifle.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBCE14872C9EB53400EBA21B /* rifle.gif */; };
 		CBD8AFBD2C9EA8AE0018AF4D /* DongNaiThuongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */; };
 		CBD8AFBE2C9EA8AE0018AF4D /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */; };
 		CBD8AFBF2C9EA8AE0018AF4D /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFBB2C9EA8AE0018AF4D /* VoNhaiView.swift */; };
@@ -119,8 +121,10 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		CB94B35B2C9ED4A5005B77A7 /* download.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = download.gif; sourceTree = "<group>"; };
+		CB94B35F2C9EDD3A005B77A7 /* explosion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explosion.gif; sourceTree = "<group>"; };
+		CB94B3612C9EE553005B77A7 /* bomb.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bomb.gif; sourceTree = "<group>"; };
 		CBCE14852C9EAA8600EBA21B /* GifImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
-		CBCE14872C9EB53400EBA21B /* rifle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rifle.gif; sourceTree = "<group>"; };
 		CBD8AFB72C9EA8AE0018AF4D /*  BacGiangView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BacGiangView.swift"; sourceTree = "<group>"; };
 		CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
 		CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongNaiThuongView.swift; sourceTree = "<group>"; };
@@ -344,7 +348,9 @@
 				CBD8AFC52C9EA8C50018AF4D /* MapComponent4.swift */,
 				CBD8AFC62C9EA8C50018AF4D /* MapComponent5.swift */,
 				CBD8AFC72C9EA8C50018AF4D /* PositionCalculation.swift */,
-				CBCE14872C9EB53400EBA21B /* rifle.gif */,
+				CB94B3612C9EE553005B77A7 /* bomb.gif */,
+				CB94B35B2C9ED4A5005B77A7 /* download.gif */,
+				CB94B35F2C9EDD3A005B77A7 /* explosion.gif */,
 			);
 			path = MapComponent;
 			sourceTree = "<group>";
@@ -440,14 +446,16 @@
 			files = (
 				75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */,
 				393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */,
+				CB94B35C2C9ED4A5005B77A7 /* download.gif in Resources */,
 				7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */,
+				CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */,
 				75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */,
 				75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */,
 				7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */,
 				393FC7092C8F450600028F1D /* Assets.xcassets in Resources */,
 				7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */,
 				75AD4D502C947DBD00C8F37F /* Lato-Bold.ttf in Resources */,
-				CBCE14882C9EB53400EBA21B /* rifle.gif in Resources */,
+				CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,27 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "458116535_820634990240721_5841708413604394224_n.jpg",
+      "filename" : "IMG_0253.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "458116535_820634990240721_5841708413604394224_n@2x.jpg",
+      "filename" : "IMG_0253@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "458116535_820634990240721_5841708413604394224_n@3x.jpg",
+      "filename" : "IMG_0253@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
     {
-      "filename" : "458116535_820634990240721_5841708413604394224_n 1.jpg",
+      "filename" : "IMG_0253 1.png",
       "idiom" : "ipad",
       "scale" : "1x"
     },
     {
-      "filename" : "458116535_820634990240721_5841708413604394224_n@2x 1.jpg",
+      "filename" : "IMG_0253@2x 1.png",
       "idiom" : "ipad",
       "scale" : "2x"
     }
