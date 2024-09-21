@@ -22,7 +22,7 @@ struct MultipleChoiceView: View {
                 .resizable()
                 .ignoresSafeArea()
             
-            VStack(spacing: 60) {
+            VStack(spacing: horizontalSizeClass == .compact ? 50 : 100) {
                 HStack(spacing: 20) {
                     Image(systemName: "xmark")
                         .resizable()
@@ -32,10 +32,10 @@ struct MultipleChoiceView: View {
                 .padding(.horizontal, 10)
                 
                 Text(question.question)
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LongQuestionTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
-                    .lineSpacing(10.0)
+                    .lineSpacing(horizontalSizeClass == .compact ? 20.0 : 30.0)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(HeadlineTextModifier()) : AnyViewModifier(HeadlineTextModifierIpad()))
                 
-                VStack(spacing: 20) {
+                VStack(spacing: 40) {
                     ForEach(Array(zip(question.choices.indices, question.choices)), id: \.0) { index, choice in
                         ChoiceButton(correct: $correct, question: $question, selected: $selected, index: index)
                     }
@@ -44,8 +44,9 @@ struct MultipleChoiceView: View {
                 Button("Tiếp tục") {
                     // Handle game completion
                 }
-//                    .padding()
-                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                .foregroundColor(.white)
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .darkRed)) : AnyViewModifier(RegularButtonModifierIpad(background: .darkRed)))
                 .scaleEffect(selected != "" ? 1 : 0.5) // Adjust the scale effect for animation
                 .opacity(selected != "" ? 1 : 0)
                 
