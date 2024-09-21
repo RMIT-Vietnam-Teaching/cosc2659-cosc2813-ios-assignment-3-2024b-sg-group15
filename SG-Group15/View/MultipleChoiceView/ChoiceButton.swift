@@ -51,7 +51,7 @@ struct ChoiceButton: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                .frame(width: UIScreen.main.bounds.width - 60) // Fixed width, but flexible height
+                .frame(width: UIScreen.main.bounds.width - 60)
                 .background {
                     if check && correct != nil {
                         RoundedRectangle(cornerRadius: 15)

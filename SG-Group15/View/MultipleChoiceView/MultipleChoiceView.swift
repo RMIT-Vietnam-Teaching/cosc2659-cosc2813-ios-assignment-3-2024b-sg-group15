@@ -21,7 +21,7 @@ struct MultipleChoiceView: View {
                 .resizable()
                 .ignoresSafeArea()
             
-            VStack(spacing: 60) {
+            VStack(spacing: horizontalSizeClass == .compact ? 50 : 100) {
                 HStack(spacing: 20) {
                     Image(systemName: "xmark")
                         .resizable()
@@ -29,7 +29,6 @@ struct MultipleChoiceView: View {
                     ProgressBar()
                 }
                 .padding(.horizontal, 10)
-                
                 Text(questionVM.question.question)
                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
                     .lineSpacing(10.0)
@@ -43,8 +42,9 @@ struct MultipleChoiceView: View {
                 Button("Tiếp tục") {
                     // Handle game completion
                 }
-                //                    .padding()
-                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                .foregroundColor(.white)
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .darkRed)) : AnyViewModifier(RegularButtonModifierIpad(background: .darkRed)))
                 .scaleEffect(selected != "" ? 1 : 0.5) // Adjust the scale effect for animation
                 .opacity(selected != "" ? 1 : 0)
                 
