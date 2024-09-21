@@ -19,6 +19,8 @@
 		398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199B2C99B1AB0023515B /* TabViewNote.swift */; };
 		398F199E2C99B2480023515B /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199D2C99B2470023515B /* NoteManager.swift */; };
 		398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199F2C99F5710023515B /* MultipleChoiceView.swift */; };
+		39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7CC622C9E7D8A0083E41F /* Login.swift */; };
+		39EC9A492C9ED2E400689BAD /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EC9A482C9ED2E300689BAD /* SignUp.swift */; };
 		39FA15522C948D540054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15512C948D540054B99E /* SimpleView.swift */; };
 		39FA15542C948D7D0054B99E /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15532C948D7D0054B99E /* BookDetailView.swift */; };
 		39FA15562C948DBE0054B99E /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15552C948DBE0054B99E /* BookView.swift */; };
@@ -87,6 +89,8 @@
 		398F199B2C99B1AB0023515B /* TabViewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewNote.swift; sourceTree = "<group>"; };
 		398F199D2C99B2470023515B /* NoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
 		398F199F2C99F5710023515B /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
+		39E7CC622C9E7D8A0083E41F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		39EC9A482C9ED2E300689BAD /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		39FA15512C948D540054B99E /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		39FA15532C948D7D0054B99E /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		39FA15552C948DBE0054B99E /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				7594A7082C96D0CF000084FA /* LoginView.swift */,
 				7594A70A2C96D169000084FA /* SignUpView.swift */,
 				759101D42C96EFC300930574 /* WelcomeView.swift */,
+				39E7CC622C9E7D8A0083E41F /* Login.swift */,
+				39EC9A482C9ED2E300689BAD /* SignUp.swift */,
 			);
 			path = AuthView;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
 				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
+				39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */,
 				754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */,
 				7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
@@ -456,6 +463,7 @@
 				754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
+				39EC9A492C9ED2E400689BAD /* SignUp.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
 				398F19962C99AF5B0023515B /* DrawingView.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
@@ -607,7 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SG-Group15/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 87AJUFVFXW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SG-Group15/Info.plist";
@@ -621,7 +629,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "vn.edu.rmit.nana.SG-Group15";
+				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.nana.group15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -637,7 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SG-Group15/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 87AJUFVFXW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SG-Group15/Info.plist";
@@ -651,7 +659,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "vn.edu.rmit.nana.SG-Group15";
+				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.nana.group15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

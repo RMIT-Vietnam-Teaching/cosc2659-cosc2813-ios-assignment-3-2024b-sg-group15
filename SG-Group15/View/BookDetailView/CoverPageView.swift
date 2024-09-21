@@ -24,8 +24,12 @@ struct CoverPageView: View {
             let rotation = progress * 25
             
             ZStack {
-                
+                VStack(spacing: 60) {
+                    Text("CÁCH MẠNG THÁNG 8 - 1945")
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeTitleTextModifier()) : AnyViewModifier(LargeTitleTextModifierIpad())).padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
+                        .multilineTextAlignment(.center)
                 Group {
+
                     
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundColor(Color("primaryRed"))

@@ -40,8 +40,7 @@ struct BookDetailView: View {
                                    
                                 
                                 Text("1")
-                                    .font(.title)
-                                    .fontWeight(.bold)
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                                     .foregroundColor(.black)
                                    
                             }
@@ -58,8 +57,7 @@ struct BookDetailView: View {
                                    
                                 
                                 Text("2")
-                                    .font(.title)
-                                    .fontWeight(.bold)
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                                     .foregroundColor(.black)
                                    
                             }
@@ -72,8 +70,7 @@ struct BookDetailView: View {
                 VStack(spacing: 40) {
                     Spacer()
                     Text("CÁCH MẠNG THÁNG 8 - 1945")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeTitleTextModifier()) : AnyViewModifier(LargeTitleTextModifierIpad()))
                         .multilineTextAlignment(.center)
                     
                     Spacer()
@@ -87,18 +84,12 @@ struct BookDetailView: View {
                     Button(action: {
                         goToCurrentChapter()
                     }, label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .frame(width: 260, height: 70)
-                                .foregroundColor(Color(.bookmarkColor1))
-                                .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
-                            Text("Học")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                
-                        }
-                        
+                        Text("Học")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .bookmarkColor1)) : AnyViewModifier(RegularButtonModifierIpad(background: .bookmarkColor1)))
+                            .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
                     })
                     .accessibilityLabel("Học")
                     .accessibilityHint("Bắt đầu học")
