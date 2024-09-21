@@ -42,7 +42,7 @@ struct MapComponent3: View {
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
                             
-                            if !(point.name == correctAnswer && showAnimationImage) {
+
                                 
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
@@ -68,25 +68,11 @@ struct MapComponent3: View {
                                 )
                                 .disabled(isSelectionMade())
                             }
-                            // Show the image for the correct option after selection with a slide animation
-                            //                            if showAnimationImage {
-                            //                                GifImageView(animationImage)
-                            //                                    .frame(width: 100, height: 100)
-                            //                                    .offset(animationOffset) // Slide animation offset
-                            //                                    .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())
-                            //                                    .onAppear {
-                            //                                        withAnimation(.easeInOut(duration: 1.5)) {
-                            //                                            animationOffset = .zero
-                            //                                            animationOpacity = 1.0
-                            //                                            animationScale = 1.0
-                            //                                        }
-                            //                                    }}
-                            
                             
                             // Display the bomb GIF with falling animation
                             if showBomb {
                                 ZStack {
-                                    GifImageView("bomb", duration: 2, isVisible: $isBombVisible)
+                                    GifSequence("bomb", duration: 2, isVisible: $isBombVisible)
                                         .frame(width: 30, height: 30) // Adjust bomb size
                                         /*.offset(animationOffset)*/ // Keep the correct offset for sliding
                                         .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition() - 35) // Correct positioning
@@ -95,10 +81,10 @@ struct MapComponent3: View {
                             // Display the explosion GIF after the bomb reaches the ground
                             if showExplosion {
                                 ZStack {
-                                    GifImageView("explosion", duration: 1, isVisible: $isExplosion)
+                                    GifSequence("explosion", duration: 1, isVisible: $isExplosion)
                                         .frame(width: 150, height: 150) // Adjust explosion size
                                         .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition()) // Correct positioning
-                                }                        }}}
+                                }                        }}
                     
                 )
                 .frame(width: geo.size.width, height: geo.size.height)

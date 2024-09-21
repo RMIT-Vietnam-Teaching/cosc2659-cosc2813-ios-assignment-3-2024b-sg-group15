@@ -11,7 +11,6 @@ import SwiftUI
 
 struct MapComponent2: View {
     let mapImage: String
-    let animationImage: String
     let mapPoints: [(name: String, compactX: CGFloat, compactY: CGFloat, regularX: CGFloat, regularY: CGFloat, sizeMultiplier: CGFloat)]
     // Map points with custom x, y values for each device type
     
@@ -25,7 +24,7 @@ struct MapComponent2: View {
     // Offset for slide animation
     @State private var animationOpacity = 0.0 // For fading in
     @State private var animationScale: CGFloat = 0.5 // For scaling the image
-    
+    @State private var isFighting = true
     var body: some View {
         GeometryReader { geo in
             // The image of the map
@@ -35,9 +34,6 @@ struct MapComponent2: View {
                 .overlay(
                     ZStack {
                         ForEach(mapPoints, id: \.name) { point in
-                            
-                            if !(point.name == correctAnswer && showAnimationImage) {
-                                
                                 Button(action: {
                                     handleSelection(for: point.name, positionX: calculateXPosition(for: geo.size.width, point: point),
                                                     positionY: calculateYPosition(for: geo.size.height, point: point))
@@ -61,21 +57,22 @@ struct MapComponent2: View {
                                     y: calculateYPosition(for: geo.size.height, point: point)
                                 )
                                 .disabled(isSelectionMade())
-                            }
+                            
                             // Show the image for the correct option after selection with a slide animation
                             if showAnimationImage {
-                                Image(animationImage)
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
+                                GifImageView("swords", duration: 10, isVisible: $isFighting)
+                                    .frame(width: 70, height: 70)
                                     .offset(animationOffset) // Slide animation offset
                                     .position(x: geo.size.width * getCorrectXPosition(), y: geo.size.height * getCorrectYPosition())
                                     .onAppear {
-                                        withAnimation(.easeInOut(duration: 1.5)) {
+                                        withAnimation(.easeInOut(duration: 3)) {
                                             animationOffset = .zero
                                             animationOpacity = 1.0
                                             animationScale = 1.0
                                         }
+                                        
                                     }}
+                    
                         }}
                 )
                 .frame(width: geo.size.width, height: geo.size.height)

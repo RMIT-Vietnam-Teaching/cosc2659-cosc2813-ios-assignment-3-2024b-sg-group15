@@ -22,7 +22,7 @@ struct VoNhaiView: View {
        ]
 
     var body: some View {
-        MapComponent2( mapImage: "VoNhai", animationImage: "cover", mapPoints: mapPoints, correctAnswer: "Quỳnh Sơn")
+        MapComponent2( mapImage: "VoNhai", mapPoints: mapPoints, correctAnswer: "Quỳnh Sơn")
                 }
         }
 

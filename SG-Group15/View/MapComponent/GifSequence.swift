@@ -1,14 +1,7 @@
-//
-//  GifImage.swift
-//  SG-Group15
-//
-//  Created by Anh Nguyen Ha Kieu on 21/9/24.
-//
-
 import SwiftUI
 import WebKit
 
-struct GifImageView: UIViewRepresentable {
+struct GifSequence: UIViewRepresentable {
     private let name: String
     private let duration: Double // How long the GIF should play
     @Binding var isVisible: Bool // Control whether the GIF is visible or not
@@ -53,6 +46,6 @@ struct GifImageView: UIViewRepresentable {
 }
 
 #Preview {
-    GifImageView("download", duration: 3.0, isVisible: .constant(true))
+    GifSequence("download", duration: 3.0, isVisible: .constant(true))
         .background(.pink)
 }

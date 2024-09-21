@@ -55,7 +55,9 @@
 		CB94B35C2C9ED4A5005B77A7 /* download.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35B2C9ED4A5005B77A7 /* download.gif */; };
 		CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35F2C9EDD3A005B77A7 /* explosion.gif */; };
 		CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3612C9EE553005B77A7 /* bomb.gif */; };
-		CBCE14862C9EAA8C00EBA21B /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE14852C9EAA8600EBA21B /* GifImageView.swift */; };
+		CB94B3642C9EEBD0005B77A7 /* swords.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3632C9EEBD0005B77A7 /* swords.gif */; };
+		CB94B3692C9EEEF1005B77A7 /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */; };
+		CBCE14862C9EAA8C00EBA21B /* GifSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE14852C9EAA8600EBA21B /* GifSequence.swift */; };
 		CBD8AFBD2C9EA8AE0018AF4D /* DongNaiThuongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */; };
 		CBD8AFBE2C9EA8AE0018AF4D /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */; };
 		CBD8AFBF2C9EA8AE0018AF4D /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFBB2C9EA8AE0018AF4D /* VoNhaiView.swift */; };
@@ -124,7 +126,9 @@
 		CB94B35B2C9ED4A5005B77A7 /* download.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = download.gif; sourceTree = "<group>"; };
 		CB94B35F2C9EDD3A005B77A7 /* explosion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explosion.gif; sourceTree = "<group>"; };
 		CB94B3612C9EE553005B77A7 /* bomb.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bomb.gif; sourceTree = "<group>"; };
-		CBCE14852C9EAA8600EBA21B /* GifImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
+		CB94B3632C9EEBD0005B77A7 /* swords.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swords.gif; sourceTree = "<group>"; };
+		CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
+		CBCE14852C9EAA8600EBA21B /* GifSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifSequence.swift; sourceTree = "<group>"; };
 		CBD8AFB72C9EA8AE0018AF4D /*  BacGiangView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BacGiangView.swift"; sourceTree = "<group>"; };
 		CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
 		CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongNaiThuongView.swift; sourceTree = "<group>"; };
@@ -341,7 +345,8 @@
 		CBD8AFC82C9EA8C50018AF4D /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
-				CBCE14852C9EAA8600EBA21B /* GifImageView.swift */,
+				CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */,
+				CBCE14852C9EAA8600EBA21B /* GifSequence.swift */,
 				CBD8AFC22C9EA8C50018AF4D /* MapComponent1.swift */,
 				CBD8AFC32C9EA8C50018AF4D /* MapComponent2.swift */,
 				CBD8AFC42C9EA8C50018AF4D /* MapComponent3.swift */,
@@ -350,6 +355,7 @@
 				CBD8AFC72C9EA8C50018AF4D /* PositionCalculation.swift */,
 				CB94B3612C9EE553005B77A7 /* bomb.gif */,
 				CB94B35B2C9ED4A5005B77A7 /* download.gif */,
+				CB94B3632C9EEBD0005B77A7 /* swords.gif */,
 				CB94B35F2C9EDD3A005B77A7 /* explosion.gif */,
 			);
 			path = MapComponent;
@@ -455,6 +461,7 @@
 				393FC7092C8F450600028F1D /* Assets.xcassets in Resources */,
 				7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */,
 				75AD4D502C947DBD00C8F37F /* Lato-Bold.ttf in Resources */,
+				CB94B3642C9EEBD0005B77A7 /* swords.gif in Resources */,
 				CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,13 +497,14 @@
 				E29B16A52C9B140000673121 /* FillInBlankModel.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
+				CB94B3692C9EEEF1005B77A7 /* GifImageView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				393FC7192C8F46A200028F1D /* DemoModel.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
-				CBCE14862C9EAA8C00EBA21B /* GifImageView.swift in Sources */,
+				CBCE14862C9EAA8C00EBA21B /* GifSequence.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
 				398F19962C99AF5B0023515B /* DrawingView.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
