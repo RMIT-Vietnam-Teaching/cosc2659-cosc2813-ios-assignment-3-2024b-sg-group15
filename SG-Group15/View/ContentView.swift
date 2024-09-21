@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var bookVM = BookViewModel()
+
     var body: some View {
 //        WelcomeView()
 //        TabViewNote()
@@ -16,6 +18,7 @@ struct ContentView: View {
             periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
         )
 //        BookDetailView(page: .constant(CoverPage(title: "11", content: "11")))
+
     }
 }
 
