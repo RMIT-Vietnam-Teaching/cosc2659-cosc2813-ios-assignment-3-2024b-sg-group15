@@ -128,7 +128,6 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             // Check if it's the landing page
             print("Chapter index: \(chapterIndex) - Page index: \(pageIndex)")
             if chapterIndex == 0 {
-//                return UIHostingController(rootView: OpenBookView(coverPage: parent.$coverPage))
                 return UIHostingController(rootView: BookDetailView(page: parent.$coverPage))
 
             } else {
@@ -147,6 +146,10 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                 
                 else if let timelineVM = question as? TimelineGameViewModel {
                     return UIHostingController(rootView: TimelineGameView(viewModel: timelineVM))
+                }
+                
+                else if let fillVM = question as? FillInBlankViewModel {
+                    return UIHostingController(rootView: FillInBlankGameView(viewModel: fillVM))
                 }
                 
                 
@@ -282,6 +285,11 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                         parent.currentPageIndex = pageIndex
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<TimelineGameView> {
+                    let questionVM = hostingController.rootView.viewModel
+                    if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
+                        parent.currentPageIndex = pageIndex
+                    }
+                } else if let hostingController = visibleViewController as? UIHostingController<FillInBlankGameView> {
                     let questionVM = hostingController.rootView.viewModel
                     if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
