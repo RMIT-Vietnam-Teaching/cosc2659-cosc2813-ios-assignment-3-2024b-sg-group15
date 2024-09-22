@@ -11,23 +11,22 @@ import UserNotifications
 
 @main
 struct SG_Group15App: App {
-    @StateObject var languageManager = LanguageManager()
     @Environment(\.scenePhase) private var scenePhase
-    @AppStorage("theme") private var theme: Theme = .light
     @StateObject private var soundManager = SoundManager.shared
+
     let notificationDelegate = NotificationDelegate()
-    
+
     // Initialize Firebase
     init() {
-        FirebaseApp.configure()
+        FirebaseApp.configure()        
         UserDefaults.standard.set(0, forKey: "badgeCount")
         UNUserNotificationCenter.current().setBadgeCount(0)
         UNUserNotificationCenter.current().delegate = notificationDelegate
         requestNotificationPermission()
         scheduleNotificationWithBadge(hour: 8, minute: 00)
     }
-    
-    
+  
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -41,19 +40,15 @@ struct SG_Group15App: App {
                 .onAppear {
                     clearBadgeCount()
                 }
-                .environmentObject(languageManager)
-            // Set the locale of the app using the selected language
-                .environment(\.locale, .init(identifier: languageManager.selectedLanguage))
-                .preferredColorScheme(theme.colorScheme)
                 .onAppear {
                     soundManager.playBackground()
                 }
         }
     }
-    
+
     func clearBadgeCount() {
         UserDefaults.standard.set(0, forKey: "badgeCount")
-        
+
         UNUserNotificationCenter.current().setBadgeCount(0) { error in
             if let error = error {
                 print("Error clearing badge count: \(error.localizedDescription)")
@@ -95,13 +90,13 @@ struct SG_Group15App: App {
     func getCurrentBadgeCount() -> Int {
         return UserDefaults.standard.integer(forKey: "badgeCount")
     }
-    
+
     func scheduleNotificationWithBadge(hour: Int, minute: Int) {
         let content = UNMutableNotificationContent()
         content.title = "Reminder"
         content.body = "Don't lose your streak!"
         content.sound = UNNotificationSound.default
-        
+
         // Increment the badge count
         let newBadgeCount = getCurrentBadgeCount() + 1
         content.badge = NSNumber(value: newBadgeCount)
@@ -109,10 +104,10 @@ struct SG_Group15App: App {
         var dateComponents = DateComponents()
         dateComponents.hour = hour
         dateComponents.minute = minute
-        
+
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
+
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")

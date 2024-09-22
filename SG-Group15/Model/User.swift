@@ -15,22 +15,13 @@ struct User: Identifiable, Codable {
     var username: String
     var email: String
     var joinedAt: Date?
-    // Control user's setting preferences
-    var darkMode: Bool
-    var lang: String
-    var avatar: String
     
-    
+    // TODO: Add other fields in user profile later
     // Default initialization
-    init(id: String, username: String, email: String, avatar: String, darkMode: Bool, lang: String) {
+    init(id: String, username: String, email: String) {
         self.id = id
         self.username = username
         self.email = email
-        // Default user preference
-        self.avatar = avatar
-        self.darkMode = darkMode
-        self.lang = lang
-        
     }
     
     // Initialize from the database's document
@@ -38,10 +29,7 @@ struct User: Identifiable, Codable {
         // Ensure the user fields exist
         guard let username = data["username"] as? String,
               let email = data["email"] as? String,
-              let joinedAt = data["joinedAt"],
-              let avatar = data["avatar"] as? String,
-              let darkMode = data["darkMode"] as? Bool,
-              let lang = data["lang"] as? String
+              let joinedAt = data["joinedAt"]
         else {
             print("Cannot parse user data")
             return nil
@@ -51,9 +39,6 @@ struct User: Identifiable, Codable {
         self.email = email
         // Retrieve the date value only
         self.joinedAt = (joinedAt as? Timestamp)?.dateValue()
-        self.avatar = avatar
-        self.darkMode = darkMode
-        self.lang = lang
         
     }
 }
