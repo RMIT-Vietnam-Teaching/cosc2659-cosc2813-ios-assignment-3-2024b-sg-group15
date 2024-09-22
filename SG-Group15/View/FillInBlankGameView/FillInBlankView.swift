@@ -11,8 +11,8 @@ struct FillInBlankGameView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
-            let wordWidth = min(width * 0.25, 250)
-            let wordHeight = min(height * 0.05, 200)
+            let wordWidth = min(width * 0.28, 300)
+            let wordHeight = min(height * 0.06, 250)
             
             ZStack {
                 Image("background")
