@@ -12,7 +12,7 @@ struct ChoiceButton: View {
 
     @State private var check: Bool = false
     @Binding var correct: Bool?
-    @Binding var question: MultipleChoiceQuestion
+    var question: MultipleChoiceQuestion
     @Binding var selected: String
     var index: Int
     
@@ -51,7 +51,7 @@ struct ChoiceButton: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                .frame(width: UIScreen.main.bounds.width - 60) // Fixed width, but flexible height
+                .frame(width: UIScreen.main.bounds.width - 60)
                 .background {
                     if check && correct != nil {
                         RoundedRectangle(cornerRadius: 15)
@@ -84,12 +84,6 @@ struct ChoiceButton: View {
     }
 }
 
-#Preview {
-//    MultipleChoiceViewIphone()
-//    MultipleChoiceViewIpad()
-//    ChoiceButton()
-    MultipleChoiceView()
-}
 
 
 

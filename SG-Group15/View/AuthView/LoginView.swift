@@ -11,7 +11,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    @Environment (\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     // Manage user
     @ObservedObject var userViewModel: UserViewModel
     
@@ -97,5 +97,9 @@ struct LoginView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
+}
+
+#Preview {
+    LoginView(userViewModel: UserViewModel())
 }
 

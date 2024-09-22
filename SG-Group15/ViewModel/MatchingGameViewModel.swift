@@ -1,19 +1,34 @@
 import SwiftUI
+import FirebaseFirestore
 
-class MatchingGameViewModel: ObservableObject {
-    @Published var leftEvents: [MatchingEvent]
-    @Published var rightEvents: [MatchingEvent]
+class MatchingGameViewModel: QuestionViewModel {
+    @Published var leftEvents: [MatchingEvent] = []
+    @Published var rightEvents: [MatchingEvent] = []
     @Published var selectedLeftEventId: Int?
     @Published var selectedRightEventId: Int?
     @Published var isGameComplete = false
     
-    init(eventPairs: [(String, String)]) {
-        leftEvents = eventPairs.enumerated().map { MatchingEvent(id: $0, text: $1.0, correctMatchId: $0) }
-        rightEvents = eventPairs.enumerated().map { MatchingEvent(id: $0 + eventPairs.count, text: $1.1, correctMatchId: $0) }
-        
-        leftEvents.shuffle()
-        rightEvents.shuffle()
+    override init(question: QuestionProtocol, canFlip: Bool) {
+        super.init(question: question, canFlip: true)
+        if let question = question as? MatchingQuestion {
+            initQuestion(question: question)
+        }
     }
+    
+    // Initialize left and right events data
+    private func initQuestion(question: MatchingQuestion) {
+        self.leftEvents = question.left.enumerated().map { i, period  in
+            MatchingEvent(id: i, text: period, correctMatchId: i)
+        }
+        self.rightEvents = question.right.enumerated().map { i, period  in
+            MatchingEvent(id: i, text: period, correctMatchId: i)
+        }
+        self.leftEvents.shuffle()
+        self.rightEvents.shuffle()
+        
+        
+    }
+    
     
     func selectLeftEvent(_ event: MatchingEvent) {
         selectedLeftEventId = event.id
@@ -54,9 +69,7 @@ class MatchingGameViewModel: ObservableObject {
         
         // Check if all events are matched
         if leftEvents.allSatisfy({ $0.isMatched }) && rightEvents.allSatisfy({ $0.isMatched }) {
-            withAnimation {
-                isGameComplete = true
-            }
+            isGameComplete = true
         }
         
         // Reset selections
@@ -64,4 +77,3 @@ class MatchingGameViewModel: ObservableObject {
         selectedRightEventId = nil
     }
 }
-

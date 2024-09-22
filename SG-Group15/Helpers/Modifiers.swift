@@ -27,14 +27,13 @@ struct SignUpButtonModifier: ViewModifier {
 }
 
 // Large button style: Add to the label
-struct LargeButtonModifier: ViewModifier {
+struct RegularButtonModifier: ViewModifier {
     // Add background color as parameter
     var background: Color
     func body(content: Content) -> some View {
         content
         // Responsive frame
             .frame(width: 200)
-            .scaledFont(name: "Lato-Black", size: 24, maxSize: 30)
             .foregroundStyle(.white)
             .padding(.vertical, 10)
             .background(background)
@@ -45,20 +44,49 @@ struct LargeButtonModifier: ViewModifier {
 }
 
 // Large button style: Add to the label
+struct RegularButtonModifierIpad: ViewModifier {
+    // Add background color as parameter
+    var background: Color
+    func body(content: Content) -> some View {
+        content
+        // Responsive frame
+            .frame(width: 350, height: 60)
+//            .frame(minWidth: 350)
+//            .scaledFont(name: "Lato-Black", size: 36, maxSize: 40)
+            .foregroundStyle(.white)
+//            .padding(.vertical, 20)
+            .background(background)
+            .cornerRadius(15)
+    
+    }
+}
+
+struct LargeButtonModifier: ViewModifier {
+    // Add background color as parameter
+    var background: Color
+    func body(content: Content) -> some View {
+        content
+        // Responsive frame
+            .frame(width: 250, height: 50)
+            .foregroundStyle(.white)
+            .background(background)
+            .cornerRadius(15)
+    
+    }
+}
+
 struct LargeButtonModifierIpad: ViewModifier {
     // Add background color as parameter
     var background: Color
     func body(content: Content) -> some View {
         content
         // Responsive frame
-            .frame(minWidth: 350)
-            .scaledFont(name: "Lato-Black", size: 36, maxSize: 40)
+            .frame(width: 450, height: 80)
             .foregroundStyle(.white)
-            .padding(.vertical, 20)
+//            .padding(.vertical, 20)
             .background(background)
-            .cornerRadius(30)
-        // Ajust shadow to be responsive
-            .shadow(radius: 4, x: 1, y: UIScreen.main.bounds.width * 0.015)
+            .cornerRadius(15)
+    
     }
 }
 
@@ -98,19 +126,83 @@ struct MediumButtonModifierIpad: ViewModifier {
     }
 }
 
+struct LargeTitleTextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("OldStandardTT-Bold", size: 50))
+            .foregroundColor(Color("textDark")) // Assuming textDark is defined in your asset catalog
+    }
+}
+
+
+struct LargeTitleTextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 75, maxSize: 100)
+            .foregroundStyle(.textDark)
+    }
+}
+
+struct ButtonModifier: ViewModifier {
+    var background: Color
+
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 260, height: 70)
+            .background(background)
+            .foregroundStyle(.white)
+            .cornerRadius(15)
+            .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
+
+    }
+}
+
 // Title text style: Apply for book title, event title and chapter title
 struct TitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06))
-            .foregroundStyle(.textDark)
+//            .foregroundStyle(.textDark)
     }
 }
 
 struct TitleTextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "OldStandardTT-Bold", size: 45, maxSize: 50)
+            .scaledFont(name: "OldStandardTT-Bold", size: 45, maxSize: 55)
+//            .foregroundStyle(.textDark)
+    }
+}
+
+struct Title2TextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 28, maxSize: 30)
+//            .foregroundStyle(.textDark)
+    }
+}
+
+struct Title2TextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 50)
+//            .foregroundStyle(.textDark)
+    }
+}
+
+
+struct SubHeadlineTextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "Lato-Regular", size: 18, maxSize: 24)
+            .foregroundStyle(.textDark)
+    }
+}
+
+struct SubHeadlineTextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "Lato-Regular", size: 30, maxSize: 40)
             .foregroundStyle(.textDark)
     }
 }
@@ -134,20 +226,30 @@ struct QuestionTextModifierIpad: ViewModifier {
 
 // Chapter text style: Apply for book details' overview in the front page
 struct HeadlineTextModifier: ViewModifier {
-    var color: Color?
+//    var color: Color?
     func body(content: Content) -> some View {
         content
-            .font(.custom("Lato-Light", size: UIScreen.main.bounds.width * 0.05))
+            .scaledFont(name: "OldStandardTT-Bold", size: 20, maxSize: 40)
         // Can customize color
-            .foregroundStyle(color ?? .textDark)
+//            .foregroundStyle(color ?? .textDark)
     }
 }
 
-struct LongQuestionTextModifier: ViewModifier {
+struct HeadlineTextModifierIpad: ViewModifier {
+//    var color: Color?
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 32, maxSize: 40)
+        // Can customize color
+//            .foregroundStyle(color ?? .textDark)
+    }
+}
+
+struct SubTitleTextModifier: ViewModifier {
     var color: Color?
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "OldStandardTT-Bold", size: 20, maxSize: 30)
+            .scaledFont(name: "OldStandardTT-Bold", size: 20, maxSize: 40)
         // Can customize color
             .foregroundStyle(color ?? .textDark)
     }
@@ -168,7 +270,7 @@ struct BodyTextModifier: ViewModifier {
     var color: Color?
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "Lato-Regular", size: 16, maxSize: 18)
+            .scaledFont(name: "Lato-Regular", size: 20, maxSize: 30)
             .foregroundStyle(color ?? .textDark)
     }
 }
@@ -280,27 +382,5 @@ struct AnyViewModifier: ViewModifier {
     // This method applies the stored modifier to the content.
     func body(content: Content) -> some View {
         modifier(content)
-    }
-}
-
-// Preview provider for SwiftUI canvas
-struct TimelineGame_Previews: PreviewProvider {
-    static var previews: some View {
-        TimelineGameView(
-            eventData: ["Thời cơ Cách mạng tháng 8", "Tuyên Ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"],
-            periodData: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1946"]
-        )
-//        
-        MatchingGameView(eventPairs: [
-            ("Chiến dịch Điện Biên Phủ", "CTTGT2 kết thúc"),
-            ("Event 2 Left", "Event 2 Right"),
-            ("Event 3 Left", "Event 3 Right"),
-            ("Event 4 Left", "Event 4 Right"),
-            ("Event 5 Left", "Event 5 Right")
-        ])
-        
-//        MultipleChoiceView()
-
-
     }
 }
