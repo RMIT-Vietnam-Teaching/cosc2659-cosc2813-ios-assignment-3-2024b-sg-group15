@@ -31,6 +31,7 @@ class FillInBlankViewModel: QuestionViewModel {
                 index < parts.count - 1 ? Blank(index: index, correctWord: correctWord) : nil
             }
             self.correctSentence = correctSentence
+            print("Init fill in the blank")
         }
     }
         
