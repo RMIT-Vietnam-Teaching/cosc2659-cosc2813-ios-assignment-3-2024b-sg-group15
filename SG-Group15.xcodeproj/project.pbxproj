@@ -30,6 +30,8 @@
 		39FA15652C9606350054B99E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15642C9606350054B99E /* ProgressBar.swift */; };
 		39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15662C960D710054B99E /* ChoiceButton.swift */; };
 		39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */; };
+		55D1EE4C2C9F2D04000C9C26 /* MapComponent7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D1EE4B2C9F2D04000C9C26 /* MapComponent7.swift */; };
+		55D1EE4E2C9F304E000C9C26 /* adventure.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55D1EE4D2C9F304E000C9C26 /* adventure.gif */; };
 		7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */; };
 		7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC32C99827100F38696 /* Roboto-Thin.ttf */; };
 		7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC92C99991700F38696 /* GoogleService-Info.plist */; };
@@ -64,6 +66,28 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
+		CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B35F2C9EDD3A005B77A7 /* explosion.gif */; };
+		CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3612C9EE553005B77A7 /* bomb.gif */; };
+		CB94B3642C9EEBD0005B77A7 /* swords.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3632C9EEBD0005B77A7 /* swords.gif */; };
+		CB94B3692C9EEEF1005B77A7 /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */; };
+		CB94B36B2C9EF359005B77A7 /* tank.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B36A2C9EF359005B77A7 /* tank.gif */; };
+		CB94B36D2C9EF749005B77A7 /* DoiA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94B36C2C9EF745005B77A7 /* DoiA1.swift */; };
+		CB94B36F2C9EFAED005B77A7 /* shield.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B36E2C9EFAED005B77A7 /* shield.gif */; };
+		CB94B3712C9EFEE4005B77A7 /* MapComponent6.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94B3702C9EFEE4005B77A7 /* MapComponent6.swift */; };
+		CB94B3732C9EFF42005B77A7 /* HongCumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94B3722C9EFF42005B77A7 /* HongCumView.swift */; };
+		CB94B3752C9F04FF005B77A7 /* fight.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB94B3742C9F04FF005B77A7 /* fight.gif */; };
+		CBCE14862C9EAA8C00EBA21B /* GifSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE14852C9EAA8600EBA21B /* GifSequence.swift */; };
+		CBD8AFBD2C9EA8AE0018AF4D /* DongNaiThuongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */; };
+		CBD8AFBE2C9EA8AE0018AF4D /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */; };
+		CBD8AFBF2C9EA8AE0018AF4D /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFBB2C9EA8AE0018AF4D /* VoNhaiView.swift */; };
+		CBD8AFC02C9EA8AE0018AF4D /*  BacGiangView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFB72C9EA8AE0018AF4D /*  BacGiangView.swift */; };
+		CBD8AFC12C9EA8AE0018AF4D /* TanTraoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFBA2C9EA8AE0018AF4D /* TanTraoView.swift */; };
+		CBD8AFC92C9EA8C50018AF4D /* MapComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFC32C9EA8C50018AF4D /* MapComponent2.swift */; };
+		CBD8AFCA2C9EA8C50018AF4D /* PositionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFC72C9EA8C50018AF4D /* PositionCalculation.swift */; };
+		CBD8AFCB2C9EA8C50018AF4D /* MapComponent4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFC52C9EA8C50018AF4D /* MapComponent4.swift */; };
+		CBD8AFCC2C9EA8C50018AF4D /* MapComponent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFC22C9EA8C50018AF4D /* MapComponent1.swift */; };
+		CBD8AFCD2C9EA8C50018AF4D /* MapComponent5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFC62C9EA8C50018AF4D /* MapComponent5.swift */; };
+		CBD8AFCE2C9EA8C50018AF4D /* MapComponent3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8AFC42C9EA8C50018AF4D /* MapComponent3.swift */; };
 		E2598FD62C9F39D60056E409 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2598FD52C9F39D60056E409 /* SoundManager.swift */; };
 		E2598FD92C9F3A0F0056E409 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2598FD72C9F3A0F0056E409 /* correct.wav */; };
 		E2598FDA2C9F3A0F0056E409 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E2598FD82C9F3A0F0056E409 /* background.mp3 */; };
@@ -107,6 +131,8 @@
 		39FA15642C9606350054B99E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		39FA15662C960D710054B99E /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceQuestion.swift; sourceTree = "<group>"; };
+		55D1EE4B2C9F2D04000C9C26 /* MapComponent7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent7.swift; sourceTree = "<group>"; };
+		55D1EE4D2C9F304E000C9C26 /* adventure.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adventure.gif; sourceTree = "<group>"; };
 		7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7534ECC32C99827100F38696 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7534ECC92C99991700F38696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -134,6 +160,28 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		CB94B35F2C9EDD3A005B77A7 /* explosion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explosion.gif; sourceTree = "<group>"; };
+		CB94B3612C9EE553005B77A7 /* bomb.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bomb.gif; sourceTree = "<group>"; };
+		CB94B3632C9EEBD0005B77A7 /* swords.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swords.gif; sourceTree = "<group>"; };
+		CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
+		CB94B36A2C9EF359005B77A7 /* tank.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tank.gif; sourceTree = "<group>"; };
+		CB94B36C2C9EF745005B77A7 /* DoiA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoiA1.swift; sourceTree = "<group>"; };
+		CB94B36E2C9EFAED005B77A7 /* shield.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = shield.gif; sourceTree = "<group>"; };
+		CB94B3702C9EFEE4005B77A7 /* MapComponent6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent6.swift; sourceTree = "<group>"; };
+		CB94B3722C9EFF42005B77A7 /* HongCumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongCumView.swift; sourceTree = "<group>"; };
+		CB94B3742C9F04FF005B77A7 /* fight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fight.gif; sourceTree = "<group>"; };
+		CBCE14852C9EAA8600EBA21B /* GifSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifSequence.swift; sourceTree = "<group>"; };
+		CBD8AFB72C9EA8AE0018AF4D /*  BacGiangView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BacGiangView.swift"; sourceTree = "<group>"; };
+		CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
+		CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongNaiThuongView.swift; sourceTree = "<group>"; };
+		CBD8AFBA2C9EA8AE0018AF4D /* TanTraoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanTraoView.swift; sourceTree = "<group>"; };
+		CBD8AFBB2C9EA8AE0018AF4D /* VoNhaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoNhaiView.swift; sourceTree = "<group>"; };
+		CBD8AFC22C9EA8C50018AF4D /* MapComponent1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent1.swift; sourceTree = "<group>"; };
+		CBD8AFC32C9EA8C50018AF4D /* MapComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent2.swift; sourceTree = "<group>"; };
+		CBD8AFC42C9EA8C50018AF4D /* MapComponent3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent3.swift; sourceTree = "<group>"; };
+		CBD8AFC52C9EA8C50018AF4D /* MapComponent4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent4.swift; sourceTree = "<group>"; };
+		CBD8AFC62C9EA8C50018AF4D /* MapComponent5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent5.swift; sourceTree = "<group>"; };
+		CBD8AFC72C9EA8C50018AF4D /* PositionCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCalculation.swift; sourceTree = "<group>"; };
 		E2598FD52C9F39D60056E409 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		E2598FD72C9F3A0F0056E409 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
 		E2598FD82C9F3A0F0056E409 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
@@ -237,6 +285,8 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBD8AFC82C9EA8C50018AF4D /* MapComponent */,
+				CBD8AFBC2C9EA8AE0018AF4D /* Map */,
 				7549645D2C9EF4F200C3022E /* TimelineView */,
 				391848DA2C9B3587004B4367 /* PopUpView */,
 				E29B16B12C9B143000673121 /* FillInBlankGameView */,
@@ -348,6 +398,45 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		CBD8AFBC2C9EA8AE0018AF4D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CB94B36C2C9EF745005B77A7 /* DoiA1.swift */,
+				CBD8AFB72C9EA8AE0018AF4D /*  BacGiangView.swift */,
+				CBD8AFB82C9EA8AE0018AF4D /*  HocMonView.swift */,
+				CBD8AFB92C9EA8AE0018AF4D /* DongNaiThuongView.swift */,
+				CBD8AFBA2C9EA8AE0018AF4D /* TanTraoView.swift */,
+				CBD8AFBB2C9EA8AE0018AF4D /* VoNhaiView.swift */,
+				CB94B3722C9EFF42005B77A7 /* HongCumView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		CBD8AFC82C9EA8C50018AF4D /* MapComponent */ = {
+			isa = PBXGroup;
+			children = (
+				CB94B3682C9EEEEB005B77A7 /* GifImageView.swift */,
+				CBCE14852C9EAA8600EBA21B /* GifSequence.swift */,
+				CBD8AFC22C9EA8C50018AF4D /* MapComponent1.swift */,
+				55D1EE4B2C9F2D04000C9C26 /* MapComponent7.swift */,
+				CBD8AFC32C9EA8C50018AF4D /* MapComponent2.swift */,
+				CBD8AFC42C9EA8C50018AF4D /* MapComponent3.swift */,
+				CBD8AFC52C9EA8C50018AF4D /* MapComponent4.swift */,
+				CBD8AFC62C9EA8C50018AF4D /* MapComponent5.swift */,
+				CBD8AFC72C9EA8C50018AF4D /* PositionCalculation.swift */,
+				CB94B3702C9EFEE4005B77A7 /* MapComponent6.swift */,
+				CB94B3612C9EE553005B77A7 /* bomb.gif */,
+				CB94B3632C9EEBD0005B77A7 /* swords.gif */,
+				CB94B3742C9F04FF005B77A7 /* fight.gif */,
+				55D1EE4D2C9F304E000C9C26 /* adventure.gif */,
+				CB94B35F2C9EDD3A005B77A7 /* explosion.gif */,
+				CB94B36E2C9EFAED005B77A7 /* shield.gif */,
+				CB94B36A2C9EF359005B77A7 /* tank.gif */,
+			);
+			path = MapComponent;
+			sourceTree = "<group>";
+		};
+		E29B16A82C9B140D00673121 /* FillInBlank */ = {
 		E2598FDB2C9F3A140056E409 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +531,8 @@
 				75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */,
 				393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */,
 				7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */,
+				CB94B3622C9EE553005B77A7 /* bomb.gif in Resources */,
+				CB94B36F2C9EFAED005B77A7 /* shield.gif in Resources */,
 				E2598FD92C9F3A0F0056E409 /* correct.wav in Resources */,
 				75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */,
 				75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */,
@@ -449,7 +540,12 @@
 				E2598FDA2C9F3A0F0056E409 /* background.mp3 in Resources */,
 				393FC7092C8F450600028F1D /* Assets.xcassets in Resources */,
 				7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */,
+				CB94B36B2C9EF359005B77A7 /* tank.gif in Resources */,
 				75AD4D502C947DBD00C8F37F /* Lato-Bold.ttf in Resources */,
+				CB94B3642C9EEBD0005B77A7 /* swords.gif in Resources */,
+				CB94B3602C9EDD3A005B77A7 /* explosion.gif in Resources */,
+				CB94B3752C9F04FF005B77A7 /* fight.gif in Resources */,
+				55D1EE4E2C9F304E000C9C26 /* adventure.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +556,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB94B3712C9EFEE4005B77A7 /* MapComponent6.swift in Sources */,
+				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
+				75690F032C99E33300E4B2C3 /* DemoViewModel.swift in Sources */,
+				CBD8AFC92C9EA8C50018AF4D /* MapComponent2.swift in Sources */,
+				CBD8AFCA2C9EA8C50018AF4D /* PositionCalculation.swift in Sources */,
+				CB94B36D2C9EF749005B77A7 /* DoiA1.swift in Sources */,
+				CBD8AFCB2C9EA8C50018AF4D /* MapComponent4.swift in Sources */,
+				CBD8AFCC2C9EA8C50018AF4D /* MapComponent1.swift in Sources */,
+				55D1EE4C2C9F2D04000C9C26 /* MapComponent7.swift in Sources */,
+				CBD8AFCD2C9EA8C50018AF4D /* MapComponent5.swift in Sources */,
+				CBD8AFCE2C9EA8C50018AF4D /* MapComponent3.swift in Sources */,
 				7549645C2C9EE66C00C3022E /* BookDetailView.swift in Sources */,
 				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
@@ -483,6 +590,7 @@
 				7549645B2C9EDC3800C3022E /* QuestionViewModel.swift in Sources */,
 				39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */,
 				398F19982C99AF940023515B /* Note.swift in Sources */,
+				CB94B3732C9EFF42005B77A7 /* HongCumView.swift in Sources */,
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
 				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
 				391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */,
@@ -490,12 +598,14 @@
 				E29B16A52C9B140000673121 /* FillInBlankModel.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
+				CB94B3692C9EEEF1005B77A7 /* GifImageView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
 				754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
+				CBCE14862C9EAA8C00EBA21B /* GifSequence.swift in Sources */,
 				39EC9A492C9ED2E400689BAD /* SignUp.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
 				398F19962C99AF5B0023515B /* DrawingView.swift in Sources */,
@@ -510,6 +620,11 @@
 				75668E022C9183F90052F78C /* Modifiers.swift in Sources */,
 				75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */,
 				E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */,
+				CBD8AFBD2C9EA8AE0018AF4D /* DongNaiThuongView.swift in Sources */,
+				CBD8AFBE2C9EA8AE0018AF4D /*  HocMonView.swift in Sources */,
+				CBD8AFBF2C9EA8AE0018AF4D /* VoNhaiView.swift in Sources */,
+				CBD8AFC02C9EA8AE0018AF4D /*  BacGiangView.swift in Sources */,
+				CBD8AFC12C9EA8AE0018AF4D /* TanTraoView.swift in Sources */,
 				7594A7092C96D0CF000084FA /* LoginView.swift in Sources */,
 				7594A6F82C969065000084FA /* User.swift in Sources */,
 				E2598FD62C9F39D60056E409 /* SoundManager.swift in Sources */,
