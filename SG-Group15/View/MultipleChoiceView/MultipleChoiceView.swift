@@ -19,7 +19,6 @@ struct MultipleChoiceView: View {
         ZStack(alignment: .top) {
             Image("background")
                 .resizable()
-//                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .ignoresSafeArea()
             
             VStack(spacing: horizontalSizeClass == .compact ? 50 : 100) {
@@ -27,9 +26,9 @@ struct MultipleChoiceView: View {
                     Image(systemName: "xmark")
                         .resizable()
                         .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
+                    Spacer()
                 }
                 .onTapGesture {
-//                    goToChapter(chapter: 0)
                     goToMainPage()
                 }
                 .padding(.horizontal, 20)
@@ -73,12 +72,10 @@ struct MultipleChoiceView: View {
         NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
     
-    func goToChapter(chapter: Int) {
-        NotificationCenter.default.post(name: NSNotification.Name("GoToChapter"), object: chapter)
-    }
+
 }
 
-#Preview {
-//    MultipleChoiceView()
-    BookView()
-}
+//#Preview {
+////    MultipleChoiceView()
+//    BookView()
+//}

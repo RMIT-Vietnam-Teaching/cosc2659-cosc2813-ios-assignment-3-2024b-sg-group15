@@ -21,7 +21,10 @@ struct MatchingGameView: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
-                        ProgressBar()
+                            .onTapGesture {
+                                goToMainPage()
+                            }
+                        Spacer()
                     }
                     .padding(.horizontal, 20)
                     
@@ -68,6 +71,15 @@ struct MatchingGameView: View {
             .frame(width: width, height: height)
 
         }
+    }
+    
+    func goToNextPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
+    }
+    
+    
+    func goToMainPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
 }
 

@@ -67,7 +67,7 @@ struct SimpleView: View {
     }
 }
 
-#Preview {
-//    SimpleView(text: "test", backgroundColor: .green, flipState: .constant(true))
-    BookView()
-}
+//#Preview {
+////    SimpleView(text: "test", backgroundColor: .green, flipState: .constant(true))
+//    BookView()
+//}

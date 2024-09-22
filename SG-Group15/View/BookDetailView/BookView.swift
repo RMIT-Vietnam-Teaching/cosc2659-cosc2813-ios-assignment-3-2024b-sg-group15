@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookView: View {
     @StateObject private var bookVM = BookViewModel()
-    @State private var isOpen = false
+    @Binding var isOpen: Bool
     @State private var currentChapterIndex: Int? = 0 // Use nil for the initial landing page
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
@@ -28,14 +28,33 @@ struct BookView: View {
                LoadingView()
             } else {
                 if isOpen {
-                    // Only show PageCurlViewController when data is ready
-                    PageCurlViewController(
-                        chapters: $bookVM.chapters,
-                        coverPage: $coverPage,
-                        currentChapterIndex: $currentChapterIndex,
-                        currentPageIndex: $currentPageIndex
-                    )
-                    .edgesIgnoringSafeArea(.all)
+                    ZStack {
+                        // Only show PageCurlViewController when data is ready
+                        PageCurlViewController(
+                            chapters: $bookVM.chapters,
+                            coverPage: $coverPage,
+                            currentChapterIndex: $currentChapterIndex,
+                            currentPageIndex: $currentPageIndex
+                        )
+                        .edgesIgnoringSafeArea(.all)
+                        
+                        if currentChapterIndex == 0 || currentChapterIndex == nil {
+//                            Button("close") {
+//                                isOpen.toggle()
+//                            }
+                            Button(action: {
+                                isOpen.toggle()
+                            }, label: {
+//                                Text("close")
+                                Image(systemName: "x.circle")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.black)
+                            })
+                            .offset(x: -140, y: -320)
+                        }
+                        
+                    }
                 }
                 else {
                     OpenBookView(isOpen: $isOpen, coverPage: $coverPage)
@@ -93,5 +112,5 @@ struct BookView: View {
 }
 
 #Preview {
-    BookView()
+    BookView(isOpen: .constant(true))
 }
