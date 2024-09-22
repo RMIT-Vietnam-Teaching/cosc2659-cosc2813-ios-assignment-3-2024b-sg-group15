@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */; };
 		391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391848DD2C9B35E4004B4367 /* PopUpView.swift */; };
+		391E50EA2C9F01350099043D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E50E92C9F01350099043D /* MainView.swift */; };
+		391E50EC2C9F361B0099043D /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E50EB2C9F361B0099043D /* NoteViewModel.swift */; };
+		391E50EE2C9FC9E00099043D /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E50ED2C9FC9E00099043D /* NoteListView.swift */; };
+		391E50F02C9FCBAB0099043D /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E50EF2C9FCBAB0099043D /* NoteCardView.swift */; };
+		391E50F22C9FD67A0099043D /* InputBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E50F12C9FD67A0099043D /* InputBoxView.swift */; };
+		391E50F62C9FDA210099043D /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E50F52C9FDA210099043D /* ColorPicker.swift */; };
 		391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391FD2392C9C8A99007A6AD9 /* BookMenuView.swift */; };
 		393FC7092C8F450600028F1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC7082C8F450600028F1D /* Assets.xcassets */; };
 		393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393FC70B2C8F450600028F1D /* Preview Assets.xcassets */; };
@@ -104,6 +110,12 @@
 /* Begin PBXFileReference section */
 		391848DB2C9B359F004B4367 /* NonDismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonDismissableSheet.swift; sourceTree = "<group>"; };
 		391848DD2C9B35E4004B4367 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		391E50E92C9F01350099043D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		391E50EB2C9F361B0099043D /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		391E50ED2C9FC9E00099043D /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
+		391E50EF2C9FCBAB0099043D /* NoteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCardView.swift; sourceTree = "<group>"; };
+		391E50F12C9FD67A0099043D /* InputBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBoxView.swift; sourceTree = "<group>"; };
+		391E50F52C9FDA210099043D /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		391FD2392C9C8A99007A6AD9 /* BookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMenuView.swift; sourceTree = "<group>"; };
 		393FC7012C8F450400028F1D /* SG-Group15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SG-Group15.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		393FC7042C8F450400028F1D /* SG_Group15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SG_Group15App.swift; sourceTree = "<group>"; };
@@ -309,6 +321,7 @@
 				754964562C9EDC0300C3022E /* MultipleChoiceViewModel.swift */,
 				754964582C9EDC2400C3022E /* QuestionVMFactory.swift */,
 				7549645A2C9EDC3800C3022E /* QuestionViewModel.swift */,
+				391E50EB2C9F361B0099043D /* NoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -320,6 +333,10 @@
 				398F19952C99AF5B0023515B /* DrawingView.swift */,
 				398F19992C99B0F60023515B /* TypingView.swift */,
 				398F199B2C99B1AB0023515B /* TabViewNote.swift */,
+				391E50ED2C9FC9E00099043D /* NoteListView.swift */,
+				391E50EF2C9FCBAB0099043D /* NoteCardView.swift */,
+				391E50F12C9FD67A0099043D /* InputBoxView.swift */,
+				391E50F52C9FDA210099043D /* ColorPicker.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -378,6 +395,7 @@
 				759101D42C96EFC300930574 /* WelcomeView.swift */,
 				39E7CC622C9E7D8A0083E41F /* Login.swift */,
 				39EC9A482C9ED2E300689BAD /* SignUp.swift */,
+				391E50E92C9F01350099043D /* MainView.swift */,
 			);
 			path = AuthView;
 			sourceTree = "<group>";
@@ -569,11 +587,13 @@
 				E2F08F382C9FDCE100038010 /* MapViewProvider.swift in Sources */,
 				754964632C9EF60A00C3022E /* ResultView.swift in Sources */,
 				7549644B2C9ED7EC00C3022E /* Book.swift in Sources */,
+				391E50F02C9FCBAB0099043D /* NoteCardView.swift in Sources */,
 				391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */,
 				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
 				754964592C9EDC2400C3022E /* QuestionVMFactory.swift in Sources */,
 				E2F08F302C9FCB9600038010 /* MapComponentConfig.swift in Sources */,
 				754964532C9EDBA600C3022E /* BookViewModel.swift in Sources */,
+				391E50F62C9FDA210099043D /* ColorPicker.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
 				E2F08F362C9FDCA800038010 /* MapData.swift in Sources */,
 				E2F08F322C9FCD1200038010 /* MapViewManager.swift in Sources */,
@@ -584,6 +604,7 @@
 				39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */,
 				75D1F3C22CA02B6C0058C597 /* LanguageManager.swift in Sources */,
 				754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */,
+				391E50EE2C9FC9E00099043D /* NoteListView.swift in Sources */,
 				75D1F3C72CA02BAC0058C597 /* LanguagePicker.swift in Sources */,
 				7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
@@ -596,6 +617,7 @@
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
 				E2F08F342C9FDC9700038010 /* MapType.swift in Sources */,
 				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
+				391E50F22C9FD67A0099043D /* InputBoxView.swift in Sources */,
 				391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */,
 				75D1F3C92CA02BCC0058C597 /* MyProfileView.swift in Sources */,
 				E2A71D392C9FC3BA00A2862D /* PositionCalculation.swift in Sources */,
@@ -605,6 +627,8 @@
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
+				391E50EC2C9F361B0099043D /* NoteViewModel.swift in Sources */,
+				391E50EA2C9F01350099043D /* MainView.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
 				754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */,

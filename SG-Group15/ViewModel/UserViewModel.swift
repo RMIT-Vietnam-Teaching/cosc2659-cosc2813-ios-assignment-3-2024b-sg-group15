@@ -18,6 +18,7 @@ class UserViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var errorMessage: String?
     @Published var success: Bool = false
+    @Published var isLogin: Bool = false
     
     // Instantiate database and authenticaton
     private let auth = Auth.auth()

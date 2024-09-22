@@ -26,7 +26,14 @@ struct PencilCanvasView: UIViewRepresentable {
         return canvasView
     }
 
-    func updateUIView(_ uiView: PKCanvasView, context: Context) {}
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        // Update the drawing only if the loaded drawing is different
+        if let drawingData = note.drawingData,
+           let loadedDrawing = try? PKDrawing(data: drawingData),
+           loadedDrawing != uiView.drawing {
+            uiView.drawing = loadedDrawing
+        }
+    }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -51,6 +58,6 @@ struct PencilCanvasView: UIViewRepresentable {
         let drawing = canvasView.drawing
         note.drawingData = drawing.dataRepresentation()
         note.lastModified = Date()
-        NoteManager.save(note: note)
+//        NoteManager.save(note: note)
     }
 }

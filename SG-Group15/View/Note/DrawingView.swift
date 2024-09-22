@@ -10,7 +10,7 @@ import PencilKit
 
 struct DrawingView: View {
     @Binding var canvasView: PKCanvasView
-    @State private var toolPicker = PKToolPicker()
+    @Binding var toolPicker: PKToolPicker
     @Binding var note: Note
 
     var body: some View {
@@ -24,6 +24,6 @@ struct DrawingView: View {
 
 }
 
-#Preview {
-    DrawingView(canvasView: .constant(PKCanvasView()), note: .constant(Note(title: "title")))
-}
+//#Preview {
+//    DrawingView(canvasView: .constant(PKCanvasView()), note: .constant(Note(title: "title")))
+//}

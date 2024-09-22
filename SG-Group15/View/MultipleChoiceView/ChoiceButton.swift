@@ -32,6 +32,7 @@ struct ChoiceButton: View {
                         .foregroundColor(.black)
                         .padding(.vertical, 5) // Smaller vertical padding for compactness
                         .lineLimit(1) // Allows text to wrap if needed
+                        .multilineTextAlignment(.leading)
                     
                     Spacer()
                     

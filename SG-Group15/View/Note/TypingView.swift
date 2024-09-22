@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TypingView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     private let placeholder: String = "Type something here..."
     @Binding var note: Note
 
@@ -16,8 +18,8 @@ struct TypingView: View {
             // Placeholder Text
             if note.textContent == "" {
                 Text(placeholder)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 8)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
+                    .padding(.horizontal, horizontalSizeClass == .compact ? 8 : 20)
                     .padding(.vertical, 12)
             }
             
@@ -30,6 +32,6 @@ struct TypingView: View {
     }
 }
 
-#Preview {
-    TypingView(note: .constant(Note(title: "title")))
-}
+//#Preview {
+//    TypingView(note: .constant(Note(title: "title")))
+//}
