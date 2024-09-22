@@ -104,15 +104,12 @@ struct BookDetailView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        goToNextPage()
-                    }, label: {
-                        Text("Học")
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
-                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .bookmarkColor1)) : AnyViewModifier(RegularButtonModifierIpad(background: .bookmarkColor1)))
-                    })
+                    Text("Ân bên phải để lật sách, ấn bên trái để quay về")
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                        .multilineTextAlignment(.center)
+
                     
                     .onChange(of: isScaled, initial: false) { _, newValue in
                         if newValue {
