@@ -15,6 +15,7 @@ struct MyProfileView: View {
     @AppStorage("theme") private var theme: Theme = .light
     @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @State private var isLoggedOut: Bool = false
     
     private func saveSettings() {
         userVM.updatePreferences(
@@ -29,76 +30,91 @@ struct MyProfileView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.beigeBackground
-                .ignoresSafeArea(.all)
-            if horizontalSizeClass == .compact {
-                VStack {
-                    Text("Cài đặt")
-                        .foregroundStyle(Color.signupTitle)
-                        .modifier(LargeTitleTextModifier())
-                    Spacer()
-                        .frame(height: UIScreen.main.bounds.width * 0.1)
-                    PersonInfo(selectedAvatar: $avatar)
-                    Spacer()
-                        .frame(height: UIScreen.main.bounds.width * 0.15)
-                    VStack(alignment: .leading) {
-                        LanguagePicker()
-                        ThemePicker(scheme: scheme)
-                    }
-                    Spacer()
-                        .frame(height: UIScreen.main.bounds.width * 0.2)
-                    Button(action: {
-                        saveSettings()
-                    }) {
-                        Text("Lưu")
-                            .modifier(LargeButtonModifier(background: Color.primaryRed))
-                        
-                    }
-                    .padding()
-                }
-            }
-            else {
-                VStack {
-                    Text("Cài đặt")
-                        .foregroundStyle(Color.darkRed)
-                        .modifier(LargeTitleTextModifierIpad())
-                    Spacer()
-                        .frame(height: UIScreen.main.bounds.width * 0.1)
-                    PersonInfo(selectedAvatar: $avatar)
-                    Spacer()
-                        .frame(height: UIScreen.main.bounds.width * 0.1)
-                    VStack(alignment: .leading, spacing: 20) {
-                        LanguagePicker()
-                        ThemePicker(scheme: scheme)
-                        
-                    }
-                    Spacer()
-                    // Placeholder for error message
-                    if userVM.success {
-                        Text("Update Sucessfully!")
-                            .foregroundStyle(Color.green)
-                    }
-                    // Placeholder for error message
-                    if let message = userVM.errorMessage {
-                        HStack {
-                            Image(systemName: "x.circle.fill")
-                                .modifier(BodyTextModifier(color: Color.darkRed))
-                            Text(message)
-                                .modifier(BodyTextModifier(color: Color.darkRed))
+        NavigationStack {
+            ZStack(alignment: .top) {
+                Color.beigeBackground
+                    .ignoresSafeArea(.all)
+                if horizontalSizeClass == .compact {
+                    VStack {
+                        Text("Cài đặt")
+                            .foregroundStyle(Color.signupTitle)
+                            .modifier(LargeTitleTextModifier())
+                        Spacer()
+                            .frame(height: UIScreen.main.bounds.width * 0.1)
+                        PersonInfo(selectedAvatar: $avatar)
+                        Spacer()
+                            .frame(height: UIScreen.main.bounds.width * 0.15)
+                        VStack(alignment: .leading) {
+                            LanguagePicker()
+                            ThemePicker(scheme: scheme)
+                        }
+                        Spacer()
+                            .frame(height: UIScreen.main.bounds.width * 0.2)
+                        Button(action: {
+                            saveSettings()
+                        }) {
+                            Text("Lưu")
+                                .modifier(LargeButtonModifier(background: Color.primaryRed))
+                            
                         }
                         .padding()
                     }
-                    Button(action: {
-                        saveSettings()
-                    }) {
-                        Text("Lưu")
-                            .modifier(LargeButtonModifier(background: Color.primaryRed))
-                        
-                    }
-                    .padding()
                 }
-                
+                else {
+                    VStack {
+                        Text("Cài đặt")
+                            .foregroundStyle(Color.darkRed)
+                            .modifier(LargeTitleTextModifierIpad())
+                        Spacer()
+                            .frame(height: UIScreen.main.bounds.width * 0.1)
+                        PersonInfo(selectedAvatar: $avatar)
+                        Spacer()
+                            .frame(height: UIScreen.main.bounds.width * 0.1)
+                        VStack(alignment: .leading, spacing: 20) {
+                            LanguagePicker()
+                            ThemePicker(scheme: scheme)
+                            
+                        }
+                        Spacer()
+                        // Placeholder for error message
+                        if userVM.success {
+                            Text("Update Sucessfully!")
+                                .foregroundStyle(Color.green)
+                        }
+                        // Placeholder for error message
+                        if let message = userVM.errorMessage {
+                            HStack {
+                                Image(systemName: "x.circle.fill")
+                                    .modifier(BodyTextModifier(color: Color.darkRed))
+                                Text(message)
+                                    .modifier(BodyTextModifier(color: Color.darkRed))
+                            }
+                            .padding()
+                        }
+                        Button(action: {
+                            saveSettings()
+                        }) {
+                            Text("Lưu")
+                                .modifier(LargeButtonModifier(background: Color.primaryRed))
+                            
+                        }
+                        .padding()
+                        Button(action: {
+                            userVM.logout()
+                            isLoggedOut = true
+                        }) {
+                            Text("Đăng xuất")
+                                .modifier(LargeButtonModifier(background: Color.darkGreen))
+                            
+                        }
+                        .padding()
+                    }
+                    
+                }
+            }
+            
+            .navigationDestination(isPresented: $isLoggedOut) {
+                WelcomeView()
             }
         }
         .preferredColorScheme(theme.colorScheme)
