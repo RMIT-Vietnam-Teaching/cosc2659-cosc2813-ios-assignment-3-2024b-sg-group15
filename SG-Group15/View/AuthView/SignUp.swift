@@ -75,7 +75,8 @@ struct SignUp: View {
                         TextField("Nhập tên người dùng", text: $username)
                             .foregroundColor(.darkRed)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
-                        
+                        // Disable auto capitalization
+                            .textInputAutocapitalization(.never)
                             .onChange(of: username) { old, new in
                                 // Clear error message
                                 userViewModel.errorMessage = nil
@@ -93,7 +94,8 @@ struct SignUp: View {
                         TextField("Nhập email", text: $email)
                             .foregroundColor(.darkRed)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
-                        
+                        // Disable auto capitalization
+                            .textInputAutocapitalization(.never)
                             .onChange(of: email) { old, new in
                                 // Clear error message
                                 userViewModel.errorMessage = nil

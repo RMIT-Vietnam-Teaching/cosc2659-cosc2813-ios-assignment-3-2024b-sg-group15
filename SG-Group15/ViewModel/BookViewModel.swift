@@ -93,6 +93,18 @@ class BookViewModel: ObservableObject {
                         questions.append(timeline)
                         print("TimelineQuestion fetched")
                     }
+                    
+                    // Create Fillintheblank question
+                    else if let fill = FillInBlank(documentID: docu.documentID, data: data) {
+                        questions.append(fill)
+                        print("FillInTheBlankQuestion fetched")
+                    }
+                    
+                    // Create Map question
+                    else if let map = MapQuestion(documentID: docu.documentID, data: data) {
+                        questions.append(map)
+                        print("Map question fetched")
+                    }
                 }
                 
                 // Pass the fetched questions to the completion handler

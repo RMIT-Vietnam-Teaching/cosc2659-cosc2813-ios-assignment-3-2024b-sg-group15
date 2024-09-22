@@ -28,9 +28,7 @@ struct NoteListView: View {
                     .ignoresSafeArea()
                 
                 if noteVM.isLoading {
-                    ProgressView("Loading note data...")
-                        .font(.largeTitle)
-                        .padding()
+                   LoadingView()
                     
                 } else {
                     VStack(spacing: 10) {

@@ -25,9 +25,7 @@ struct BookView: View {
         VStack {
             if bookVM.isLoading {
                 // Show a loading view while the data is being fetched
-                ProgressView("Loading book data...")
-                    .font(.largeTitle)
-                    .padding()
+               LoadingView()
             } else {
                 if isOpen {
                     ZStack {
