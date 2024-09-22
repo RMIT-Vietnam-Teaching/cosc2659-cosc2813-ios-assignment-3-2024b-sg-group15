@@ -26,7 +26,7 @@ class UserViewModel: ObservableObject {
     // MARK: Sign up process
     // Save new user to database
     private func saveUser(uid: String, email: String, username: String) {
-        let newUser = User(id: uid, username: username, email: email, avatar: "", darkMode: false, lang: "vi")
+        let newUser = User(id: uid, username: username, email: email, avatar: "avatar1", darkMode: false, lang: "vi")
         
         // Save with the exact date the user is created
         db.collection("users").document(uid).setData([
