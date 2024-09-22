@@ -1,12 +1,13 @@
 // MapViewModel.swift
 import SwiftUI
 import Combine
+import FirebaseFirestore
 
-class MapViewModel: ObservableObject {
+class MapViewModel: QuestionViewModel {
     // Published properties to update the UI
-    @Published var question: String
-    @Published var mapChoices: [String]
-    @Published var correctAnswer: String
+    @Published var mapQuestion: String = ""
+    @Published var mapChoices: [String] = []
+    @Published var correctAnswer: String = ""
     @Published var selectedAnswer: String? = nil
     @Published var showAnimation: Bool = false
     
@@ -21,10 +22,13 @@ class MapViewModel: ObservableObject {
         return MapDataProvider.mapData(for: type)
     }
     
-    init(question: String, mapChoices: [String], correctAnswer: String) {
-        self.question = question
-        self.mapChoices = mapChoices
-        self.correctAnswer = correctAnswer
+    override init(question: QuestionProtocol) {
+        super.init(question: question)
+        if let question = question as? MapQuestion {
+            self.mapQuestion = question.question
+            self.mapChoices = question.mapChoices
+            self.correctAnswer = question.correct
+        }
     }
     
     // Handle user selection
@@ -32,7 +36,11 @@ class MapViewModel: ObservableObject {
         guard selectedAnswer == nil else { return } // Prevent multiple selections
         selectedAnswer = answer
         showAnimation = (answer == correctAnswer)
-        
-        // Additional logic can be added here, such as updating scores or navigating to the next question
     }
+    
+    
+  
+    
 }
+    
+

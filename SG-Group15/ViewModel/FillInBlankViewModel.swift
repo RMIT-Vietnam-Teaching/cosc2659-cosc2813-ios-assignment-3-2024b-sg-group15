@@ -21,8 +21,8 @@ class FillInBlankViewModel: QuestionViewModel {
     @Published var correctSentence: String=""
     
     // MARK: - Initialization
-    override init(question: QuestionProtocol, canFlip: Bool) {
-        super.init(question: question, canFlip: canFlip)
+    override init(question: QuestionProtocol) {
+        super.init(question: question)
         if let question = question as? FillInBlank {
             self.words = question.words.map { Word(text: $0, isPlaced: false) }
             let parts = question.sentence.components(separatedBy: "......")
