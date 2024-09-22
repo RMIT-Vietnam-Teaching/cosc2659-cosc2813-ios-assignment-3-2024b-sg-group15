@@ -12,6 +12,7 @@ import UserNotifications
 @main
 struct SG_Group15App: App {
     @Environment(\.scenePhase) private var scenePhase
+    @StateObject private var soundManager = SoundManager.shared
 
     let notificationDelegate = NotificationDelegate()
 
@@ -38,6 +39,9 @@ struct SG_Group15App: App {
                 }
                 .onAppear {
                     clearBadgeCount()
+                }
+                .onAppear {
+                    soundManager.playBackground()
                 }
         }
     }
