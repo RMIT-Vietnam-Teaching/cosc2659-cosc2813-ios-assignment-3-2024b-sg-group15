@@ -30,6 +30,7 @@
 		39FA15652C9606350054B99E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15642C9606350054B99E /* ProgressBar.swift */; };
 		39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15662C960D710054B99E /* ChoiceButton.swift */; };
 		39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */; };
+		7533AE412C9F2A2C001E5838 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7533AE402C9F2A2C001E5838 /* LanguageManager.swift */; };
 		7534ECC22C99826600F38696 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */; };
 		7534ECC42C99827100F38696 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC32C99827100F38696 /* Roboto-Thin.ttf */; };
 		7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7534ECC92C99991700F38696 /* GoogleService-Info.plist */; };
@@ -103,6 +104,7 @@
 		39FA15642C9606350054B99E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		39FA15662C960D710054B99E /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceQuestion.swift; sourceTree = "<group>"; };
+		7533AE402C9F2A2C001E5838 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		7534ECC12C99826600F38696 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7534ECC32C99827100F38696 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7534ECC92C99991700F38696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		393FC7142C8F466900028F1D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7533AE422C9F2FD3001E5838 /* ProfileView */,
 				7549645D2C9EF4F200C3022E /* TimelineView */,
 				391848DA2C9B3587004B4367 /* PopUpView */,
 				E29B16B12C9B143000673121 /* FillInBlankGameView */,
@@ -292,6 +295,13 @@
 			path = MultipleChoiceView;
 			sourceTree = "<group>";
 		};
+		7533AE422C9F2FD3001E5838 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 		7549645D2C9EF4F200C3022E /* TimelineView */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +319,7 @@
 				75668E012C9183F90052F78C /* Modifiers.swift */,
 				39FA15592C948E1A0054B99E /* PageCurlViewController.swift */,
 				398F199D2C99B2470023515B /* NoteManager.swift */,
+				7533AE402C9F2A2C001E5838 /* LanguageManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -450,6 +461,7 @@
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
 				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
+				7533AE412C9F2A2C001E5838 /* LanguageManager.swift in Sources */,
 				754964612C9EF55E00C3022E /* TimePeriodView.swift in Sources */,
 				39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */,
 				754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */,
