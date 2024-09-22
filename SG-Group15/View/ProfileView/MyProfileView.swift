@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MyProfileView: View {
     @EnvironmentObject var languageManager: LanguageManager
-    @ObservedObject var userVM: UserViewModel
+    @EnvironmentObject var userVM: UserViewModel
     @State private var avatar: String = "avatar5"
     @AppStorage("theme") private var theme: Theme = .light
     @Environment(\.colorScheme) private var scheme: ColorScheme
@@ -35,8 +35,8 @@ struct MyProfileView: View {
             if horizontalSizeClass == .compact {
                 VStack {
                     Text("Cài đặt")
-                        .foregroundStyle(Color.darkRed)
-                        .modifier(Title2TextModifier())
+                        .foregroundStyle(Color.signupTitle)
+                        .modifier(LargeTitleTextModifier())
                     Spacer()
                         .frame(height: UIScreen.main.bounds.width * 0.1)
                     PersonInfo(selectedAvatar: $avatar)
@@ -62,7 +62,7 @@ struct MyProfileView: View {
                 VStack {
                     Text("Cài đặt")
                         .foregroundStyle(Color.darkRed)
-                        .modifier(Title2TextModifierIpad())
+                        .modifier(LargeTitleTextModifierIpad())
                     Spacer()
                         .frame(height: UIScreen.main.bounds.width * 0.1)
                     PersonInfo(selectedAvatar: $avatar)
@@ -74,7 +74,21 @@ struct MyProfileView: View {
                         
                     }
                     Spacer()
-                        .frame(height: UIScreen.main.bounds.width * 0.2)
+                    // Placeholder for error message
+                    if userVM.success {
+                        Text("Update Sucessfully!")
+                            .foregroundStyle(Color.green)
+                    }
+                    // Placeholder for error message
+                    if let message = userVM.errorMessage {
+                        HStack {
+                            Image(systemName: "x.circle.fill")
+                                .modifier(BodyTextModifier(color: Color.darkRed))
+                            Text(message)
+                                .modifier(BodyTextModifier(color: Color.darkRed))
+                        }
+                        .padding()
+                    }
                     Button(action: {
                         saveSettings()
                     }) {
@@ -103,7 +117,8 @@ struct MyProfileView: View {
     let userVM = UserViewModel()
     userVM.currentUser = dummyUser
     
-    return MyProfileView(userVM: userVM)
+    return MyProfileView()
+        .environmentObject(UserViewModel())
         .environmentObject(LanguageManager())
     
 }

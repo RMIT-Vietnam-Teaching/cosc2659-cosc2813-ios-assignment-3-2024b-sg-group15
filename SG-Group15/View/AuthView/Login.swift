@@ -75,7 +75,8 @@ struct Login: View {
                         TextField("Nhập email", text: $email)
                             .foregroundColor(.darkRed)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
-                        
+                        // Disable auto capitalization
+                            .textInputAutocapitalization(.never)
                             .onChange(of: email) { old, new in
                                 // Clear error message
                                 userViewModel.errorMessage = nil
@@ -95,6 +96,8 @@ struct Login: View {
                         SecureField("Nhập mật khẩu", text: $password)
                             .foregroundColor(.darkRed)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                        // Disable auto capitalization
+                            .textInputAutocapitalization(.never)
                             .onChange(of: password) { old, new in
                                 // Clear error message
                                 userViewModel.errorMessage = nil
