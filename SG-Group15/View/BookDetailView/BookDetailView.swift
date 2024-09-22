@@ -68,12 +68,13 @@ struct BookDetailView: View {
                                 
                             }
                         })
+                        
                         Button(action: {
                             goToChapter(chapter: 2)
                         }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15.0)
-                                    .foregroundColor(.bookmarkColor1)
+                                    .foregroundColor(.bookmarkColor3)
                                     .frame(width: 70, height: 130)
                                 
                                 
@@ -143,3 +144,6 @@ struct BookDetailView: View {
     }
 }
 
+//#Preview {
+//    BookView()
+//}

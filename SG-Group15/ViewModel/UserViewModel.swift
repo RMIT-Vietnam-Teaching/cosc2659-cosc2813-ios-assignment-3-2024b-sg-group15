@@ -250,6 +250,7 @@ class UserViewModel: ObservableObject {
     
     // MARK: Update user preferences
     func updatePreferences(darkMode: Bool, lang: String, avatar: String) {
+        self.success = false
         guard let userId = Auth.auth().currentUser?.uid else { return }
         // Set new data for the current user
         let db = Firestore.firestore()
@@ -259,9 +260,12 @@ class UserViewModel: ObservableObject {
             "avatar": avatar
         ], merge: true) { error in
             if let error = error {
+                self.errorMessage = "Error updating preferences"
+                self.success = false
                 print("Error updating preferences: \(error)")
             } else {
-                print("Preferences updated successfully")
+                self.success = true
+                
             }
         }
     }

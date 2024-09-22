@@ -20,24 +20,30 @@ struct OpenBookView: View {
             if isOpen {
                 BookDetailView(title: bookVM.chapters[chapterNum].title, description: bookVM.chapters[chapterNum].description)
                     .padding(0)
-            }
+            } else {
+               CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
 
-            if showCover {
-                // The book cover (shown initially, then rotates open and disappears)
-                CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
-                
             }
+//        }
+//
+//            if showCover {
+//                // The book cover (shown initially, then rotates open and disappears)
+//                CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
+//                
+//            }
         }
         .onAppear {
-                  if isOpen {
-                      showCover = false
-                  }
-              }
-              .onChange(of: isOpen) {old ,new in
-                  if new {
-                      showCover = false
-                  }
-              }
+            if isOpen {
+                showCover = false
+            } else {
+                showCover = true
+            }
+        }
+//              .onChange(of: isOpen) {old ,new in
+//                  if new {
+//                      showCover = false
+//                  }
+//              }
         
     }
 }

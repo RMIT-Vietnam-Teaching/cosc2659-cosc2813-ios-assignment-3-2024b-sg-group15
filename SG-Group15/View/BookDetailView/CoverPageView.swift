@@ -25,7 +25,8 @@ struct CoverPageView: View {
             let rotation = progress * 25
             
             ZStack {
-                
+                Color.beigeBackground
+                    .ignoresSafeArea()
                 Group {
                     
                     RoundedRectangle(cornerRadius: 15)
@@ -66,6 +67,7 @@ struct CoverPageView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                         withAnimation {
                             showCover = false // Hide the cover after opening
+                            isScaled = false
                         }
                     }
                 }
@@ -74,3 +76,7 @@ struct CoverPageView: View {
     }
 }
 
+//#Preview {
+////    CoverPageView(isScaled: .constant(true), isOpen: .constant(false), showCover: .constant(true))
+//    BookView()
+//}

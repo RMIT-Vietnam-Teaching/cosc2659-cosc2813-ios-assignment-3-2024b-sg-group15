@@ -18,6 +18,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
     @Binding var chapters: [Chapter]
     @Binding var currentChapterIndex: Int
     @Binding var currentPageIndex: Int
+    @State private var canFlip = true
     
     // Store converted ChapterWithQuestionVM list
     private var chaptersWithQuestionVMs: [ChapterWithQuestionVM]=[]
@@ -206,6 +207,9 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             let chapterIndex = parent.currentChapterIndex
             let pageIndex = parent.currentPageIndex
             
+            if !parent.canFlip {
+                return nil
+            }
             
             if pageIndex > 0 {
                 parent.currentPageIndex = pageIndex - 1
@@ -223,6 +227,9 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             let chapterIndex = parent.currentChapterIndex
             let pageIndex = parent.currentPageIndex
             
+            if !parent.canFlip {
+                return nil
+            }
             // Check if there are more pages in the current chapter
             if pageIndex < parent.chapters[chapterIndex].questions.count - 1 {
                 // Move to the next page within the current chapter
@@ -250,27 +257,32 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                     let questionVM = hostingController.rootView.questionVM
                     if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
+                        parent.canFlip = true
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<MatchingGameView> {
                     let questionVM = hostingController.rootView.viewModel
                     if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
+                        parent.canFlip = true
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<TimelineGameView> {
                     let questionVM = hostingController.rootView.viewModel
                     if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
+                        parent.canFlip = false
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<FillInBlankGameView> {
                     let questionVM = hostingController.rootView.viewModel
                     if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
+                        parent.canFlip = true
                     }
                 }
                 else if let hostingController = visibleViewController as? UIHostingController<MapViewManager> {
                     let questionVM = hostingController.rootView.viewModel
                     if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
+                        parent.canFlip = true
                     }
                 }
                 

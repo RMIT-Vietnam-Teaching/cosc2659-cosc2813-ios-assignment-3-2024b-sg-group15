@@ -22,14 +22,18 @@ struct TimelineGameView: View {
                     .resizable()
                     .ignoresSafeArea()
                 
-                VStack(spacing: 20) {
+                VStack(spacing: 10) {
                     HStack(spacing: 10) {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
-                        ProgressBar()
+                            .onTapGesture {
+                                goToMainPage()
+                            }
+                        Spacer()
                     }
                     .padding(.horizontal, 20)
+                    
                     
                     Text("Kéo các sự kiện sau đây ứng với mốc thời gian")
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
@@ -79,7 +83,7 @@ struct TimelineGameView: View {
                     }
                 }
                 .padding(.horizontal, horizontalSizeClass == .compact ? 0 : 20)
-                .padding(.top, horizontalSizeClass == .compact ? 0 : 20)
+                .padding(.top, horizontalSizeClass == .compact ? 30 : 20)
                 
                 ForEach($viewModel.events) { $event in
                     EventView(viewModel: viewModel, event: event, width: eventWidth, height: eventHeight)
@@ -133,25 +137,38 @@ struct TimelineGameView: View {
                 
                 if viewModel.isGameComplete && !viewModel.isSubmitted {
                     Button("Kiểm tra") {
+                    print("kiem tra")
                         withAnimation {
-                            isSubmit = true
+                            
                             viewModel.checkAnswer()
+                            isSubmit = true
                         }
                     }
                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
-                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
+                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height / 4 : height - 50)
                 }
                 if isSubmit {
                     Button("Tiếp tục") {
-                        print("Next question")
+                        goToNextPage()
+//                        print("Next question")
                     }
                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
-                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height - 10 : height - 50)
+                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height / 4  : height / 4)
                 }
             }
             .coordinateSpace(name: "gameArea")
         }
+//        .padding(.vertical, 60)
         
+    }
+    
+    func goToNextPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
+    }
+    
+    
+    func goToMainPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
 }
 

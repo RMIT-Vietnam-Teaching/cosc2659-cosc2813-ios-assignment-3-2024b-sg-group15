@@ -26,7 +26,7 @@ struct MultipleChoiceView: View {
                     Image(systemName: "xmark")
                         .resizable()
                         .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
-                    ProgressBar()
+                    Spacer()
                 }
                 .onTapGesture {
                     goToMainPage()
@@ -70,9 +70,7 @@ struct MultipleChoiceView: View {
         NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
     
-    func goToChapter(chapter: Int) {
-        NotificationCenter.default.post(name: NSNotification.Name("GoToChapter"), object: chapter)
-    }
+
 }
 
 
