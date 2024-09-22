@@ -81,26 +81,19 @@
 		E2A71D2E2C9FC3BA00A2862D /* explosion.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D1C2C9FC3BA00A2862D /* explosion.gif */; };
 		E2A71D2F2C9FC3BA00A2862D /* fight.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D1D2C9FC3BA00A2862D /* fight.gif */; };
 		E2A71D302C9FC3BA00A2862D /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */; };
-		E2A71D322C9FC3BA00A2862D /* MapComponent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D202C9FC3BA00A2862D /* MapComponent1.swift */; };
-		E2A71D332C9FC3BA00A2862D /* MapComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D212C9FC3BA00A2862D /* MapComponent2.swift */; };
-		E2A71D342C9FC3BA00A2862D /* MapComponent3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D222C9FC3BA00A2862D /* MapComponent3.swift */; };
-		E2A71D352C9FC3BA00A2862D /* MapComponent4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D232C9FC3BA00A2862D /* MapComponent4.swift */; };
-		E2A71D362C9FC3BA00A2862D /* MapComponent5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D242C9FC3BA00A2862D /* MapComponent5.swift */; };
-		E2A71D372C9FC3BA00A2862D /* MapComponent6.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D252C9FC3BA00A2862D /* MapComponent6.swift */; };
-		E2A71D382C9FC3BA00A2862D /* MapComponent7.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D262C9FC3BA00A2862D /* MapComponent7.swift */; };
 		E2A71D392C9FC3BA00A2862D /* PositionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */; };
 		E2A71D3A2C9FC3BA00A2862D /* shield.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D282C9FC3BA00A2862D /* shield.gif */; };
 		E2A71D3B2C9FC3BA00A2862D /* swords.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D292C9FC3BA00A2862D /* swords.gif */; };
 		E2A71D3C2C9FC3BA00A2862D /* tank.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D2A2C9FC3BA00A2862D /* tank.gif */; };
-		E2A71D452C9FC3CC00A2862D /*  BacGiangView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D3D2C9FC3CC00A2862D /*  BacGiangView.swift */; };
-		E2A71D462C9FC3CC00A2862D /*  HocMonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D3E2C9FC3CC00A2862D /*  HocMonView.swift */; };
-		E2A71D472C9FC3CC00A2862D /* DoiA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D3F2C9FC3CC00A2862D /* DoiA1.swift */; };
-		E2A71D482C9FC3CC00A2862D /* DongNaiThuongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D402C9FC3CC00A2862D /* DongNaiThuongView.swift */; };
-		E2A71D492C9FC3CC00A2862D /* HongCumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D412C9FC3CC00A2862D /* HongCumView.swift */; };
-		E2A71D4A2C9FC3CC00A2862D /* TanTraoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D422C9FC3CC00A2862D /* TanTraoView.swift */; };
-		E2A71D4B2C9FC3CC00A2862D /* VoNhaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D432C9FC3CC00A2862D /* VoNhaiView.swift */; };
 		E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */; };
 		E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */; };
+		E2F08F2C2C9FC9D000038010 /* MapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F2B2C9FC9D000038010 /* MapDataModel.swift */; };
+		E2F08F2E2C9FCA4E00038010 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F2D2C9FCA4E00038010 /* MapViewModel.swift */; };
+		E2F08F302C9FCB9600038010 /* MapComponentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F2F2C9FCB9600038010 /* MapComponentConfig.swift */; };
+		E2F08F322C9FCD1200038010 /* MapViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F312C9FCD1200038010 /* MapViewManager.swift */; };
+		E2F08F342C9FDC9700038010 /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F332C9FDC9700038010 /* MapType.swift */; };
+		E2F08F362C9FDCA800038010 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F352C9FDCA800038010 /* MapData.swift */; };
+		E2F08F382C9FDCE100038010 /* MapViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F372C9FDCE100038010 /* MapViewProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,26 +167,19 @@
 		E2A71D1C2C9FC3BA00A2862D /* explosion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explosion.gif; sourceTree = "<group>"; };
 		E2A71D1D2C9FC3BA00A2862D /* fight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fight.gif; sourceTree = "<group>"; };
 		E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
-		E2A71D202C9FC3BA00A2862D /* MapComponent1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent1.swift; sourceTree = "<group>"; };
-		E2A71D212C9FC3BA00A2862D /* MapComponent2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent2.swift; sourceTree = "<group>"; };
-		E2A71D222C9FC3BA00A2862D /* MapComponent3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent3.swift; sourceTree = "<group>"; };
-		E2A71D232C9FC3BA00A2862D /* MapComponent4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent4.swift; sourceTree = "<group>"; };
-		E2A71D242C9FC3BA00A2862D /* MapComponent5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent5.swift; sourceTree = "<group>"; };
-		E2A71D252C9FC3BA00A2862D /* MapComponent6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent6.swift; sourceTree = "<group>"; };
-		E2A71D262C9FC3BA00A2862D /* MapComponent7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponent7.swift; sourceTree = "<group>"; };
 		E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCalculation.swift; sourceTree = "<group>"; };
 		E2A71D282C9FC3BA00A2862D /* shield.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = shield.gif; sourceTree = "<group>"; };
 		E2A71D292C9FC3BA00A2862D /* swords.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swords.gif; sourceTree = "<group>"; };
 		E2A71D2A2C9FC3BA00A2862D /* tank.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tank.gif; sourceTree = "<group>"; };
-		E2A71D3D2C9FC3CC00A2862D /*  BacGiangView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " BacGiangView.swift"; sourceTree = "<group>"; };
-		E2A71D3E2C9FC3CC00A2862D /*  HocMonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " HocMonView.swift"; sourceTree = "<group>"; };
-		E2A71D3F2C9FC3CC00A2862D /* DoiA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoiA1.swift; sourceTree = "<group>"; };
-		E2A71D402C9FC3CC00A2862D /* DongNaiThuongView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DongNaiThuongView.swift; sourceTree = "<group>"; };
-		E2A71D412C9FC3CC00A2862D /* HongCumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HongCumView.swift; sourceTree = "<group>"; };
-		E2A71D422C9FC3CC00A2862D /* TanTraoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TanTraoView.swift; sourceTree = "<group>"; };
-		E2A71D432C9FC3CC00A2862D /* VoNhaiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoNhaiView.swift; sourceTree = "<group>"; };
 		E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameView.swift; sourceTree = "<group>"; };
 		E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameViewModel.swift; sourceTree = "<group>"; };
+		E2F08F2B2C9FC9D000038010 /* MapDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataModel.swift; sourceTree = "<group>"; };
+		E2F08F2D2C9FCA4E00038010 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		E2F08F2F2C9FCB9600038010 /* MapComponentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentConfig.swift; sourceTree = "<group>"; };
+		E2F08F312C9FCD1200038010 /* MapViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewManager.swift; sourceTree = "<group>"; };
+		E2F08F332C9FDC9700038010 /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
+		E2F08F352C9FDCA800038010 /* MapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
+		E2F08F372C9FDCE100038010 /* MapViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,11 +256,13 @@
 				E29655382C94BD580099D136 /* TimelineGameModel.swift */,
 				7594A6F72C969065000084FA /* User.swift */,
 				39FA155D2C95708F0054B99E /* PageModel.swift */,
+				E2F08F2B2C9FC9D000038010 /* MapDataModel.swift */,
 				39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */,
 				398F19972C99AF940023515B /* Note.swift */,
 				7549644A2C9ED7EC00C3022E /* Book.swift */,
 				7549644C2C9ED80B00C3022E /* Chapter.swift */,
 				7549644E2C9ED83500C3022E /* MatchingQuestion.swift */,
+				E2F08F3B2C9FE93F00038010 /* MapModel */,
 				754964502C9ED88700C3022E /* QuestionProtocol.swift */,
 			);
 			path = Model;
@@ -284,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				E2A71D442C9FC3CC00A2862D /* Map */,
-				E2A71D2B2C9FC3BA00A2862D /* MapComponent */,
 				7549645D2C9EF4F200C3022E /* TimelineView */,
 				391848DA2C9B3587004B4367 /* PopUpView */,
 				E29B16B12C9B143000673121 /* FillInBlankGameView */,
@@ -304,6 +291,7 @@
 			children = (
 				E29B16A92C9B142100673121 /* FillInBlankViewModel.swift */,
 				E296553E2C94BDDF0099D136 /* TimelineGameViewModel.swift */,
+				E2F08F2D2C9FCA4E00038010 /* MapViewModel.swift */,
 				E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */,
 				7594A6F92C969163000084FA /* UserViewModel.swift */,
 				754964522C9EDBA600C3022E /* BookViewModel.swift */,
@@ -416,41 +404,40 @@
 			path = FillInBlankGameView;
 			sourceTree = "<group>";
 		};
-		E2A71D2B2C9FC3BA00A2862D /* MapComponent */ = {
+		E2A71D442C9FC3CC00A2862D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E2F08F3C2C9FE98B00038010 /* MapGif */,
+				E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */,
+				E2F08F2F2C9FCB9600038010 /* MapComponentConfig.swift */,
+				E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */,
+				E2F08F312C9FCD1200038010 /* MapViewManager.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		E2F08F3B2C9FE93F00038010 /* MapModel */ = {
+			isa = PBXGroup;
+			children = (
+				E2F08F332C9FDC9700038010 /* MapType.swift */,
+				E2F08F352C9FDCA800038010 /* MapData.swift */,
+				E2F08F372C9FDCE100038010 /* MapViewProvider.swift */,
+			);
+			path = MapModel;
+			sourceTree = "<group>";
+		};
+		E2F08F3C2C9FE98B00038010 /* MapGif */ = {
 			isa = PBXGroup;
 			children = (
 				E2A71D1A2C9FC3BA00A2862D /* adventure.gif */,
 				E2A71D1B2C9FC3BA00A2862D /* bomb.gif */,
 				E2A71D1C2C9FC3BA00A2862D /* explosion.gif */,
 				E2A71D1D2C9FC3BA00A2862D /* fight.gif */,
-				E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */,
-				E2A71D202C9FC3BA00A2862D /* MapComponent1.swift */,
-				E2A71D212C9FC3BA00A2862D /* MapComponent2.swift */,
-				E2A71D222C9FC3BA00A2862D /* MapComponent3.swift */,
-				E2A71D232C9FC3BA00A2862D /* MapComponent4.swift */,
-				E2A71D242C9FC3BA00A2862D /* MapComponent5.swift */,
-				E2A71D252C9FC3BA00A2862D /* MapComponent6.swift */,
-				E2A71D262C9FC3BA00A2862D /* MapComponent7.swift */,
-				E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */,
 				E2A71D282C9FC3BA00A2862D /* shield.gif */,
 				E2A71D292C9FC3BA00A2862D /* swords.gif */,
 				E2A71D2A2C9FC3BA00A2862D /* tank.gif */,
 			);
-			path = MapComponent;
-			sourceTree = "<group>";
-		};
-		E2A71D442C9FC3CC00A2862D /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				E2A71D3D2C9FC3CC00A2862D /*  BacGiangView.swift */,
-				E2A71D3E2C9FC3CC00A2862D /*  HocMonView.swift */,
-				E2A71D3F2C9FC3CC00A2862D /* DoiA1.swift */,
-				E2A71D402C9FC3CC00A2862D /* DongNaiThuongView.swift */,
-				E2A71D412C9FC3CC00A2862D /* HongCumView.swift */,
-				E2A71D422C9FC3CC00A2862D /* TanTraoView.swift */,
-				E2A71D432C9FC3CC00A2862D /* VoNhaiView.swift */,
-			);
-			path = Map;
+			path = MapGif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,53 +543,47 @@
 				75690F042C99E34B00E4B2C3 /* SG_Group15App.swift in Sources */,
 				E29655392C94BD580099D136 /* TimelineGameModel.swift in Sources */,
 				7549645F2C9EF52300C3022E /* EventView.swift in Sources */,
+				E2F08F382C9FDCE100038010 /* MapViewProvider.swift in Sources */,
 				754964632C9EF60A00C3022E /* ResultView.swift in Sources */,
 				7549644B2C9ED7EC00C3022E /* Book.swift in Sources */,
 				391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */,
 				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
-				E2A71D362C9FC3BA00A2862D /* MapComponent5.swift in Sources */,
 				754964592C9EDC2400C3022E /* QuestionVMFactory.swift in Sources */,
+				E2F08F302C9FCB9600038010 /* MapComponentConfig.swift in Sources */,
 				754964532C9EDBA600C3022E /* BookViewModel.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
+				E2F08F362C9FDCA800038010 /* MapData.swift in Sources */,
+				E2F08F322C9FCD1200038010 /* MapViewManager.swift in Sources */,
 				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
-				E2A71D352C9FC3BA00A2862D /* MapComponent4.swift in Sources */,
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
 				754964612C9EF55E00C3022E /* TimePeriodView.swift in Sources */,
 				39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */,
 				754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */,
 				7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */,
 				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
+				E2F08F2E2C9FCA4E00038010 /* MapViewModel.swift in Sources */,
 				398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */,
-				E2A71D452C9FC3CC00A2862D /*  BacGiangView.swift in Sources */,
 				E29B16AF2C9B142B00673121 /* TappableTextView.swift in Sources */,
 				7549645B2C9EDC3800C3022E /* QuestionViewModel.swift in Sources */,
 				39FA15692C960FB20054B99E /* MultipleChoiceQuestion.swift in Sources */,
 				398F19982C99AF940023515B /* Note.swift in Sources */,
 				39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */,
-				E2A71D322C9FC3BA00A2862D /* MapComponent1.swift in Sources */,
-				E2A71D492C9FC3CC00A2862D /* HongCumView.swift in Sources */,
+				E2F08F342C9FDC9700038010 /* MapType.swift in Sources */,
 				39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */,
 				391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */,
 				E2A71D392C9FC3BA00A2862D /* PositionCalculation.swift in Sources */,
-				E2A71D4A2C9FC3CC00A2862D /* TanTraoView.swift in Sources */,
 				7549644D2C9ED80B00C3022E /* Chapter.swift in Sources */,
 				E2A71D302C9FC3BA00A2862D /* GifImageView.swift in Sources */,
-				E2A71D4B2C9FC3CC00A2862D /* VoNhaiView.swift in Sources */,
 				E29B16A52C9B140000673121 /* FillInBlankModel.swift in Sources */,
-				E2A71D472C9FC3CC00A2862D /* DoiA1.swift in Sources */,
 				39FA15562C948DBE0054B99E /* BookView.swift in Sources */,
 				398F199A2C99B0F60023515B /* TypingView.swift in Sources */,
-				E2A71D332C9FC3BA00A2862D /* MapComponent2.swift in Sources */,
 				398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
-				E2A71D462C9FC3CC00A2862D /*  HocMonView.swift in Sources */,
 				754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
-				E2A71D372C9FC3BA00A2862D /* MapComponent6.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,
 				39EC9A492C9ED2E400689BAD /* SignUp.swift in Sources */,
-				E2A71D482C9FC3CC00A2862D /* DongNaiThuongView.swift in Sources */,
 				E29B16AA2C9B142100673121 /* FillInBlankViewModel.swift in Sources */,
 				398F19962C99AF5B0023515B /* DrawingView.swift in Sources */,
 				39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */,
@@ -612,12 +593,11 @@
 				E29B16B02C9B142B00673121 /* FillInBlankSubView.swift in Sources */,
 				759101D52C96EFC300930574 /* WelcomeView.swift in Sources */,
 				7594A70B2C96D169000084FA /* SignUpView.swift in Sources */,
-				E2A71D342C9FC3BA00A2862D /* MapComponent3.swift in Sources */,
+				E2F08F2C2C9FC9D000038010 /* MapDataModel.swift in Sources */,
 				39FA15522C948D540054B99E /* SimpleView.swift in Sources */,
 				75668E022C9183F90052F78C /* Modifiers.swift in Sources */,
 				75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */,
 				E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */,
-				E2A71D382C9FC3BA00A2862D /* MapComponent7.swift in Sources */,
 				7594A7092C96D0CF000084FA /* LoginView.swift in Sources */,
 				7594A6F82C969065000084FA /* User.swift in Sources */,
 				E2598FD62C9F39D60056E409 /* SoundManager.swift in Sources */,

@@ -52,7 +52,7 @@ struct GifImageView: UIViewRepresentable {
     }
 }
 
-#Preview {
-    GifImageView("download", duration: 3.0, isVisible: .constant(true))
-        .background(.pink)
-}
+//#Preview {
+//    GifImageView("download", duration: 3.0, isVisible: .constant(true))
+//        .background(.pink)
+//}
