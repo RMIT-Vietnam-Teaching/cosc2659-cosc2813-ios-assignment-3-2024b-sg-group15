@@ -26,16 +26,13 @@ class UserViewModel: ObservableObject {
     // MARK: Sign up process
     // Save new user to database
     private func saveUser(uid: String, email: String, username: String) {
-        let newUser = User(id: uid, username: username, email: email, avatar: "avatar1", darkMode: false, lang: "vi")
+        let newUser = User(id: uid, username: username, email: email)
         
         // Save with the exact date the user is created
         db.collection("users").document(uid).setData([
             "username": username,
             "email": email,
-            "joinedAt": FieldValue.serverTimestamp(),
-            "avatar": newUser.avatar,
-            "lang": newUser.lang,
-            "darkMode": newUser.darkMode
+            "joinedAt": FieldValue.serverTimestamp()
         ])
         {  // Handle error
             error in
@@ -226,45 +223,6 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-    
-    // MARK: Logout
-    func logout() {
-        do {
-            // Firebase sign-out
-            try auth.signOut()
-            
-            // Google Sign-Out
-                    GIDSignIn.sharedInstance.signOut()
-            
-            // Clear current user data
-            self.currentUser = nil
-            self.success = false
-            
-            print("User successfully logged out.")
-        } catch let signOutError as NSError {
-            // Handle any errors that might occur during the sign-out process
-            print("Error signing out: \(signOutError.localizedDescription)")
-        }
-    }
-    
-    // MARK: Update user preferences
-    func updatePreferences(darkMode: Bool, lang: String, avatar: String) {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        // Set new data for the current user
-        let db = Firestore.firestore()
-        db.collection("users").document(userId).setData([
-            "darkMode": darkMode,
-            "lang": lang,
-            "avatar": avatar
-        ], merge: true) { error in
-            if let error = error {
-                print("Error updating preferences: \(error)")
-            } else {
-                print("Preferences updated successfully")
-            }
-        }
-    }
-
     
     
 }
