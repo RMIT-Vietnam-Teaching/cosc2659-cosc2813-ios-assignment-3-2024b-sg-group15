@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     @ObservedObject var bookVM: BookViewModel
     var bookID: String
     @Binding var isOpen: Bool
@@ -35,13 +37,12 @@ struct BookView: View {
                         // Only show PageCurlViewController when data is ready
                         PageCurlViewController(
                             chapters: $bookVM.chapters,
-                            coverPage: $coverPage,
                             currentChapterIndex: $currentChapterIndex,
                             currentPageIndex: $currentPageIndex
                         )
                         .edgesIgnoringSafeArea(.all)
                         
-                        if currentChapterIndex == 0 || currentChapterIndex == nil {
+                        if currentPageIndex == 0 {
 //                            Button("close") {
 //                                isOpen.toggle()
 //                            }
@@ -54,7 +55,7 @@ struct BookView: View {
                                     .frame(width: 30, height: 30)
                                     .foregroundColor(.black)
                             })
-                            .offset(x: -140, y: -320)
+                            .offset(x: horizontalSizeClass == .compact ? -140 : -300, y: horizontalSizeClass == .compact ? -320 : -440)
                         }
                         
                     }
@@ -115,5 +116,5 @@ struct BookView: View {
 }
 
 #Preview {
-    BookView(isOpen: .constant(true))
+    BookView(bookVM: BookViewModel(), bookID: "QuloSOsGc5FLGbW80bR7", isOpen: .constant(true))
 }

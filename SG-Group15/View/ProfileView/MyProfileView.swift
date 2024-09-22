@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MyProfileView: View {
     @EnvironmentObject var languageManager: LanguageManager
-    @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var avatar: String = "avatar5"
     @AppStorage("theme") private var theme: Theme = .light
     @Environment(\.colorScheme) private var scheme: ColorScheme
@@ -18,12 +18,12 @@ struct MyProfileView: View {
     @State private var isLoggedOut: Bool = false
     
     private func saveSettings() {
-        userVM.updatePreferences(
+        userViewModel.updatePreferences(
             darkMode: theme == .dark,
             lang: languageManager.selectedLanguage,
             avatar: avatar
         )
-        if let currentUser = userVM.currentUser {
+        if let currentUser = userViewModel.currentUser {
             print(currentUser)
         }
         
@@ -77,12 +77,12 @@ struct MyProfileView: View {
                         }
                         Spacer()
                         // Placeholder for error message
-                        if userVM.success {
+                        if userViewModel.success {
                             Text("Update Sucessfully!")
                                 .foregroundStyle(Color.green)
                         }
                         // Placeholder for error message
-                        if let message = userVM.errorMessage {
+                        if let message = userViewModel.errorMessage {
                             HStack {
                                 Image(systemName: "x.circle.fill")
                                     .modifier(BodyTextModifier(color: Color.darkRed))
@@ -96,15 +96,17 @@ struct MyProfileView: View {
                         }) {
                             Text("Lưu")
                                 .modifier(LargeButtonModifier(background: Color.primaryRed))
-                            
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                         }
                         .padding()
                         Button(action: {
-                            userVM.logout()
+                            userViewModel.logout()
                             isLoggedOut = true
+                            userViewModel.isLogin = false
                         }) {
                             Text("Đăng xuất")
                                 .modifier(LargeButtonModifier(background: Color.darkGreen))
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                             
                         }
                         .padding()
@@ -119,7 +121,7 @@ struct MyProfileView: View {
         }
         .preferredColorScheme(theme.colorScheme)
         .onAppear {
-            if let userAvatar = userVM.currentUser?.avatar {
+            if let userAvatar = userViewModel.currentUser?.avatar {
                 avatar = userAvatar
             }
         }

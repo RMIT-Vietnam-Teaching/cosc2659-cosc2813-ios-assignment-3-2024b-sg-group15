@@ -11,6 +11,7 @@ import PencilKit
 struct TabViewNote: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var userViewModel: UserViewModel
 
     @EnvironmentObject var noteViewModel: NoteViewModel
 
@@ -125,7 +126,7 @@ struct TabViewNote: View {
             if newNote {
                 // When title changes and is not empty, save the note
                 DispatchQueue.main.async {
-                    noteViewModel.saveNote(note)
+                    noteViewModel.saveNote(note, userID: userViewModel.currentUser?.id)
                 }
             }
         }
@@ -189,4 +190,6 @@ struct TabBarItems: View {
 #Preview {
     TabViewNote(noteID: "", newNote: true)
         .environmentObject(NoteViewModel())
+        .environmentObject(UserViewModel())
+
 }
