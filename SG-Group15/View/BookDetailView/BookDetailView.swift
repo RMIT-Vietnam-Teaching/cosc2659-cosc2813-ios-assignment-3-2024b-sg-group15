@@ -64,6 +64,21 @@ struct BookDetailView: View {
                                    
                             }
                         })
+                        
+                        Button(action: {
+                            goToChapter(chapter: 3)
+                        }, label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15.0)
+                                    .foregroundColor(.bookmarkColor3)
+                                    .frame(width: 70, height: 130)
+                                   
+                                Text("3")
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                                    .foregroundColor(.black)
+                                   
+                            }
+                        })
                     }
                     .padding(.top, 30)
                     .offset(x: horizontalSizeClass == .compact ? 210 : 440)
@@ -126,6 +141,6 @@ struct BookDetailView: View {
     }
 }
 
-#Preview {
-    BookView()
-}
+//#Preview {
+//    BookView()
+//}

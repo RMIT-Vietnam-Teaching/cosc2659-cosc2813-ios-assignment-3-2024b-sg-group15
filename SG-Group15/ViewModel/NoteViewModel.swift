@@ -18,61 +18,60 @@ class NoteViewModel: ObservableObject {
     @Published var isLoadNote: Bool = true
 
 
-        private var db = Firestore.firestore()
-        
-        // Load all notes from Firestore
-        func loadNotes() {
-            db.collection("notes").getDocuments { [weak self] (snapshot, error) in
-                if let error = error {
-                    self?.errorMessage = "Error loading notes: \(error.localizedDescription)"
-                    return
-                }
-                
-                if let snapshot = snapshot {
-                    var loadedNotes: [Note] = [] // Temporary array to hold the notes
+    private var db = Firestore.firestore()
+    
+    // Load all notes from Firestore
+    func loadNotes() {
+        db.collection("notes").getDocuments { [weak self] (snapshot, error) in
+            if let error = error {
+                self?.errorMessage = "Error loading notes: \(error.localizedDescription)"
+                return
+            }
+            
+            if let snapshot = snapshot {
+                var loadedNotes: [Note] = [] // Temporary array to hold the notes
 
-                    for document in snapshot.documents {
-                        let data = document.data()
-                        let id = document.documentID
-                        let title = data["title"] as? String ?? ""
-                        let textContent = data["textContent"] as? String ?? ""
-                        let lastModified = (data["lastModified"] as? Timestamp)?.dateValue() ?? Date()
-                        
-                        var drawing: PKDrawing? = nil
-                        if let drawingBase64 = data["drawingData"] as? String,
-                           let drawingData = Data(base64Encoded: drawingBase64) {
-                            drawing = try? PKDrawing(data: drawingData)
-                        }
-                        
-                        let color = data["color"] as? String ?? ""
-
-                        
-                        // Create a Note object and add it to the temporary array
-                        let note = Note(id: id ,title: title, textContent: textContent, drawing: drawing, lastModified: lastModified, color: color)
-                        loadedNotes.append(note) // Append the created note to the array
+                for document in snapshot.documents {
+                    let data = document.data()
+                    let id = document.documentID
+                    let title = data["title"] as? String ?? ""
+                    let textContent = data["textContent"] as? String ?? ""
+                    let lastModified = (data["lastModified"] as? Timestamp)?.dateValue() ?? Date()
+                    
+                    var drawing: PKDrawing? = nil
+                    if let drawingBase64 = data["drawingData"] as? String,
+                       let drawingData = Data(base64Encoded: drawingBase64) {
+                        drawing = try? PKDrawing(data: drawingData)
                     }
                     
-//                    print("loaded note: \(loadedNotes.count)")
+                    let color = data["color"] as? String ?? ""
+
                     
-                    // Update the notes array on the main thread
-                       DispatchQueue.main.async {
-                           self?.notes = loadedNotes
-                           self?.isLoading = false
-                       }
+                    // Create a Note object and add it to the temporary array
+                    let note = Note(id: id ,title: title, textContent: textContent, drawing: drawing, lastModified: lastModified, color: color)
+                    loadedNotes.append(note) // Append the created note to the array
                 }
                 
+                
+                // Update the notes array on the main thread
+                   DispatchQueue.main.async {
+                       self?.notes = loadedNotes
+                       self?.isLoading = false
+                   }
             }
         }
+    }
     
-    func decodeDrawing(from data: Data) -> PKDrawing? {
-        do {
-            let drawing = try PKDrawing(data: data)
-            return drawing
-        } catch {
-            print("Error decoding PKDrawing: \(error.localizedDescription)")
-            return nil
+    func deleteNote(id: String) {
+        db.collection("notes").document(id).delete { error in
+            if let error = error {
+                print("Error deleting note: \(error.localizedDescription)")
+            } else {
+                print("Note successfully deleted")
+            }
         }
     }
+
     
     func fetchNote(id: String, completion: @escaping (Note?) -> Void) {
         self.isLoadNote = true

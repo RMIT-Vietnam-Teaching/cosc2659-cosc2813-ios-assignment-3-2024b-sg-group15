@@ -25,6 +25,9 @@
 		398F199C2C99B1AB0023515B /* TabViewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199B2C99B1AB0023515B /* TabViewNote.swift */; };
 		398F199E2C99B2480023515B /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199D2C99B2470023515B /* NoteManager.swift */; };
 		398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F199F2C99F5710023515B /* MultipleChoiceView.swift */; };
+		39CC00B52CA04CEC00269B56 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CC00B42CA04CEC00269B56 /* NavBar.swift */; };
+		39CC00B72CA04F6B00269B56 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CC00B62CA04F6B00269B56 /* MenuView.swift */; };
+		39CC00B92CA06EC200269B56 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CC00B82CA06EC200269B56 /* FilterView.swift */; };
 		39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7CC622C9E7D8A0083E41F /* Login.swift */; };
 		39EC9A492C9ED2E400689BAD /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EC9A482C9ED2E300689BAD /* SignUp.swift */; };
 		39FA15522C948D540054B99E /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15512C948D540054B99E /* SimpleView.swift */; };
@@ -128,6 +131,9 @@
 		398F199B2C99B1AB0023515B /* TabViewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewNote.swift; sourceTree = "<group>"; };
 		398F199D2C99B2470023515B /* NoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
 		398F199F2C99F5710023515B /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
+		39CC00B42CA04CEC00269B56 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		39CC00B62CA04F6B00269B56 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		39CC00B82CA06EC200269B56 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		39E7CC622C9E7D8A0083E41F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		39EC9A482C9ED2E300689BAD /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		39FA15512C948D540054B99E /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
@@ -304,6 +310,7 @@
 				39FA15502C948D3C0054B99E /* BookDetailView */,
 				39FA15642C9606350054B99E /* ProgressBar.swift */,
 				75690EF32C99E06D00E4B2C3 /* ContentView.swift */,
+				39CC00B42CA04CEC00269B56 /* NavBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 				391E50EF2C9FCBAB0099043D /* NoteCardView.swift */,
 				391E50F12C9FD67A0099043D /* InputBoxView.swift */,
 				391E50F52C9FDA210099043D /* ColorPicker.swift */,
+				39CC00B82CA06EC200269B56 /* FilterView.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -396,6 +404,7 @@
 				39E7CC622C9E7D8A0083E41F /* Login.swift */,
 				39EC9A482C9ED2E300689BAD /* SignUp.swift */,
 				391E50E92C9F01350099043D /* MainView.swift */,
+				39CC00B62CA04F6B00269B56 /* MenuView.swift */,
 			);
 			path = AuthView;
 			sourceTree = "<group>";
@@ -590,11 +599,13 @@
 				391E50F02C9FCBAB0099043D /* NoteCardView.swift in Sources */,
 				391FD23A2C9C8A99007A6AD9 /* BookMenuView.swift in Sources */,
 				E296553D2C94BDBE0099D136 /* TimelineGameView.swift in Sources */,
+				39CC00B72CA04F6B00269B56 /* MenuView.swift in Sources */,
 				754964592C9EDC2400C3022E /* QuestionVMFactory.swift in Sources */,
 				E2F08F302C9FCB9600038010 /* MapComponentConfig.swift in Sources */,
 				754964532C9EDBA600C3022E /* BookViewModel.swift in Sources */,
 				391E50F62C9FDA210099043D /* ColorPicker.swift in Sources */,
 				E296553F2C94BDDF0099D136 /* TimelineGameViewModel.swift in Sources */,
+				39CC00B92CA06EC200269B56 /* FilterView.swift in Sources */,
 				E2F08F362C9FDCA800038010 /* MapData.swift in Sources */,
 				E2F08F322C9FCD1200038010 /* MapViewManager.swift in Sources */,
 				E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */,
@@ -631,6 +642,7 @@
 				391E50EA2C9F01350099043D /* MainView.swift in Sources */,
 				398F19A02C99F5710023515B /* MultipleChoiceView.swift in Sources */,
 				391848DE2C9B35E4004B4367 /* PopUpView.swift in Sources */,
+				39CC00B52CA04CEC00269B56 /* NavBar.swift in Sources */,
 				754964552C9EDBC200C3022E /* DefaultQuestionVMFactory.swift in Sources */,
 				E29B16AE2C9B142B00673121 /* FillInBlankView.swift in Sources */,
 				39FA15652C9606350054B99E /* ProgressBar.swift in Sources */,

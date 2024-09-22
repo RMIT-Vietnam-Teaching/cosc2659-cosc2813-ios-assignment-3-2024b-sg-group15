@@ -13,7 +13,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if userViewModel.isLogin {
-                BookMenuView()
+                MenuView()
             } else {
                 WelcomeView()
             }

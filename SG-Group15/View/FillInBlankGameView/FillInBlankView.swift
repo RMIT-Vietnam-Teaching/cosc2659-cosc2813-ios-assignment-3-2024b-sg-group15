@@ -25,7 +25,10 @@ struct FillInBlankGameView: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
-                        ProgressBar()
+                            .onTapGesture {
+                                goToMainPage()
+                            }
+                        Spacer()
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 10)
@@ -49,16 +52,36 @@ struct FillInBlankGameView: View {
                         
                         WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight, width: width, height: height)
                         Spacer()
-                        
-                        CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
-                            viewModel.checkAnswer()
-                            isSubmitted = true
+                        if isSubmitted {
+                            Button("Tiep tuc") {
+                                print("Next")
+                            }.modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                        } else {
+                            CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
+                                viewModel.checkAnswer()
+                                isSubmitted = true
+                            }
                         }
+                       
+                        
+                        
                     }
+                    
+                    
                     
                     Spacer()
                 }
             }
         }
+        .padding(.vertical, 60)
+    }
+    
+    func goToNextPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
+    }
+    
+    
+    func goToMainPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
     }
 }
