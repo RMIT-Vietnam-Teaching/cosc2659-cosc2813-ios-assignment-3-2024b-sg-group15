@@ -11,13 +11,14 @@ struct OpenBookView: View {
     @Binding var isOpen: Bool
     @State private var isScaled = false
     @State private var showCover = true
-    @Binding var coverPage: CoverPage
+    @ObservedObject var bookVM: BookViewModel
+    @Binding var chapterNum: Int
     
     var body: some View {
         ZStack {
             // Page (visible after the book opens)
             if isOpen {
-                BookDetailView(page: $coverPage)
+                BookDetailView(title: bookVM.chapters[chapterNum].title, description: bookVM.chapters[chapterNum].description)
                     .padding(0)
             }
 

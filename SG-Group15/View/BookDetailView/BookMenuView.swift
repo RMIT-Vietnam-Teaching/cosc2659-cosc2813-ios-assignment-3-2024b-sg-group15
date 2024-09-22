@@ -8,24 +8,17 @@
 import SwiftUI
 
 struct BookMenuView: View {
+    @StateObject private var bookVM = BookViewModel()
     @State private var currentTab: Int = 0
-    var books: [String] = ["book1", "book2"]
+    private var books: [String] = [ "m9UkUeeRLMkcjqKB2eAr","QuloSOsGc5FLGbW80bR7"]
     
     var body: some View {
         GeometryReader { geo in
-//            Color.beigeBackground
-//                .ignoresSafeArea()
             
             TabView(selection: $currentTab,
                     content:  {
-//                ForEach(Array(zip(books.indices, books)), id: \.0) { index, book in
-//                    Book().tag(index)
-//                }
-                BookView(coverPage: CoverPage(title: "123", content: "123")).tag(0)
-                
-                BookView(coverPage: CoverPage(title: "123", content: "123")).tag(1)
-                   
-
+                BookView(bookVM: bookVM, bookID: books[0]).tag(0)
+                BookView(bookVM: bookVM, bookID: books[1]).tag(1)
             })
             .ignoresSafeArea()
             .tabViewStyle(.page(indexDisplayMode: .never))

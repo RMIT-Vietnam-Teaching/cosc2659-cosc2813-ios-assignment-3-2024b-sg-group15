@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MyProfileView: View {
     @EnvironmentObject var languageManager: LanguageManager
-    @ObservedObject var userVM: UserViewModel
+    @EnvironmentObject var userVM: UserViewModel
     @State private var avatar: String = "avatar5"
     @AppStorage("theme") private var theme: Theme = .light
     @Environment(\.colorScheme) private var scheme: ColorScheme
@@ -98,12 +98,4 @@ struct MyProfileView: View {
     }
 }
 
-#Preview {
-    let dummyUser = User(id: "1", username: "Test User", email: "test@example.com", avatar: "avatar1", darkMode: false, lang: "en")
-    let userVM = UserViewModel()
-    userVM.currentUser = dummyUser
-    
-    return MyProfileView(userVM: userVM)
-        .environmentObject(LanguageManager())
-    
-}
+

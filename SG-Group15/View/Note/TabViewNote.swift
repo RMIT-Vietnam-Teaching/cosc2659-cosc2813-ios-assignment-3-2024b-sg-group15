@@ -33,7 +33,7 @@ struct TabViewNote: View {
                 .ignoresSafeArea()
             
             if !newNote && noteViewModel.isLoadNote {
-                ProgressView("Loading note data...")
+                ProgressView("Đang tải...")
                     .font(.largeTitle)
                     .padding()
             } else {
@@ -50,7 +50,7 @@ struct TabViewNote: View {
                         
                         Spacer()
                         
-                        Text("Title")
+                        Text("Tựa đề")
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                             .foregroundColor(.black)
                         
@@ -124,8 +124,6 @@ struct TabViewNote: View {
         .onChange(of: note.title, initial: false) { oldValue, newValue in
             if newNote {
                 // When title changes and is not empty, save the note
-//                print("new: \(newValue)")
-//                print("save note with title change")
                 DispatchQueue.main.async {
                     noteViewModel.saveNote(note)
                 }
@@ -140,7 +138,7 @@ struct TabBarView: View {
     @Binding var currentTab: Int
     @Namespace var namespace // Namespace for matched geometry effect
     
-    var tabBarOptions: [String] = ["Text", "Drawing"]
+    var tabBarOptions: [String] = ["Văn bản", "Vẽ"]
     
     var body: some View {
         HStack(spacing: 5) {

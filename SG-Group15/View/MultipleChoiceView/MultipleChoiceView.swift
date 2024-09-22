@@ -19,7 +19,6 @@ struct MultipleChoiceView: View {
         ZStack(alignment: .top) {
             Image("background")
                 .resizable()
-//                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .ignoresSafeArea()
             
             VStack(spacing: horizontalSizeClass == .compact ? 50 : 100) {
@@ -30,7 +29,6 @@ struct MultipleChoiceView: View {
                     ProgressBar()
                 }
                 .onTapGesture {
-//                    goToChapter(chapter: 0)
                     goToMainPage()
                 }
                 .padding(.horizontal, 20)
@@ -57,11 +55,9 @@ struct MultipleChoiceView: View {
                 
             }
             .padding(horizontalSizeClass == .compact ? 10 : 30)
-//            .padding(.top)
             .padding(.vertical, 60)
             
         }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure the BookView fills its parent
 
     }
     
@@ -79,7 +75,4 @@ struct MultipleChoiceView: View {
     }
 }
 
-#Preview {
-//    MultipleChoiceView()
-    BookView()
-}
+

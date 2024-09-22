@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct BookDetailView: View {
+    var title: String
+    var description: String
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @State private var isScaled = false
-    @State private var selectedChapter: Int? = nil
+    @State private var selectedChapter: Int = 1
     @State private var check = false
-    @Binding var page: CoverPage
+    
+    func goToNextPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
+    }
     
     var body: some View {
         ZStack {
             Color.beigeBackground
-//                .scaledToFill()
                 .ignoresSafeArea(.all)
             
             Group {
@@ -33,72 +37,88 @@ struct BookDetailView: View {
                     
                     VStack(spacing: 20) {
                         Button(action: {
-                            goToChapter(chapter: 1)
+                            goToChapter(chapter: 0)
                         }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15.0)
                                     .foregroundColor(.bookmarkColor1)
                                     .frame(width: 70, height: 130)
-                                   
+                                
                                 
                                 Text("1")
                                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                                     .foregroundColor(.black)
-                                   
+                                
                             }
                             .zIndex(3)
                         })
                         
                         Button(action: {
-                            goToChapter(chapter: 2)
+                            goToChapter(chapter: 1)
                         }, label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15.0)
                                     .foregroundColor(.bookmarkColor2)
                                     .frame(width: 70, height: 130)
-                                   
+                                
                                 
                                 Text("2")
                                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                                     .foregroundColor(.black)
-                                   
+                                
                             }
                         })
+                        Button(action: {
+                            goToChapter(chapter: 2)
+                        }, label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15.0)
+                                    .foregroundColor(.bookmarkColor1)
+                                    .frame(width: 70, height: 130)
+                                
+                                
+                                Text("3")
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                                    .foregroundColor(.black)
+                                
+                            }
+                            .zIndex(3)
+                        })
+
                     }
                     .padding(.top, 30)
                     .offset(x: horizontalSizeClass == .compact ? 210 : 440)
                 }
-                     
+                
                 VStack(spacing: 40) {
                     Spacer()
-                    Text("CÁCH MẠNG THÁNG 8 - 1945")
+                    Text(title)
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeTitleTextModifier()) : AnyViewModifier(LargeTitleTextModifierIpad()))
                         .multilineTextAlignment(.center)
                     
                     Spacer()
                     
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
+                    Text(description)
                         .font(.system(size: 30))
                         .lineSpacing(10.0)
                     
                     Spacer()
                     
                     Button(action: {
-                        goToCurrentChapter()
+                        goToNextPage()
                     }, label: {
                         Text("Học")
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .bookmarkColor1)) : AnyViewModifier(RegularButtonModifierIpad(background: .bookmarkColor1)))
-//                            .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
                     })
-                
+                    
                     .onChange(of: isScaled, initial: false) { _, newValue in
-                        if newValue, let chapter = selectedChapter {
+                        if newValue {
                             // Once scaled up, trigger a slight delay before flipping
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                NotificationCenter.default.post(name: NSNotification.Name("GoToChapter"), object: chapter)
+                                NotificationCenter.default.post(name: NSNotification.Name("GoToChapter"), object: selectedChapter)
                             }
                         }
                     }
@@ -126,6 +146,3 @@ struct BookDetailView: View {
     }
 }
 
-#Preview {
-    BookView()
-}

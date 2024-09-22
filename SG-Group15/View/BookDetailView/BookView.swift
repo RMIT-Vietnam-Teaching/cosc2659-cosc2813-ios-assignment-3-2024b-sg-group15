@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct BookView: View {
-    @StateObject private var bookVM = BookViewModel()
+    @ObservedObject var bookVM: BookViewModel
+    var bookID: String
     @State private var isOpen = false
-    @State private var currentChapterIndex: Int? = 0 // Use nil for the initial landing page
+    @State private var currentChapterIndex: Int = 1 // Use nil for the initial landing page
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
             [true, false, false], // Chapter 1: Page 2 cannot flip
@@ -19,13 +20,13 @@ struct BookView: View {
         ]
     
     
-    @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
+//    @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
     
     var body: some View {
         VStack {
             if bookVM.isLoading {
                 // Show a loading view while the data is being fetched
-                ProgressView("Loading book data...")
+                ProgressView("Đang tải...")
                     .font(.largeTitle)
                     .padding()
             } else {
@@ -33,20 +34,19 @@ struct BookView: View {
                     // Only show PageCurlViewController when data is ready
                     PageCurlViewController(
                         chapters: $bookVM.chapters,
-                        coverPage: $coverPage,
                         currentChapterIndex: $currentChapterIndex,
                         currentPageIndex: $currentPageIndex
                     )
                     .edgesIgnoringSafeArea(.all)
                 }
                 else {
-                    OpenBookView(isOpen: $isOpen, coverPage: $coverPage)
+                    OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex)
                 }
             }
         }
         .onAppear {
-            bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
-            currentChapterIndex = nil
+            bookVM.fetchBook(bookID: bookID)
+            currentChapterIndex = 1
             currentPageIndex = 0
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in
@@ -77,23 +77,21 @@ struct BookView: View {
     }
     
     private func moveToNextPage() {
-        if let chapterIndex = currentChapterIndex {
-            let currentChapterPages = flipStates[chapterIndex - 1]
+//        if let chapterIndex = currentChapterIndex {
+            let currentChapterPages = flipStates[currentChapterIndex - 1]
             
             // Check if there is another page in the current chapter
             if currentPageIndex < currentChapterPages.count - 1 {
                 currentPageIndex += 1
-            } else if chapterIndex - 1 < flipStates.count - 1 {
+            } else if currentChapterIndex - 1 < flipStates.count - 1 {
                 // If no more pages in the current chapter, move to the next chapter
-                currentChapterIndex = chapterIndex + 1
+                currentChapterIndex = currentChapterIndex + 1
                 currentPageIndex = 0
             } else {
                 print("No more chapters available.")
             }
-        }
+//        }
     }
 }
 
-#Preview {
-    BookView()
-}
+
