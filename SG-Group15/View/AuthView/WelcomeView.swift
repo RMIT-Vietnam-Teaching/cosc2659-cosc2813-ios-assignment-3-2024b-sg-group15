@@ -9,9 +9,12 @@ import Foundation
 import SwiftUI
 
 struct WelcomeView: View {
-    @StateObject private var userViewModel = UserViewModel()
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
+    @EnvironmentObject var userViewModel:  UserViewModel
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color.beigeBackground
                     .ignoresSafeArea(.all)
@@ -22,6 +25,7 @@ struct WelcomeView: View {
                             .resizable()
                             .frame(minWidth: UIScreen.main.bounds.width * 0.7, maxWidth: UIScreen.main.bounds.width * 0.8, minHeight: UIScreen.main.bounds.height * 0.5, maxHeight: UIScreen.main.bounds.height * 0.6)
                             .position(x: UIScreen.main.bounds.width / 1.6, y: UIScreen.main.bounds.height / 4)
+                        
                         Image("welcomefigure")
                             .resizable()
                             .frame(minWidth: UIScreen.main.bounds.width * 0.8, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.4)
@@ -29,27 +33,31 @@ struct WelcomeView: View {
                     }
                     
                     // Title and navigation
-                    VStack(alignment: .leading, spacing: UIScreen.main.bounds.height * 0.02) {
+                    VStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.02) {
                         Text("History App")
-                            .font(.custom("OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.1))
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeTitleTextModifier()) : AnyViewModifier(LargeTitleTextModifierIpad()))
                             .foregroundStyle(Color.darkGreen)
+                        
                         Text("Biến lịch sử thành cuộc phiêu lưu")
-                            .font(.custom("Roboto-ThinItalic", size:
-                                            UIScreen.main.bounds.width * 0.06))
+                            .scaledFont(name: "Roboto-ThinItalic", size: horizontalSizeClass == .compact ? 20 : 40, maxSize: horizontalSizeClass == .compact ? 30 : 50)
                             .foregroundStyle(Color.darkGreen)
                         Spacer()
                             .frame(minHeight: UIScreen.main.bounds.height * 0.02, maxHeight: UIScreen.main.bounds.height * 0.04)
                         
                         // Login and Signup button
-                        NavigationLink(destination: SignUpView(userViewModel: userViewModel))
+                        NavigationLink(destination: SignUp())
                         {
-                            Text("Đăng Ký")
-                                .modifier(SignUpButtonModifier(background: Color.primaryRed))
+                            Text("Đăng ký")
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                                .foregroundColor(.white)
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .primaryRed)) : AnyViewModifier(LargeButtonModifierIpad(background: .primaryRed)))
                         }
-                        NavigationLink(destination: LoginView(userViewModel: userViewModel))
+                        NavigationLink(destination: Login())
                         {
                             Text("Đăng nhập")
-                                .modifier(SignUpButtonModifier(background: Color.darkGreen))
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                                .foregroundColor(.white)
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .darkGreen)) : AnyViewModifier(LargeButtonModifierIpad(background: .darkGreen)))
                         }
                         Spacer()
                             .frame(minHeight: UIScreen.main.bounds.height * 0.02, maxHeight: UIScreen.main.bounds.height * 0.04)
@@ -62,4 +70,5 @@ struct WelcomeView: View {
 
 #Preview {
     WelcomeView()
+        .environmentObject(UserViewModel())
 }

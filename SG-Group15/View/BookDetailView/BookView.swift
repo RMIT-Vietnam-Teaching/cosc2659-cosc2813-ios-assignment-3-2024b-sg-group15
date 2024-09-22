@@ -42,7 +42,8 @@ struct BookView: View {
                 else {
                     OpenBookView(isOpen: $isOpen, coverPage: $coverPage)
                 }
-            }}
+            }
+        }
         .onAppear {
             bookVM.fetchBook(bookID: "m9UkUeeRLMkcjqKB2eAr")
             currentChapterIndex = nil
@@ -54,6 +55,13 @@ struct BookView: View {
                     currentChapterIndex = chapter
                     currentPageIndex = 0
                 }
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToMainPage"))) { _ in
+            DispatchQueue.main.async {
+                // Navigate back to the landing page when "Back" is pressed
+                currentChapterIndex = 0
+                currentPageIndex = 0
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in

@@ -33,7 +33,7 @@ struct RegularButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
         // Responsive frame
-            .frame(width: 200)
+            .frame(width: 250)
             .foregroundStyle(.white)
             .padding(.vertical, 10)
             .background(background)
@@ -50,7 +50,7 @@ struct RegularButtonModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
         // Responsive frame
-            .frame(width: 350, height: 60)
+            .frame(width: 380, height: 60)
 //            .frame(minWidth: 350)
 //            .scaledFont(name: "Lato-Black", size: 36, maxSize: 40)
             .foregroundStyle(.white)
@@ -130,7 +130,6 @@ struct LargeTitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("OldStandardTT-Bold", size: 50))
-            .foregroundColor(Color("textDark")) // Assuming textDark is defined in your asset catalog
     }
 }
 
@@ -139,7 +138,6 @@ struct LargeTitleTextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 75, maxSize: 100)
-            .foregroundStyle(.textDark)
     }
 }
 
@@ -183,6 +181,22 @@ struct Title2TextModifier: ViewModifier {
 }
 
 struct Title2TextModifierIpad: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 50)
+//            .foregroundStyle(.textDark)
+    }
+}
+
+struct Title3TextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledFont(name: "OldStandardTT-Bold", size: 22, maxSize: 30)
+//            .foregroundStyle(.textDark)
+    }
+}
+
+struct Title3TextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 50)
@@ -270,7 +284,7 @@ struct BodyTextModifier: ViewModifier {
     var color: Color?
     func body(content: Content) -> some View {
         content
-            .scaledFont(name: "Lato-Regular", size: 20, maxSize: 30)
+            .scaledFont(name: "Lato-Regular", size: 16, maxSize: 30)
             .foregroundStyle(color ?? .textDark)
     }
 }

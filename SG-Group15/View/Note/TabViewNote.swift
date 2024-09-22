@@ -9,9 +9,22 @@ import SwiftUI
 import PencilKit
 
 struct TabViewNote: View {
-    @State private var note = Note(title: "Sample Note")
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.dismiss) private var dismiss
+
+    @EnvironmentObject var noteViewModel: NoteViewModel
+
     @State var currentTab: Int = 0 // State variable to track the current tab
     @State private var canvasView = PKCanvasView()
+    
+    @State private var toolPicker = PKToolPicker()
+    var noteID: String
+    
+    @State private var note: Note = Note(id: "", title: "", textContent: "", color: "")
+    
+    var newNote: Bool
+    
+    @State private var showInput: Bool = false
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -19,50 +32,107 @@ struct TabViewNote: View {
                 .resizable()
                 .ignoresSafeArea()
             
-            VStack {
-                TabBarView(currentTab: self.$currentTab)
-
-                ZStack {
-                    if currentTab == 0 {
-                        TypingView(note: $note)
-                    } else if currentTab == 1 {
-                        DrawingView(canvasView: $canvasView, note: $note)
+            if !newNote && noteViewModel.isLoadNote {
+                ProgressView("Loading note data...")
+                    .font(.largeTitle)
+                    .padding()
+            } else {
+                VStack {
+                    HStack {
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Image(systemName: "arrow.backward")
+                                .resizable()
+                                .frame(width: horizontalSizeClass == .compact ? 15 : 30, height: horizontalSizeClass == .compact ? 15 : 30)
+                                .modifier(BodyTextModifier(color: Color.darkGreen))
+                        }
+                        
+                        Spacer()
+                        
+                        Text("Title")
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
+                            .foregroundColor(.black)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 20)
+                    
+                    TabBarView(currentTab: self.$currentTab)
+                    
+                    ZStack {
+                        if currentTab == 0 {
+                            TypingView(note: $note)
+                        } else if currentTab == 1 {
+                            DrawingView(canvasView: $canvasView, toolPicker: $toolPicker, note: $note)
+                        }
+                    }
+                    .animation(.easeInOut, value: currentTab)
+                }
+    
+                
+                .onChange(of: currentTab, initial: true) { _, newTab in
+                    if newTab == 0 {
+                        // Hide the tool picker when switching to the typing tab
+                        toolPicker.setVisible(false, forFirstResponder: canvasView)
+                    } else if newTab == 1 {
+                        // Show the tool picker when switching to the drawing tab
+                        toolPicker.setVisible(true, forFirstResponder: canvasView)
+                        toolPicker.addObserver(canvasView)
+                        canvasView.becomeFirstResponder()
                     }
                 }
-                .animation(.easeInOut, value: currentTab)
+            }
+            
+            if showInput {
+                InputBoxView(note: $note, selectedColor: $note.color, showInput: $showInput)
+//                    .background(.pink)
             }
         }
         .onAppear {
-            loadNote()
-        }
-        .onChange(of: note.textContent, initial: false) {
-            saveNoteWithDrawing()
-        }
-        .onChange(of: note.drawingData, initial: false) {
-            saveNoteWithDrawing()
-        }
-    }
-    
-    // Save the note with the current drawing
-    func saveNoteWithDrawing() {
-        // Extract the drawing from the canvas and save it to the note
-        let drawing = canvasView.drawing
-        note.drawingData = drawing.dataRepresentation()
-        note.lastModified = Date()
-        
-        // Save the note to UserDefaults
-        NoteManager.save(note: note)
-    }
-    
-    func loadNote() {
-        if let loadedNote = NoteManager.load() {
-            note = loadedNote
+            if newNote {
+                print("new")
+                withAnimation {
+                    showInput = true
+                }
+            } else {
+                noteViewModel.fetchNote(id: noteID) { fetchedNote in
+                    if let noteData = fetchedNote {
+                        print("Data loaded")
+                        self.note = noteData  // Update the `note` only after the data is fetched
+                    } else {
+                        print("Failed to load note data.")
+                    }
+                }
+            }
             
-            // If there is drawing data, load it into the canvas
-            if let drawing = note.getDrawing() {
-                canvasView.drawing = drawing
+        }
+        .onChange(of: note.textContent, initial: false) { oldValue, newValue in
+            // When text content changes, update the note
+            DispatchQueue.main.async {
+                noteViewModel.updateNote(note)
             }
         }
+        .onChange(of: note.drawingData, initial: false) { oldValue, newValue in
+            // When text content changes, update the note
+            DispatchQueue.main.async {
+                noteViewModel.updateNote(note)
+            }
+        }
+        
+        .onChange(of: note.title, initial: false) { oldValue, newValue in
+            if newNote {
+                // When title changes and is not empty, save the note
+//                print("new: \(newValue)")
+//                print("save note with title change")
+                DispatchQueue.main.async {
+                    noteViewModel.saveNote(note)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true) // Hide the default navigation bar back button.
+
     }
 }
 
@@ -84,6 +154,8 @@ struct TabBarView: View {
 }
 
 struct TabBarItems: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     @Binding var currentTab: Int
     let namespace: Namespace.ID // Namespace for matched geometry effect
     var tabBarItemName: String
@@ -96,7 +168,7 @@ struct TabBarItems: View {
             VStack {
                 Spacer()
                 Text(tabBarItemName)
-                    .scaledFont(name: "Lato-Light", size: 20, maxSize: 24)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
 
                     .foregroundColor(currentTab == tab ? Color(.pink) : Color(.black))
 
@@ -117,5 +189,6 @@ struct TabBarItems: View {
 }
 
 #Preview {
-    TabViewNote()
+    TabViewNote(noteID: "", newNote: true)
+        .environmentObject(NoteViewModel())
 }

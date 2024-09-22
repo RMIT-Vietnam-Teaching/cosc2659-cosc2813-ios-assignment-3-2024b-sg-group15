@@ -11,18 +11,33 @@ struct SignUp: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.dismiss) private var dismiss
     // Manage user
-    @ObservedObject var userViewModel: UserViewModel
+    @EnvironmentObject var userViewModel:  UserViewModel
     
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var email: String = ""
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.beigeBackground
                 .ignoresSafeArea(.all)
-            VStack {
+            
+            HStack {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "arrow.backward")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .modifier(BodyTextModifier(color: Color.darkGreen))
+                }
                 
+                Spacer()
+            }
+            .padding(.horizontal, 30)
+            .padding(.vertical, 40)
+            
+            VStack {
                 Spacer()
                 // Title with headline
                 VStack(spacing: horizontalSizeClass == .compact ? 10 : 30) {
@@ -151,20 +166,12 @@ struct SignUp: View {
                 Spacer()
             }
         }
-        .toolbar {
-            // Back to the welcome view
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.backward")
-                        .modifier(BodyTextModifier(color: Color.darkGreen))
-                }
-            }
-        }
+        .navigationBarBackButtonHidden(true) // Hide the default navigation bar back button.
     }
 }
 
 #Preview {
-    SignUp(userViewModel: UserViewModel())
+    SignUp()
+        .environmentObject(UserViewModel())
+
 }
