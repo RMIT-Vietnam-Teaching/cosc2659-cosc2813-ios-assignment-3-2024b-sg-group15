@@ -12,8 +12,8 @@ import SwiftUI
 class MutipleChoiceViewModel: QuestionViewModel {
     @Published var choices: [String] = []
     
-    override init(question: QuestionProtocol, canFlip: Bool) {
-        super.init(question: question, canFlip: true)
+    override init(question: QuestionProtocol) {
+        super.init(question: question)
         
         if let question = question as? MultipleChoiceQuestion {
             self.choices = question.choices

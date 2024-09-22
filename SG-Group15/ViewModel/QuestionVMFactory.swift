@@ -8,5 +8,5 @@
 import Foundation
 // Create appropriate VM - Follow Factory design pattern
 protocol QuestionViewModelFactory {
-    func createViewModel(for question: QuestionProtocol, canFlip: Bool) -> QuestionViewModel
+    func createViewModel(for question: QuestionProtocol) -> QuestionViewModel
 }

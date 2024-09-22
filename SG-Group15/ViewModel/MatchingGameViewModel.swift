@@ -8,8 +8,8 @@ class MatchingGameViewModel: QuestionViewModel {
     @Published var selectedRightEventId: Int?
     @Published var isGameComplete = false
     
-    override init(question: QuestionProtocol, canFlip: Bool) {
-        super.init(question: question, canFlip: true)
+    override init(question: QuestionProtocol) {
+        super.init(question: question)
         if let question = question as? MatchingQuestion {
             initQuestion(question: question)
         }
