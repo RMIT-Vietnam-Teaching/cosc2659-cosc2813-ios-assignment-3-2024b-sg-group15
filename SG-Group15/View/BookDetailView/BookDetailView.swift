@@ -17,7 +17,9 @@ struct BookDetailView: View {
     var body: some View {
         ZStack {
             Color.beigeBackground
+//                .scaledToFill()
                 .ignoresSafeArea(.all)
+            
             Group {
                 ZStack(alignment: .top) {
                     Image("background")
@@ -86,13 +88,12 @@ struct BookDetailView: View {
                     }, label: {
                         Text("Học")
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .bookmarkColor1)) : AnyViewModifier(RegularButtonModifierIpad(background: .bookmarkColor1)))
-                            .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
+//                            .modifier(ShadowTopBottom(alignment: .bottom, y: 5))
                     })
-                    .accessibilityLabel("Học")
-                    .accessibilityHint("Bắt đầu học")
+                
                     .onChange(of: isScaled, initial: false) { _, newValue in
                         if newValue, let chapter = selectedChapter {
                             // Once scaled up, trigger a slight delay before flipping
@@ -123,4 +124,8 @@ struct BookDetailView: View {
     func goToCurrentChapter() {
         NotificationCenter.default.post(name: NSNotification.Name("GoToCurrentChapter"), object: nil)
     }
+}
+
+#Preview {
+    BookView()
 }

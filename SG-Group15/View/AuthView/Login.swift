@@ -14,12 +14,28 @@ struct Login: View {
     @State private var password: String = ""
     @Environment(\.dismiss) private var dismiss
     // Manage user
-    @ObservedObject var userViewModel: UserViewModel
+    @EnvironmentObject var userViewModel:  UserViewModel
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.beigeBackground
                 .ignoresSafeArea(.all)
+            
+            HStack {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "arrow.backward")
+                        .resizable()
+                        .frame(width: horizontalSizeClass == .compact ? 15 : 30, height: horizontalSizeClass == .compact ? 15 : 30)
+                        .modifier(BodyTextModifier(color: Color.darkGreen))
+                }
+                
+                Spacer()
+            }
+            .padding(.horizontal, 30)
+            .padding(.vertical, 40)
+            
             VStack {
                 
                 Spacer()
@@ -40,6 +56,8 @@ struct Login: View {
                     if userViewModel.success {
                         Text("Login Sucessfully!")
                             .foregroundStyle(Color.green)
+                        
+                        
                     }
                     // Placeholder for error message
                     if let message = userViewModel.errorMessage {
@@ -116,9 +134,11 @@ struct Login: View {
                 
                 Spacer()
                 
-                // Sign up button
+                // Sign im button
                 Button(action: {
-                    self.userViewModel.login(email: email, password: password)
+                    dismiss()
+                    userViewModel.isLogin = true
+//                    self.userViewModel.login(email: email, password: password)
                 })
                 {
                     Text("Đăng nhập")
@@ -131,20 +151,12 @@ struct Login: View {
                 Spacer()
             }
         }
-        .toolbar {
-            // Back to the welcome view
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.backward")
-                        .modifier(BodyTextModifier(color: Color.darkGreen))
-                }
-            }
-        }
+        .navigationBarBackButtonHidden(true) // Hide the default navigation bar back button.
     }
 }
 
 #Preview {
-    Login(userViewModel: UserViewModel())
+    Login()
+        .environmentObject(UserViewModel())
+
 }

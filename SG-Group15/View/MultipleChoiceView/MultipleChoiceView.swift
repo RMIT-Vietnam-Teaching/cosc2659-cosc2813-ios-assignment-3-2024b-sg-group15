@@ -19,21 +19,26 @@ struct MultipleChoiceView: View {
         ZStack(alignment: .top) {
             Image("background")
                 .resizable()
+//                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .ignoresSafeArea()
             
             VStack(spacing: horizontalSizeClass == .compact ? 50 : 100) {
-                HStack(spacing: 20) {
+                HStack(spacing: 10) {
                     Image(systemName: "xmark")
                         .resizable()
                         .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
-                    ProgressBar()
                 }
-                .padding(.horizontal, 10)
-                Text(questionVM.question.question)
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
-                    .lineSpacing(10.0)
+                .onTapGesture {
+//                    goToChapter(chapter: 0)
+                    goToMainPage()
+                }
+                .padding(.horizontal, 20)
                 
-                VStack(spacing: 20) {
+                Text(questionVM.question.question)
+                    .lineSpacing(horizontalSizeClass == .compact ? 20.0 : 30.0)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(HeadlineTextModifier()) : AnyViewModifier(HeadlineTextModifierIpad()))
+                
+                VStack(spacing: 40) {
                     ForEach(Array(zip(questionVM.choices.indices, questionVM.choices)), id: \.0) { index, choice in
                         ChoiceButton(correct: $correct,  question: questionVM.question as! MultipleChoiceQuestion, selected: $selected, index: index)
                     }
@@ -41,6 +46,7 @@ struct MultipleChoiceView: View {
                 
                 Button("Tiếp tục") {
                     // Handle game completion
+                    goToNextPage()
                 }
                 .foregroundColor(.white)
                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
@@ -50,11 +56,29 @@ struct MultipleChoiceView: View {
                 
             }
             .padding(horizontalSizeClass == .compact ? 10 : 30)
+//            .padding(.top)
+            .padding(.vertical, 60)
             
         }
+//        .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure the BookView fills its parent
+
+    }
+    
+    func goToNextPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
+    }
+    
+    
+    func goToMainPage() {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToMainPage"), object: nil)
+    }
+    
+    func goToChapter(chapter: Int) {
+        NotificationCenter.default.post(name: NSNotification.Name("GoToChapter"), object: chapter)
     }
 }
 
-//#Preview {
+#Preview {
 //    MultipleChoiceView()
-//}
+    BookView()
+}

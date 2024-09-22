@@ -189,6 +189,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             parent.currentChapterIndex = 0
             parent.currentPageIndex = 0
             
+            print("current chapter: \(String(describing: parent.currentChapterIndex))" )
             if let pageViewController = pageViewController {
                 let landing = createHostingController(for: 0, in: 0)
                 pageViewController.setViewControllers(
@@ -212,27 +213,33 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                 return createHostingController(for: parent.currentPageIndex, in: chapterIndex)
             } else if chapterIndex > 0 {
                 parent.currentChapterIndex = chapterIndex - 1
-                parent.currentPageIndex = parent.chapters[chapterIndex - 1].questions.count
+                parent.currentPageIndex = parent.chapters[chapterIndex - 1].questions.count - 1
                 return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex!)
             }
             return nil
         }
         
-        // Handle swipe to the next page
         func pageViewController(_ pageViewController: UIPageViewController,
                                 viewControllerAfter viewController: UIViewController) -> UIViewController? {
             let chapterIndex = parent.currentChapterIndex ?? 0
-
-            // Check if the current chapter is not the last one
-               if chapterIndex < parent.chapters.count - 1 {
-                   // Move to the first page of the next chapter
-                   parent.currentChapterIndex = chapterIndex + 1
-                   parent.currentPageIndex = 0
-                   return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex!)
-               }
+            let pageIndex = parent.currentPageIndex
+            
+            // Check if there are more pages in the current chapter
+            if pageIndex < parent.chapters[chapterIndex].questions.count - 1 {
+                // Move to the next page within the current chapter
+                parent.currentPageIndex = pageIndex + 1
+                return createHostingController(for: parent.currentPageIndex, in: chapterIndex)
+            } else if chapterIndex < parent.chapters.count - 1 {
+                // If there are no more pages, move to the first page of the next chapter
+                parent.currentChapterIndex = chapterIndex + 1
+                parent.currentPageIndex = 0
+                return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex!)
+            }
+            
+            // No more pages or chapters to flip to
             return nil
         }
-        
+
         
         func pageViewController(_ pageViewController: UIPageViewController,
                                 didFinishAnimating finished: Bool,
