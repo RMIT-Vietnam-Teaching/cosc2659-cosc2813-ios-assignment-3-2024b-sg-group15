@@ -6,7 +6,7 @@ struct MapViewManager: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
-                Text(viewModel.question)
+                Text("\(viewModel.mapQuestion)")
                     .font(.headline)
                     .padding()
                 Spacer()
@@ -39,22 +39,6 @@ struct MapViewManager: View {
             }
            
         }
-    }
-}
 
-struct MapViewManager_Previews: PreviewProvider {
-    static var previews: some View {
-        let exampleViewModel = MapViewModel(
-            question: "Chủ tịch Hồ Chí Minh chọn đâu làm căn cứ chỉ đạo Cách Mạng?",
-            mapChoices: ["Bình Yên", "Tân Trào", "Trung Yên", "Minh Thanh", "Lương Thiện"],
-            correctAnswer: "Tân Trào"
-        )
-        let exampleViewModel2 = MapViewModel(
-            question: "Hội nghị ban chấp hành Trung Ương Đảng họp tại đâu?",
-            mapChoices: ["Bà Điểm", "Xuân Thới Thượng", "Tân Xuân", "Xuân Thới Sơn"],
-            correctAnswer: "Bà Điểm"
-        )
-        MapViewManager(viewModel: exampleViewModel2)
-            .previewLayout(.sizeThatFits)
     }
 }

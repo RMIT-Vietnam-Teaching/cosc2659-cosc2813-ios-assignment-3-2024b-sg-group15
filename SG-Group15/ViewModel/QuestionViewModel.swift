@@ -10,10 +10,8 @@ import Foundation
 // Parent for different types of questions VM
 class QuestionViewModel: ObservableObject, Identifiable {
     @Published var question: QuestionProtocol
-    @Published var canFlip: Bool
     
-    init (question: QuestionProtocol, canFlip: Bool) {
+    init (question: QuestionProtocol) {
         self.question = question
-        self.canFlip = canFlip
     }
 }

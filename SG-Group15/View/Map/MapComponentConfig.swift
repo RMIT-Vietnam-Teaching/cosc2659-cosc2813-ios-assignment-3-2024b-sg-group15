@@ -107,7 +107,7 @@ struct MapComponent: View {
     }
     
     private func buttonTextColor(for name: String) -> Color {
-        guard let selected = viewModel.selectedAnswer else { return .black }
+        guard viewModel.selectedAnswer != nil else { return .black }
         return name == correctAnswer ? .green : .red
     }
     
@@ -134,22 +134,22 @@ struct MapComponent: View {
     }
 }
 
-struct MapComponent_Previews: PreviewProvider {
-    static var previews: some View {
-        let exampleViewModel = MapViewModel(
-            question: "Chủ tịch Hồ Chí Minh chọn đâu làm căn cứ chỉ đạo Cách Mạng?",
-            mapChoices: ["Bình Yên", "Tân Trào", "Trung Yên", "Minh Thanh", "Lương Thiện"],
-            correctAnswer: "Tân Trào"
-        )
-        let exampleMapData = MapDataProvider.mapData(for: .tanTrao)
-        
-        MapComponent(
-            viewModel: exampleViewModel,
-            mapImage: exampleMapData.mapImage,
-            mapPoints: exampleMapData.mapPoints,
-            correctAnswer: exampleMapData.correctAnswer,
-            config: exampleMapData.config
-        )
-        .previewLayout(.sizeThatFits)
-    }
-}
+//struct MapComponent_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let exampleViewModel = MapViewModel(
+//            mapQuestion: "Chủ tịch Hồ Chí Minh chọn đâu làm căn cứ chỉ đạo Cách Mạng?",
+//            mapChoices: ["Bình Yên", "Tân Trào", "Trung Yên", "Minh Thanh", "Lương Thiện"],
+//            correctAnswer: "Tân Trào"
+//        )
+//        let exampleMapData = MapDataProvider.mapData(for: .tanTrao)
+//        
+//        MapComponent(
+//            viewModel: exampleViewModel,
+//            mapImage: exampleMapData.mapImage,
+//            mapPoints: exampleMapData.mapPoints,
+//            correctAnswer: exampleMapData.correctAnswer,
+//            config: exampleMapData.config
+//        )
+//        .previewLayout(.sizeThatFits)
+//    }
+//}

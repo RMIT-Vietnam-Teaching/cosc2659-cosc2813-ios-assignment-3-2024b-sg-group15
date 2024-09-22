@@ -16,8 +16,8 @@ class TimelineGameViewModel: QuestionViewModel {
     let periodWidth: CGFloat = 170
     let periodHeight: CGFloat = 80
     
-    override init(question: QuestionProtocol, canFlip: Bool) {
-        super.init(question: question, canFlip: true)
+    override init(question: QuestionProtocol) {
+        super.init(question: question)
         if let question = question as? TimelineQuestion {
             initQuestion(question: question)
         }

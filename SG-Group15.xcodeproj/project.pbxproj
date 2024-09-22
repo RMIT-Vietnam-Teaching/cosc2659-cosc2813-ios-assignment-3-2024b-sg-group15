@@ -93,7 +93,6 @@
 		E2A71D3C2C9FC3BA00A2862D /* tank.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D2A2C9FC3BA00A2862D /* tank.gif */; };
 		E2CD24302C9573BD00B4E0D5 /* MatchingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */; };
 		E2CD24322C95740000B4E0D5 /* MatchingGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */; };
-		E2F08F2C2C9FC9D000038010 /* MapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F2B2C9FC9D000038010 /* MapDataModel.swift */; };
 		E2F08F2E2C9FCA4E00038010 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F2D2C9FCA4E00038010 /* MapViewModel.swift */; };
 		E2F08F302C9FCB9600038010 /* MapComponentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F2F2C9FCB9600038010 /* MapComponentConfig.swift */; };
 		E2F08F322C9FCD1200038010 /* MapViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F08F312C9FCD1200038010 /* MapViewManager.swift */; };
@@ -185,7 +184,6 @@
 		E2A71D2A2C9FC3BA00A2862D /* tank.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tank.gif; sourceTree = "<group>"; };
 		E2CD242F2C9573BD00B4E0D5 /* MatchingGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameView.swift; sourceTree = "<group>"; };
 		E2CD24312C95740000B4E0D5 /* MatchingGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameViewModel.swift; sourceTree = "<group>"; };
-		E2F08F2B2C9FC9D000038010 /* MapDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataModel.swift; sourceTree = "<group>"; };
 		E2F08F2D2C9FCA4E00038010 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		E2F08F2F2C9FCB9600038010 /* MapComponentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentConfig.swift; sourceTree = "<group>"; };
 		E2F08F312C9FCD1200038010 /* MapViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewManager.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				E29655382C94BD580099D136 /* TimelineGameModel.swift */,
 				7594A6F72C969065000084FA /* User.swift */,
 				39FA155D2C95708F0054B99E /* PageModel.swift */,
-				E2F08F2B2C9FC9D000038010 /* MapDataModel.swift */,
 				39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */,
 				398F19972C99AF940023515B /* Note.swift */,
 				7549644A2C9ED7EC00C3022E /* Book.swift */,
@@ -625,7 +622,6 @@
 				759101D52C96EFC300930574 /* WelcomeView.swift in Sources */,
 				75D1F3C52CA02B940058C597 /* AvatarPicker.swift in Sources */,
 				7594A70B2C96D169000084FA /* SignUpView.swift in Sources */,
-				E2F08F2C2C9FC9D000038010 /* MapDataModel.swift in Sources */,
 				39FA15522C948D540054B99E /* SimpleView.swift in Sources */,
 				75668E022C9183F90052F78C /* Modifiers.swift in Sources */,
 				75690EF42C99E06D00E4B2C3 /* ContentView.swift in Sources */,

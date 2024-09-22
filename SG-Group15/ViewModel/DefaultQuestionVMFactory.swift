@@ -11,19 +11,18 @@ class DefaultQuestionViewModelFactory: QuestionViewModelFactory {
     init() {
         
     }
-    func createViewModel(for question: QuestionProtocol, canFlip: Bool) -> QuestionViewModel {
+    func createViewModel(for question: QuestionProtocol) -> QuestionViewModel {
         switch question.questionType {
         case .multipleChoice:
-            return MutipleChoiceViewModel(question: question, canFlip: canFlip)
+            return MutipleChoiceViewModel(question: question)
         case .matching:
-            return MatchingGameViewModel(question: question, canFlip: canFlip)
+            return MatchingGameViewModel(question: question)
         case .timeline:
-            return TimelineGameViewModel(question: question, canFlip: canFlip)
+            return TimelineGameViewModel(question: question)
         case .fill:
-            return FillInBlankViewModel(question: question, canFlip: canFlip)
-        default:
-            print("Invalid question type")
-            return MutipleChoiceViewModel(question: question, canFlip: canFlip)
+            return FillInBlankViewModel(question: question)
+        case .map:
+            return MapViewModel(question: question)
         }
     }
 }
