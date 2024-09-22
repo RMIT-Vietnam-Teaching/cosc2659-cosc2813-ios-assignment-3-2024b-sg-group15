@@ -32,6 +32,7 @@ struct Login: View {
                     Text("Chào mừng bạn quay lại! Chúng tôi rất nhớ bạn")
                         
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                    NavigationLink("Setting", destination: MyProfileView(userVM: userViewModel))
                 }
 
                 Spacer()
@@ -40,6 +41,7 @@ struct Login: View {
                     if userViewModel.success {
                         Text("Login Sucessfully!")
                             .foregroundStyle(Color.green)
+                       
                     }
                     // Placeholder for error message
                     if let message = userViewModel.errorMessage {
@@ -57,6 +59,8 @@ struct Login: View {
                         TextField("Nhập email", text: $email)
                             .foregroundColor(.darkRed)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                        // Disable auto capitalization
+                            .textInputAutocapitalization(.never)
                         
                             .onChange(of: email) { old, new in
                                 // Clear error message
@@ -76,6 +80,8 @@ struct Login: View {
                         // Hide password from user
                         SecureField("Nhập mật khẩu", text: $password)
                             .foregroundColor(.darkRed)
+                        // Disable auto capitalization
+                            .textInputAutocapitalization(.never)
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
                             .onChange(of: password) { old, new in
                                 // Clear error message

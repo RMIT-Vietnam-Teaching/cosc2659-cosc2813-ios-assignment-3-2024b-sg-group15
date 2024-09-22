@@ -41,12 +41,12 @@ struct WelcomeView: View {
                             .frame(minHeight: UIScreen.main.bounds.height * 0.02, maxHeight: UIScreen.main.bounds.height * 0.04)
                         
                         // Login and Signup button
-                        NavigationLink(destination: SignUpView(userViewModel: userViewModel))
+                        NavigationLink(destination: SignUp(userViewModel: userViewModel))
                         {
                             Text("Đăng Ký")
                                 .modifier(SignUpButtonModifier(background: Color.primaryRed))
                         }
-                        NavigationLink(destination: LoginView(userViewModel: userViewModel))
+                        NavigationLink(destination: Login(userViewModel: userViewModel))
                         {
                             Text("Đăng nhập")
                                 .modifier(SignUpButtonModifier(background: Color.darkGreen))

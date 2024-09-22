@@ -1,0 +1,179 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "1" : {
+
+    },
+    "2" : {
+
+    },
+    "Bắt đầu học" : {
+
+    },
+    "Biến lịch sử thành cuộc phiêu lưu" : {
+
+    },
+    "Bingo" : {
+
+    },
+    "CÁCH MẠNG THÁNG 8 - 1945" : {
+
+    },
+    "Cài đặt" : {
+
+    },
+    "Chào mừng bạn quay lại! Chúng tôi rất nhớ bạn" : {
+
+    },
+    "Chọn hình đại diện của bạn" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your avatar"
+          }
+        }
+      }
+    },
+    "Chủ đề" : {
+
+    },
+    "Đăng ký" : {
+
+    },
+    "Đăng Ký" : {
+
+    },
+    "Đăng nhập" : {
+
+    },
+    "Đăng Nhập" : {
+
+    },
+    "Đăng nhập với Google" : {
+
+    },
+    "Fill in the blanks with the correct words" : {
+
+    },
+    "Flip Disabled" : {
+
+    },
+    "Flip Enabled" : {
+
+    },
+    "History App" : {
+
+    },
+    "Hoặc bắt đầu với" : {
+
+    },
+    "Hoặc tiếp tục với" : {
+
+    },
+    "Học" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn"
+          }
+        }
+      }
+    },
+    "Kéo các sự kiện sau đây ứng với mốc thời gian" : {
+
+    },
+    "Kiểm tra" : {
+
+    },
+    "Language" : {
+
+    },
+    "Loading book data..." : {
+
+    },
+    "Login Sucessfully!" : {
+
+    },
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. " : {
+
+    },
+    "Lưu" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
+    },
+    "Main Menu" : {
+
+    },
+    "Member since 20/6/2024" : {
+
+    },
+    "Next Page" : {
+
+    },
+    "Ngôn ngữ" : {
+
+    },
+    "Nhập email" : {
+
+    },
+    "Nhập mật khẩu" : {
+
+    },
+    "Nhập tên người dùng" : {
+
+    },
+    "Nối sự kiện dưới đây" : {
+
+    },
+    "Setting" : {
+
+    },
+    "Submit" : {
+
+    },
+    "Tiếp tục" : {
+
+    },
+    "Unknown question type" : {
+
+    },
+    "Username" : {
+
+    },
+    "Xin chào bạn! Mình cùng nhau khám phá nhé!" : {
+
+    }
+  },
+  "version" : "1.0"
+}
