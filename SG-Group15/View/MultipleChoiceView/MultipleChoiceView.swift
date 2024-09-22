@@ -27,7 +27,6 @@ struct MultipleChoiceView: View {
                     Image(systemName: "xmark")
                         .resizable()
                         .frame(width: horizontalSizeClass == .compact ? 15 : 25, height: horizontalSizeClass == .compact ? 15 : 25)
-                    ProgressBar()
                 }
                 .onTapGesture {
 //                    goToChapter(chapter: 0)

@@ -13,8 +13,8 @@ struct BookMenuView: View {
     
     var body: some View {
         GeometryReader { geo in
-//            Color.beigeBackground
-//                .ignoresSafeArea()
+            Color.beigeBackground
+                .ignoresSafeArea()
             
             TabView(selection: $currentTab,
                     content:  {
