@@ -134,18 +134,26 @@ class UserViewModel: ObservableObject {
             print("Failed to retrieve user id")
             return
         }
+        
         db.collection("users").document(uid).getDocument { (document, error) in
             // Get user data from database
             if let document = document, let data = document.data() {
+                // Initialize the currentUser
                 self.currentUser = User(id: uid, data: data)
                 
-            }
-            else {
+                // Safely unwrap currentUser and save to UserDefaults
+                if let user = self.currentUser {
+                    self.saveUserToUserDefaults(user: user)
+                } else {
+                    print("Failed to initialize user.")
+                }
+            } else {
                 print("Failed to fetch user: \(error?.localizedDescription ?? "")")
             }
         }
-        
     }
+   
+    
     
     // Login using email and password
     func login(email: String, password: String) {
@@ -252,6 +260,7 @@ class UserViewModel: ObservableObject {
             self.currentUser = nil
             self.success = false
             self.isLogin = false
+            self.deleteUserFromUserDefaults()
             
             print("User successfully logged out.")
         } catch let signOutError as NSError {
@@ -280,6 +289,52 @@ class UserViewModel: ObservableObject {
                 
             }
         }
+    }
+    
+    func saveUserToUserDefaults(user: User) {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(user)
+            UserDefaults.standard.set(data, forKey: "currentUser")
+            print("User saved to UserDefaults")
+        } catch {
+            print("Failed to save user: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadUserFromUserDefaults() {
+        // Attempt to retrieve the user from UserDefaults
+        if let user = getUserFromUserDefaults() {
+            // Assign the retrieved user to the currentUser property
+            self.currentUser = user
+            self.isLogin = true
+            print("User loaded and assigned to currentUser")
+        } else {
+            print("No user found in UserDefaults.")
+        }
+    }
+    
+    
+    func getUserFromUserDefaults() -> User? {
+        // Retrieve the data from UserDefaults
+        if let data = UserDefaults.standard.data(forKey: "currentUser") {
+            let decoder = JSONDecoder()
+            
+            do {
+                // Decode the data into a User object
+                let user = try decoder.decode(User.self, from: data)
+                return user
+            } catch {
+                print("Failed to load user: \(error.localizedDescription)")
+            }
+        }
+        return nil
+    }
+    
+    func deleteUserFromUserDefaults() {
+        // Remove the user data from UserDefaults
+        UserDefaults.standard.removeObject(forKey: "currentUser")
+        print("User deleted from UserDefaults.")
     }
 
     
