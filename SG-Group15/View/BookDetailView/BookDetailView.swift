@@ -17,6 +17,8 @@ import SwiftUI
 struct BookDetailView: View {
     var title: String
     var description: String
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @State private var isScaled = false
     @State private var selectedChapter: Int = 1
@@ -33,7 +35,7 @@ struct BookDetailView: View {
             
             Group {
                 ZStack(alignment: .top) {
-                    Image("background")
+                    Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                         .resizable()
                         .ignoresSafeArea()
                         .zIndex(1.0)

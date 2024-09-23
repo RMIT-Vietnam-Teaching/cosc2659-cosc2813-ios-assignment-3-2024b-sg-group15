@@ -15,6 +15,8 @@
 import SwiftUI
 
 struct FillInBlankGameView: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @ObservedObject var viewModel: FillInBlankViewModel
     @State private var showResultPopup = false
     @State private var result: (correct: Int, total: Int) = (0, 0)
@@ -29,7 +31,7 @@ struct FillInBlankGameView: View {
             let wordHeight = min(height * 0.06, 250)
             
             ZStack {
-                Image("background")
+                Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                     .resizable()
                     .ignoresSafeArea()
                 

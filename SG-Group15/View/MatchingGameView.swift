@@ -15,6 +15,8 @@
 import SwiftUI
 
 struct MatchingGameView: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     @ObservedObject var viewModel: MatchingGameViewModel
@@ -26,7 +28,7 @@ struct MatchingGameView: View {
             let smallerDimension = min(width, height)
             
             ZStack(alignment: .top) {
-                Image("background")
+                Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                     .resizable()
                     .ignoresSafeArea()
                 

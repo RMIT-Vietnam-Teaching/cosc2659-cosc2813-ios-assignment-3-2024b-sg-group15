@@ -29,7 +29,7 @@ struct NavBar: View {
                 .onTapGesture {
                     selected = "menu"
                 }
-                .foregroundColor(selected == "menu" ? .darkRed : .black)
+                .foregroundColor(selected == "menu" ? .darkRed : .blackCustom)
             
             Spacer()
             
@@ -39,7 +39,7 @@ struct NavBar: View {
                 .onTapGesture {
                     selected = "note"
                 }
-                .foregroundColor(selected == "note" ? .darkRed : .black)
+                .foregroundColor(selected == "note" ? .darkRed : .blackCustom)
             
             Spacer()
             
@@ -49,7 +49,7 @@ struct NavBar: View {
                 .onTapGesture {
                     selected = "setting"
                 }
-                .foregroundColor(selected == "setting" ? .darkRed : .black)
+                .foregroundColor(selected == "setting" ? .darkRed : .blackCustom)
             
             Spacer()
         }

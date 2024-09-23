@@ -23,6 +23,8 @@ import SwiftUI
 import PencilKit
 
 struct TabViewNote: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userViewModel: UserViewModel
@@ -31,7 +33,6 @@ struct TabViewNote: View {
 
     @State var currentTab: Int = 0 // State variable to track the current tab
     @State private var canvasView = PKCanvasView()
-    
     @State private var toolPicker = PKToolPicker()
     var noteID: String
     
@@ -43,7 +44,7 @@ struct TabViewNote: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Image("background")
+            Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                 .resizable()
                 .ignoresSafeArea()
             
@@ -160,6 +161,7 @@ struct TabViewNote: View {
         .navigationBarBackButtonHidden(true) // Hide the default navigation bar back button.
 
     }
+    
 }
 
 struct TabBarView: View {

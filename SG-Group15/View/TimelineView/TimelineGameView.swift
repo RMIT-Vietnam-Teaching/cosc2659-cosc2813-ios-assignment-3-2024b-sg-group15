@@ -15,6 +15,8 @@
 import SwiftUI
 
 struct TimelineGameView: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     @ObservedObject var viewModel: TimelineGameViewModel
@@ -32,7 +34,7 @@ struct TimelineGameView: View {
             let periodHeight = eventHeight
             
             ZStack(alignment: .top) {
-                Image("background")
+                Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                     .resizable()
                     .ignoresSafeArea()
                 
