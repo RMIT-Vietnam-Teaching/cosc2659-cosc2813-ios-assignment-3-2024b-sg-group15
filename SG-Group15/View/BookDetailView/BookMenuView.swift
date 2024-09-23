@@ -33,5 +33,5 @@ struct BookMenuView: View {
 }
 
 #Preview {
-    BookMenuView(isOpen: .constant(true))
+    BookMenuView(isOpen: .constant(false))
 }

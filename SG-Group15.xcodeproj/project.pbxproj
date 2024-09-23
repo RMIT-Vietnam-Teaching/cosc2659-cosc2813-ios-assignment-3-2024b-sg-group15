@@ -384,12 +384,12 @@
 		75668E002C9183D70052F78C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E2598FD52C9F39D60056E409 /* SoundManager.swift */,
+				75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */,
 				75668E012C9183F90052F78C /* Modifiers.swift */,
 				39FA15592C948E1A0054B99E /* PageCurlViewController.swift */,
 				398F199D2C99B2470023515B /* NoteManager.swift */,
 				E2598FDB2C9F3A140056E409 /* Sounds */,
-				E2598FD52C9F39D60056E409 /* SoundManager.swift */,
-				75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

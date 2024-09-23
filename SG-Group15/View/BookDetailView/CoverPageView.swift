@@ -14,8 +14,7 @@ struct CoverPageView: View {
     @Binding var isScaled: Bool
     @Binding var isOpen: Bool
     @Binding var showCover: Bool
-
-    @State private var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "CÁCH MẠNG THÁNG 8 - 1945")
+    var bookID: String
     
     var body: some View {
         GeometryReader {
@@ -28,7 +27,6 @@ struct CoverPageView: View {
                 Color.beigeBackground
                     .ignoresSafeArea()
                 Group {
-                    
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundColor(Color("primaryRed"))
                         .padding(.horizontal, horizontalSizeClass == .compact ? 30 : 70)
@@ -38,9 +36,16 @@ struct CoverPageView: View {
                             .init(degrees: rotation), axis: (x: 0, y: 0.5, z: 0), anchor: .leading, perspective: 1)
                     
                     VStack(spacing: 60) {
-                        Text("CÁCH MẠNG THÁNG 8 - 1945")
-                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad())).padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
-                            .multilineTextAlignment(.center)
+                        if bookID == "m9UkUeeRLMkcjqKB2eAr" {
+                            Text("Cách mạng tháng 8 - 1945")
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad())).padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
+                                .multilineTextAlignment(.center)
+                        }
+                        else {
+                            Text("Chiến dịch Điện Biên Phủ - 1954")
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad())).padding(.horizontal, horizontalSizeClass == .compact ? 40 : 100)
+                                .multilineTextAlignment(.center)
+                        }
                         
                         Image("cover")
                             .resizable()

@@ -13,6 +13,8 @@ struct OpenBookView: View {
     @State private var showCover = true
     @ObservedObject var bookVM: BookViewModel
     @Binding var chapterNum: Int
+    var bookID: String
+    
     
     var body: some View {
         ZStack {
@@ -21,16 +23,9 @@ struct OpenBookView: View {
                 BookDetailView(title: bookVM.chapters[chapterNum].title, description: bookVM.chapters[chapterNum].description)
                     .padding(0)
             } else {
-               CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
+               CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover, bookID: bookID)
 
             }
-//        }
-//
-//            if showCover {
-//                // The book cover (shown initially, then rotates open and disappears)
-//                CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
-//                
-//            }
         }
         .onAppear {
             if isOpen {
@@ -39,11 +34,6 @@ struct OpenBookView: View {
                 showCover = true
             }
         }
-//              .onChange(of: isOpen) {old ,new in
-//                  if new {
-//                      showCover = false
-//                  }
-//              }
         
     }
 }

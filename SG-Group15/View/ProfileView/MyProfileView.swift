@@ -56,7 +56,6 @@ struct MyProfileView: View {
                                 .modifier(LargeButtonModifier(background: Color.primaryRed))
                             
                         }
-                        .padding()
                         Button(action: {
                             userViewModel.logout()
                             isLoggedOut = true
@@ -65,7 +64,6 @@ struct MyProfileView: View {
                                 .modifier(LargeButtonModifier(background: Color.darkGreen))
                             
                         }
-                        .padding()
                     }
                 }
                 else {

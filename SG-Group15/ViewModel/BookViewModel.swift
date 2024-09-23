@@ -21,8 +21,6 @@ class BookViewModel: ObservableObject {
                 }
                 
                 var fetchedChapters: [Chapter] = []
-                // Append an empty chapter to handle cover page
-//                fetchedChapters.append(Chapter(id: "", title: "", description: "", questions: []))
                 let group = DispatchGroup() // To handle async fetching for all chapters
                 
                 for document in documents {

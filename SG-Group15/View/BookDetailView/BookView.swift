@@ -53,7 +53,7 @@ struct BookView: View {
                     }
                 }
                 else {
-                    OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex)
+                    OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex, bookID: bookID)
                 }
             }
         }
