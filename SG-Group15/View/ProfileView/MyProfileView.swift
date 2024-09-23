@@ -89,7 +89,7 @@ struct MyProfileView: View {
                             .frame(height: UIScreen.main.bounds.width * 0.1)
                         // Placeholder for error message
                         if userViewModel.success {
-                            Text("Update Sucessfully!")
+                            Text("Cập nhật thành công!")
                                 .foregroundStyle(Color.green)
                         }
                         // Placeholder for error message
@@ -106,6 +106,7 @@ struct MyProfileView: View {
                             saveSettings()
                         }) {
                             Text("Lưu")
+                                .foregroundColor(.whiteCustom)
                                 .modifier(LargeButtonModifier(background: Color.primaryRed))
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                         }
@@ -115,6 +116,7 @@ struct MyProfileView: View {
                             userViewModel.isLogin = false
                         }) {
                             Text("Đăng xuất")
+                                .foregroundColor(.whiteCustom)
                                 .modifier(LargeButtonModifier(background: Color.darkGreen))
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                             

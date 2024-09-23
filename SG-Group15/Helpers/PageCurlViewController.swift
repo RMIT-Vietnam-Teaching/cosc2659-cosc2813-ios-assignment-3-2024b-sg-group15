@@ -256,6 +256,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                     let questionVM = hostingController.rootView.viewModel
                     if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
+                        parent.canFlip = false
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<FillInBlankGameView> {
                     let questionVM = hostingController.rootView.viewModel

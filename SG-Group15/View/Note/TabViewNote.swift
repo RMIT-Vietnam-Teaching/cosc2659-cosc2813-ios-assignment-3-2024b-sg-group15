@@ -68,7 +68,7 @@ struct TabViewNote: View {
                         
                         Text(note.title ?? "Tựa đề")
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
-                            .foregroundColor(.black)
+                            .foregroundColor(.blackCustom)
                         
                         Spacer()
                     }

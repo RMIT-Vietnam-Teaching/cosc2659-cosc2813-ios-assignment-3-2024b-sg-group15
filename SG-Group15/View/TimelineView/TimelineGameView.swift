@@ -153,7 +153,6 @@ struct TimelineGameView: View {
                 
                 if viewModel.isGameComplete && !viewModel.isSubmitted {
                     Button("Kiểm tra") {
-                    print("kiem tra")
                         withAnimation {
                             
                             viewModel.checkAnswer()
@@ -161,25 +160,13 @@ struct TimelineGameView: View {
                         }
                     }
                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                     .position(x: width / 2, y: horizontalSizeClass == .compact ?  height / 4 : height - 50)
-                }
-                if isSubmit {
-                    Button("Tiếp tục") {
-                        goToNextPage()
-//                        print("Next question")
-                    }
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
-                    .position(x: width / 2, y: horizontalSizeClass == .compact ?  height / 4  : height / 4)
                 }
             }
             .coordinateSpace(name: "gameArea")
         }
-//        .padding(.vertical, 60)
         
-    }
-    
-    func goToNextPage() {
-        NotificationCenter.default.post(name: NSNotification.Name("GoToNextPage"), object: nil)
     }
     
     
