@@ -70,9 +70,7 @@
 		75AD4D522C947DCA00C8F37F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D512C947DCA00C8F37F /* Lato-Regular.ttf */; };
 		75AD4D542C947DEC00C8F37F /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */; };
 		75AD4D572C947FC800C8F37F /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75AD4D562C947FC800C8F37F /* Lato-Black.ttf */; };
-		75D1F3C22CA02B6C0058C597 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */; };
 		75D1F3C52CA02B940058C597 /* AvatarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3C42CA02B940058C597 /* AvatarPicker.swift */; };
-		75D1F3C72CA02BAC0058C597 /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3C62CA02BAC0058C597 /* LanguagePicker.swift */; };
 		75D1F3C92CA02BCC0058C597 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3C82CA02BCC0058C597 /* MyProfileView.swift */; };
 		75D1F3CB2CA02BE20058C597 /* PersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3CA2CA02BE20058C597 /* PersonInfo.swift */; };
 		75D1F3CD2CA02C060058C597 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3CC2CA02C060058C597 /* ThemePicker.swift */; };
@@ -168,9 +166,7 @@
 		75AD4D532C947DEC00C8F37F /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OldStandardTT-Bold.ttf"; sourceTree = "<group>"; };
 		75AD4D552C947E2A00C8F37F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75AD4D562C947FC800C8F37F /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
-		75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		75D1F3C42CA02B940058C597 /* AvatarPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPicker.swift; sourceTree = "<group>"; };
-		75D1F3C62CA02BAC0058C597 /* LanguagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePicker.swift; sourceTree = "<group>"; };
 		75D1F3C82CA02BCC0058C597 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		75D1F3CA2CA02BE20058C597 /* PersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfo.swift; sourceTree = "<group>"; };
 		75D1F3CC2CA02C060058C597 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
@@ -382,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				E2598FD52C9F39D60056E409 /* SoundManager.swift */,
-				75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */,
 				75668E012C9183F90052F78C /* Modifiers.swift */,
 				39FA15592C948E1A0054B99E /* PageCurlViewController.swift */,
 				398F199D2C99B2470023515B /* NoteManager.swift */,
@@ -420,7 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				75D1F3C42CA02B940058C597 /* AvatarPicker.swift */,
-				75D1F3C62CA02BAC0058C597 /* LanguagePicker.swift */,
 				75D1F3C82CA02BCC0058C597 /* MyProfileView.swift */,
 				75D1F3CA2CA02BE20058C597 /* PersonInfo.swift */,
 				75D1F3CC2CA02C060058C597 /* ThemePicker.swift */,
@@ -610,10 +604,8 @@
 				7594A6FA2C969163000084FA /* UserViewModel.swift in Sources */,
 				754964612C9EF55E00C3022E /* TimePeriodView.swift in Sources */,
 				39E7CC632C9E7D8A0083E41F /* Login.swift in Sources */,
-				75D1F3C22CA02B6C0058C597 /* LanguageManager.swift in Sources */,
 				754964572C9EDC0300C3022E /* MultipleChoiceViewModel.swift in Sources */,
 				391E50EE2C9FC9E00099043D /* NoteListView.swift in Sources */,
-				75D1F3C72CA02BAC0058C597 /* LanguagePicker.swift in Sources */,
 				7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */,
 				E2F08F2E2C9FCA4E00038010 /* MapViewModel.swift in Sources */,
 				398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */,

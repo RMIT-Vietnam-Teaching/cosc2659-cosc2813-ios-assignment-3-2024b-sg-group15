@@ -24,20 +24,17 @@ struct User: Identifiable, Codable {
     var joinedAt: Date?
     // Control user's setting preferences
     var darkMode: Bool
-    var lang: String
     var avatar: String
     
     
     // Default initialization
-    init(id: String, username: String, email: String, avatar: String, darkMode: Bool, lang: String) {
+    init(id: String, username: String, email: String, avatar: String, darkMode: Bool) {
         self.id = id
         self.username = username
         self.email = email
         // Default user preference
         self.avatar = avatar
         self.darkMode = darkMode
-        self.lang = lang
-        
     }
     
     // Initialize from the database's document
@@ -47,8 +44,7 @@ struct User: Identifiable, Codable {
               let email = data["email"] as? String,
               let joinedAt = data["joinedAt"],
               let avatar = data["avatar"] as? String,
-              let darkMode = data["darkMode"] as? Bool,
-              let lang = data["lang"] as? String
+              let darkMode = data["darkMode"] as? Bool
         else {
             print("Cannot parse user data")
             return nil
@@ -60,7 +56,6 @@ struct User: Identifiable, Codable {
         self.joinedAt = (joinedAt as? Timestamp)?.dateValue()
         self.avatar = avatar
         self.darkMode = darkMode
-        self.lang = lang
         
     }
 }

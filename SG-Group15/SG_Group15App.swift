@@ -11,7 +11,6 @@ import UserNotifications
 
 @main
 struct SG_Group15App: App {
-    @StateObject var languageManager = LanguageManager()
     @Environment(\.scenePhase) private var scenePhase
     @AppStorage("theme") private var theme: Theme = .light
     
@@ -43,9 +42,6 @@ struct SG_Group15App: App {
                 .onAppear {
                     clearBadgeCount()
                 }
-                .environmentObject(languageManager)
-            // Set the locale of the app using the selected language
-                .environment(\.locale, .init(identifier: languageManager.selectedLanguage))
                 .preferredColorScheme(theme.colorScheme)
         }
     }

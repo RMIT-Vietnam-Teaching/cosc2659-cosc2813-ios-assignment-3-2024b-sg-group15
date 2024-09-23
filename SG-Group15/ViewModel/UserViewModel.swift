@@ -34,7 +34,7 @@ class UserViewModel: ObservableObject {
     // MARK: Sign up process
     // Save new user to database
     private func saveUser(uid: String, email: String, username: String) {
-        let newUser = User(id: uid, username: username, email: email, avatar: "avatar1", darkMode: false, lang: "vi")
+        let newUser = User(id: uid, username: username, email: email, avatar: "avatar1", darkMode: false)
         
         // Save with the exact date the user is created
         db.collection("users").document(uid).setData([
@@ -42,7 +42,6 @@ class UserViewModel: ObservableObject {
             "email": email,
             "joinedAt": FieldValue.serverTimestamp(),
             "avatar": newUser.avatar,
-            "lang": newUser.lang,
             "darkMode": newUser.darkMode
         ])
         {  // Handle error
@@ -270,14 +269,13 @@ class UserViewModel: ObservableObject {
     }
     
     // MARK: Update user preferences
-    func updatePreferences(darkMode: Bool, lang: String, avatar: String) {
+    func updatePreferences(darkMode: Bool, avatar: String) {
         self.success = false
         guard let userId = Auth.auth().currentUser?.uid else { return }
         // Set new data for the current user
         let db = Firestore.firestore()
         db.collection("users").document(userId).setData([
             "darkMode": darkMode,
-            "lang": lang,
             "avatar": avatar
         ], merge: true) { error in
             if let error = error {

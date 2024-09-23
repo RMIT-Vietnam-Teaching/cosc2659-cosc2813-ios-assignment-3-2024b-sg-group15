@@ -16,7 +16,6 @@ import Foundation
 import SwiftUI
 
 struct MyProfileView: View {
-    @EnvironmentObject var languageManager: LanguageManager
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var avatar: String = "avatar5"
     @AppStorage("theme") private var theme: Theme = .light
@@ -27,7 +26,6 @@ struct MyProfileView: View {
     private func saveSettings() {
         userViewModel.updatePreferences(
             darkMode: theme == .dark,
-            lang: languageManager.selectedLanguage,
             avatar: avatar
         )
         if let currentUser = userViewModel.currentUser {
@@ -50,10 +48,7 @@ struct MyProfileView: View {
                         PersonInfo(selectedAvatar: $avatar)
                         Spacer()
                             .frame(height: UIScreen.main.bounds.width * 0.15)
-                        VStack(alignment: .leading) {
-                            LanguagePicker()
                             ThemePicker(scheme: scheme)
-                        }
                         Spacer()
                             .frame(height: UIScreen.main.bounds.width * 0.2)
                         Button(action: {
@@ -87,7 +82,6 @@ struct MyProfileView: View {
                         Spacer()
                             .frame(height: UIScreen.main.bounds.width * 0.1)
                         VStack(alignment: .leading, spacing: 20) {
-                            LanguagePicker()
                             ThemePicker(scheme: scheme)
                             
                         }
@@ -146,12 +140,11 @@ struct MyProfileView: View {
 }
 
 #Preview {
-    let dummyUser = User(id: "1", username: "Test User", email: "test@example.com", avatar: "avatar1", darkMode: false, lang: "en")
+    let dummyUser = User(id: "1", username: "Test User", email: "test@example.com", avatar: "avatar1", darkMode: false)
     let userVM = UserViewModel()
     userVM.currentUser = dummyUser
     
     return MyProfileView()
         .environmentObject(UserViewModel())
-        .environmentObject(LanguageManager())
     
 }
