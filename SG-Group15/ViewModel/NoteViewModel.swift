@@ -118,21 +118,36 @@ class NoteViewModel: ObservableObject {
     
     
     // Save a new note to Firestore
-    func saveNote(_ note: Note, userID: String?) {
-            var noteData: [String: Any] = [
-                "userID": userID ?? "",
-                "title": note.title,
-                "textContent": note.textContent,
-                "color": note.color,
-                "lastModified": note.lastModified
-            ]
-            
-            if let drawingData = note.drawingData {
-                noteData["drawingData"] = drawingData.base64EncodedString()
-            }
-            
-            db.collection("notes").addDocument(data: noteData)
+    func saveNote(_ note: Note, userID: String?, completion: @escaping (String?) -> Void) {
+        var noteData: [String: Any] = [
+            "userID": userID ?? "",
+            "title": note.title,
+            "textContent": note.textContent,
+            "color": note.color,
+            "lastModified": note.lastModified
+        ]
+        
+        // If the note contains drawing data, add it to the note data dictionary
+        if let drawingData = note.drawingData {
+            noteData["drawingData"] = drawingData.base64EncodedString()
         }
+            
+        // Add document to Firestore and get the document ID
+        var ref: DocumentReference? = nil
+        ref = db.collection("notes").addDocument(data: noteData) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+                completion(nil)  // Pass nil to the completion handler if there's an error
+            } else {
+                if let documentID = ref?.documentID {
+                    print("Document added with ID: \(documentID)")
+                    completion(documentID)  // Return the document ID upon success
+                } else {
+                    completion(nil)  // Pass nil if document ID is not found for some reason
+                }
+            }
+        }
+    }
     
     func updateNote(_ note: Note) {
 
