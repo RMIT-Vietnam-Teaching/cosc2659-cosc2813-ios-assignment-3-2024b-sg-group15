@@ -52,7 +52,7 @@ struct NoteListView: View {
                                 Image(systemName: "plus.circle.fill")
                                     .resizable()
                                     .frame(width: horizontalSizeClass == .compact ? 20 : 30, height: horizontalSizeClass == .compact ? 20 : 30)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.blackCustom)
                             }
                             
                         }

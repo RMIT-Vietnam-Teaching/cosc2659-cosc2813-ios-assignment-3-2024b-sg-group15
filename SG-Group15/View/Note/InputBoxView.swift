@@ -48,7 +48,7 @@ struct InputBoxView: View {
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
                             
                             TextField("Nhập tiêu đề", text: $inputTitle)
-                                .frame(width: horizontalSizeClass == .compact ? 200 : 300)
+                                .frame(width: horizontalSizeClass == .compact ? 200 : 260)
                                 .padding(10)
                                 .background(
                                     RoundedRectangle(cornerRadius: 10)

@@ -127,7 +127,7 @@ struct CheckAnswerButton: View {
 
     var body: some View {
         if isGameComplete {
-            Button("Submit", action: action)
+            Button("Nộp bài", action: action)
                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
         }
