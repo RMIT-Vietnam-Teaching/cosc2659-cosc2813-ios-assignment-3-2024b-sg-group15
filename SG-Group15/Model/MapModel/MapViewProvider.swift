@@ -147,7 +147,7 @@ struct MapDataProvider {
                     ("Hưng Vũ", 0.74, 0.22, 0.75, 0.35, 2.0),
                     ("Vũ Làng", 0.38, 0.32, 0.38, 0.48, 2.0)
                 ],
-                correctAnswer: "Quỳnh Sơn",
+                correctAnswer: "Bắc Sơn",
                 config: MapComponentConfig(
                     animationGifName: "swords",
                     animationDuration: 3,
