@@ -48,6 +48,7 @@ struct BookView: View {
 //                            }
                             Button(action: {
                                 isOpen.toggle()
+                                print(isOpen)
                             }, label: {
 //                                Text("close")
                                 Image(systemName: "x.circle")

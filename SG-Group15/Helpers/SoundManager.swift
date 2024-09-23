@@ -17,6 +17,8 @@ class SoundManager: ObservableObject {
     private var backgroundPlayer: AVAudioPlayer?
     private var correctSoundPlayer: AVAudioPlayer?
     private var failSoundPlayer: AVAudioPlayer?
+    private var flipSoundPlayer: AVAudioPlayer?
+
     
     // Private initializer to ensure singleton usage
     private init() {
@@ -40,6 +42,10 @@ class SoundManager: ObservableObject {
         if let failURL = Bundle.main.url(forResource: "fail", withExtension: "wav") {
             failSoundPlayer = try? AVAudioPlayer(contentsOf: failURL)
         }
+        // Setup flip sound player
+        if let flipURL = Bundle.main.url(forResource: "flip", withExtension: "wav") {
+            flipSoundPlayer = try? AVAudioPlayer(contentsOf: flipURL)
+        }
     }
     
     /// Plays the background music
@@ -55,6 +61,9 @@ class SoundManager: ObservableObject {
     /// Plays the correct sound effect
     func correctSound() {
         correctSoundPlayer?.play()
+    }
+    func flipSound() {
+        flipSoundPlayer?.play()
     }
     
     /// Plays the fail sound effect
