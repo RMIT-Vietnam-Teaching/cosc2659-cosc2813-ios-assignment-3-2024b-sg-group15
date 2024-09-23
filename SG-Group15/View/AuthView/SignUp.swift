@@ -138,12 +138,13 @@ struct SignUp: View {
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
                             .foregroundColor(.black)
                         
+
                         Button(action: {
                             userViewModel.signinWithGoogle()
                         }) {
                             HStack(spacing: horizontalSizeClass == .compact ? 10 : 20) {
                                 Text("Đăng nhập với Google")
-                                    .foregroundColor(.darkRed)
+                                    .foregroundColor(.darkRedText)
                                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
 
                                 Image("search")
@@ -151,7 +152,7 @@ struct SignUp: View {
                                     .frame(width: horizontalSizeClass == .compact ? 20 : 30, height: horizontalSizeClass == .compact ? 20 : 30)
                                 
                             }
-                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .lightRed.opacity(0.6))) : AnyViewModifier(RegularButtonModifierIpad(background: .lightRed.opacity(0.6))))
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .lightRedButton.opacity(0.6))) : AnyViewModifier(RegularButtonModifierIpad(background: .lightRedButton.opacity(0.6))))
                         }
                         
                     }
