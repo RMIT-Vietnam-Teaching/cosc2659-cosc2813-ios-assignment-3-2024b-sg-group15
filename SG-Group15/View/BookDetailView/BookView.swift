@@ -37,25 +37,6 @@ struct BookView: View {
             } else {
                 if isOpen {
                     VStack {
-                        if currentPageIndex == 0 {
-//                            Button("close") {
-//                                isOpen = false
-//                                print(isOpen)
-//                            }
-
-                            Button(action: {
-//                                dismiss()
-                                isOpen = false
-                            }) {
-                                Text("close")
-                                Image(systemName: "arrow.backward")
-                                    .resizable()
-                                    .frame(width: horizontalSizeClass == .compact ? 15 : 30, height: horizontalSizeClass == .compact ? 15 : 30)
-//                                    .modifier(BodyTextModifier(color: Color.darkGreen))
-                            }
-                            .background(.clear)
-                            .offset(y: 100)
-                        }
                         
                         // Only show PageCurlViewController when data is ready
                         PageCurlViewController(
@@ -65,9 +46,25 @@ struct BookView: View {
                         )
                         .edgesIgnoringSafeArea(.all)
                         
+                        if currentPageIndex == 0 {
+
+                            Button(action: {
+//                                dismiss()
+                                isOpen = false
+                            }) {
+                                Text("Dong sach")
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                                
+                                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .lightRed.opacity(0.6))) : AnyViewModifier(RegularButtonModifierIpad(background: .lightRed.opacity(0.6))))
+                                        .background(Color.beigeBackground)
+                            }
+                            .background(Color.beigeBackground)
+                        }
                         
                         
                     }
+                    .background(Color.beigeBackground)
+
                 }
                 else {
                     OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex, bookID: bookID)

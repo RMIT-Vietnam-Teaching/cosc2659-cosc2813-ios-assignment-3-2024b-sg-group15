@@ -41,6 +41,7 @@ struct PersonInfo: View {
                     Text(userVM.currentUser?.username ?? "Username")
                         .foregroundStyle(Color.textDark)
                         .modifier(TitleTextModifier())
+                    
                     if let joinedAt = userVM.currentUser?.joinedAt {
                         Text("Member since \(joinedAt)")
                             .foregroundStyle(Color.textDark)
@@ -74,7 +75,7 @@ struct PersonInfo: View {
                         .foregroundStyle(Color.textDark)
                         .modifier(TitleTextModifierIpad())
                     if let joinedAt = userVM.currentUser?.joinedAt {
-                        Text("Member since \(joinedAt)")
+                        Text("Member since: \(formatDate(joinedAt))")  // Format the date inline
                             .foregroundStyle(Color.textDark)
                             .modifier(SubHeadlineTextModifierIpad())
                     }
@@ -91,6 +92,13 @@ struct PersonInfo: View {
         }
         
         
+    }
+    
+    // Function to format the date
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full  // Outputs "Monday, September 23, 2024"
+        return formatter.string(from: date)
     }
 }
 
