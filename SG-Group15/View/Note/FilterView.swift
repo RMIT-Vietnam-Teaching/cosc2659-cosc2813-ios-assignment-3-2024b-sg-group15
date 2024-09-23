@@ -25,10 +25,12 @@ struct FilterView: View {
                 }, label: {
                     Image(systemName: "line.3.horizontal")
                         .font(.title)
+                        .foregroundColor(.black)
                 })
                 
                 HStack(spacing: 12) {
                     Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
                     
                     TextField("Search", text: $searchText)
                         .onChange(of: searchText, initial: true) { _, newValue in

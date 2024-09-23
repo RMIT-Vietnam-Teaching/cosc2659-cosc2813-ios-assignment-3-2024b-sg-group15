@@ -16,17 +16,16 @@ struct ChapterWithQuestionVM {
 
 struct PageCurlViewController: UIViewControllerRepresentable {
     @Binding var chapters: [Chapter]
-    @Binding var coverPage: CoverPage
-    @Binding var currentChapterIndex: Int?
+    @Binding var currentChapterIndex: Int
     @Binding var currentPageIndex: Int
     @State private var canFlip = true
     
     // Store converted ChapterWithQuestionVM list
     private var chaptersWithQuestionVMs: [ChapterWithQuestionVM]=[]
     
-    init(chapters: Binding<[Chapter]>, coverPage: Binding<CoverPage>, currentChapterIndex: Binding<Int?>, currentPageIndex: Binding<Int>) {
+    init(chapters: Binding<[Chapter]>, currentChapterIndex: Binding<Int>, currentPageIndex: Binding<Int>) {
         self._chapters = chapters
-        self._coverPage = coverPage
+//        self._coverPage = coverPage
         self._currentChapterIndex = currentChapterIndex
         self._currentPageIndex = currentPageIndex
         self.chaptersWithQuestionVMs = convertToVMs(chapters: chapters)
@@ -67,21 +66,21 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         )
         
         // Set the initial page
-        if let chapterIndex = currentChapterIndex {
+//        if let chapterIndex = currentChapterIndex {
             pageViewController.setViewControllers(
-                [context.coordinator.createHostingController(for: currentPageIndex, in: chapterIndex)],
+                [context.coordinator.createHostingController(for: currentPageIndex, in: currentChapterIndex)],
                 direction: .forward,
                 animated: true,
                 completion: nil
             )
-        } else {
-            pageViewController.setViewControllers(
-                [context.coordinator.createHostingController(for: 0, in: 0)],
-                direction: .forward,
-                animated: true,
-                completion: nil
-            )
-        }
+//        } else {
+//            pageViewController.setViewControllers(
+//                [context.coordinator.createHostingController(for: 0, in: 0)],
+//                direction: .forward,
+//                animated: true,
+//                completion: nil
+//            )
+//        }
         
         pageViewController.dataSource = context.coordinator
         pageViewController.delegate = context.coordinator
@@ -98,11 +97,11 @@ struct PageCurlViewController: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-        guard let chapterIndex = currentChapterIndex else {
-            return
-        }
+//        guard let chapterIndex = currentChapterIndex else {
+//            return
+//        }
         
-        let currentViewController = context.coordinator.createHostingController(for: currentPageIndex, in: chapterIndex)
+        let currentViewController = context.coordinator.createHostingController(for: currentPageIndex, in: currentChapterIndex)
         
         
         // Ensure the correct page is shown
@@ -128,8 +127,8 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         func createHostingController(for pageIndex: Int, in chapterIndex: Int) -> UIViewController {
             // Check if it's the landing page
             print("Chapter index: \(chapterIndex) - Page index: \(pageIndex)")
-            if chapterIndex == 0 {
-                return UIHostingController(rootView: BookDetailView(page: parent.$coverPage))
+            if pageIndex == 0 {
+                return UIHostingController(rootView: BookDetailView(title: parent.chapters[chapterIndex].title, description: parent.chapters[chapterIndex].description))
 
             } else {
                 let question = self.chaptersWithQuestionVMs[chapterIndex].questionVMs[pageIndex]
@@ -170,15 +169,15 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             guard let pageViewController = pageViewController else { return }
             guard let currentVC = pageViewController.viewControllers?.first else { return }
             
-            let chapterIndex = parent.currentChapterIndex ?? 0
-            let pageIndex = parent.currentPageIndex
+            let chapterIndex = parent.currentChapterIndex - 1
+            let _ = parent.currentPageIndex
             
             
             // Find the next view controller
             if let nextViewController = self.pageViewController(pageViewController, viewControllerAfter: currentVC) {
                 if parent.currentPageIndex < chaptersWithQuestionVMs[chapterIndex].questionVMs.count - 1 {
                     parent.currentPageIndex += 1
-                } else if chapterIndex < parent.chapters.count - 1 {
+                } else if chapterIndex < parent.chapters.count {
                     parent.currentChapterIndex = chapterIndex + 1
                     parent.currentPageIndex = 0
                 }
@@ -205,7 +204,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
         // Handle swipe to the previous page
         func pageViewController(_ pageViewController: UIPageViewController,
                                 viewControllerBefore viewController: UIViewController) -> UIViewController? {
-            let chapterIndex = parent.currentChapterIndex ?? 0
+            let chapterIndex = parent.currentChapterIndex
             let pageIndex = parent.currentPageIndex
             
             if !parent.canFlip {
@@ -218,14 +217,14 @@ struct PageCurlViewController: UIViewControllerRepresentable {
             } else if chapterIndex > 0 {
                 parent.currentChapterIndex = chapterIndex - 1
                 parent.currentPageIndex = parent.chapters[chapterIndex - 1].questions.count - 1
-                return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex!)
+                return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex)
             }
             return nil
         }
         
         func pageViewController(_ pageViewController: UIPageViewController,
                                 viewControllerAfter viewController: UIViewController) -> UIViewController? {
-            let chapterIndex = parent.currentChapterIndex ?? 0
+            let chapterIndex = parent.currentChapterIndex
             let pageIndex = parent.currentPageIndex
             
             if !parent.canFlip {
@@ -240,7 +239,7 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                 // If there are no more pages, move to the first page of the next chapter
                 parent.currentChapterIndex = chapterIndex + 1
                 parent.currentPageIndex = 0
-                return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex!)
+                return createHostingController(for: parent.currentPageIndex, in: parent.currentChapterIndex)
             }
             
             // No more pages or chapters to flip to
@@ -256,34 +255,34 @@ struct PageCurlViewController: UIViewControllerRepresentable {
                 // Identify the view type
                 if let hostingController = visibleViewController as? UIHostingController<MultipleChoiceView> {
                     let questionVM = hostingController.rootView.questionVM
-                    if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
+                    if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
-                        parent.canFlip = true
+//                        parent.canFlip = true
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<MatchingGameView> {
                     let questionVM = hostingController.rootView.viewModel
-                    if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
+                    if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
-                        parent.canFlip = true
+//                        parent.canFlip = true
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<TimelineGameView> {
                     let questionVM = hostingController.rootView.viewModel
-                    if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
+                    if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
-                        parent.canFlip = false
+//                        parent.canFlip = false
                     }
                 } else if let hostingController = visibleViewController as? UIHostingController<FillInBlankGameView> {
                     let questionVM = hostingController.rootView.viewModel
-                    if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
+                    if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
-                        parent.canFlip = true
+//                        parent.canFlip = true
                     }
                 }
                 else if let hostingController = visibleViewController as? UIHostingController<MapViewManager> {
                     let questionVM = hostingController.rootView.viewModel
-                    if let pageIndex = parent.chapters[parent.currentChapterIndex ?? 0].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
+                    if let pageIndex = parent.chapters[parent.currentChapterIndex].questions.firstIndex(where: { $0.id == questionVM.question.id }) {
                         parent.currentPageIndex = pageIndex
-                        parent.canFlip = true
+//                        parent.canFlip = true
                     }
                 }
                 

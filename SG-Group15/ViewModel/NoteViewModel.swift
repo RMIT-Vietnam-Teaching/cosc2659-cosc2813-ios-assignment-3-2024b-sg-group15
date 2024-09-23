@@ -21,8 +21,10 @@ class NoteViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
     // Load all notes from Firestore
-    func loadNotes() {
-        db.collection("notes").getDocuments { [weak self] (snapshot, error) in
+    func loadNotes(userID: String?) {
+        db.collection("notes")
+            .whereField("userID", isEqualTo: userID ?? "")
+            .getDocuments { [weak self] (snapshot, error) in
             if let error = error {
                 self?.errorMessage = "Error loading notes: \(error.localizedDescription)"
                 return
@@ -116,8 +118,9 @@ class NoteViewModel: ObservableObject {
     
     
     // Save a new note to Firestore
-        func saveNote(_ note: Note) {
+    func saveNote(_ note: Note, userID: String?) {
             var noteData: [String: Any] = [
+                "userID": userID ?? "",
                 "title": note.title,
                 "textContent": note.textContent,
                 "color": note.color,

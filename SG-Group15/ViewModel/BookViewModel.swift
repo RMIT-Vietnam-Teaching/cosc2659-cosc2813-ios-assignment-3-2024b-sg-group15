@@ -22,15 +22,16 @@ class BookViewModel: ObservableObject {
                 
                 var fetchedChapters: [Chapter] = []
                 // Append an empty chapter to handle cover page
-                fetchedChapters.append(Chapter(id: "", title: "", description: "", questions: []))
+//                fetchedChapters.append(Chapter(id: "", title: "", description: "", questions: []))
                 let group = DispatchGroup() // To handle async fetching for all chapters
                 
                 for document in documents {
                     let data = document.data()
-                    if let chapter = Chapter(documentID: document.documentID, data: data) {
+                    if var chapter = Chapter(documentID: document.documentID, data: data) {
                         fetchedChapters.append(chapter)
                         print(chapter.id)
-                        
+                        // Append an empty question to handle cover page
+                        chapter.questions.append(MultipleChoiceQuestion(id: "", question: "", choices: [], correct: ""))
                         // Fetch questions for each chapter
                         group.enter() // Enter dispatch group
                         self?.fetchQuestions(for: chapter) { fetchedQuestions in

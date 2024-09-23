@@ -23,7 +23,6 @@ struct NoteCardView: View {
             
             Button(action: {
                 noteViewModel.deleteNote(id: note.id!)
-                noteViewModel.loadNotes()
             }, label: {
                 Image(systemName: "xmark.bin.circle.fill")
                     .resizable()

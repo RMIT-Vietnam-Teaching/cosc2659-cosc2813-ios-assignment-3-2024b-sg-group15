@@ -17,13 +17,7 @@ struct DrawingView: View {
         // Drawing Canvas Layer
         PencilCanvasView(canvasView: $canvasView, toolPicker: toolPicker, note: $note)
             .background(Color.clear) // Make the canvas background clear to see the underlying ZStack background
-
-//            .edgesIgnoringSafeArea(.all)
-//            .zIndex(0) // Draw canvas below the text editor
     }
 
 }
 
-//#Preview {
-//    DrawingView(canvasView: .constant(PKCanvasView()), note: .constant(Note(title: "title")))
-//}

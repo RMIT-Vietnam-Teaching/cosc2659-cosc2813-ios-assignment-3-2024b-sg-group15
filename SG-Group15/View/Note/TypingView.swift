@@ -10,7 +10,7 @@ import SwiftUI
 struct TypingView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
-    private let placeholder: String = "Type something here..."
+    private let placeholder: String = "Nhập vào đây..."
     @Binding var note: Note
 
     var body: some View {

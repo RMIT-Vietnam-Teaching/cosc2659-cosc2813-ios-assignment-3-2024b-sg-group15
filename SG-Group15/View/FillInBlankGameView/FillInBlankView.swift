@@ -31,7 +31,8 @@ struct FillInBlankGameView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 20)
-                    .padding(.bottom, 10)
+//                    .padding(.botto÷m, 10)
+
                     
                     // Centering other elements
                     VStack(spacing: 60) {
@@ -71,9 +72,11 @@ struct FillInBlankGameView: View {
                     
                     Spacer()
                 }
+                .padding(.vertical, 60)
+
             }
         }
-        .padding(.vertical, 60)
+//        .padding(.vertical,  60)
     }
     
     func goToNextPage() {

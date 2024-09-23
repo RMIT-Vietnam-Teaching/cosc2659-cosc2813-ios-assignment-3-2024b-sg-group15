@@ -55,11 +55,9 @@ struct MultipleChoiceView: View {
                 
             }
             .padding(horizontalSizeClass == .compact ? 10 : 30)
-//            .padding(.top)
             .padding(.vertical, 60)
             
         }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure the BookView fills its parent
 
     }
     
@@ -75,7 +73,4 @@ struct MultipleChoiceView: View {
 
 }
 
-//#Preview {
-////    MultipleChoiceView()
-//    BookView()
-//}
+

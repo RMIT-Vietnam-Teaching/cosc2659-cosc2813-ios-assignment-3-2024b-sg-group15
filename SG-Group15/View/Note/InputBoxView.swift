@@ -33,7 +33,7 @@ struct InputBoxView: View {
                     .foregroundColor(.beigeBackground)
                 
                 VStack(spacing: horizontalSizeClass == .compact ? 30 : 40) {
-                    Text("New Note")
+                    Text("Ghi chú mới")
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                         
                     VStack(alignment: .center, spacing: 10) {

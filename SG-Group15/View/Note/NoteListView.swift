@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NoteListView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    @EnvironmentObject var userViewModel:  UserViewModel
 
     @StateObject var noteVM = NoteViewModel()
     @State private var note: Note = Note(id: "", title: "", textContent: "", color: "")
@@ -33,7 +34,7 @@ struct NoteListView: View {
                 } else {
                     VStack(spacing: 10) {
                         HStack {
-                            Text("Your Notes")
+                            Text("Ghi Chú Của Bạn")
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                             
                             Spacer()
@@ -75,7 +76,7 @@ struct NoteListView: View {
                                 if isFilter {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 15)
-                                            .frame(width: 350, height: 60)
+                                            .frame(width: horizontalSizeClass == .compact ? 350 : 500, height: horizontalSizeClass == .compact ? 60 : 80)
                                             .padding(.horizontal, 20)
                                             .foregroundColor(.white)
                                         
@@ -89,7 +90,6 @@ struct NoteListView: View {
                                         }
                                     }
                                     .onChange(of: filter, initial: false) {
-//                                        noteVM.loadNotes()
                                         filterProducts()
                                     }
 
@@ -100,8 +100,11 @@ struct NoteListView: View {
                 }
             }
             .onAppear {
-                noteVM.loadNotes()
+                noteVM.loadNotes(userID: userViewModel.currentUser?.id)
                 noteList = noteVM.notes
+            }
+            .onChange(of: noteVM.notes.count, initial: false) {
+                noteVM.loadNotes(userID: userViewModel.currentUser?.id)
             }
         }
         .environmentObject(noteVM)
@@ -133,4 +136,6 @@ struct NoteListView: View {
 
 #Preview {
     NoteListView()
+        .environmentObject(UserViewModel())
+
 }

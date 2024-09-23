@@ -55,6 +55,7 @@ class UserViewModel: ObservableObject {
     private func createUser(email: String, password: String, username: String) {
         auth.createUser(withEmail: email, password: password) { result, error in
             // Handle error
+            print("create")
             if let error = error {
                 // Get error code for validation
                 if let errorCode = AuthErrorCode(rawValue: error._code) {

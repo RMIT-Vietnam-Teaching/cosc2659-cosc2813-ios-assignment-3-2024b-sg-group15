@@ -156,6 +156,9 @@ struct SignUp: View {
                 // Sign up button
                 Button(action: {
                     self.userViewModel.signup(email: email, password: password, username: username)
+//                    if userViewModel.success {
+//                        userViewModel.isLogin = true
+//                    }
                 })
                 {
                     Text("Đăng ký")

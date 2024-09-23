@@ -11,6 +11,7 @@ import PencilKit
 struct TabViewNote: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var userViewModel: UserViewModel
 
     @EnvironmentObject var noteViewModel: NoteViewModel
 
@@ -33,7 +34,7 @@ struct TabViewNote: View {
                 .ignoresSafeArea()
             
             if !newNote && noteViewModel.isLoadNote {
-                ProgressView("Loading note data...")
+                ProgressView("Đang tải...")
                     .font(.largeTitle)
                     .padding()
             } else {
@@ -50,7 +51,7 @@ struct TabViewNote: View {
                         
                         Spacer()
                         
-                        Text("Title")
+                        Text("Tựa đề")
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                             .foregroundColor(.black)
                         
@@ -92,7 +93,6 @@ struct TabViewNote: View {
         }
         .onAppear {
             if newNote {
-                print("new")
                 withAnimation {
                     showInput = true
                 }
@@ -124,10 +124,8 @@ struct TabViewNote: View {
         .onChange(of: note.title, initial: false) { oldValue, newValue in
             if newNote {
                 // When title changes and is not empty, save the note
-//                print("new: \(newValue)")
-//                print("save note with title change")
                 DispatchQueue.main.async {
-                    noteViewModel.saveNote(note)
+                    noteViewModel.saveNote(note, userID: userViewModel.currentUser?.id)
                 }
             }
         }
@@ -140,7 +138,7 @@ struct TabBarView: View {
     @Binding var currentTab: Int
     @Namespace var namespace // Namespace for matched geometry effect
     
-    var tabBarOptions: [String] = ["Text", "Drawing"]
+    var tabBarOptions: [String] = ["Văn bản", "Vẽ"]
     
     var body: some View {
         HStack(spacing: 5) {
@@ -191,4 +189,6 @@ struct TabBarItems: View {
 #Preview {
     TabViewNote(noteID: "", newNote: true)
         .environmentObject(NoteViewModel())
+        .environmentObject(UserViewModel())
+
 }
