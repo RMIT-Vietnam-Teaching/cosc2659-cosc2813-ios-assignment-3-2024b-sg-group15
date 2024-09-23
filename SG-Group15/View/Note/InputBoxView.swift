@@ -44,11 +44,11 @@ struct InputBoxView: View {
                         
                     VStack(alignment: .center, spacing: 10) {
                         HStack {
-                            Text("Title: ")
+                            Text("Tiêu đề: ")
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
                             
-                            TextField("Type note's title", text: $inputTitle)
-                                .frame(width: horizontalSizeClass == .compact ? 220 : 300)
+                            TextField("Nhập tiêu đề", text: $inputTitle)
+                                .frame(width: horizontalSizeClass == .compact ? 200 : 300)
                                 .padding(10)
                                 .background(
                                     RoundedRectangle(cornerRadius: 10)
@@ -58,7 +58,7 @@ struct InputBoxView: View {
                         }
                         
                         HStack {
-                            Text("Color: ")
+                            Text("Màu: ")
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
                             
                             Spacer()
@@ -78,21 +78,20 @@ struct InputBoxView: View {
 //                    .background(.green)
                     .frame(width: horizontalSizeClass == .compact ? 300 : 400)
                     
-                    Button("Confirm") {
+                    Button("Tạo") {
                         withAnimation{
                             isVisible = false
                             note.title = inputTitle
                             note.color = selectedColor
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                                showInput = false
+                                showInput = false
                             }
                         }
                     }
                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(HeadlineTextModifier()) : AnyViewModifier(HeadlineTextModifierIpad()))
                     .foregroundColor(.white)
-                    .frame(width: 200, height: 60)
-//                    .frame(width: 150, height: 40)
+                    .frame(width: horizontalSizeClass == .compact ? 150 : 200, height: horizontalSizeClass == .compact ? 40 : 60)
                     .background(.primaryRed)
                     .foregroundStyle(.white)
                     .cornerRadius(20)

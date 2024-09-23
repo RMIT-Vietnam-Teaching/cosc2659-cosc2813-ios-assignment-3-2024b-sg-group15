@@ -41,6 +41,7 @@ struct MatchingGameView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 20)
+                    .padding(.top, 60)
                     
                     Text("Nối sự kiện dưới đây")
                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(QuestionTextModifier()) : AnyViewModifier(QuestionTextModifierIpad()))
@@ -48,7 +49,7 @@ struct MatchingGameView: View {
                     
                     HStack(spacing: smallerDimension * 0.08) {
                         // Left column
-                        VStack(spacing: smallerDimension * 0.05) {
+                        VStack(spacing: smallerDimension * 0.06) {
                             ForEach(viewModel.leftEvents) { event in
                                 EventButton(event: event,
                                             isSelected: viewModel.selectedLeftEventId == event.id,
@@ -58,7 +59,7 @@ struct MatchingGameView: View {
                         }
                         
                         // Right column
-                        VStack(spacing: smallerDimension * 0.05) {
+                        VStack(spacing: smallerDimension * 0.06) {
                             ForEach(viewModel.rightEvents) { event in
                                 EventButton(event: event,
                                             isSelected: viewModel.selectedRightEventId == event.id,
@@ -68,16 +69,6 @@ struct MatchingGameView: View {
                         }
                     }
                     .padding()
-                    
-                    Button("Tiếp tục") {
-                        // Handle game completion
-                    }
-//                    .padding()
-                    .foregroundColor(.white)
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubTitleTextModifier()) : AnyViewModifier(LongQuestionTextModifierIpad()))
-                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(ButtonModifier(background: .redBrown)))
-                    .scaleEffect(viewModel.isGameComplete ? 1 : 0.5) // Adjust the scale effect for animation
-                    .opacity(viewModel.isGameComplete ? 1 : 0)
                     
                 }
                 .padding(.top, 20)

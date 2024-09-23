@@ -65,16 +65,16 @@ struct FillInBlankGameView: View {
                         
                         WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight, width: width, height: height)
                         Spacer()
-                        if isSubmitted {
-                            Button("Tiep tuc") {
-                                print("Next")
-                            }.modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
-                        } else {
-                            CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
-                                viewModel.checkAnswer()
-                                isSubmitted = true
-                            }
-                        }
+//                        if isSubmitted {
+//                            Button("Tiep tuc") {
+//                                print("Next")
+//                            }.modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+//                        } else {
+//                            CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
+//                                viewModel.checkAnswer()
+//                                isSubmitted = true
+//                            }
+//                        }
                        
                         
                         

@@ -107,15 +107,15 @@ struct BookDetailView: View {
                     Spacer()
                     
                     Text(description)
-                        .font(.system(size: 30))
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                         .lineSpacing(10.0)
                     
                     Spacer()
                     
                     Text("Ân bên phải để lật sách, ấn bên trái để quay về")
-                        .fontWeight(.bold)
+//                        .fontWeight(.bold)
                         .foregroundColor(.gray)
-                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                         .multilineTextAlignment(.center)
 
                     

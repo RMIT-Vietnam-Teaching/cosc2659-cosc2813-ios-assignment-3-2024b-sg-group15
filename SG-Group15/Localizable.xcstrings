@@ -63,12 +63,6 @@
     "Chủ đề" : {
 
     },
-    "Color: " : {
-
-    },
-    "Confirm" : {
-
-    },
     "Correct!" : {
 
     },
@@ -132,6 +126,9 @@
     "Lưu" : {
 
     },
+    "Màu: " : {
+
+    },
     "Member since %@" : {
 
     },
@@ -150,6 +147,9 @@
     "Nhập tên người dùng" : {
 
     },
+    "Nhập tiêu đề" : {
+
+    },
     "Nối sự kiện dưới đây" : {
 
     },
@@ -159,19 +159,16 @@
     "Submit" : {
 
     },
-    "Tiep tuc" : {
+    "Tạo" : {
 
     },
     "Tiếp tục" : {
 
     },
-    "Title: " : {
+    "Tiêu đề: " : {
 
     },
     "Tựa đề" : {
-
-    },
-    "Type note's title" : {
 
     },
     "Unknown question type" : {

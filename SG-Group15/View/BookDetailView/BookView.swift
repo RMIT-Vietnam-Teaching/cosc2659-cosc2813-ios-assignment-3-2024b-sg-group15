@@ -47,12 +47,10 @@ struct BookView: View {
                         .edgesIgnoringSafeArea(.all)
                         
                         if currentPageIndex == 0 {
-
                             Button(action: {
-//                                dismiss()
                                 isOpen = false
                             }) {
-                                Text("Dong sach")
+                                Text("Đóng sách")
                                     .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
                                 
                                         .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .lightRed.opacity(0.6))) : AnyViewModifier(RegularButtonModifierIpad(background: .lightRed.opacity(0.6))))
@@ -90,9 +88,6 @@ struct BookView: View {
                 currentChapterIndex = 0
                 currentPageIndex = 0
             }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in
-                    moveToNextPage()
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ExitBook"))) { _ in
             DispatchQueue.main.async {
