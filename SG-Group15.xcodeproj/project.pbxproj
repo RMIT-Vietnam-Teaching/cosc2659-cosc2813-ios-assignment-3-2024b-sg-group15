@@ -74,7 +74,6 @@
 		75D1F3C92CA02BCC0058C597 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3C82CA02BCC0058C597 /* MyProfileView.swift */; };
 		75D1F3CB2CA02BE20058C597 /* PersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3CA2CA02BE20058C597 /* PersonInfo.swift */; };
 		75D1F3CD2CA02C060058C597 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1F3CC2CA02C060058C597 /* ThemePicker.swift */; };
-		75DC0CEC2CA07C7E00E43D39 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 75DC0CEB2CA07C7E00E43D39 /* Localizable.xcstrings */; };
 		75DC0CEE2CA07DA100E43D39 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC0CED2CA07DA100E43D39 /* LoadingView.swift */; };
 		E2598FD62C9F39D60056E409 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2598FD52C9F39D60056E409 /* SoundManager.swift */; };
 		E2598FD92C9F3A0F0056E409 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2598FD72C9F3A0F0056E409 /* correct.wav */; };
@@ -170,7 +169,6 @@
 		75D1F3C82CA02BCC0058C597 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		75D1F3CA2CA02BE20058C597 /* PersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfo.swift; sourceTree = "<group>"; };
 		75D1F3CC2CA02C060058C597 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
-		75DC0CEB2CA07C7E00E43D39 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		75DC0CED2CA07DA100E43D39 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E2598FD52C9F39D60056E409 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		E2598FD72C9F3A0F0056E409 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				393FC7042C8F450400028F1D /* SG_Group15App.swift */,
 				393FC7082C8F450600028F1D /* Assets.xcassets */,
 				393FC70A2C8F450600028F1D /* Preview Content */,
-				75DC0CEB2CA07C7E00E43D39 /* Localizable.xcstrings */,
 			);
 			path = "SG-Group15";
 			sourceTree = "<group>";
@@ -556,7 +553,6 @@
 				393FC70C2C8F450600028F1D /* Preview Assets.xcassets in Resources */,
 				E2A71D2E2C9FC3BA00A2862D /* explosion.gif in Resources */,
 				39AFD4802CA16B1A00467F32 /* page-flip.wav in Resources */,
-				75DC0CEC2CA07C7E00E43D39 /* Localizable.xcstrings in Resources */,
 				7534ECCA2C99991700F38696 /* GoogleService-Info.plist in Resources */,
 				E2A71D3B2C9FC3BA00A2862D /* swords.gif in Resources */,
 				E2598FD92C9F3A0F0056E409 /* correct.wav in Resources */,

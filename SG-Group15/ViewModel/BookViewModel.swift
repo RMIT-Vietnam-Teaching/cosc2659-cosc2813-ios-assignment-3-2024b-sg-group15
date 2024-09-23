@@ -49,6 +49,12 @@ class BookViewModel: ObservableObject {
                         self?.fetchQuestions(for: chapter) { fetchedQuestions in
                             if let index = fetchedChapters.firstIndex(where: { $0.id == chapter.id }) {
                                 fetchedChapters[index].questions = fetchedQuestions
+                                if index == 0 {
+                                    fetchedChapters[index].questions.append(TimelineQuestion(id: "1",
+                                                                             question: "Nối sự kiện với mốc thời gian tương ứng",
+                                                                             periods: ["15/8/1945", "2/9/1945", "30/8/1945", "31/1/1945"],
+                                                                             events: ["Thời cơ Cách mạng tháng 8", "Tuyên ngôn Độc Lập", "Vua Bảo Đại thoái vị", "Chính phủ kí sắc lệnh phát hành tiền Việt Nam"]))
+                                }
                             }
                             group.leave() // Leave dispatch group after questions are fetched
                         }

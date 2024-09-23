@@ -47,6 +47,13 @@ struct TimelineQuestion: Identifiable, QuestionProtocol {
     var events: [String]
     var questionType: QuestionType = .timeline
     
+    init(id: String, question: String, periods: [String], events: [String]) {
+        self.id = id
+        self.question = question
+        self.periods = periods
+        self.events = events 
+    }
+    
     // Initialize from Firestore document ID and data
     init?(documentID: String, data: [String: Any]) {
         guard let question = data["question"] as? String,
