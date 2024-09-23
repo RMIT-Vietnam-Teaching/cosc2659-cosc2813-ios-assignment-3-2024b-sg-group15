@@ -1,9 +1,16 @@
-//
-//  Book.swift
-//  SG-Group15
-//
-//  Created by Nana on 13/9/24.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 
 import SwiftUI
 
@@ -13,7 +20,7 @@ struct BookView: View {
     @ObservedObject var bookVM: BookViewModel
     var bookID: String
     @Binding var isOpen: Bool
-    @State private var currentChapterIndex: Int = 1 // Use nil for the initial landing page
+    @State private var currentChapterIndex: Int = 0
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
             [true, false, false], // Chapter 1: Page 2 cannot flip
@@ -22,15 +29,11 @@ struct BookView: View {
         ]
     
     
-//    @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
-    
     var body: some View {
         VStack {
             if bookVM.isLoading {
                 // Show a loading view while the data is being fetched
-                ProgressView("Đang tải...")
-                    .font(.largeTitle)
-                    .padding()
+               LoadingView()
             } else {
                 if isOpen {
                     VStack {
@@ -67,13 +70,13 @@ struct BookView: View {
                     }
                 }
                 else {
-                    OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex)
+                    OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex, bookID: bookID)
                 }
             }
         }
         .onAppear {
             bookVM.fetchBook(bookID: bookID)
-            currentChapterIndex = 1
+            currentChapterIndex = 0
             currentPageIndex = 0
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in

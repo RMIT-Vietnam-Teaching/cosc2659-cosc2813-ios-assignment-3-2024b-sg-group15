@@ -1,9 +1,16 @@
-//
-//  Avatar.swift
-//  SG-Group15
-//
-//  Created by Xian on 22/9/24.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 
 import Foundation
 import SwiftUI
@@ -11,6 +18,7 @@ import SwiftUI
 struct PersonInfo: View {
     @Binding var selectedAvatar: String
     @State private var showAvaPicker: Bool = false
+    @EnvironmentObject var userVM: UserViewModel
     // Detect horizontal size class
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var body: some View {
@@ -30,12 +38,14 @@ struct PersonInfo: View {
                         }
                     }
                 VStack(alignment: .center, spacing: 5) {
-                    Text("Username")
+                    Text(userVM.currentUser?.username ?? "Username")
                         .foregroundStyle(Color.textDark)
                         .modifier(TitleTextModifier())
-                    Text("Member since 20/6/2024")
-                        .foregroundStyle(Color.textDark)
-                        .modifier(SubHeadlineTextModifier())
+                    if let joinedAt = userVM.currentUser?.joinedAt {
+                        Text("Member since \(joinedAt)")
+                            .foregroundStyle(Color.textDark)
+                            .modifier(SubHeadlineTextModifier())
+                    }
                 }
             }
             .sheet(isPresented: $showAvaPicker) {
@@ -60,10 +70,14 @@ struct PersonInfo: View {
                         
                     }
                 VStack(alignment: .center, spacing: 5) {
-                    Text("Username")
-                        .modifier(HeadlineTextModifierIpad())
-                    Text("Member since 20/6/2024")
-                        .modifier(SubHeadlineTextModifierIpad())
+                    Text(userVM.currentUser?.username ?? "Username")
+                        .foregroundStyle(Color.textDark)
+                        .modifier(TitleTextModifierIpad())
+                    if let joinedAt = userVM.currentUser?.joinedAt {
+                        Text("Member since \(joinedAt)")
+                            .foregroundStyle(Color.textDark)
+                            .modifier(SubHeadlineTextModifierIpad())
+                    }
                 }
             }
             // Popover to display avatar picker

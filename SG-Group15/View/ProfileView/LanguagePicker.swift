@@ -1,9 +1,16 @@
-//
-//  LanguagePicker.swift
-//  SG-Group15
-//
-//  Created by Xian on 22/9/24.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 
 import Foundation
 import SwiftUI
@@ -25,25 +32,24 @@ struct LanguagePicker: View {
                     .modifier(BodyTextModifier())
                 HStack {
                     // Display the theme for user to choose
-                    ForEach(languages, id: \.self) {
-                        lang in
+                    ForEach(Array(zip(languages, langCodes)), id: \.1) { lang, code in
                         Text(lang)
                             .modifier(BodyTextModifier())
                             .padding(10)
                             .background {
                                 ZStack {
-                                    // Highlight the chosen theme
-                                    if selected == lang {
+                                    // Highlight the selected language
+                                    if languageManager.selectedLanguage == code {
                                         Capsule()
                                             .fill(Color.lightRed)
                                             .matchedGeometryEffect(id: "ACTIVE", in: animation)
                                     }
                                 }
-                                .animation(.snappy, value: lang)
                             }
-                            .contentShape(.rect)
+                            .contentShape(Rectangle())
                             .onTapGesture {
-                                selected = lang
+                                // Update the selected language when tapped
+                                languageManager.update(to: code)
                             }
                     }
                 }
@@ -56,28 +62,28 @@ struct LanguagePicker: View {
         else {
             HStack(spacing: UIScreen.main.bounds.width * 0.1) {
                 Text("Ngôn ngữ")
+                    .foregroundStyle(Color.signupTitle)
                     .modifier(BodyTextModifierIpad())
                 HStack {
                     // Display the theme for user to choose
-                    ForEach(languages, id: \.self) {
-                        lang in
+                    ForEach(Array(zip(languages, langCodes)), id: \.1) { lang, code in
                         Text(lang)
-                            .modifier(BodyTextModifierIpad())
+                            .modifier( BodyTextModifierIpad())
                             .padding(10)
                             .background {
                                 ZStack {
-                                    // Highlight the chosen theme
-                                    if selected == lang {
+                                    // Highlight the selected language
+                                    if languageManager.selectedLanguage == code {
                                         Capsule()
                                             .fill(Color.lightRed)
                                             .matchedGeometryEffect(id: "ACTIVE", in: animation)
                                     }
                                 }
-                                .animation(.snappy, value: lang)
                             }
-                            .contentShape(.rect)
+                            .contentShape(Rectangle())
                             .onTapGesture {
-                                selected = lang
+                                // Update the selected language when tapped
+                                languageManager.update(to: code)
                             }
                     }
                 }

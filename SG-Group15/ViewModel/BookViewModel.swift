@@ -1,3 +1,17 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
+
 import Foundation
 import FirebaseFirestore
 
@@ -21,8 +35,6 @@ class BookViewModel: ObservableObject {
                 }
                 
                 var fetchedChapters: [Chapter] = []
-                // Append an empty chapter to handle cover page
-//                fetchedChapters.append(Chapter(id: "", title: "", description: "", questions: []))
                 let group = DispatchGroup() // To handle async fetching for all chapters
                 
                 for document in documents {
@@ -45,6 +57,10 @@ class BookViewModel: ObservableObject {
                 
                 // Wait for all fetches to complete
                 group.notify(queue: .main) {
+                    // Sort chapters by the 'order' field
+                    fetchedChapters.sort { (first: Chapter, second: Chapter) -> Bool in
+                        return first.odrer < second.odrer
+                     }
                     // Update the chapters with all the data and set loading to false
                     self?.chapters = fetchedChapters
                     self?.isLoading = false // Data is fully loaded
@@ -88,11 +104,6 @@ class BookViewModel: ObservableObject {
                     else if let matching = MatchingQuestion(documentID: docu.documentID, data: data) {
                         questions.append(matching)
                         print("MatchingQuestion fetched")
-                    }
-                    // Create a TimelineQuestion
-                    else if let timeline = TimelineQuestion(documentID: docu.documentID, data: data) {
-                        questions.append(timeline)
-                        print("TimelineQuestion fetched")
                     }
                     
                     // Create Fillintheblank question

@@ -1,9 +1,24 @@
-// MapDataProvider.swift
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
+
 import SwiftUI
 
+// Render the Map data base on map type
 struct MapDataProvider {
     static func mapData(for type: MapType) -> MapData {
         switch type {
+            // Bac Giang map
         case .bacGiang:
             return MapData(
                 mapImage: "BacGiang",
@@ -22,6 +37,7 @@ struct MapDataProvider {
                     animationOffset: CGSize(width: -10, height: 0)
                 )
             )
+            // Hoc Mon map
         case .hocMon:
             return MapData(
                 mapImage: "HocMon",
@@ -40,6 +56,7 @@ struct MapDataProvider {
                     animationOffset: CGSize(width: -40, height: 0)
                 )
             )
+            // Doi A1 map
         case .doiA1:
             return MapData(
                 mapImage: "DoiA1",
@@ -58,6 +75,7 @@ struct MapDataProvider {
                     animationOffset: CGSize.zero
                 )
             )
+            // Dong Nai Thuong map
         case .dongNaiThuong:
             return MapData(
                 mapImage: "DongNaiThuong",
@@ -76,6 +94,7 @@ struct MapDataProvider {
                     animationOffset: CGSize(width: -165, height: 0)
                 )
             )
+            // Hong Cum map
         case .hongCum:
             return MapData(
                 mapImage: "HongCum",
@@ -95,6 +114,7 @@ struct MapDataProvider {
                     animationOffset: CGSize.zero
                 )
             )
+            // Tan Trao map
         case .tanTrao:
             return MapData(
                 mapImage: "TanTrao",
@@ -114,6 +134,7 @@ struct MapDataProvider {
                     animationOffset: CGSize.zero
                 )
             )
+            // Vo Nhai map 
         case .voNhai:
             return MapData(
                 mapImage: "VoNhai",
