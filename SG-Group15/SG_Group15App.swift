@@ -25,6 +25,8 @@ struct SG_Group15App: App {
         UNUserNotificationCenter.current().delegate = notificationDelegate
         requestNotificationPermission()
         scheduleNotificationWithBadge(hour: 8, minute: 00)
+        // Start the background music
+        SoundManager.shared.playBackground()
     }
     
     

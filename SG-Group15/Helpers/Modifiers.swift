@@ -1,9 +1,16 @@
-//
-//  Modifiers.swift
-//  SG-Group15
-//
-//  Created by Xian on 11/9/24.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 
 import Foundation
 import SwiftUI
@@ -51,10 +58,7 @@ struct RegularButtonModifierIpad: ViewModifier {
         content
         // Responsive frame
             .frame(width: 380, height: 60)
-//            .frame(minWidth: 350)
-//            .scaledFont(name: "Lato-Black", size: 36, maxSize: 40)
             .foregroundStyle(.white)
-//            .padding(.vertical, 20)
             .background(background)
             .cornerRadius(15)
     
@@ -83,7 +87,6 @@ struct LargeButtonModifierIpad: ViewModifier {
         // Responsive frame
             .frame(width: 450, height: 80)
             .foregroundStyle(.white)
-//            .padding(.vertical, 20)
             .background(background)
             .cornerRadius(15)
     
@@ -160,7 +163,6 @@ struct TitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("OldStandardTT-Bold", size: UIScreen.main.bounds.width * 0.06))
-//            .foregroundStyle(.textDark)
     }
 }
 
@@ -168,7 +170,6 @@ struct TitleTextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 45, maxSize: 55)
-//            .foregroundStyle(.textDark)
     }
 }
 
@@ -176,7 +177,6 @@ struct Title2TextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 28, maxSize: 30)
-//            .foregroundStyle(.textDark)
     }
 }
 
@@ -184,7 +184,6 @@ struct Title2TextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 50)
-//            .foregroundStyle(.textDark)
     }
 }
 
@@ -192,7 +191,6 @@ struct Title3TextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 22, maxSize: 30)
-//            .foregroundStyle(.textDark)
     }
 }
 
@@ -200,7 +198,6 @@ struct Title3TextModifierIpad: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 40, maxSize: 50)
-//            .foregroundStyle(.textDark)
     }
 }
 
@@ -240,22 +237,16 @@ struct QuestionTextModifierIpad: ViewModifier {
 
 // Chapter text style: Apply for book details' overview in the front page
 struct HeadlineTextModifier: ViewModifier {
-//    var color: Color?
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 20, maxSize: 40)
-        // Can customize color
-//            .foregroundStyle(color ?? .textDark)
     }
 }
 
 struct HeadlineTextModifierIpad: ViewModifier {
-//    var color: Color?
     func body(content: Content) -> some View {
         content
             .scaledFont(name: "OldStandardTT-Bold", size: 32, maxSize: 40)
-        // Can customize color
-//            .foregroundStyle(color ?? .textDark)
     }
 }
 

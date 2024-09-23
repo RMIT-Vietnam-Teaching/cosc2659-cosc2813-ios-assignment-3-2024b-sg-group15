@@ -34,7 +34,6 @@
 		39FA15562C948DBE0054B99E /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15552C948DBE0054B99E /* BookView.swift */; };
 		39FA15582C948DF00054B99E /* OpenBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15572C948DF00054B99E /* OpenBookView.swift */; };
 		39FA155A2C948E1A0054B99E /* PageCurlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15592C948E1A0054B99E /* PageCurlViewController.swift */; };
-		39FA155E2C95708F0054B99E /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA155D2C95708F0054B99E /* PageModel.swift */; };
 		39FA15602C957CB10054B99E /* CoverPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA155F2C957CB10054B99E /* CoverPageView.swift */; };
 		39FA15652C9606350054B99E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15642C9606350054B99E /* ProgressBar.swift */; };
 		39FA15672C960D710054B99E /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA15662C960D710054B99E /* ChoiceButton.swift */; };
@@ -96,7 +95,6 @@
 		E2A71D2E2C9FC3BA00A2862D /* explosion.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D1C2C9FC3BA00A2862D /* explosion.gif */; };
 		E2A71D2F2C9FC3BA00A2862D /* fight.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D1D2C9FC3BA00A2862D /* fight.gif */; };
 		E2A71D302C9FC3BA00A2862D /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */; };
-		E2A71D392C9FC3BA00A2862D /* PositionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */; };
 		E2A71D3A2C9FC3BA00A2862D /* shield.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D282C9FC3BA00A2862D /* shield.gif */; };
 		E2A71D3B2C9FC3BA00A2862D /* swords.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D292C9FC3BA00A2862D /* swords.gif */; };
 		E2A71D3C2C9FC3BA00A2862D /* tank.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2A71D2A2C9FC3BA00A2862D /* tank.gif */; };
@@ -141,7 +139,6 @@
 		39FA15552C948DBE0054B99E /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		39FA15572C948DF00054B99E /* OpenBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBookView.swift; sourceTree = "<group>"; };
 		39FA15592C948E1A0054B99E /* PageCurlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCurlViewController.swift; sourceTree = "<group>"; };
-		39FA155D2C95708F0054B99E /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
 		39FA155F2C957CB10054B99E /* CoverPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverPageView.swift; sourceTree = "<group>"; };
 		39FA15642C9606350054B99E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		39FA15662C960D710054B99E /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
@@ -196,7 +193,6 @@
 		E2A71D1C2C9FC3BA00A2862D /* explosion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explosion.gif; sourceTree = "<group>"; };
 		E2A71D1D2C9FC3BA00A2862D /* fight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fight.gif; sourceTree = "<group>"; };
 		E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
-		E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCalculation.swift; sourceTree = "<group>"; };
 		E2A71D282C9FC3BA00A2862D /* shield.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = shield.gif; sourceTree = "<group>"; };
 		E2A71D292C9FC3BA00A2862D /* swords.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swords.gif; sourceTree = "<group>"; };
 		E2A71D2A2C9FC3BA00A2862D /* tank.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tank.gif; sourceTree = "<group>"; };
@@ -284,7 +280,6 @@
 				E29B16A42C9B140000673121 /* FillInBlankModel.swift */,
 				E29655382C94BD580099D136 /* TimelineGameModel.swift */,
 				7594A6F72C969065000084FA /* User.swift */,
-				39FA155D2C95708F0054B99E /* PageModel.swift */,
 				39FA15682C960FB20054B99E /* MultipleChoiceQuestion.swift */,
 				398F19972C99AF940023515B /* Note.swift */,
 				7549644A2C9ED7EC00C3022E /* Book.swift */,
@@ -386,12 +381,12 @@
 		75668E002C9183D70052F78C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E2598FD52C9F39D60056E409 /* SoundManager.swift */,
+				75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */,
 				75668E012C9183F90052F78C /* Modifiers.swift */,
 				39FA15592C948E1A0054B99E /* PageCurlViewController.swift */,
 				398F199D2C99B2470023515B /* NoteManager.swift */,
 				E2598FDB2C9F3A140056E409 /* Sounds */,
-				E2598FD52C9F39D60056E409 /* SoundManager.swift */,
-				75D1F3C12CA02B6C0058C597 /* LanguageManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -460,7 +455,6 @@
 				E2F08F3C2C9FE98B00038010 /* MapGif */,
 				E2A71D1E2C9FC3BA00A2862D /* GifImageView.swift */,
 				E2F08F2F2C9FCB9600038010 /* MapComponentConfig.swift */,
-				E2A71D272C9FC3BA00A2862D /* PositionCalculation.swift */,
 				E2F08F312C9FCD1200038010 /* MapViewManager.swift */,
 			);
 			path = Map;
@@ -621,7 +615,6 @@
 				391E50EE2C9FC9E00099043D /* NoteListView.swift in Sources */,
 				75D1F3C72CA02BAC0058C597 /* LanguagePicker.swift in Sources */,
 				7549644F2C9ED83500C3022E /* MatchingQuestion.swift in Sources */,
-				39FA155E2C95708F0054B99E /* PageModel.swift in Sources */,
 				E2F08F2E2C9FCA4E00038010 /* MapViewModel.swift in Sources */,
 				398F19922C99AEE50023515B /* PencilCanvasView.swift in Sources */,
 				E29B16AF2C9B142B00673121 /* TappableTextView.swift in Sources */,
@@ -634,7 +627,6 @@
 				391E50F22C9FD67A0099043D /* InputBoxView.swift in Sources */,
 				391848DC2C9B359F004B4367 /* NonDismissableSheet.swift in Sources */,
 				75D1F3C92CA02BCC0058C597 /* MyProfileView.swift in Sources */,
-				E2A71D392C9FC3BA00A2862D /* PositionCalculation.swift in Sources */,
 				7549644D2C9ED80B00C3022E /* Chapter.swift in Sources */,
 				E2A71D302C9FC3BA00A2862D /* GifImageView.swift in Sources */,
 				E29B16A52C9B140000673121 /* FillInBlankModel.swift in Sources */,
@@ -803,6 +795,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SG-Group15/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Historea;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -813,7 +806,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.nana.group15;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.van.Group15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -833,6 +826,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SG-Group15/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Historea;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -843,7 +837,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.nana.group15;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.edu.rmit.van.Group15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

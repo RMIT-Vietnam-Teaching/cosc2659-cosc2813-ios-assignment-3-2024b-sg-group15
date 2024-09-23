@@ -1,7 +1,17 @@
-// MapComponent.swift
-import SwiftUI
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 
-// Views/MapComponent.swift
 import SwiftUI
 
 struct MapComponent: View {
@@ -58,7 +68,6 @@ struct MapComponent: View {
                             height: customButtonHeight(for: geometry.size, multiplier: point.sizeMultiplier)
                         )
                         .foregroundColor(buttonTextColor(for: point.name))
-//                        .background(Color.white.opacity(0.7))
                         .cornerRadius(10)
                         .font(.system(size: dynamicTextSize(), weight: .semibold, design: .rounded))
                 }
@@ -134,22 +143,3 @@ struct MapComponent: View {
     }
 }
 
-//struct MapComponent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let exampleViewModel = MapViewModel(
-//            mapQuestion: "Chủ tịch Hồ Chí Minh chọn đâu làm căn cứ chỉ đạo Cách Mạng?",
-//            mapChoices: ["Bình Yên", "Tân Trào", "Trung Yên", "Minh Thanh", "Lương Thiện"],
-//            correctAnswer: "Tân Trào"
-//        )
-//        let exampleMapData = MapDataProvider.mapData(for: .tanTrao)
-//        
-//        MapComponent(
-//            viewModel: exampleViewModel,
-//            mapImage: exampleMapData.mapImage,
-//            mapPoints: exampleMapData.mapPoints,
-//            correctAnswer: exampleMapData.correctAnswer,
-//            config: exampleMapData.config
-//        )
-//        .previewLayout(.sizeThatFits)
-//    }
-//}

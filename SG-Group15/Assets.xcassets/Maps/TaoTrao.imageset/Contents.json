@@ -1,27 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "458936534_863949042345122_6639517385845250485_n.jpg",
+      "filename" : "TaoTrao.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "458936534_863949042345122_6639517385845250485_n@2x.jpg",
+      "filename" : "TaoTrao@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "458936534_863949042345122_6639517385845250485_n@3x.jpg",
+      "filename" : "TaoTrao@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
     {
-      "filename" : "458936534_863949042345122_6639517385845250485_n 1.jpg",
+      "filename" : "TaoTrao 1.png",
       "idiom" : "ipad",
       "scale" : "1x"
     },
     {
-      "filename" : "458936534_863949042345122_6639517385845250485_n@2x 1.jpg",
+      "filename" : "TaoTrao@2x 1.png",
       "idiom" : "ipad",
       "scale" : "2x"
     }

@@ -1,10 +1,16 @@
-//
-//  OpenBookView.swift
-//  SG-Group15
-//
-//  Created by Nana on 13/9/24.
-//
-
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 import SwiftUI
 
 struct OpenBookView: View {
@@ -13,6 +19,8 @@ struct OpenBookView: View {
     @State private var showCover = true
     @ObservedObject var bookVM: BookViewModel
     @Binding var chapterNum: Int
+    var bookID: String
+    
     
     var body: some View {
         ZStack {
@@ -21,16 +29,9 @@ struct OpenBookView: View {
                 BookDetailView(title: bookVM.chapters[chapterNum].title, description: bookVM.chapters[chapterNum].description)
                     .padding(0)
             } else {
-               CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
+               CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover, bookID: bookID)
 
             }
-//        }
-//
-//            if showCover {
-//                // The book cover (shown initially, then rotates open and disappears)
-//                CoverPageView(isScaled: $isScaled, isOpen: $isOpen, showCover: $showCover)
-//                
-//            }
         }
         .onAppear {
             if isOpen {
@@ -39,11 +40,6 @@ struct OpenBookView: View {
                 showCover = true
             }
         }
-//              .onChange(of: isOpen) {old ,new in
-//                  if new {
-//                      showCover = false
-//                  }
-//              }
         
     }
 }
