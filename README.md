@@ -28,7 +28,7 @@ The game is educational yet competitive, encouraging players to achieve the high
 ## Author
 Developed by a dedicated team of students passionate about both history and technology.
 ### Group 15
-Truong Hong Van - s3957034
-Nguyen Tran Ha Anh - s3938490
-Nguyen Ha Kieu Anh - s3818552
-Bui Tuan Anh - s3970375
+- Truong Hong Van - s3957034
+- Nguyen Tran Ha Anh - s3938490
+- Nguyen Ha Kieu Anh - s3818552
+- Bui Tuan Anh - s3970375
