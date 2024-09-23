@@ -207,10 +207,24 @@
       }
     },
     "Điền chữ thích hợp vào chỗ trống" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill in the blank"
+          }
+        }
+      }
     },
     "Đóng sách" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close book"
+          }
+        }
+      }
     },
     "Ghi Chú Của Bạn" : {
       "localizations" : {
@@ -292,7 +306,14 @@
       }
     },
     "Màu: " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color:"
+          }
+        }
+      }
     },
     "Member since %@" : {
 
@@ -341,7 +362,14 @@
       }
     },
     "Nhập tiêu đề" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add title"
+          }
+        }
+      }
     },
     "Nối sự kiện dưới đây" : {
       "localizations" : {
@@ -354,13 +382,34 @@
       }
     },
     "Nộp bài" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit"
+          }
+        }
+      }
     },
     "Search" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
     },
     "Tạo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        }
+      }
     },
     "Tiep tuc" : {
       "extractionState" : "stale",
@@ -384,7 +433,14 @@
       }
     },
     "Tiêu đề: " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title:"
+          }
+        }
+      }
     },
     "Tựa đề" : {
       "extractionState" : "stale",
