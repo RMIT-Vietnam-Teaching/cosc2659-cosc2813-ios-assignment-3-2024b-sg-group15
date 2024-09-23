@@ -63,7 +63,7 @@ struct WelcomeView: View {
                         {
                             Text("Đăng nhập")
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
-                                .foregroundColor(.white)
+                                .foregroundColor(.beigeBackground)
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .darkGreen)) : AnyViewModifier(LargeButtonModifierIpad(background: .darkGreen)))
                         }
                         Spacer()
