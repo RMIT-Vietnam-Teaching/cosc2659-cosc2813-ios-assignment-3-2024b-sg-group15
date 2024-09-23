@@ -15,6 +15,8 @@
 import SwiftUI
 
 struct MultipleChoiceView: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     @ObservedObject var questionVM:  MutipleChoiceViewModel
@@ -24,7 +26,7 @@ struct MultipleChoiceView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Image("background")
+            Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                 .resizable()
                 .ignoresSafeArea()
             

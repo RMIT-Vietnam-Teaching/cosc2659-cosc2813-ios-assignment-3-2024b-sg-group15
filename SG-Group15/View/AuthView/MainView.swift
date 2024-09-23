@@ -25,7 +25,12 @@ struct MainView: View {
             }
         }
         .environmentObject(userViewModel)
+        .onAppear {
+            userViewModel.loadUserFromUserDefaults()
+        }
     }
+    
+    
 }
 
 #Preview {

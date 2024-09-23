@@ -17,6 +17,8 @@ import SwiftUI
 struct BookDetailView: View {
     var title: String
     var description: String
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @State private var isScaled = false
     @State private var selectedChapter: Int = 1
@@ -33,7 +35,7 @@ struct BookDetailView: View {
             
             Group {
                 ZStack(alignment: .top) {
-                    Image("background")
+                    Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                         .resizable()
                         .ignoresSafeArea()
                         .zIndex(1.0)
@@ -107,15 +109,15 @@ struct BookDetailView: View {
                     Spacer()
                     
                     Text(description)
-                        .font(.system(size: 30))
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                         .lineSpacing(10.0)
                     
                     Spacer()
                     
                     Text("Ân bên phải để lật sách, ấn bên trái để quay về")
-                        .fontWeight(.bold)
+//                        .fontWeight(.bold)
                         .foregroundColor(.gray)
-                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(BodyTextModifier()) : AnyViewModifier(BodyTextModifierIpad()))
                         .multilineTextAlignment(.center)
 
                     

@@ -34,6 +34,17 @@ enum Theme: String, CaseIterable {
     }
 }
 
+func getEffectiveTheme(theme: Theme, systemColorScheme: ColorScheme) -> Theme {
+    switch theme {
+    case .light:
+        return .light
+    case .dark:
+        return .dark
+    case .system:
+        return systemColorScheme == .light ? .light : .dark
+    }
+}
+
 struct ThemePicker: View {
     var scheme: ColorScheme
     @AppStorage("theme") private var theme: Theme = .light

@@ -60,7 +60,9 @@ struct MyProfileView: View {
                             saveSettings()
                         }) {
                             Text("Lưu")
-                                .modifier(LargeButtonModifier(background: Color.primaryRed))
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                                .foregroundColor(.white)
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .primaryRed)) : AnyViewModifier(LargeButtonModifierIpad(background: .primaryRed)))
                             
                         }
                         Button(action: {
@@ -68,7 +70,9 @@ struct MyProfileView: View {
                             isLoggedOut = true
                         }) {
                             Text("Đăng xuất")
-                                .modifier(LargeButtonModifier(background: Color.darkGreen))
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
+                                .foregroundColor(.white)
+                                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .darkGreen)) : AnyViewModifier(LargeButtonModifierIpad(background: .darkGreen)))
                             
                         }
                     }

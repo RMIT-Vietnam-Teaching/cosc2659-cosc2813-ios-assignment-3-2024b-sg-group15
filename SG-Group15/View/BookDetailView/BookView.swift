@@ -36,7 +36,8 @@ struct BookView: View {
                LoadingView()
             } else {
                 if isOpen {
-                    ZStack {
+                    VStack {
+                        
                         // Only show PageCurlViewController when data is ready
                         PageCurlViewController(
                             chapters: $bookVM.chapters,
@@ -47,18 +48,21 @@ struct BookView: View {
                         
                         if currentPageIndex == 0 {
                             Button(action: {
-                                isOpen.toggle()
-                                print(isOpen)
-                            }, label: {
-                                Image(systemName: "x.circle")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.black)
-                            })
-                            .offset(x: horizontalSizeClass == .compact ? -140 : -300, y: horizontalSizeClass == .compact ? -320 : -440)
+                                isOpen = false
+                            }) {
+                                Text("Đóng sách")
+                                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(SubHeadlineTextModifier()) : AnyViewModifier(SubHeadlineTextModifierIpad()))
+                                
+                                        .modifier(horizontalSizeClass == .compact ? AnyViewModifier(RegularButtonModifier(background: .lightRed.opacity(0.6))) : AnyViewModifier(RegularButtonModifierIpad(background: .lightRed.opacity(0.6))))
+                                        .background(Color.beigeBackground)
+                            }
+                            .background(Color.beigeBackground)
                         }
                         
+                        
                     }
+                    .background(Color.beigeBackground)
+
                 }
                 else {
                     OpenBookView(isOpen: $isOpen, bookVM: bookVM, chapterNum: $currentChapterIndex, bookID: bookID)
@@ -84,9 +88,6 @@ struct BookView: View {
                 currentChapterIndex = 0
                 currentPageIndex = 0
             }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToNextPage"))) { _ in
-                    moveToNextPage()
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ExitBook"))) { _ in
             DispatchQueue.main.async {

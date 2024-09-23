@@ -14,13 +14,15 @@
 
 import SwiftUI
 struct MapViewManager: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     @ObservedObject var viewModel: MapViewModel
     
     var body: some View {
         ZStack(alignment: .top) {
-            Image("background")
+            Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                 .resizable()
                 .ignoresSafeArea()
             
@@ -37,20 +39,20 @@ struct MapViewManager: View {
                 .padding(.horizontal, 20)
                 
                 Text("\(viewModel.mapQuestion)")
-                    .font(.headline)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                     .padding()
+                
                 Spacer()
                 // Feedback after selection
                 if let selected = viewModel.selectedAnswer {
                     if selected == viewModel.correctAnswer {
                         Text("Correct!")
                             .foregroundColor(.green)
-                            .font(.title2)
-                            .padding()
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title3TextModifier()) : AnyViewModifier(Title3TextModifierIpad()))                   .padding()
                     } else {
                         Text("Wrong! Correct Answer: \(viewModel.correctAnswer)")
                             .foregroundColor(.red)
-                            .font(.title2)
+                            .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title3TextModifier()) : AnyViewModifier(Title3TextModifierIpad()))
                     }
                 }
                     
@@ -69,6 +71,7 @@ struct MapViewManager: View {
             } else {
                 Text("Invalid Map Type")
                     .foregroundColor(.red)
+                    .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title3TextModifier()) : AnyViewModifier(Title3TextModifierIpad())) 
             }
         }
     }

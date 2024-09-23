@@ -41,7 +41,7 @@ struct WelcomeView: View {
                     
                     // Title and navigation
                     VStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.02) {
-                        Text("History App")
+                        Text("Historea")
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeTitleTextModifier()) : AnyViewModifier(LargeTitleTextModifierIpad()))
                             .foregroundStyle(Color.darkGreen)
                         

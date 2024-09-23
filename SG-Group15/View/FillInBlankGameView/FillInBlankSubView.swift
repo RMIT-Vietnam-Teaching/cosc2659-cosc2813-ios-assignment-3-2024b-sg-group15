@@ -129,6 +129,7 @@ struct CheckAnswerButton: View {
         if isGameComplete {
             Button("Submit", action: action)
                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+                .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
         }
     }
 }

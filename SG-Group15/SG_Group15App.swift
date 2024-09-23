@@ -97,8 +97,8 @@ struct SG_Group15App: App {
     
     func scheduleNotificationWithBadge(hour: Int, minute: Int) {
         let content = UNMutableNotificationContent()
-        content.title = "Reminder"
-        content.body = "Don't lose your streak!"
+        content.title = "Nhắc nhở"
+        content.body = "Nhớ học mỗi ngày nha!"
         content.sound = UNNotificationSound.default
         
         // Increment the badge count

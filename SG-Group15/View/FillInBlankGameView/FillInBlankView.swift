@@ -15,6 +15,8 @@
 import SwiftUI
 
 struct FillInBlankGameView: View {
+    @AppStorage("theme") private var theme: Theme = .light
+    @Environment(\.colorScheme) private var scheme: ColorScheme
     @ObservedObject var viewModel: FillInBlankViewModel
     @State private var showResultPopup = false
     @State private var result: (correct: Int, total: Int) = (0, 0)
@@ -29,7 +31,7 @@ struct FillInBlankGameView: View {
             let wordHeight = min(height * 0.06, 250)
             
             ZStack {
-                Image("background")
+                Image(getEffectiveTheme(theme: theme, systemColorScheme: scheme) == .dark ? "backgroundDark" : "background")
                     .resizable()
                     .ignoresSafeArea()
                 
@@ -65,16 +67,16 @@ struct FillInBlankGameView: View {
                         
                         WordsView(viewModel: viewModel, wordWidth: wordWidth, wordHeight: wordHeight, width: width, height: height)
                         Spacer()
-                        if isSubmitted {
-                            Button("Tiep tuc") {
-                                print("Next")
-                            }.modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
-                        } else {
-                            CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
-                                viewModel.checkAnswer()
-                                isSubmitted = true
-                            }
-                        }
+//                        if isSubmitted {
+//                            Button("Tiep tuc") {
+//                                print("Next")
+//                            }.modifier(horizontalSizeClass == .compact ? AnyViewModifier(LargeButtonModifier(background: .redBrown)) : AnyViewModifier(LargeButtonModifierIpad(background: .redBrown)))
+//                        } else {
+//                            CheckAnswerButton(isGameComplete: viewModel.isGameComplete) {
+//                                viewModel.checkAnswer()
+//                                isSubmitted = true
+//                            }
+//                        }
                        
                         
                         

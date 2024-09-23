@@ -208,7 +208,10 @@
         }
       }
     },
-    "Fill in the blanks with the correct words" : {
+    "Điền chữ thích hợp vào chỗ trống" : {
+
+    },
+    "Đóng sách" : {
 
     },
     "Ghi Chú Của Bạn" : {
@@ -290,7 +293,13 @@
         }
       }
     },
+    "Màu: " : {
+
+    },
     "Member since %@" : {
+
+    },
+    "Member since: %@" : {
 
     },
     "Ngôn ngữ" : {
@@ -333,6 +342,9 @@
         }
       }
     },
+    "Nhập tiêu đề" : {
+
+    },
     "Nối sự kiện dưới đây" : {
       "localizations" : {
         "en" : {
@@ -369,7 +381,7 @@
         }
       }
     },
-    "Title: " : {
+    "Tiêu đề: " : {
 
     },
     "Tựa đề" : {
@@ -381,9 +393,6 @@
           }
         }
       }
-    },
-    "Type note's title" : {
-
     },
     "Unknown question type" : {
 
