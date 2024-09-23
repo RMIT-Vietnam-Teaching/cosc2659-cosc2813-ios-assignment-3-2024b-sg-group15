@@ -53,6 +53,7 @@ class UserViewModel: ObservableObject {
             else {
                 print("User saved successfully!")
                 self.currentUser = newUser
+                self.isLogin = true
             }
             
         }
@@ -79,6 +80,7 @@ class UserViewModel: ObservableObject {
             }
             else if let uid = result?.user.uid {
                 self.success = true
+                self.isLogin = true
                 // Save to database
                 self.saveUser(uid: uid, email: email, username: username)
             }
@@ -169,6 +171,7 @@ class UserViewModel: ObservableObject {
             }
             else {
                 self.success = true
+                self.isLogin = true
                 print("Login successfully!")
                 // Fetch user data"
                 self.fetchUser()
@@ -248,6 +251,7 @@ class UserViewModel: ObservableObject {
             // Clear current user data
             self.currentUser = nil
             self.success = false
+            self.isLogin = false
             
             print("User successfully logged out.")
         } catch let signOutError as NSError {

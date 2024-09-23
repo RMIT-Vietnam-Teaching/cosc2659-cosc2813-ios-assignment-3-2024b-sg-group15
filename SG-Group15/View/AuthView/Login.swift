@@ -149,10 +149,10 @@ struct Login: View {
                 Button(action: {
 //                    userViewModel.isLogin = true
                     self.userViewModel.login(email: email, password: password)
-                    print(userViewModel.success)
+//                    print(userViewModel.currentUser != nil)
 //                    if userViewModel.success {
-                        dismiss()
-                        userViewModel.isLogin = true
+//                        dismiss()
+//                        userViewModel.isLogin = true
 //                    }
                 })
                 {

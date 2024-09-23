@@ -138,7 +138,22 @@ struct TabViewNote: View {
             if newNote {
                 // When title changes and is not empty, save the note
                 DispatchQueue.main.async {
-                    noteViewModel.saveNote(note, userID: userViewModel.currentUser?.id)
+                    // Save the note using ViewModel and get the document ID
+                    noteViewModel.saveNote(note, userID: userViewModel.currentUser?.id) { documentID in
+                        if let documentID = documentID {
+                            // Fetch the note using the returned document ID
+                            noteViewModel.fetchNote(id: documentID) { fetchedNote in
+                                if let fetchedNote = fetchedNote {
+                                    // Update the `note` after fetching the saved note
+                                    self.note = fetchedNote
+                                    noteViewModel.loadNotes(userID: userViewModel.currentUser?.id)
+                                    print("Note updated with fetched data")
+                                } else {
+                                    print("Failed to load note data.")
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

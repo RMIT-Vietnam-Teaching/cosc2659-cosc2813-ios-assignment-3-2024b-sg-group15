@@ -78,7 +78,7 @@ struct NoteListView: View {
                             .padding(.top, 80)
                             
                             VStack(alignment: .leading ,spacing: 10) {
-                                FilterView(isFilter: $isFilter, searchText: $searchText, filter: $filter, filterFunction: filterProducts)
+                                FilterView(isFilter: $isFilter, searchText: $searchText, filter: $filter, filterFunction: filterNotes)
                                 
                                 if isFilter {
                                     ZStack {
@@ -97,7 +97,7 @@ struct NoteListView: View {
                                         }
                                     }
                                     .onChange(of: filter, initial: false) {
-                                        filterProducts()
+                                        filterNotes()
                                     }
 
                                 }
@@ -112,6 +112,7 @@ struct NoteListView: View {
             }
             .onChange(of: noteVM.notes.count, initial: false) {
                 noteVM.loadNotes(userID: userViewModel.currentUser?.id)
+                noteList = noteVM.notes
             }
         }
         .environmentObject(noteVM)
@@ -122,8 +123,8 @@ struct NoteListView: View {
             return word.lowercased().split(separator: " ").map { $0.capitalized }.joined(separator: " ")
         }
     
-    // Function to filter products
-    private func filterProducts() {
+    // Function to filter notes
+    private func filterNotes() {
         noteList = noteVM.notes
         if filter != "none" && filter != "" {
             noteList = noteVM.notes.filter { note in

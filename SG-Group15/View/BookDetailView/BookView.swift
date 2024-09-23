@@ -48,6 +48,7 @@ struct BookView: View {
                         if currentPageIndex == 0 {
                             Button(action: {
                                 isOpen.toggle()
+                                print(isOpen)
                             }, label: {
                                 Image(systemName: "x.circle")
                                     .resizable()

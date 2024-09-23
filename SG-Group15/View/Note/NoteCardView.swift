@@ -19,7 +19,8 @@ struct NoteCardView: View {
     @Environment(\.dismiss) private var dismiss
 
     @EnvironmentObject var noteViewModel: NoteViewModel
-    
+    @EnvironmentObject var userViewModel:  UserViewModel
+
     var note: Note
     
     var body: some View {
@@ -30,6 +31,7 @@ struct NoteCardView: View {
             
             Button(action: {
                 noteViewModel.deleteNote(id: note.id!)
+                noteViewModel.loadNotes(userID: userViewModel.currentUser?.id)
             }, label: {
                 Image(systemName: "xmark.bin.circle.fill")
                     .resizable()
@@ -52,5 +54,6 @@ struct NoteCardView: View {
 #Preview {
     NoteCardView(note: Note(id: "", title: "Title", textContent: "Lorem ispum balbalbawkrmcnklsmcnklbalbala", color: "lightRed"))
         .environmentObject(NoteViewModel())
+        .environmentObject(UserViewModel())
 
 }
