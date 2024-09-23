@@ -37,10 +37,24 @@
 
     },
     "Ân bên phải để lật sách, ấn bên trái để quay về" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click on the right to flip the book, press on the left to go back"
+          }
+        }
+      }
     },
     "Biến lịch sử thành cuộc phiêu lưu" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn History into adventure"
+          }
+        }
+      }
     },
     "Bingo" : {
 
@@ -49,103 +63,285 @@
 
     },
     "Cài đặt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setting"
+          }
+        }
+      }
     },
     "Chào mừng bạn quay lại! Chúng tôi rất nhớ bạn" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome back! We miss you very much"
+          }
+        }
+      }
     },
     "Chiến dịch Điện Biên Phủ - 1954" : {
 
     },
     "Chọn hình đại diện của bạn" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your avatar"
+          }
+        }
+      }
     },
     "Chủ đề" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        }
+      }
     },
     "Color: " : {
 
     },
     "Confirm" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xác nhận"
+          }
+        }
+      }
     },
     "Correct!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chính xác!"
+          }
+        }
+      }
     },
     "Đăng ký" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        }
+      }
     },
     "Đăng Ký" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        }
+      }
     },
     "Đăng nhập" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        }
+      }
     },
     "Đăng Nhập" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        }
+      }
     },
     "Đăng nhập với Google" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with Google"
+          }
+        }
+      }
     },
     "Đang tải dữ liệu..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading data..."
+          }
+        }
+      }
     },
     "Đang tải..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        }
+      }
     },
     "Đăng xuất" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
+          }
+        }
+      }
     },
     "Fill in the blanks with the correct words" : {
 
     },
     "Ghi Chú Của Bạn" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your notes"
+          }
+        }
+      }
     },
     "Ghi chú mới" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New notes"
+          }
+        }
+      }
     },
     "History App" : {
 
     },
     "Hoặc bắt đầu với" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Or start with"
+          }
+        }
+      }
     },
     "Hoặc tiếp tục với" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Or continue with"
+          }
+        }
+      }
     },
     "Invalid Map Type" : {
 
     },
     "Kéo các sự kiện sau đây ứng với mốc thời gian" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag the following events to the corresponding timeline"
+          }
+        }
+      }
     },
     "Kiểm tra" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check"
+          }
+        }
+      }
     },
     "Login Sucessfully!" : {
 
     },
     "Lưu" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
     },
     "Member since %@" : {
 
     },
     "Ngôn ngữ" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
     },
     "Nhập email" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Input email"
+          }
+        }
+      }
     },
     "Nhập mật khẩu" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter password"
+          }
+        }
+      }
     },
     "Nhập tên người dùng" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter username"
+          }
+        }
+      }
     },
     "Nối sự kiện dưới đây" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect the event below"
+          }
+        }
+      }
     },
     "Search" : {
 
@@ -154,16 +350,37 @@
 
     },
     "Tiep tuc" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
     },
     "Tiếp tục" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
     },
     "Title: " : {
 
     },
     "Tựa đề" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        }
+      }
     },
     "Type note's title" : {
 
@@ -178,7 +395,14 @@
 
     },
     "Xin chào bạn! Mình cùng nhau khám phá nhé!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello! Let's explore together!"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
