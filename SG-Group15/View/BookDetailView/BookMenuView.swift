@@ -27,17 +27,11 @@ struct BookMenuView: View {
             .ignoresSafeArea()
             .gesture(isOpen ? DragGesture().onChanged { _ in } : nil) // Disable swipe gesture when isSwipeDisabled is true
             .tabViewStyle(.page(indexDisplayMode: .never))
-//            .onChange(of: currentTab) { newValue in
-//                if isOpen {
-//                    // Revert to the old tab if swipe is disabled
-//                        currentTab = newValue > currentTab ? currentTab - 1 : currentTab + 1
-//                }
-//            }
         }
         
     }
 }
 
-//#Preview {
-//    BookMenuView(isOpen: .constant(true))
-//}
+#Preview {
+    BookMenuView(isOpen: .constant(true))
+}

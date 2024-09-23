@@ -1,27 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "456733421_878215567109667_7922008402788221300_n.jpg",
+      "filename" : "BacGiang.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "456733421_878215567109667_7922008402788221300_n@2x.jpg",
+      "filename" : "BacGiang@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "456733421_878215567109667_7922008402788221300_n@3x.jpg",
+      "filename" : "BacGiang@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
     {
-      "filename" : "456733421_878215567109667_7922008402788221300_n 1.jpg",
+      "filename" : "BacGiang 1.png",
       "idiom" : "ipad",
       "scale" : "1x"
     },
     {
-      "filename" : "456733421_878215567109667_7922008402788221300_n@2x 1.jpg",
+      "filename" : "BacGiang@2x 1.png",
       "idiom" : "ipad",
       "scale" : "2x"
     }

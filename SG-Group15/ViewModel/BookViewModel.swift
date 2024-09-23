@@ -45,6 +45,10 @@ class BookViewModel: ObservableObject {
                 
                 // Wait for all fetches to complete
                 group.notify(queue: .main) {
+                    // Sort chapters by the 'order' field
+                    fetchedChapters.sort { (first: Chapter, second: Chapter) -> Bool in
+                        return first.odrer < second.odrer
+                     }
                     // Update the chapters with all the data and set loading to false
                     self?.chapters = fetchedChapters
                     self?.isLoading = false // Data is fully loaded

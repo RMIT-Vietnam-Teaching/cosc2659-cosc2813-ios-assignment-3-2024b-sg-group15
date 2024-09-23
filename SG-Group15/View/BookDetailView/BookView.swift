@@ -13,7 +13,7 @@ struct BookView: View {
     @ObservedObject var bookVM: BookViewModel
     var bookID: String
     @Binding var isOpen: Bool
-    @State private var currentChapterIndex: Int = 1 // Use nil for the initial landing page
+    @State private var currentChapterIndex: Int = 0
     @State private var currentPageIndex = 0
     @State private var flipStates: [[Bool]] = [
             [true, false, false], // Chapter 1: Page 2 cannot flip
@@ -22,15 +22,11 @@ struct BookView: View {
         ]
     
     
-//    @State var coverPage = CoverPage(title: "CÁCH MẠNG THÁNG 8 - 1945", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas nibh sit amet feugiat dictum. ")
-    
     var body: some View {
         VStack {
             if bookVM.isLoading {
                 // Show a loading view while the data is being fetched
-                ProgressView("Đang tải...")
-                    .font(.largeTitle)
-                    .padding()
+               LoadingView()
             } else {
                 if isOpen {
                     ZStack {
@@ -43,13 +39,9 @@ struct BookView: View {
                         .edgesIgnoringSafeArea(.all)
                         
                         if currentPageIndex == 0 {
-//                            Button("close") {
-//                                isOpen.toggle()
-//                            }
                             Button(action: {
                                 isOpen.toggle()
                             }, label: {
-//                                Text("close")
                                 Image(systemName: "x.circle")
                                     .resizable()
                                     .frame(width: 30, height: 30)
@@ -67,7 +59,7 @@ struct BookView: View {
         }
         .onAppear {
             bookVM.fetchBook(bookID: bookID)
-            currentChapterIndex = 1
+            currentChapterIndex = 0
             currentPageIndex = 0
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GoToChapter"))) { notification in

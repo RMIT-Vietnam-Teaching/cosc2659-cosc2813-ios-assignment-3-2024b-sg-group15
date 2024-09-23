@@ -126,7 +126,7 @@
     "Lưu" : {
 
     },
-    "Member since 20/6/2024" : {
+    "Member since %@" : {
 
     },
     "Ngôn ngữ" : {
@@ -169,9 +169,6 @@
 
     },
     "Update Sucessfully!" : {
-
-    },
-    "Username" : {
 
     },
     "Wrong! Correct Answer: %@" : {

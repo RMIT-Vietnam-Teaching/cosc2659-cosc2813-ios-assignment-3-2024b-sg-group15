@@ -11,6 +11,7 @@ import SwiftUI
 struct PersonInfo: View {
     @Binding var selectedAvatar: String
     @State private var showAvaPicker: Bool = false
+    @EnvironmentObject var userVM: UserViewModel
     // Detect horizontal size class
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var body: some View {
@@ -30,12 +31,14 @@ struct PersonInfo: View {
                         }
                     }
                 VStack(alignment: .center, spacing: 5) {
-                    Text("Username")
+                    Text(userVM.currentUser?.username ?? "Username")
                         .foregroundStyle(Color.textDark)
                         .modifier(TitleTextModifier())
-                    Text("Member since 20/6/2024")
-                        .foregroundStyle(Color.textDark)
-                        .modifier(SubHeadlineTextModifier())
+                    if let joinedAt = userVM.currentUser?.joinedAt {
+                        Text("Member since \(joinedAt)")
+                            .foregroundStyle(Color.textDark)
+                            .modifier(SubHeadlineTextModifier())
+                    }
                 }
             }
             .sheet(isPresented: $showAvaPicker) {
@@ -60,10 +63,14 @@ struct PersonInfo: View {
                         
                     }
                 VStack(alignment: .center, spacing: 5) {
-                    Text("Username")
-                        .modifier(HeadlineTextModifierIpad())
-                    Text("Member since 20/6/2024")
-                        .modifier(SubHeadlineTextModifierIpad())
+                    Text(userVM.currentUser?.username ?? "Username")
+                        .foregroundStyle(Color.textDark)
+                        .modifier(TitleTextModifierIpad())
+                    if let joinedAt = userVM.currentUser?.joinedAt {
+                        Text("Member since \(joinedAt)")
+                            .foregroundStyle(Color.textDark)
+                            .modifier(SubHeadlineTextModifierIpad())
+                    }
                 }
             }
             // Popover to display avatar picker

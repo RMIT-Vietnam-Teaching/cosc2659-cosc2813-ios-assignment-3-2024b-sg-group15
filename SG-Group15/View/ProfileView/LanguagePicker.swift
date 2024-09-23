@@ -25,25 +25,24 @@ struct LanguagePicker: View {
                     .modifier(BodyTextModifier())
                 HStack {
                     // Display the theme for user to choose
-                    ForEach(languages, id: \.self) {
-                        lang in
+                    ForEach(Array(zip(languages, langCodes)), id: \.1) { lang, code in
                         Text(lang)
                             .modifier(BodyTextModifier())
                             .padding(10)
                             .background {
                                 ZStack {
-                                    // Highlight the chosen theme
-                                    if selected == lang {
+                                    // Highlight the selected language
+                                    if languageManager.selectedLanguage == code {
                                         Capsule()
                                             .fill(Color.lightRed)
                                             .matchedGeometryEffect(id: "ACTIVE", in: animation)
                                     }
                                 }
-                                .animation(.snappy, value: lang)
                             }
-                            .contentShape(.rect)
+                            .contentShape(Rectangle())
                             .onTapGesture {
-                                selected = lang
+                                // Update the selected language when tapped
+                                languageManager.update(to: code)
                             }
                     }
                 }
@@ -56,28 +55,28 @@ struct LanguagePicker: View {
         else {
             HStack(spacing: UIScreen.main.bounds.width * 0.1) {
                 Text("Ngôn ngữ")
+                    .foregroundStyle(Color.signupTitle)
                     .modifier(BodyTextModifierIpad())
                 HStack {
                     // Display the theme for user to choose
-                    ForEach(languages, id: \.self) {
-                        lang in
+                    ForEach(Array(zip(languages, langCodes)), id: \.1) { lang, code in
                         Text(lang)
-                            .modifier(BodyTextModifierIpad())
+                            .modifier( BodyTextModifierIpad())
                             .padding(10)
                             .background {
                                 ZStack {
-                                    // Highlight the chosen theme
-                                    if selected == lang {
+                                    // Highlight the selected language
+                                    if languageManager.selectedLanguage == code {
                                         Capsule()
                                             .fill(Color.lightRed)
                                             .matchedGeometryEffect(id: "ACTIVE", in: animation)
                                     }
                                 }
-                                .animation(.snappy, value: lang)
                             }
-                            .contentShape(.rect)
+                            .contentShape(Rectangle())
                             .onTapGesture {
-                                selected = lang
+                                // Update the selected language when tapped
+                                languageManager.update(to: code)
                             }
                     }
                 }

@@ -37,8 +37,7 @@ struct MyProfileView: View {
                 if horizontalSizeClass == .compact {
                     VStack {
                         Text("Cài đặt")
-                            .foregroundStyle(Color.signupTitle)
-                            .modifier(LargeTitleTextModifier())
+                            .modifier(TitleTextModifier())
                         Spacer()
                             .frame(height: UIScreen.main.bounds.width * 0.1)
                         PersonInfo(selectedAvatar: $avatar)
@@ -58,15 +57,23 @@ struct MyProfileView: View {
                             
                         }
                         .padding()
+                        Button(action: {
+                            userViewModel.logout()
+                            isLoggedOut = true
+                        }) {
+                            Text("Đăng xuất")
+                                .modifier(LargeButtonModifier(background: Color.darkGreen))
+                            
+                        }
+                        .padding()
                     }
                 }
                 else {
                     VStack {
                         Text("Cài đặt")
-                            .foregroundStyle(Color.darkRed)
-                            .modifier(LargeTitleTextModifierIpad())
+                            .modifier(TitleTextModifierIpad())
                         Spacer()
-                            .frame(height: UIScreen.main.bounds.width * 0.1)
+                            .frame(height: UIScreen.main.bounds.width * 0.05)
                         PersonInfo(selectedAvatar: $avatar)
                         Spacer()
                             .frame(height: UIScreen.main.bounds.width * 0.1)
@@ -76,6 +83,7 @@ struct MyProfileView: View {
                             
                         }
                         Spacer()
+                            .frame(height: UIScreen.main.bounds.width * 0.1)
                         // Placeholder for error message
                         if userViewModel.success {
                             Text("Update Sucessfully!")
@@ -98,7 +106,6 @@ struct MyProfileView: View {
                                 .modifier(LargeButtonModifier(background: Color.primaryRed))
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                         }
-                        .padding()
                         Button(action: {
                             userViewModel.logout()
                             isLoggedOut = true
@@ -109,7 +116,6 @@ struct MyProfileView: View {
                                 .modifier(horizontalSizeClass == .compact ? AnyViewModifier(Title2TextModifier()) : AnyViewModifier(Title2TextModifierIpad()))
                             
                         }
-                        .padding()
                     }
                     
                 }
@@ -126,7 +132,7 @@ struct MyProfileView: View {
             }
         }
         
-            
+        
     }
 }
 
