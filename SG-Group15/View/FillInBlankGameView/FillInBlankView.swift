@@ -1,3 +1,17 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
+
 import SwiftUI
 
 struct FillInBlankGameView: View {
@@ -31,12 +45,10 @@ struct FillInBlankGameView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 20)
-//                    .padding(.botto÷m, 10)
-
                     
                     // Centering other elements
                     VStack(spacing: 60) {
-                        Text("Fill in the blanks with the correct words")
+                        Text("Điền chữ thích hợp vào chỗ trống")
                             .modifier(horizontalSizeClass == .compact ? AnyViewModifier(TitleTextModifier()) : AnyViewModifier(TitleTextModifierIpad()))
                             .padding(.vertical, 50)
                         
@@ -76,7 +88,6 @@ struct FillInBlankGameView: View {
 
             }
         }
-//        .padding(.vertical,  60)
     }
     
     func goToNextPage() {

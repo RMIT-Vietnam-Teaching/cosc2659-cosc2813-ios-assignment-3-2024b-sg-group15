@@ -1,14 +1,21 @@
-//
-//  SoundManager.swift
-//  SG-Group15
-//
-//  Created by Tuan Anh Bui on 9/22/24.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 3
+  Author: Group 15
+    - Nguyen Tran Ha Anh - 3938490
+    - Bui Tuan Anh - 3970375
+    - Nguyen Ha Kieu Anh - 3818552
+    - Truong Hong Van - 3957034
+  Created  date: 08/09/2024
+  Last modified: 23/09/2024
+*/
 
 import SwiftUI
 import AVFoundation
 
-/// A singleton class to manage sound playback in a SwiftUI app
+// A singleton class to manage sound playback in a SwiftUI app
 class SoundManager: ObservableObject {
     // Singleton instance
     static let shared = SoundManager()
@@ -23,7 +30,7 @@ class SoundManager: ObservableObject {
         setupPlayers()
     }
     
-    /// Sets up all audio players
+    // Sets up all audio players
     private func setupPlayers() {
         // Setup background music player
         if let backgroundURL = Bundle.main.url(forResource: "background", withExtension: "mp3") {
@@ -42,22 +49,22 @@ class SoundManager: ObservableObject {
         }
     }
     
-    /// Plays the background music
+    // Plays the background music
     func playBackground() {
         backgroundPlayer?.play()
     }
     
-    /// Stops the background music
+    // Stops the background music
     func stopBackground() {
         backgroundPlayer?.stop()
     }
     
-    /// Plays the correct sound effect
+    // Plays the correct sound effect
     func correctSound() {
         correctSoundPlayer?.play()
     }
     
-    /// Plays the fail sound effect
+    // Plays the fail sound effect
     func failSound() {
         failSoundPlayer?.play()
     }
