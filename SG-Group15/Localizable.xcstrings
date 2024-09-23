@@ -1,7 +1,185 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
 
+    },
+    "%@" : {
+
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "1" : {
+
+    },
+    "2" : {
+
+    },
+    "3" : {
+
+    },
+    "Ân bên phải để lật sách, ấn bên trái để quay về" : {
+
+    },
+    "Biến lịch sử thành cuộc phiêu lưu" : {
+
+    },
+    "Bingo" : {
+
+    },
+    "CÁCH MẠNG THÁNG 8 - 1945" : {
+
+    },
+    "Cài đặt" : {
+
+    },
+    "Chào mừng bạn quay lại! Chúng tôi rất nhớ bạn" : {
+
+    },
+    "Chọn hình đại diện của bạn" : {
+
+    },
+    "Chủ đề" : {
+
+    },
+    "Color: " : {
+
+    },
+    "Confirm" : {
+
+    },
+    "Correct!" : {
+
+    },
+    "Đăng ký" : {
+
+    },
+    "Đăng Ký" : {
+
+    },
+    "Đăng nhập" : {
+
+    },
+    "Đăng Nhập" : {
+
+    },
+    "Đăng nhập với Google" : {
+
+    },
+    "Đang tải dữ liệu..." : {
+
+    },
+    "Đang tải..." : {
+
+    },
+    "Đăng xuất" : {
+
+    },
+    "Fill in the blanks with the correct words" : {
+
+    },
+    "Ghi Chú Của Bạn" : {
+
+    },
+    "Ghi chú mới" : {
+
+    },
+    "History App" : {
+
+    },
+    "Hoặc bắt đầu với" : {
+
+    },
+    "Hoặc tiếp tục với" : {
+
+    },
+    "Invalid Map Type" : {
+
+    },
+    "Kéo các sự kiện sau đây ứng với mốc thời gian" : {
+
+    },
+    "Kiểm tra" : {
+
+    },
+    "Login Sucessfully!" : {
+
+    },
+    "Lưu" : {
+
+    },
+    "Member since 20/6/2024" : {
+
+    },
+    "Ngôn ngữ" : {
+
+    },
+    "Nhập email" : {
+
+    },
+    "Nhập mật khẩu" : {
+
+    },
+    "Nhập tên người dùng" : {
+
+    },
+    "Nối sự kiện dưới đây" : {
+
+    },
+    "Search" : {
+
+    },
+    "Submit" : {
+
+    },
+    "Tiep tuc" : {
+
+    },
+    "Tiếp tục" : {
+
+    },
+    "Title: " : {
+
+    },
+    "Tựa đề" : {
+
+    },
+    "Type note's title" : {
+
+    },
+    "Unknown question type" : {
+
+    },
+    "Update Sucessfully!" : {
+
+    },
+    "Username" : {
+
+    },
+    "Wrong! Correct Answer: %@" : {
+
+    },
+    "Xin chào bạn! Mình cùng nhau khám phá nhé!" : {
+
+    }
   },
   "version" : "1.0"
 }

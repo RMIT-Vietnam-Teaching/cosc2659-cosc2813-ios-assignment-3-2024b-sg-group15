@@ -93,7 +93,6 @@ struct TabViewNote: View {
         }
         .onAppear {
             if newNote {
-                print("new")
                 withAnimation {
                     showInput = true
                 }

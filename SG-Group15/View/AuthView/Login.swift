@@ -58,6 +58,7 @@ struct Login: View {
                             .foregroundStyle(Color.green)
                         
                         
+                        
                     }
                     // Placeholder for error message
                     if let message = userViewModel.errorMessage {
@@ -139,9 +140,13 @@ struct Login: View {
                 
                 // Sign im button
                 Button(action: {
-                    dismiss()
-                    userViewModel.isLogin = true
-//                    self.userViewModel.login(email: email, password: password)
+//                    userViewModel.isLogin = true
+                    self.userViewModel.login(email: email, password: password)
+                    print(userViewModel.success)
+//                    if userViewModel.success {
+                        dismiss()
+                        userViewModel.isLogin = true
+//                    }
                 })
                 {
                     Text("Đăng nhập")

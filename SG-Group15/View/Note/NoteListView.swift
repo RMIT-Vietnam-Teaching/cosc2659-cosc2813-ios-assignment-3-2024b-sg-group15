@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NoteListView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    @EnvironmentObject var userViewModel:  UserViewModel
 
     @StateObject var noteVM = NoteViewModel()
     @State private var note: Note = Note(id: "", title: "", textContent: "", color: "")
@@ -89,7 +90,6 @@ struct NoteListView: View {
                                         }
                                     }
                                     .onChange(of: filter, initial: false) {
-//                                        noteVM.loadNotes()
                                         filterProducts()
                                     }
 
@@ -100,11 +100,11 @@ struct NoteListView: View {
                 }
             }
             .onAppear {
-                noteVM.loadNotes(userID: "123")
+                noteVM.loadNotes(userID: userViewModel.currentUser?.id)
                 noteList = noteVM.notes
             }
             .onChange(of: noteVM.notes.count, initial: false) {
-                noteVM.loadNotes(userID: "123")
+                noteVM.loadNotes(userID: userViewModel.currentUser?.id)
             }
         }
         .environmentObject(noteVM)
@@ -136,4 +136,6 @@ struct NoteListView: View {
 
 #Preview {
     NoteListView()
+        .environmentObject(UserViewModel())
+
 }
