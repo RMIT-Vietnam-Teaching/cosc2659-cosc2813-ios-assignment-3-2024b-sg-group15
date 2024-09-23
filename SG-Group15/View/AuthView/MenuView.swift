@@ -34,4 +34,5 @@ struct MenuView: View {
 
 #Preview {
     MenuView()
+        .environmentObject(UserViewModel())
 }

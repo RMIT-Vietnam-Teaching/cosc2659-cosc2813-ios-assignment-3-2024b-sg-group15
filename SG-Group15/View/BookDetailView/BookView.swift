@@ -33,7 +33,27 @@ struct BookView: View {
                     .padding()
             } else {
                 if isOpen {
-                    ZStack {
+                    VStack {
+                        if currentPageIndex == 0 {
+//                            Button("close") {
+//                                isOpen = false
+//                                print(isOpen)
+//                            }
+
+                            Button(action: {
+//                                dismiss()
+                                isOpen = false
+                            }) {
+                                Text("close")
+                                Image(systemName: "arrow.backward")
+                                    .resizable()
+                                    .frame(width: horizontalSizeClass == .compact ? 15 : 30, height: horizontalSizeClass == .compact ? 15 : 30)
+//                                    .modifier(BodyTextModifier(color: Color.darkGreen))
+                            }
+                            .background(.clear)
+                            .offset(y: 100)
+                        }
+                        
                         // Only show PageCurlViewController when data is ready
                         PageCurlViewController(
                             chapters: $bookVM.chapters,
@@ -42,22 +62,7 @@ struct BookView: View {
                         )
                         .edgesIgnoringSafeArea(.all)
                         
-                        if currentPageIndex == 0 {
-//                            Button("close") {
-//                                isOpen.toggle()
-//                            }
-                            Button(action: {
-                                isOpen.toggle()
-                                print(isOpen)
-                            }, label: {
-//                                Text("close")
-                                Image(systemName: "x.circle")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.black)
-                            })
-                            .offset(x: horizontalSizeClass == .compact ? -140 : -300, y: horizontalSizeClass == .compact ? -320 : -440)
-                        }
+                        
                         
                     }
                 }
