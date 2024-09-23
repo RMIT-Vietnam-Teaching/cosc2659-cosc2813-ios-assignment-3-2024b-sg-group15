@@ -105,10 +105,8 @@
         }
       }
     },
-    "Color: " : {
-
-    },
     "Confirm" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -234,7 +232,7 @@
         }
       }
     },
-    "History App" : {
+    "Historea" : {
 
     },
     "Hoặc bắt đầu với" : {
@@ -355,13 +353,17 @@
         }
       }
     },
+    "Nộp bài" : {
+
+    },
     "Search" : {
 
     },
-    "Submit" : {
+    "Tạo" : {
 
     },
     "Tiep tuc" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -385,6 +387,7 @@
 
     },
     "Tựa đề" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
