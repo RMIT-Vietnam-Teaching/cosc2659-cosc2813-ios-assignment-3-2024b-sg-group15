@@ -16,7 +16,7 @@ Historea is structured into multiple books, each focusing on a key period of Vie
 The game is educational yet competitive, encouraging players to achieve the highest scores and share their progress with others.
 
 ## Live Demo
-- [Watch the demo on iPad Simulator](#)
+- [Watch the demo on iPad Simulator](https://youtu.be/q_CGEY7bwpg?si=gmaRTCx2QpCu43Nq)
 
 ## Build Information
 - **Xcode**: 15.4
